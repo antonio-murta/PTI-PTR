@@ -38,7 +38,6 @@ export default function Registar() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    
     console.log(data.get('email'))
     Axios.post("http://localhost:3001/insert", {
       email: data.get('email'),
@@ -71,7 +70,7 @@ export default function Registar() {
             alignItems: 'center'
           }}
         >
-          <h1> Registar </h1>
+          <h1> Registarssssss </h1>
           <Box onSubmit={handleSubmit} component="form" noValidate  sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:2}}> {/* numero de "blocos"*/}
               <Grid item xs={12} sm={6}> {/* 6 = comprimento*/}
