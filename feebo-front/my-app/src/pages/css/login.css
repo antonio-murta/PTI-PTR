@@ -1,0 +1,22 @@
+.box-login{
+    max-width: 500px;
+    min-width: 300px;
+    max-height: 700px;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF;
+    border-radius: 25px;
+    text-align: center;
+    align-items: center;
+    padding: 5% 1% 5% 1%;
+}
+  
+  .mail-login{
+    width: 80%;
+  }
+  
+  .button-login{
+    width: 30%;
+    color: #fff;
+  }  
+
