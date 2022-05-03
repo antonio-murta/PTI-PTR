@@ -1,0 +1,27 @@
+{
+  "name": "mpromise",
+  "version": "0.4.3",
+  "description": "Promises A+ conformant implementation",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/mocha/bin/_mocha"
+  },
+  "devDependencies": {
+    "longjohn": "~0.2.1",
+    "promises-aplus-tests": "~2.0.2",
+    "mocha": "~1.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/aheckmann/mpromise"
+  },
+  "keywords": [
+    "promise",
+    "mongoose",
+    "aplus",
+    "a+",
+    "plus"
+  ],
+  "author": "Aaron Heckmann <aaron.heckmann+github@gmail.com>",
+  "license": "MIT"
+}
