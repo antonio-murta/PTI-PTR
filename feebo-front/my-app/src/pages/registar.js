@@ -94,6 +94,13 @@ const handleChange = (e) => {
   setAge(value);
 };
 
+const [ola, setOla] = useState();
+
+const handleOla = (e) => {
+  const value = e.target.value.replace(/\D/g, "");
+  setOla(value);
+};
+
 
   return (
     // <ThemeProvider theme={theme}>
@@ -177,6 +184,8 @@ const handleChange = (e) => {
                 type="text"
                 autoComplete="NIF"
                 inputProps={{ maxLength: 9}}
+                value={ola}
+                onChange={handleOla}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
