@@ -92,7 +92,6 @@ button {
 }
 .category span {
   margin: 10px 20px;
-  text-transform: capitalize;
 }
 .category .box {
   transition: 0.5s;

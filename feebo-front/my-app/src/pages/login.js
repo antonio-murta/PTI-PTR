@@ -62,6 +62,7 @@ export default function SignIn() {
             />
             <TextField className='mail-login'
               margin="normal"
+              required
               width='100%'
               name="password"
               label="Password"
