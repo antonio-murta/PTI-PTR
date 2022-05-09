@@ -22,3 +22,19 @@ async function colocarNoCesto(email, quantidade, produtoID){
     )
 }
 
+
+const colocarNoCesto = (req, res) => {
+    const poluicao = req.body.poluicao;
+
+    ProdutoModel.find({poluicao: poluicao})
+    .then(result => {
+        if (result.length == 0) {
+            res.status(404).send("Produto nao encontrado");
+        } else {
+            res.status(200).send(result);
+        }
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    });
+}
