@@ -175,7 +175,7 @@ export default function Registar() {
                   required
                   fullWidth
                   id="morada"
-                  label="morada"
+                  label="Morada"
                   name="morada"
                   autoComplete="family-name"
                 />
