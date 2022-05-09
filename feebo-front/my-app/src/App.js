@@ -9,11 +9,22 @@ import Footer from "./common/footer/Footer"
 import Sdata from "./components/shops/Sdata"
 import SignIn from "./pages/login"
 import Registar from "./pages/registar"
-import Transportador from "./pages/transportador"
+import Transportador from "./pages/transportador/transportador"
 import Fornecedor from "./pages/fornecedor"
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 
 function App() {
+  const THEME = createTheme({
+    typography: {
+      fontFamily: `"Poppins", sans-serif`,
+      fontSize: 14,
+      fontWeightLight: 300,
+      fontWeightRegular: 400,
+      fontWeightMedium: 500,
+      fontWeightBold: 600
+    }
+ });
   const { productItems } = Data
   const { shopItems } = Sdata
 
@@ -45,6 +56,7 @@ function App() {
 
   return (
     <>
+    <ThemeProvider theme={THEME}>
       <Router>
         <Header CartItem={CartItem} />
         <Routes>
@@ -57,6 +69,7 @@ function App() {
         </Routes>
         <Footer />
       </Router>
+    </ThemeProvider>
     </>
   )
 }

@@ -70,7 +70,7 @@ export default function Registar() {
             alignItems: 'center'
           }}
         >
-          <h1> Registarssssss </h1>
+          <h1> Registar</h1>
           <Box onSubmit={handleSubmit} component="form" noValidate  sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:2}}> {/* numero de "blocos"*/}
               <Grid item xs={12} sm={6}> {/* 6 = comprimento*/}
