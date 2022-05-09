@@ -44,7 +44,33 @@ app.put("/utilizador/:id/veiculo", TransporteControler.updateVeiculo)
 app.put("/utilizador/:id/caminhos", TransporteControler.updateCaminhos)
 // app.delete("/utilizador/:id", UtilizadorControler.deleteByEmail);
 
+// Armazem
+app.post("/armazem", ArmazemController.criarArmazem)
+app.get("/armazem/nome", ArmazemController.getByNome)
+app.get("/armazem/morada", ArmazemController.getByMorada)
+app.get("/armazem/telemovel", ArmazemController.getByTelemovel)
+app.delete("/armazem", ArmazemController.deleteByNome)
+app.delete("/armazem/:id", ArmazemController.deleteById)
 
+
+// Utilizador
+app.post("/utilizador", UtilizadorControler.registar);
+app.delete("/utilizador", UtilizadorControler.apagarUtilizadores);
+app.delete("/utilizador/:id", UtilizadorControler.apagarUtilizadores_byID);
+app.post("/utilizador/login", UtilizadorControler.login);
+app.put("/utilizador/:id", UtilizadorControler.editarConta);
+app.put("/utilizador/:id/password", UtilizadorControler.alterarPassword);
+app.get("/utilizador", async(req, res) => {
+    UtilizadorModel.find({}, (err, result)=> {
+        if(err){
+            res.status(400).send(err);
+        }
+        if (result.length == 0) {
+            res.status(404).send("No users found");
+        }
+        res.status(200).send(result);
+    });
+});
 
 
 
