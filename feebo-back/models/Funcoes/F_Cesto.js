@@ -5,22 +5,22 @@ const conexao = require('../../conexao');
 // const bcrypt = require('bcrypt');
 
 
-async function colocarNoCesto(email, quantidade, produtoID){
-    await conexao;
+// async function colocarNoCesto(email, quantidade, produtoID){
+//     await conexao;
     
-    const produto = await ProdutoModel.findOne({_id: produtoID});
-    // recursos [material, qntKg]
-    const recursos = produto["recursos"]; // string com varios recursos
-    const poluicao = produto["poluicao"]*quantidade;
+//     const produto = await ProdutoModel.findOne({_id: produtoID});
+//     // recursos [material, qntKg]
+//     const recursos = produto["recursos"]; // string com varios recursos
+//     const poluicao = produto["poluicao"]*quantidade;
 
-    await ConsumidorModel.updateOne(
-        {_id: email},
-        {
-            $push: {cesto:[quantidade, produtoID],recursosCesto:recursos},
-            $inc: {poluicaoCesto:poluicao},
-        }
-    )
-}
+//     await ConsumidorModel.updateOne(
+//         {_id: email},
+//         {
+//             $push: {cesto:[quantidade, produtoID],recursosCesto:recursos},
+//             $inc: {poluicaoCesto:poluicao},
+//         }
+//     )
+// }
 
 
 const colocarNoCesto = (req, res) => {
