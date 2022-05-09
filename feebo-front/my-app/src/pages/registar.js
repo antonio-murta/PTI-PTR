@@ -87,6 +87,12 @@ export default function Registar() {
     window.location.href = "./login";
 };
 
+const [age, setAge] = useState();
+
+const handleChange = (e) => {
+  const value = e.target.value.replace(/\D/g, "");
+  setAge(value);
+};
 
   return (
     // <ThemeProvider theme={theme}>
@@ -156,6 +162,8 @@ export default function Registar() {
                 type="text"
                 autoComplete="telefone"
                 inputProps={{ maxLength: 9}}
+                value={age}
+                onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -168,6 +176,8 @@ export default function Registar() {
                 type="text"
                 autoComplete="NIF"
                 inputProps={{ maxLength: 9}}
+                value={age}
+                onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
