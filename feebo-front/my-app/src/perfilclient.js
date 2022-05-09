@@ -1,4 +1,4 @@
-import './css/perfil.css';
+// import './css/perfil.css';
 import * as React from 'react';
 // import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -63,7 +63,7 @@ export default function SignUp() {
           {/* <Typography component="h1" variant="h5">
             Futuro Logo
           </Typography> */}
-          
+
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:4}}> {/* numero de "blocos"*/}
               <Grid item xs={12} sm={6} > {/* 6 = comprimento*/}
@@ -98,7 +98,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  fullWidth 
+                  fullWidth
                   name="password"
                   label="Password"
                   type="password"
@@ -185,4 +185,3 @@ export default function SignUp() {
     /* </ThemeProvider> */
   );
 }
-

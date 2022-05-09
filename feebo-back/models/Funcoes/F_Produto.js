@@ -156,7 +156,21 @@ const getBySubtipo = (req, res) => {
 
 
 // NAO FIZ -------------------------------------------
+const getBySubtipo = (req, res) => {
+    const subtipo = req.body.subtipo;
 
+    ProdutoModel.find({subtipo: subtipo})
+    .then(result => {
+        if (result.length == 0) {
+            res.status(404).send("Produto nao encontrado");
+        } else {
+            res.status(200).send(result);
+        }
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    });
+}
 
 async function visualizarProdutosFornecedor (emailFornecedor)
 {
