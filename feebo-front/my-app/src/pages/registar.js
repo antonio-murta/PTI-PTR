@@ -87,11 +87,19 @@ export default function Registar() {
     window.location.href = "./login";
 };
 
+const [age, setAge] = useState();
 
+const handleChange = (e) => {
+  const value = e.target.value.replace(/\D/g, "");
+  setAge(value);
+};
 
+const [ola, setOla] = useState();
 
-
-
+const handleOla = (e) => {
+  const value = e.target.value.replace(/\D/g, "");
+  setOla(value);
+};
 
 
   return (
@@ -106,7 +114,7 @@ export default function Registar() {
             alignItems: 'center'
           }}
         >
-          <h1> Registarssssss </h1>
+          <h1 className='h1'> Registar </h1>
           <Box onSubmit={handleSubmit} component="form" noValidate  sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:2}}> {/* numero de "blocos"*/}
               <Grid item xs={12} sm={6}> {/* 6 = comprimento*/}
@@ -162,6 +170,8 @@ export default function Registar() {
                 type="text"
                 autoComplete="telefone"
                 inputProps={{ maxLength: 9}}
+                value={age}
+                onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -174,6 +184,8 @@ export default function Registar() {
                 type="text"
                 autoComplete="NIF"
                 inputProps={{ maxLength: 9}}
+                value={ola}
+                onChange={handleOla}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -181,7 +193,7 @@ export default function Registar() {
                   required
                   fullWidth
                   id="morada"
-                  label="morada"
+                  label="Morada"
                   name="morada"
                   autoComplete="family-name"
                 />
