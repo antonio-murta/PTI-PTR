@@ -22,4 +22,3 @@ async function colocarNoCesto(email, quantidade, produtoID){
     )
 }
 
-colocarNoCesto("ricardo@gmail.com", 2, "624dc135724e6b66286ed2b8")
