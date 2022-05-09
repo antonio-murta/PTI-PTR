@@ -47,7 +47,7 @@ export default function SignIn() {
             alignItems: 'center'
           }}
         >
-          <h1> Login </h1>
+          <h1 className='h1'> Login </h1>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField className='mail-login'
               alignItems='center'
