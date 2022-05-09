@@ -10,6 +10,7 @@ const TransporteControler = require("./models/Funcoes/F_Tranporte")
 const UtilizadorModel = require("./models/Colecoes/Utilizador");
 const FornecedorController = require("./models/Funcoes/F_Fornecedor")
 const ProdutoController = require("./models/Funcoes/F_Produto")
+const ArmazemController = require("./models/Funcoes/F_Armazem")
 
 app.use(express.json());
 app.use(cors());
