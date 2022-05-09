@@ -87,18 +87,18 @@ export default function Registar() {
     window.location.href = "./login";
 };
 
-const [age, setAge] = useState();
+const [tlm, setTlm] = useState();
 
-const handleChange = (e) => {
+const handleTlm = (e) => {
   const value = e.target.value.replace(/\D/g, "");
-  setAge(value);
+  setTlm(value);
 };
 
-const [ola, setOla] = useState();
+const [nif, setNif] = useState();
 
-const handleOla = (e) => {
+const handleNif = (e) => {
   const value = e.target.value.replace(/\D/g, "");
-  setOla(value);
+  setNif(value);
 };
 
 
@@ -170,8 +170,8 @@ const handleOla = (e) => {
                 type="text"
                 autoComplete="telefone"
                 inputProps={{ maxLength: 9}}
-                value={age}
-                onChange={handleChange}
+                value={tlm}
+                onChange={handleTlm}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -184,8 +184,8 @@ const handleOla = (e) => {
                 type="text"
                 autoComplete="NIF"
                 inputProps={{ maxLength: 9}}
-                value={ola}
-                onChange={handleOla}
+                value={nif}
+                onChange={handleNif}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
