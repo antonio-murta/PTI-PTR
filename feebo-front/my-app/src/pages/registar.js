@@ -51,13 +51,6 @@ export default function Registar() {
     window.location.href = "./login";
 };
 
-
-
-
-
-
-
-
   return (
     // <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
