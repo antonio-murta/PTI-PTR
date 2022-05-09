@@ -94,6 +94,7 @@ const handleChange = (e) => {
   setAge(value);
 };
 
+
   return (
     // <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -106,7 +107,7 @@ const handleChange = (e) => {
             alignItems: 'center'
           }}
         >
-          <h1 className='h1'> Registarssssss </h1>
+          <h1 className='h1'> Registar </h1>
           <Box onSubmit={handleSubmit} component="form" noValidate  sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:2}}> {/* numero de "blocos"*/}
               <Grid item xs={12} sm={6}> {/* 6 = comprimento*/}
@@ -176,8 +177,6 @@ const handleChange = (e) => {
                 type="text"
                 autoComplete="NIF"
                 inputProps={{ maxLength: 9}}
-                value={age}
-                onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
