@@ -39,15 +39,51 @@ export default function Registar() {
     const data = new FormData(event.currentTarget);
 
     console.log(data.get('email'))
-    Axios.post("http://localhost:3001/insert", {
-      email: data.get('email'),
-      password: data.get('password'),
-      dataNasc: data.get('dataNasc'),
-      nome: data.get('nome'),
-      telemovel: data.get('telefone'),
-      morada: data.get('morada'),
-      utipo: "consumidor"
-    });
+    // Axios.post("http://localhost:3001/insert", {
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    //   dataNasc: data.get('dataNasc'),
+    //   nome: data.get('nome'),
+    //   telemovel: data.get('telefone'),
+    //   morada: data.get('morada'),
+    //   utipo: "consumidor"
+    // });
+
+    fetch('http://localhost:3001/utilizador',
+        {
+          method: "POST",
+          body: JSON.stringify({
+            // _id: "aaa@gmail.com",
+            // nome: "Catarina",
+            // dataNasc: "20.12.1234",
+            // morada: "rya",
+            // telemovel: 1234567,
+            // password: "123",
+            // utipo: "consumidor"
+            email: data.get('email'),
+            password: data.get('password'),
+            dataNasc: data.get('dataNasc'),
+            nome: data.get('nome'),
+            telemovel: data.get('telefone'),
+            morada: data.get('morada'),
+            utipo: "consumidor"
+
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(myJson) {
+        console.log(myJson);
+      });
+
+
+
+
     window.location.href = "./login";
 };
 
@@ -107,8 +143,8 @@ export default function Registar() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  required 
-                  fullWidth 
+                  required
+                  fullWidth
                   name="password"
                   label="Password"
                   type="password"
@@ -153,7 +189,7 @@ export default function Registar() {
               <Grid item xs={12} sm={6}>
                 <FormControl required fullWidth>
                   <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
-                    <Select 
+                    <Select
                     // setSelectValue
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
