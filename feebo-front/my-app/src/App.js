@@ -13,6 +13,9 @@ import Transportador from "./pages/transportador"
 import Fornecedor from "./pages/fornecedor"
 import PerfilClient from "./perfilclient"
 
+import AddTransportador from "./addTransportes"
+import AddArmazem from "./addArmazem"
+
 function App() {
   const { productItems } = Data
   const { shopItems } = Sdata
@@ -55,6 +58,9 @@ function App() {
           <Route path='/transportador' element={<Transportador productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
           <Route path='/fornecedor'  element={<Fornecedor productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
           <Route path='/perfilclient'  element={<PerfilClient productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
+          <Route path='/addTransportes'  element={<AddTransportador productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
+          <Route path='/addArmazem'  element={<AddTransportador productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
+
 
         </Routes>
         <Footer />

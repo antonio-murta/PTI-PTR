@@ -38,36 +38,17 @@ export default function Registar() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    console.log(data.get('email'))
-    // Axios.post("http://localhost:3001/insert", {
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    //   dataNasc: data.get('dataNasc'),
-    //   nome: data.get('nome'),
-    //   telemovel: data.get('telefone'),
-    //   morada: data.get('morada'),
-    //   utipo: "consumidor"
-    // });
-
     fetch('http://localhost:3001/utilizador',
         {
           method: "POST",
           body: JSON.stringify({
-            // _id: "aaa@gmail.com",
-            // nome: "Catarina",
-            // dataNasc: "20.12.1234",
-            // morada: "rya",
-            // telemovel: 1234567,
-            // password: "123",
-            // utipo: "consumidor"
-            email: data.get('email'),
+            _id: data.get('email'),
+            nome: data.get('nome'),
             password: data.get('password'),
             dataNasc: data.get('dataNasc'),
-            nome: data.get('nome'),
             telemovel: data.get('telefone'),
             morada: data.get('morada'),
             utipo: "consumidor"
-
           }),
           headers: {
             "Content-Type": "application/json"
@@ -81,11 +62,8 @@ export default function Registar() {
         console.log(myJson);
       });
 
-
-
-
     window.location.href = "./login";
-};
+  };
 
 const [tlm, setTlm] = useState();
 
