@@ -53,21 +53,13 @@ export default function Registar() {
         {
           method: "POST",
           body: JSON.stringify({
-            // _id: "aaa@gmail.com",
-            // nome: "Catarina",
-            // dataNasc: "20.12.1234",
-            // morada: "rya",
-            // telemovel: 1234567,
-            // password: "123",
-            // utipo: "consumidor"
-            email: data.get('email'),
+            _id: data.get('email'),
+            nome: data.get('nome'),
             password: data.get('password'),
             dataNasc: data.get('dataNasc'),
-            nome: data.get('nome'),
             telemovel: data.get('telefone'),
             morada: data.get('morada'),
             utipo: "consumidor"
-
           }),
           headers: {
             "Content-Type": "application/json"
@@ -80,9 +72,6 @@ export default function Registar() {
       .then(function(myJson) {
         console.log(myJson);
       });
-
-
-
 
     window.location.href = "./login";
 };
@@ -100,7 +89,7 @@ export default function Registar() {
             alignItems: 'center'
           }}
         >
-          <h1 className='h1'> Registarssssss </h1>
+          <h1 className='h1'> Registar </h1>
           <Box onSubmit={handleSubmit} component="form" noValidate  sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:2}}> {/* numero de "blocos"*/}
               <Grid item xs={12} sm={6}> {/* 6 = comprimento*/}
