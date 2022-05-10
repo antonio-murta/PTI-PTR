@@ -43,6 +43,18 @@
   align-items: center;
 }
 
+.new-transport button:hover{
+  background-color: #e94560;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+}
+
 .plus-icon {
   margin-right: 8px;
   display: flex;
