@@ -38,17 +38,6 @@ export default function Registar() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    console.log(data.get('email'))
-    // Axios.post("http://localhost:3001/insert", {
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    //   dataNasc: data.get('dataNasc'),
-    //   nome: data.get('nome'),
-    //   telemovel: data.get('telefone'),
-    //   morada: data.get('morada'),
-    //   utipo: "consumidor"
-    // });
-
     fetch('http://localhost:3001/utilizador',
         {
           method: "POST",
@@ -74,7 +63,7 @@ export default function Registar() {
       });
 
     window.location.href = "./login";
-};
+  };
 
 
   return (

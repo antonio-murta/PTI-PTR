@@ -35,14 +35,52 @@ function Copyright(props) {
 // const theme = createTheme();
 
 export default function SignUp() {
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //   });
+  // };
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+
+    const email = data.get('email');
+
+    // /utilizador/:id
+
+    fetch('http://localhost:3001/utilizador/' + email,
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            nome: data.get('name'),
+            morada: data.get('morada'),
+            telemovel: data.get('telefone')
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(myJson) {
+        console.log(myJson);
+      });
+
+    window.location.href = "./login";
+};
+
+
+
+
+
 
   return (
     // <ThemeProvider theme={theme}>
