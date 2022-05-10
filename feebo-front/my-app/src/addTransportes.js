@@ -70,6 +70,31 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
+                  id="matricula"
+                  label="Matrícula"
+                  name="matricula"
+                  autoComplete="given-name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  variant="standard"
+                  id="poluicao"
+                  label="Poluição"
+                  name="poluicao"
+                  autoComplete="given-name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  variant="standard"
                   id="marca"
                   label="Marca"
                   name="marca"
@@ -81,51 +106,10 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="date"
-                  //label="Data de Nascimento" //ver depois
-                  name="date"
-                  type="date"
-                  autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="CC"
-                  label="Cartão de Cidadão"
-                  name="CC"
-                  autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth 
-                  name="carta"
-                  label="Carta de Condução"
-                  id="carta"
-                  autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                required
-                fullWidth
-                id="seg"
-                label="Seguro"
-                name="seg"
-                type="text"
-                autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-              <TextField
-                  required
-                  fullWidth
-                  id="nTrans"
-                  label="Número de Transportador"
-                  name="nTrans"
+                  variant="standard"
+                  name="modelo"
+                  label="Modelo"
+                  id="modelo"
                   autoComplete="family-name"
                 />
               </Grid>
