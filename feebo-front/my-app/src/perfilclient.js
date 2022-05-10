@@ -49,7 +49,7 @@ export default function SignUp() {
     
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box className="box"
+        <Box className="box-perfil"
           sx={{
             marginTop: 8,
             display: 'flex',
