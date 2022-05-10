@@ -75,7 +75,7 @@ function App() {
           <Route path='/fornecedor'  element={<Fornecedor productItems={productItems} addToCart={addToCart} infoArmazens={infoArmazens} /> }/>
           <Route path='/perfilclient'  element={<PerfilClient productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
           <Route path='/addTransportes'  element={<AddTransportador productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
-          <Route path='/addArmazem'  element={<AddTransportador productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
+          <Route path='/addArmazem'  element={<AddArmazem productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
 
 
         </Routes>

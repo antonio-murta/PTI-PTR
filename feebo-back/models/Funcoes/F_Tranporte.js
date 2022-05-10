@@ -1,5 +1,6 @@
 const monggose = require('mongoose');
 const TransporteModel = require("../Colecoes/Transportador");
+const VeiculosModel = require("../Colecoes/veiculos");
 const conexao = require('../../conexao');
 // const bcrypt = require('bcrypt');
 
@@ -72,6 +73,26 @@ const updateVeiculo = (req, res) => {
 }
 
 
+
+
+const adicionarveiculo = (req, res) => {
+    const email = req.params.id;
+    const veiculo = new VeiculosModel(req.body);
+    veiculo.save()
+    .then(() => {
+        res.status(201).send("veiculo criado com sucesso");
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    });
+}
+
+
+
+
+
+
+
 const deleteByEmail = (req, res) => {
     TransporteModel.findByIdAndDelete(req.body.email)
     .then(() => {
@@ -83,4 +104,4 @@ const deleteByEmail = (req, res) => {
 }
 
 
-module.exports = {/*getByNome, */updateCaminhos, updateVeiculo, deleteByEmail};
+module.exports = {/*getByNome, */updateCaminhos, updateVeiculo, adicionarveiculo, deleteByEmail};
