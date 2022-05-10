@@ -52,8 +52,6 @@ export default function SignUp() {
 
     const email = data.get('email');
 
-    // /utilizador/:id
-
     fetch('http://localhost:3001/utilizador/' + email,
         {
           method: "PUT",
