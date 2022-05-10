@@ -7,9 +7,11 @@ import Data from "./components/Data"
 import Cart from "./common/Cart/Cart"
 import Footer from "./common/footer/Footer"
 import Sdata from "./components/shops/Sdata"
+import InfoTransportes from "./pages/transportador/main/InfoTransportes"
 import SignIn from "./pages/login"
 import Registar from "./pages/registar"
-import Transportador from "./pages/transportador"
+import Transportador from "./pages/transportador/transportador"
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Fornecedor from "./pages/fornecedor/fornecedor"
 import PerfilClient from "./perfilclient"
 
@@ -18,8 +20,19 @@ import AddTransportador from "./addTransportes"
 import AddArmazem from "./addArmazem"
 
 function App() {
+  const THEME = createTheme({
+    typography: {
+      fontFamily: `"Poppins", sans-serif`,
+      fontSize: 14,
+      fontWeightLight: 300,
+      fontWeightRegular: 400,
+      fontWeightMedium: 500,
+      fontWeightBold: 600
+    }
+ });
   const { productItems } = Data
   const { shopItems } = Sdata
+  const { infoTransportes } = InfoTransportes
 
   const [CartItem, setCartItem] = useState([])
 
@@ -49,6 +62,7 @@ function App() {
 
   return (
     <>
+    <ThemeProvider theme={THEME}>
       <Router>
         <Header CartItem={CartItem} />
         <Routes>
@@ -56,7 +70,7 @@ function App() {
           <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} /> }/>
           <Route path='/login' element={<SignIn CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} /> }/>
           <Route path='/registar' element={<Registar CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} /> }/>
-          <Route path='/transportador' element={<Transportador productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
+          <Route path='/transportador' element={<Transportador productItems={productItems} addToCart={addToCart} infoTransportes={infoTransportes} /> }/>
           <Route path='/fornecedor'  element={<Fornecedor productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
           <Route path='/perfilclient'  element={<PerfilClient productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
           <Route path='/addTransportes'  element={<AddTransportador productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
@@ -66,6 +80,7 @@ function App() {
         </Routes>
         <Footer />
       </Router>
+    </ThemeProvider>
     </>
   )
 }
