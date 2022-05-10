@@ -10,6 +10,9 @@
   border-radius: 5px;
 }
 
+.box{
+  text-align: left;
+}
 .transport {
   background: #fff;
   padding: 20px;
