@@ -24,6 +24,7 @@ body {
 .d_flex {
   display: flex;
   justify-content: space-between;
+  text-align: center;
 }
 .c_flex {
   display: flex;
@@ -32,7 +33,14 @@ body {
 }
 .f_flex {
   display: flex;
+  
 }
+
+.noti_flex {
+  display:flex;
+  flex-direction: column;
+}
+
 a {
   text-decoration: none;
   color: black;

@@ -48,7 +48,7 @@ export default function SignUp() {
     // <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box className="box"
+        <Box className="box-perfil"
           sx={{
             marginTop: 8,
             display: 'flex',
@@ -84,6 +84,7 @@ export default function SignUp() {
                   name="date"
                   type="date"
                   autoComplete="family-name"
+                  disabled="disabled"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -94,6 +95,7 @@ export default function SignUp() {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  disabled="disabled"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -125,6 +127,7 @@ export default function SignUp() {
                 name="NIF"
                 type="text"
                 autoComplete="NIF"
+                disabled="disabled"
                 inputProps={{ maxLength: 9}}
                 />
               </Grid>

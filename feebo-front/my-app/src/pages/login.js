@@ -47,12 +47,13 @@ export default function SignIn() {
             alignItems: 'center'
           }}
         >
-          <h1> Login </h1>
+          <h1 className='h1'> Login </h1>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField className='mail-login'
               alignItems='center'
               margin="normal"
               required
+              variant="standard"
               width='100%'
               id="email"
               label="E-mail"
@@ -64,6 +65,7 @@ export default function SignIn() {
               margin="normal"
               required
               width='100%'
+              variant="standard"
               name="password"
               label="Password"
               type="password"
