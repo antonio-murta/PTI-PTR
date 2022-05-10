@@ -70,6 +70,7 @@ export default function SignUp() {
               <Grid item xs={12} sm={6} > {/* 6 = comprimento*/}
                 <TextField
                   fullWidth
+                  variant="standard"
                   id="name"
                   label="Nome Completo"
                   name="name"
@@ -80,6 +81,7 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
+                  variant="standard"
                   id="date"
                   //label="Data de Nascimento" //ver depois
                   name="date"
@@ -91,6 +93,7 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
+                  variant="standard"
                   id="email"
                   label="E-mail"
                   name="email"
@@ -101,7 +104,8 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  fullWidth 
+                  fullWidth
+                  variant="standard"
                   name="password"
                   label="Password"
                   type="password"
@@ -112,6 +116,7 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                 fullWidth
+                variant="standard"
                 id="telefone"
                 label="Telemóvel"
                 name="telefone"
@@ -123,6 +128,7 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                 fullWidth
+                variant="standard"
                 id="NIF"
                 label="NIF"
                 name="NIF"
@@ -135,6 +141,7 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
+                  variant="standard"
                   id="morada"
                   label="Morada"
                   name="morada"
@@ -144,6 +151,7 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
               <TextField
                   fullWidth
+                  variant="standard"
                   id="nCliente"
                   label="Número de Cliente"
                   name="nCliente"
