@@ -98,5 +98,113 @@
   cursor: pointer;
 }
 
+.box2 button:hover{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #0f3460;
+  color: white;
+  border-radius: 5px;
+  size: 100%;
+}
 /* Armazéns */
+.transport {
+  background: #fff;
+  padding: 20px;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
+  margin: 10px;
+  height: 150px;
+}
 
+.transport h3 {
+  font-weight: 400;
+  font-size: 17px;
+}
+
+.new-transport {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+.new-transport button{
+  background-color: #e94560;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-transport button:hover{
+  background-color: #e94560;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+}
+
+.plus-icon {
+  margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.see-more button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: #0f3460;
+  transition: 0.5s;
+  border-radius: 5px;
+}
+
+.see-more button:hover{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #0f3460;
+  color: white;
+  border-radius: 5px;
+  size: 100%;
+}
+
+.box .box2{
+  margin-top: 0px !important;
+}
+
+
+
+.contentWidth {
+  margin-left: 30px;
+}
+
+.grid1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+.product img {
+  width: 100%;
+  height: 100%;
+}
+.product {
+  transition: 0.5s;
+}
+.product:hover {
+  box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
+}
