@@ -2,32 +2,32 @@ const InfoTransportes = {
   infoTransportes: [
     {
       id: 1,
-      name: "Transporte A",
-      saida: "data",
+      name: "Armazém A",
+      saida: "Beja",
       chegada: "data",
     },
     {
       id: 2,
-      name: "Transporte B",
-      saida: "data",
+      name: "Armazém B",
+      saida: "Evora",
       chegada: "data",
     },
     {
       id: 3,
-      name: "Transporte C",
-      saida: "data",
+      name: "Armazém C",
+      saida: "Lisboa",
       chegada: "data",
     },
     {
       id: 4,
-      name: "Transporte D",
-      saida: "data",
+      name: "Armazém D",
+      saida: "Mafra",
       chegada: "data",
     },
     {
       id: 5,
-      name: "Transporte E",
-      saida: "data",
+      name: "Armazém E",
+      saida: "Algarve",
       chegada: "data",
     },
 
