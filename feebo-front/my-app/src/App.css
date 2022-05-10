@@ -79,7 +79,6 @@ button {
   box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
   background-color: #fff;
   width: 23%;
-  height: 510px;
   padding: 15px 0;
   border-radius: 5px;
   margin-top: 5px;
@@ -139,6 +138,7 @@ button {
   border-radius: 8px;
   box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
   margin: 10px;
+  height: 380px;
 }
 .product h3 {
   font-weight: 400;
@@ -247,4 +247,36 @@ button {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
+}
+
+/*----settings transportador----*/
+.setts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e94560;
+}
+
+.settings{
+  margin-left: auto;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.settings button {
+  background: none;
+  color: #e94560;
+  font-size: 20px;
+  transition: 0.5s;
+  border: 1px solid rgb(3 0 71 / 9%);
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+}
+
+.settings button:hover {
+  cursor: pointer;
+  background-color: #e94560;
+  color: #fff;
 }

@@ -1,5 +1,6 @@
 import React from "react"
 import { RiTruckFill } from "react-icons/ri";
+import "./style.css"
 
 const Notifications = () => {
   const data = [
@@ -12,13 +13,20 @@ const Notifications = () => {
       icon: <RiTruckFill/>,
       //cateImg: "./images/category/cat-2.png",
     },
+    {
+      cateName: "Transporte 3 chegou ao Armazém Z",
+      icon: <RiTruckFill/>,
+      //cateImg: "./images/category/cat-2.png",
+    },
   ]
   return (
     <>
-      <div className='category'>
+      <div className='notifications'>
         <div className='chead d_flex'>
           <h1>Notificações</h1>
         </div>
+        <div className="notification-container">
+        <div className="boxes">
         {data.map((value, index) => {
           return (
             <div className='box f_flex' key={index}>
@@ -27,8 +35,10 @@ const Notifications = () => {
             </div>
           )
         })}
-        <div className='box box2'>
+        </div>
+        <div className='box see-more'>
           <button>Ver mais</button>
+        </div>
         </div>
       </div>
     </>

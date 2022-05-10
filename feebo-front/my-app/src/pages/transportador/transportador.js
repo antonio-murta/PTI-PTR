@@ -1,11 +1,11 @@
 import React from "react"
 import Wrapper from "../../components/wrapper/Wrapper"
-import Shop from "./main/Shop"
+import MainTransportes from "./main/MainTransportes"
 
-const Transportador = ({ productItems, addToCart, CartItem, shopItems }) => {
+const Transportador = ({ productItems, addToCart, CartItem, infoTransportes }) => {
   return (
     <>
-    <Shop shopItems={shopItems} addToCart={addToCart} />
+    <MainTransportes infoTransportes={infoTransportes} addToCart={addToCart} />
           <Wrapper />
     </>
   )

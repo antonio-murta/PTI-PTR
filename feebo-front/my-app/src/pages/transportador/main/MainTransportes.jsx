@@ -1,19 +1,20 @@
 import React from "react"
 import Notifications from "./Notifications"
-import ShopCart from "./ShopCart"
+import Transportes from "./Transportes"
+import { AiOutlinePlus } from "react-icons/ai";
 import "./style.css"
 
-const Shop = ({ addToCart, shopItems }) => {
+const MainTransportes = ({ addToCart, infoTransportes }) => {
   return (
     <>
       <section className='shop background'>
         <div className='container d_flex'>
           <Notifications />
-
           <div className='contentWidth'>
             <div className='heading d_flex'>
               <div className='heading-left row  f_flex'>
                 <h2>Transportes</h2>
+                <div className="new-transport"><button><div className="plus-icon"><AiOutlinePlus/></div>Novo Transporte</button></div>
               </div>
               <div className='heading-right row '>
                 <span>Ver todos</span>
@@ -21,7 +22,7 @@ const Shop = ({ addToCart, shopItems }) => {
               </div>
             </div>
             <div className='product-content  grid1'>
-              <ShopCart addToCart={addToCart} shopItems={shopItems} />
+              <Transportes addToCart={addToCart} infoTransportes={infoTransportes} />
             </div>
           </div>
         </div>
@@ -30,4 +31,4 @@ const Shop = ({ addToCart, shopItems }) => {
   )
 }
 
-export default Shop
+export default MainTransportes
