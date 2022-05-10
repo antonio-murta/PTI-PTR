@@ -10,8 +10,9 @@ import Sdata from "./components/shops/Sdata"
 import SignIn from "./pages/login"
 import Registar from "./pages/registar"
 import Transportador from "./pages/transportador"
-import Fornecedor from "./pages/fornecedor"
+import Fornecedor from "./pages/fornecedor/fornecedor"
 import PerfilClient from "./perfilclient"
+
 
 import AddTransportador from "./addTransportes"
 import AddArmazem from "./addArmazem"
