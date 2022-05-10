@@ -35,15 +35,73 @@ function Copyright(props) {
 // const theme = createTheme();
 
 export default function SignUp() {
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    fetch('http://localhost:3001/transportador',
+        {
+          method: "POST",
+          body: JSON.stringify({
+            _id: data.get('matricula'),
+            marca: data.get('marca'),
+            modelo: data.get('modelo'),
+            poluicao: data.get('poluicao')
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(myJson) {
+        console.log(myJson);
+      });
+
+      // Vai para a pagina dos veiculos desse transportador
+    window.location.href = "./login";
   };
 
+
+
+
+<<<<<<< Updated upstream
+=======
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+
+  //   fetch('http://localhost:3001/utilizador',
+  //       {
+  //         method: "POST",
+  //         body: JSON.stringify({
+  //           _id: data.get('email'),
+  //           nome: data.get('nome'),
+  //           password: data.get('password'),
+  //           dataNasc: data.get('dataNasc'),
+  //           telemovel: data.get('telefone'),
+  //           morada: data.get('morada'),
+  //           utipo: "consumidor"
+  //         }),
+  //         headers: {
+  //           "Content-Type": "application/json"
+  //         }
+  //       }
+  //     )
+  //     .then(function(response) {
+  //       return response.json();
+  //     })
+  //     .then(function(myJson) {
+  //       console.log(myJson);
+  //     });
+
+  //   window.location.href = "./login";
+  // };
+
+>>>>>>> Stashed changes
   return (
     // <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
