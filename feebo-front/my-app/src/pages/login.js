@@ -53,6 +53,7 @@ export default function SignIn() {
               alignItems='center'
               margin="normal"
               required
+              variant="standard"
               width='100%'
               id="email"
               label="E-mail"
@@ -63,6 +64,7 @@ export default function SignIn() {
             <TextField className='mail-login'
               margin="normal"
               width='100%'
+              variant="standard"
               name="password"
               label="Password"
               type="password"
