@@ -79,7 +79,6 @@ const handleNif = (e) => {
   setNif(value);
 };
 
-
   return (
     // <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
