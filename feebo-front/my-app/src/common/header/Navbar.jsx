@@ -30,7 +30,13 @@ const Navbar = () => {
                 <Link to='/transportador'>Transportador</Link>
               </li>
               <li>
+                <Link to='/addTransportes'>Adicionar Transportes</Link>
+              </li>
+              <li>
                 <Link to='/fornecedor'>Fornecedor</Link>
+              </li>
+              <li>
+                <Link to='/addArmazem'>Adicionar Armazem</Link>
               </li>
             </ul>
 
