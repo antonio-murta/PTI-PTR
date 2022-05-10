@@ -121,6 +121,7 @@ const handleNif = (e) => {
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
                   id="nome"
                   label="Nome Completo"
                   name="nome"
@@ -130,10 +131,11 @@ const handleNif = (e) => {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  required
+                  // required --- ver depois
                   fullWidth
+                  variant="standard"
                   id="dataNasc"
-                  //label="Data de Nascimento" //ver depois
+                  label=" " //ver depois
                   name="dataNasc"
                   type="date"
                   autoComplete="family-name"
@@ -143,6 +145,7 @@ const handleNif = (e) => {
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
                   id="email"
                   label="E-mail"
                   name="email"
@@ -153,6 +156,7 @@ const handleNif = (e) => {
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
                   name="password"
                   label="Password"
                   type="password"
@@ -164,6 +168,7 @@ const handleNif = (e) => {
                 <TextField
                 required
                 fullWidth
+                variant="standard"
                 id="telefone"
                 label="Telemóvel"
                 name="telefone"
@@ -178,6 +183,7 @@ const handleNif = (e) => {
                 <TextField
                 required
                 fullWidth
+                variant="standard"
                 id="nif"
                 label="NIF"
                 name="nif"
@@ -192,6 +198,7 @@ const handleNif = (e) => {
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
                   id="morada"
                   label="Morada"
                   name="morada"
@@ -202,6 +209,7 @@ const handleNif = (e) => {
                 <FormControl required fullWidth>
                   <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
                     <Select
+                      variant="standard"
                     // setSelectValue
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"

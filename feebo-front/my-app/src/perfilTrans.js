@@ -84,6 +84,7 @@ export default function SignUp() {
                   name="date"
                   type="date"
                   autoComplete="family-name"
+                  disabled="disabled"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -94,6 +95,7 @@ export default function SignUp() {
                   name="email"
                   type="email"
                   autoComplete="email"
+                  disabled="disabled"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -126,6 +128,7 @@ export default function SignUp() {
                 type="text"
                 autoComplete="NIF"
                 inputProps={{ maxLength: 9}}
+                disabled="disabled"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
