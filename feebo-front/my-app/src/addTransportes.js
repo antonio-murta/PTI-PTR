@@ -35,14 +35,38 @@ function Copyright(props) {
 // const theme = createTheme();
 
 export default function SignUp() {
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    fetch('http://localhost:3001/transportador',
+        {
+          method: "POST",
+          body: JSON.stringify({
+            _id: data.get('matricula'),
+            marca: data.get('marca'),
+            modelo: data.get('modelo'),
+            poluicao: data.get('poluicao')
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(myJson) {
+        console.log(myJson);
+      });
+
+      // Vai para a pagina dos veiculos desse transportador
+    window.location.href = "./login";
   };
+
+
+
 
   return (
     // <ThemeProvider theme={theme}>

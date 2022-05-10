@@ -41,6 +41,7 @@ app.get("/produto/poluicao", ProdutoController.getByPoluicao)
 app.get("/produto/recursos", ProdutoController.getByRecursos);
 
 // Transportador
+app.post("/transportador", TransporteControler.adicionarveiculo)
 app.put("/utilizador/:id/veiculo", TransporteControler.updateVeiculo)
 app.put("/utilizador/:id/caminhos", TransporteControler.updateCaminhos)
 // app.delete("/utilizador/:id", UtilizadorControler.deleteByEmail);
