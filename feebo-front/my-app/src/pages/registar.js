@@ -38,24 +38,46 @@ export default function Registar() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    console.log(data.get('email'))
-    Axios.post("http://localhost:3001/insert", {
-      email: data.get('email'),
-      password: data.get('password'),
-      dataNasc: data.get('dataNasc'),
-      nome: data.get('nome'),
-      telemovel: data.get('telefone'),
-      morada: data.get('morada'),
-      utipo: "consumidor"
-    });
+    fetch('http://localhost:3001/utilizador',
+        {
+          method: "POST",
+          body: JSON.stringify({
+            _id: data.get('email'),
+            nome: data.get('nome'),
+            password: data.get('password'),
+            dataNasc: data.get('dataNasc'),
+            telemovel: data.get('telefone'),
+            morada: data.get('morada'),
+            utipo: "consumidor"
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(myJson) {
+        console.log(myJson);
+      });
+
     window.location.href = "./login";
+  };
+
+const [tlm, setTlm] = useState();
+
+const handleTlm = (e) => {
+  const value = e.target.value.replace(/\D/g, "");
+  setTlm(value);
 };
 
+const [nif, setNif] = useState();
 
-
-
-
-
+const handleNif = (e) => {
+  const value = e.target.value.replace(/\D/g, "");
+  setNif(value);
+};
 
 
   return (
@@ -70,13 +92,14 @@ export default function Registar() {
             alignItems: 'center'
           }}
         >
-          <h1> Registarssssss </h1>
+          <h1 className='h1'> Registar </h1>
           <Box onSubmit={handleSubmit} component="form" noValidate  sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:2}}> {/* numero de "blocos"*/}
               <Grid item xs={12} sm={6}> {/* 6 = comprimento*/}
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
                   id="nome"
                   label="Nome Completo"
                   name="nome"
@@ -86,10 +109,11 @@ export default function Registar() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  required
+                  // required --- ver depois
                   fullWidth
+                  variant="standard"
                   id="dataNasc"
-                  //label="Data de Nascimento" //ver depois
+                  label=" " //ver depois
                   name="dataNasc"
                   type="date"
                   autoComplete="family-name"
@@ -99,6 +123,7 @@ export default function Registar() {
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
                   id="email"
                   label="E-mail"
                   name="email"
@@ -107,8 +132,9 @@ export default function Registar() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  required 
-                  fullWidth 
+                  required
+                  fullWidth
+                  variant="standard"
                   name="password"
                   label="Password"
                   type="password"
@@ -120,32 +146,39 @@ export default function Registar() {
                 <TextField
                 required
                 fullWidth
+                variant="standard"
                 id="telefone"
                 label="Telemóvel"
                 name="telefone"
                 type="text"
                 autoComplete="telefone"
                 inputProps={{ maxLength: 9}}
+                value={tlm}
+                onChange={handleTlm}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                 required
                 fullWidth
+                variant="standard"
                 id="nif"
                 label="NIF"
                 name="nif"
                 type="text"
                 autoComplete="NIF"
                 inputProps={{ maxLength: 9}}
+                value={nif}
+                onChange={handleNif}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
                   id="morada"
-                  label="morada"
+                  label="Morada"
                   name="morada"
                   autoComplete="family-name"
                 />
@@ -153,7 +186,8 @@ export default function Registar() {
               <Grid item xs={12} sm={6}>
                 <FormControl required fullWidth>
                   <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
-                    <Select 
+                    <Select
+                      variant="standard"
                     // setSelectValue
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
