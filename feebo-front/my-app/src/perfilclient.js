@@ -35,21 +35,57 @@ function Copyright(props) {
 // const theme = createTheme();
 
 export default function SignUp() {
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const data = new FormData(event.currentTarget);
+
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password'),
+  //   });
+  // };
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+
+    const email = data.get('email');
+
+    fetch('http://localhost:3001/utilizador/' + email,
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            nome: data.get('name'),
+            morada: data.get('morada'),
+            telemovel: data.get('telefone')
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(myJson) {
+        console.log(myJson);
+      });
+
+    window.location.href = "./login";
+};
+
+
+
+
+
 
   return (
     // <ThemeProvider theme={theme}>
     
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box className="box"
+        <Box className="box-perfil"
           sx={{
             marginTop: 8,
             display: 'flex',
@@ -70,6 +106,7 @@ export default function SignUp() {
               <Grid item xs={12} sm={6} > {/* 6 = comprimento*/}
                 <TextField
                   fullWidth
+                  variant="standard"
                   id="name"
                   label="Nome Completo"
                   name="name"
@@ -80,26 +117,31 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
+                  variant="standard"
                   id="date"
                   //label="Data de Nascimento" //ver depois
                   name="date"
                   type="date"
                   autoComplete="family-name"
+                  disabled="disabled"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
+                  variant="standard"
                   id="email"
                   label="E-mail"
                   name="email"
                   type="email"
                   autoComplete="email"
+                  disabled="disabled"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  fullWidth 
+                  fullWidth
+                  variant="standard"
                   name="password"
                   label="Password"
                   type="password"
@@ -110,6 +152,7 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                 fullWidth
+                variant="standard"
                 id="telefone"
                 label="Telemóvel"
                 name="telefone"
@@ -121,17 +164,20 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
                 <TextField
                 fullWidth
+                variant="standard"
                 id="NIF"
                 label="NIF"
                 name="NIF"
                 type="text"
                 autoComplete="NIF"
+                disabled="disabled"
                 inputProps={{ maxLength: 9}}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
+                  variant="standard"
                   id="morada"
                   label="Morada"
                   name="morada"
@@ -141,6 +187,7 @@ export default function SignUp() {
               <Grid item xs={12} sm={6}>
               <TextField
                   fullWidth
+                  variant="standard"
                   id="nCliente"
                   label="Número de Cliente"
                   name="nCliente"

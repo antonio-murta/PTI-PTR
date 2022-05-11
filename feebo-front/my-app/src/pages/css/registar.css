@@ -2,18 +2,7 @@
   color: #ff014f;
 } 
 
-
 .box-registar{
-  /* max-width: 500px;
-  min-width: 300px;
-  max-height: 700px;
-  width: 100%;
-  height: 100%;
-  background-color: #FFFFFF;
-  border-radius: 25px;
-  text-align: center;
-  align-items: center;
-  padding: 5% 5% 5% 5%; */
   max-width: 600px;
   min-width: 300px;
   max-height: 700px;
@@ -28,10 +17,10 @@
 }
 
   
-  .button-registar{
-    width: 50%;
-    color: #fff;
-  }  
+.button-registar{
+  width: 50%;
+  color: #fff;
+}  
   
 
 

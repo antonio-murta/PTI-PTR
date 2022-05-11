@@ -35,14 +35,38 @@ function Copyright(props) {
 // const theme = createTheme();
 
 export default function SignUp() {
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+
+    fetch('http://localhost:3001/transportador',
+        {
+          method: "POST",
+          body: JSON.stringify({
+            _id: data.get('matricula'),
+            marca: data.get('marca'),
+            modelo: data.get('modelo'),
+            poluicao: data.get('poluicao')
+          }),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(myJson) {
+        console.log(myJson);
+      });
+
+      // Vai para a pagina dos veiculos desse transportador
+    window.location.href = "./login";
   };
+
+
+
 
   return (
     // <ThemeProvider theme={theme}>
@@ -70,6 +94,31 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
+                  id="matricula"
+                  label="Matrícula"
+                  name="matricula"
+                  autoComplete="given-name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  variant="standard"
+                  id="poluicao"
+                  label="Poluição"
+                  name="poluicao"
+                  autoComplete="given-name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  variant="standard"
                   id="marca"
                   label="Marca"
                   name="marca"
@@ -81,51 +130,10 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
-                  id="date"
-                  //label="Data de Nascimento" //ver depois
-                  name="date"
-                  type="date"
-                  autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="CC"
-                  label="Cartão de Cidadão"
-                  name="CC"
-                  autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth 
-                  name="carta"
-                  label="Carta de Condução"
-                  id="carta"
-                  autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                required
-                fullWidth
-                id="seg"
-                label="Seguro"
-                name="seg"
-                type="text"
-                autoComplete="family-name"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-              <TextField
-                  required
-                  fullWidth
-                  id="nTrans"
-                  label="Número de Transportador"
-                  name="nTrans"
+                  variant="standard"
+                  name="modelo"
+                  label="Modelo"
+                  id="modelo"
                   autoComplete="family-name"
                 />
               </Grid>

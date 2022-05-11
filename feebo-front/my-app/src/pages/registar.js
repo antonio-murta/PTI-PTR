@@ -38,36 +38,17 @@ export default function Registar() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    console.log(data.get('email'))
-    // Axios.post("http://localhost:3001/insert", {
-    //   email: data.get('email'),
-    //   password: data.get('password'),
-    //   dataNasc: data.get('dataNasc'),
-    //   nome: data.get('nome'),
-    //   telemovel: data.get('telefone'),
-    //   morada: data.get('morada'),
-    //   utipo: "consumidor"
-    // });
-
     fetch('http://localhost:3001/utilizador',
         {
           method: "POST",
           body: JSON.stringify({
-            // _id: "aaa@gmail.com",
-            // nome: "Catarina",
-            // dataNasc: "20.12.1234",
-            // morada: "rya",
-            // telemovel: 1234567,
-            // password: "123",
-            // utipo: "consumidor"
-            email: data.get('email'),
+            _id: data.get('email'),
+            nome: data.get('nome'),
             password: data.get('password'),
             dataNasc: data.get('dataNasc'),
-            nome: data.get('nome'),
             telemovel: data.get('telefone'),
             morada: data.get('morada'),
             utipo: "consumidor"
-
           }),
           headers: {
             "Content-Type": "application/json"
@@ -81,26 +62,22 @@ export default function Registar() {
         console.log(myJson);
       });
 
-
-
-
     window.location.href = "./login";
-};
+  };
 
-const [age, setAge] = useState();
+const [tlm, setTlm] = useState();
 
-const handleChange = (e) => {
+const handleTlm = (e) => {
   const value = e.target.value.replace(/\D/g, "");
-  setAge(value);
+  setTlm(value);
 };
 
-const [ola, setOla] = useState();
+const [nif, setNif] = useState();
 
-const handleOla = (e) => {
+const handleNif = (e) => {
   const value = e.target.value.replace(/\D/g, "");
-  setOla(value);
+  setNif(value);
 };
-
 
   return (
     // <ThemeProvider theme={theme}>
@@ -121,6 +98,7 @@ const handleOla = (e) => {
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
                   id="nome"
                   label="Nome Completo"
                   name="nome"
@@ -130,10 +108,11 @@ const handleOla = (e) => {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  required
+                  // required --- ver depois
                   fullWidth
+                  variant="standard"
                   id="dataNasc"
-                  //label="Data de Nascimento" //ver depois
+                  label=" " //ver depois
                   name="dataNasc"
                   type="date"
                   autoComplete="family-name"
@@ -143,6 +122,7 @@ const handleOla = (e) => {
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
                   id="email"
                   label="E-mail"
                   name="email"
@@ -153,6 +133,7 @@ const handleOla = (e) => {
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
                   name="password"
                   label="Password"
                   type="password"
@@ -164,34 +145,37 @@ const handleOla = (e) => {
                 <TextField
                 required
                 fullWidth
+                variant="standard"
                 id="telefone"
                 label="Telemóvel"
                 name="telefone"
                 type="text"
                 autoComplete="telefone"
                 inputProps={{ maxLength: 9}}
-                value={age}
-                onChange={handleChange}
+                value={tlm}
+                onChange={handleTlm}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                 required
                 fullWidth
+                variant="standard"
                 id="nif"
                 label="NIF"
                 name="nif"
                 type="text"
                 autoComplete="NIF"
                 inputProps={{ maxLength: 9}}
-                value={ola}
-                onChange={handleOla}
+                value={nif}
+                onChange={handleNif}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
                   id="morada"
                   label="Morada"
                   name="morada"
@@ -202,6 +186,7 @@ const handleOla = (e) => {
                 <FormControl required fullWidth>
                   <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
                     <Select
+                      variant="standard"
                     // setSelectValue
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
