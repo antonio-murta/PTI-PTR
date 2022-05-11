@@ -20,7 +20,11 @@ import AddTransportador from "./addTransportes"
 import AddArmazem from "./addArmazem"
 import InfoArmazens from "./pages/fornecedor/mainpage/InfoArmazens"
 
+
 function App() {
+
+  
+
   const THEME = createTheme({
     typography: {
       fontFamily: `"Poppins", sans-serif`,
@@ -31,11 +35,17 @@ function App() {
       fontWeightBold: 600
     }
  });
+
+  const [token, setToken] = useState();
   const { productItems } = Data
   const { shopItems } = Sdata
   const { infoTransportes } = InfoTransportes
   const { infoArmazens } = InfoArmazens
   const [CartItem, setCartItem] = useState([])
+
+  if(!token) {
+    return <SignIn setToken={setToken} />
+  }
 
   const addToCart = (product) => {
 
