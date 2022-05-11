@@ -1,6 +1,9 @@
 import React, { useState } from "react"
+import "./style-armazens.css"
+import { RiSettings3Fill } from "react-icons/ri";
 
-const Armazens = ({ shopItems, addToCart }) => {
+
+const Armazens = ({ infoArmazens, addToCart }) => {
   const [count, setCount] = useState(0)
   const increment = () => {
     setCount(count + 1)
@@ -8,36 +11,22 @@ const Armazens = ({ shopItems, addToCart }) => {
 
   return (
     <>
-      {shopItems.map((shopItems, index) => {
+      {infoArmazens.map((item, index) => {
         return (
           <div key={index} className='box'>
-            <div className='product mtop'>
-              <div className='img'>
-                <span className='discount'>{shopItems.discount}% Off</span>
-                <img src={shopItems.cover} alt='' />
-                <div className='product-like'>
-                  <label>{count}</label> <br />
-                  <i className='fa-regular fa-heart' onClick={increment}></i>
-                </div>
-              </div>
+            <div className='armazem mtop'>
               <div className='product-details'>
-                <h3>{shopItems.name}</h3>
-                <div className='rate'>
-                  <i className='fa fa-star'></i>
-                  <i className='fa fa-star'></i>
-                  <i className='fa fa-star'></i>
-                  <i className='fa fa-star'></i>
-                  <i className='fa fa-star'></i>
-                </div>
-                <div className='price'>
-                  <h4>${shopItems.price}.00 </h4>
-                  <button onClick={() => addToCart(shopItems)}>
-                    <i className='fa fa-plus'></i>
+                <h3>{item.name}</h3>
+                <h3>Saída: {item.saida}</h3>
+                <h3>Chegada prevista: {item.chegada}</h3>
+                <div className='settings'>
+                  <button onClick={() => addToCart(item)}>
+                    <div className="setts"><RiSettings3Fill/></div>
                   </button>
+                </div>
                 </div>
               </div>
             </div>
-          </div>
         )
       })}
     </>

@@ -1,4 +1,8 @@
-.notifications {
+.box {
+  text-align: left;
+}
+
+.notificações {
   padding: 30px;
   height: 420px;
   background-color: white;
@@ -10,7 +14,7 @@
   border-radius: 5px;
 }
 
-.transport {
+.armazem {
   background: #fff;
   padding: 20px;
   position: relative;
@@ -20,19 +24,19 @@
   height: 150px;
 }
 
-.transport h3 {
+.armazem h3 {
   font-weight: 400;
   font-size: 17px;
 }
 
-.new-transport {
+.new-armazem {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 20px;
 }
 
-.new-transport button{
+.new-armazem button{
   background-color: #e94560;
   color: white;
   padding: 6px 12px;
