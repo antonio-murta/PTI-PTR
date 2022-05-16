@@ -1,14 +1,10 @@
 import React from "react"
 import Notif from "./notificacoes"
 import Armazens from "./todosArmazens"
-import "./style-armazens.css"
 import { AiOutlinePlus } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
+import "./style.css"
 
-
-
-const MainArmazens = ({ addToCart, infoArmazens }) => {
-  let navigate = useNavigate();
+const Main = ({ addToCart, infoArmazens }) => {
   return (
     <>
       <section className='shop background'>
@@ -18,13 +14,12 @@ const MainArmazens = ({ addToCart, infoArmazens }) => {
             <div className='heading d_flex'>
               <div className='heading-left row  f_flex'>
                 <h2>Armazéns</h2>
+                <div className="new-transport"><button><div className="plus-icon"><AiOutlinePlus/></div>Novo Armazém</button></div>
               </div>
-              <div className="new-transport">
-                  <button onClick={() => navigate("/addTransportes")}>
-                    <div className="plus-icon"><AiOutlinePlus/></div>
-                    Novo Armazém
-                  </button>
-                </div>
+              <div className='heading-right row '>
+                <span>Ver todos</span>
+                <i className='fa-solid fa-caret-right'></i>
+              </div>
             </div>
             <div className='product-content  grid1'>
               <Armazens addToCart={addToCart} infoArmazens={infoArmazens} />
@@ -36,4 +31,4 @@ const MainArmazens = ({ addToCart, infoArmazens }) => {
   )
 }
 
-export default MainArmazens
+export default Main
