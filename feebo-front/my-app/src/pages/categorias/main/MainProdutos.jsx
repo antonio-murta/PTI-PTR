@@ -1,20 +1,20 @@
 import React from "react"
-import Notif from "./notificacoes"
-import Armazens from "./todosArmazens"
+import Notifications from "./Filtrar"
+import Produtos from "./Produtos"
 import { AiOutlinePlus } from "react-icons/ai";
-import "./style.css"
+import "./pizza.css"
 
-const Main = ({ addToCart, infoArmazens }) => {
+const MainProdutos = ({ addToCart, infoProdutos }) => {
   return (
     <>
       <section className='shop background'>
         <div className='container d_flex'>
-          <Notif/>  
+          <Notifications />
           <div className='contentWidth'>
             <div className='heading d_flex'>
               <div className='heading-left row  f_flex'>
-                <h2>Armazéns</h2>
-                <div className="new-transport"><button><div className="plus-icon"><AiOutlinePlus/></div>Novo Armazém</button></div>
+                <h2>Moda</h2>
+                <div className="new-transport"><button><div className="plus-icon"><AiOutlinePlus/></div>Novo Transporte</button></div>
               </div>
               <div className='heading-right row '>
                 <span>Ver todos</span>
@@ -22,7 +22,7 @@ const Main = ({ addToCart, infoArmazens }) => {
               </div>
             </div>
             <div className='product-content  grid1'>
-              <Armazens addToCart={addToCart} infoArmazens={infoArmazens} />
+              <Produtos addToCart={addToCart} infoProdutos={infoProdutos} />
             </div>
           </div>
         </div>
@@ -31,4 +31,4 @@ const Main = ({ addToCart, infoArmazens }) => {
   )
 }
 
-export default Main
+export default MainProdutos
