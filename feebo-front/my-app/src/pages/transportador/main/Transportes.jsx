@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { RiSettings3Fill } from "react-icons/ri";
-import "./style.css"
+import { HiPlusSm } from "react-icons/hi";
+import "./style-transporte.css"
 
 
 const Transportes = ({ infoTransportes, addToCart }) => {
@@ -21,7 +21,7 @@ const Transportes = ({ infoTransportes, addToCart }) => {
                 <h3>Chegada prevista: {item.chegada}</h3>
                 <div className='settings'>
                   <button onClick={() => addToCart(item)}>
-                    <div className="setts"><RiSettings3Fill/></div>
+                    <div className="setts"><HiPlusSm/></div>
                   </button>
                 </div>
               </div>
