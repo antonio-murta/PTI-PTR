@@ -30,9 +30,6 @@ const Navbar = () => {
                 <Link to='/transportador'>Transportador</Link>
               </li>
               <li>
-                <Link to='/addTransportes'>Adicionar Veiculos</Link>
-              </li>
-              <li>
                 <Link to='/fornecedor'>Fornecedor</Link>
               </li>
               <li>

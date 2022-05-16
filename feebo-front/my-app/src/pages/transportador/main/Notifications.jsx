@@ -1,22 +1,23 @@
 import React from "react"
 import { RiTruckFill } from "react-icons/ri";
-import "./style.css"
+import "./style-transporte.css"
 
 const Notifications = () => {
   const data = [
     {
-      cateName: "Transporte 1 saiu do Armazém X",
+      notif: "Transporte 1 saiu do Armazém X",
       icon: <RiTruckFill/>,
+      time: "5m",
     },
     {
-      cateName: "Transporte 2 chegou ao Armazém Y",
+      notif: "Transporte 2 chegou ao Armazém Y",
       icon: <RiTruckFill/>,
-      //cateImg: "./images/category/cat-2.png",
+      time: "24m",
     },
     {
-      cateName: "Transporte 3 chegou ao Armazém Z",
+      notif: "Transporte 3 chegou ao Armazém Z",
       icon: <RiTruckFill/>,
-      //cateImg: "./images/category/cat-2.png",
+      time: "2h",
     },
   ]
   return (
@@ -31,8 +32,9 @@ const Notifications = () => {
           return (
             <div className='box f_flex' key={index}>
               <div className="icon">{value.icon} </div>
-              <span>{value.cateName}</span>
-            </div>
+              <span>{value.notif}</span>
+{/*               <div className="time">{value.time} </div>
+ */}            </div>
           )
         })}
         </div>
