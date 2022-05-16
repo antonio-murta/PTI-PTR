@@ -29,6 +29,12 @@
   font-size: 17px;
 }
 
+.f_flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .new-transport {
   display: flex;
   align-items: center;

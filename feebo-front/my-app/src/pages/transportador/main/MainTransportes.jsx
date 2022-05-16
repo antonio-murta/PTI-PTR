@@ -14,16 +14,14 @@ const MainTransportes = ({ addToCart, infoTransportes }) => {
           <Notifications />
           <div className='contentWidth'>
             <div className='heading d_flex'>
-              <div className='heading-left row  f_flex'>
-                <h2>Transportes</h2>
+              <h2>Transportes</h2>
                 <div className="new-transport">
                   <button onClick={() => navigate("/addTransportes")}>
                     <div className="plus-icon"><TiPlus/></div>
                     Novo Transporte
                   </button>
-                </div>
-              </div>
-            </div>
+                 </div>
+               </div>
             <div className='product-content  grid1'>
               <Transportes addToCart={addToCart} infoTransportes={infoTransportes} />
             </div>
