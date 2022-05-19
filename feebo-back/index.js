@@ -60,6 +60,8 @@ app.delete("/armazem/:id", ArmazemController.deleteById)
 
 
 
+
+
 app.post("/utilizador", UtilizadorControler.registar);
 app.delete("/utilizador", UtilizadorControler.apagarUtilizadores);
 app.delete("/utilizador/:id", UtilizadorControler.apagarUtilizadores_byID);
@@ -68,7 +70,7 @@ app.put("/utilizador/:id", UtilizadorControler.editarConta);
 // falta ver
 app.post("/utilizador/login", UtilizadorControler.login);
 app.put("/utilizador/:id/password", UtilizadorControler.alterarPassword);
-
+app.get("/utilizador/:id", UtilizadorControler.getByDados)
 
 app.get("/utilizador", async(req, res) => {
     UtilizadorModel.find({}, (err, result)=> {
@@ -81,6 +83,8 @@ app.get("/utilizador", async(req, res) => {
         res.status(200).send(result);
     });
 });
+
+
 
 
 
