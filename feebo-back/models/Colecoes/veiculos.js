@@ -14,7 +14,7 @@ const VeiculoSchema = new monggose.Schema({
         required: true,
     },
     poluicao: {
-        type: String,
+        type: Number,
         required: true,
     }
 });
