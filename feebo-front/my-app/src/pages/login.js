@@ -29,35 +29,18 @@ export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    localStorage.setItem('loggedin',data.get('email'));
+
+    console.log(localStorage.getItem('loggedin'));
+
     Axios.post("http://localhost:3001/login", {
+
       email: data.get('email'),
       password: data.get('password'),
     });
   };
 
-  return(
-    <div className="login-wrapper">
-      <h1>Please Log In</h1>
-      <form>
-        <label>
-          <p>Username</p>
-          <input type="text" />
-        </label>
-        <label>
-          <p>Password</p>
-          <input type="password" />
-        </label>
-        <div>
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
-  )
-
-
   return (
-    
-      
 
       <Container component="main" maxWidth="xs">
         <CssBaseline />

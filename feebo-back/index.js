@@ -12,16 +12,12 @@ const FornecedorController = require("./models/Funcoes/F_Fornecedor")
 const ProdutoController = require("./models/Funcoes/F_Produto")
 const ArmazemController = require("./models/Funcoes/F_Armazem")
 
-app.use(express.json());
-app.use(cors());
+
 
 monggose.connect("mongodb+srv://grupo16:123@basedados.rthod.mongodb.net/Loja?retryWrites=true&w=majority",
 {
     useNewUrlParser: true,
 });
-
-
-
 
 
 // Fornecedor

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import "./App.css"
-import { BrowserRouter as Router, Routes, Route , Link } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Header from "./common/header/Header"
 import Pages from "./pages/Pages"
 import Data from "./components/Data"
@@ -43,10 +43,7 @@ function App() {
   const { infoArmazens } = InfoArmazens
   const [CartItem, setCartItem] = useState([])
 
-  if(!token) {
-    return <SignIn setToken={setToken} />
-  }
-
+  
   const addToCart = (product) => {
 
     const productExit = CartItem.find((item) => item.id === product.id)
@@ -71,6 +68,15 @@ function App() {
     }
   }
 
+
+  if(!localStorage.getItem('loggedin') && localStorage.getItem('loggedin')=='') {
+    console.log(localStorage.getItem('loggedin'));  
+    return <SignIn />
+  }
+  else{
+    return <PerfilClient />
+  }
+
   return (
     <>
     <ThemeProvider theme={THEME}>
@@ -86,8 +92,6 @@ function App() {
           <Route path='/perfilclient'  element={<PerfilClient productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
           <Route path='/addTransportes'  element={<AddTransportador productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
           <Route path='/addArmazem'  element={<AddArmazem productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
-
-
         </Routes>
         <Footer />
       </Router>
