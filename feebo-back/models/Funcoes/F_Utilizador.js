@@ -11,9 +11,9 @@ const bcrypt = require('bcryptjs');
 
 const registar = (req, res) => {
     let utipo = req.body.utipo;
-    // var salt = bcrypt.genSaltSync(10);
+    var salt = bcrypt.genSaltSync(10);
     //console.log(salt)
-    // req.body.password = String( bcrypt.hashSync(req.body.password, salt));
+    req.body.password = bcrypt.hashSync(req.body.password, salt);
     const utilizador = new UtilizadorModel(req.body);
     utilizador.save()
     .then(() => {
@@ -35,8 +35,7 @@ const registar = (req, res) => {
             FornecedorModel.create(
                 {
                     _id: email,
-                    armazens: [],
-                    produtos: []
+                    armazens: []
                 }
             )
             .then(() => {
@@ -48,7 +47,7 @@ const registar = (req, res) => {
                 {
                     _id: email,
                     caminhos: [],
-                    veiculo: null
+                    veiculo: []
                 }
             )
             .then(() => {
@@ -79,7 +78,6 @@ const editarConta = (req, res) => {
     UtilizadorModel.updateOne(
         { _id: email },
         {
-            nome: req.body.nome,
             morada: req.body.morada,
             telemovel: req.body.telemovel
         }
@@ -134,4 +132,153 @@ const apagarUtilizadores_byID = (req, res) => {
     })
 }
 
-module.exports = { registar, editarConta, alterarPassword, login, apagarUtilizadores, apagarUtilizadores_byID }
+
+
+// var bcrypt = require('bcryptjs');
+// var salt = bcrypt.genSaltSync(10);
+// var hash = bcrypt.hashSync("B4c0/\/", salt);
+
+
+
+
+// async function registar(email, nome, dataNasc, nif, morada, telemovel, password, utipo) {
+//     await conexao;
+//     var salt = await bcrypt.genSaltSync(10);
+//     //console.log(salt)
+//     var passwordEnc = await bcrypt.hashSync(password, salt);
+//     // encryptedPassword = await bcrypt.hash(password, 10);
+//     await UtilizadorModel.create(
+//         {
+//             _id: email,
+//             nome: nome,
+//             dataNasc: dataNasc,
+//             nif: nif,
+//             morada: morada,
+//             telemovel: telemovel,
+//             password: passwordEnc,
+//             utipo: utipo
+//         }
+//     )
+//         .then(() => {
+//             if (utipo == "consumidor") {
+//                 ConsumidorModel.create(
+//                     {
+//                         _id: email,
+//                         metodoPagamento: [],
+//                         cesto: [],
+//                         recursosCesto: [],
+//                         poluicaoCesto: 0
+//                     }
+//                 )
+//                     .then(() => {
+//                         return true;
+//                     })
+//                     .catch(err => {
+//                         return err;
+//                     });
+//             }
+//             else if (utipo == "fornecedor") {
+//                 FornecedorModel.create(
+//                     {
+//                         _id: email,
+//                         armazens: [],
+//                         produtos: []
+//                     }
+//                 )
+//                 .then(() => {
+//                     return true;
+//                 })
+//                 .catch(err => {
+//                     return err;
+//                 });
+//             }
+//             else {
+//                 TransportadorModel.create(
+//                     {
+//                         _id: email,
+//                         caminhos: [],
+//                         veiculo: null
+//                     }
+//                 )
+//                 .then(() => {
+//                     return true;
+//                 })
+//                 .catch(err => {
+//                     return err;
+//                 });
+//             }
+//         })
+//         .catch(err => {
+//             return err;
+//         })
+
+
+
+// }
+
+// //async function registar (email, nome, dataNasc, nif, morada, telemovel, password, utipo)
+// //registar ("teota@gmail.com", "teota", "12.12.1212", 12345, "Rua26", 765489321, "123", "transportador")
+
+// async function login(email, password) {
+//     await conexao;
+//     const utilizador = await UtilizadorModel.findOne({ _id: email });
+//     return await bcrypt.compare(password, utilizador["password"]).valueOf();
+
+// }
+
+
+// async function editarConta(email, morada, telemovel) {
+//     await conexao;
+//     await UtilizadorModel.updateOne(
+//         { _id: email },
+//         {
+//             morada: morada,
+//             telemovel: telemovel
+//         }
+//     )
+// }
+// // editarConta("catarina@gmail.com", "Rua", 987654321);
+
+
+// async function alterarPassword(email, passwordAntiga, passwordNova) {
+//     await conexao;
+//     const utilizador = await UtilizadorModel.findOne({ _id: email });
+//     if (await bcrypt.compare(passwordAntiga, utilizador["password"])) {
+//         const salt = await bcrypt.genSalt(10);
+//         passwordNovaEnc = await bcrypt.hash(passwordNova, salt);
+//         await UtilizadorModel.updateOne(
+//             { _id: email },
+//             {
+//                 password: passwordNovaEnc
+//             }
+//         )
+//         return true
+//     }
+//     else {
+//         return false
+//     }
+// }
+
+// async function apagarUtilizadores(email = "") {
+//     await conexao;
+//     if (email != "") {
+//         await UtilizadorModel.findByIdAndDelete(email)
+//             .then(() => {
+//                 return true;
+//             })
+//             .catch(err => {
+//                 return err;
+//             });
+//     } else {
+//         await UtilizadorModel.deleteMany({})
+//             .then(() => {
+//                 return true;
+//             })
+//             .catch(err => {
+//                 return err;
+//             })
+//     }
+
+// }
+
+module.exports = { registar, editarConta, editarConta, alterarPassword, login, apagarUtilizadores, apagarUtilizadores_byID }

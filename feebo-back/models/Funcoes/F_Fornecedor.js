@@ -12,30 +12,26 @@ const recursosPoluicao = require('../Colecoes/RecursosPoluicao');
 
 const criarProduto = (req, res) => {
     const emailFornecedor = req.params.id;
-    const recursos = req.body.recursos;
 
-    let poluicao = 0;
-    recursos.forEach(recurso => {
-        poluicao += recurso["poluicao"];
-    });
-    req.body.poluicao = poluicao;
+    // const poluicao = 0;
+    const recursos = req.body.recursos;
+    // let poluicao = 0;
+    // recursos.forEach(recurso => {
+    //     poluicao += recurso["poluicao"];
+    // });
+    // req.body.poluicao = poluicao;
 
     const produto = new ProdutoModel(req.body);
     produto.save()
     .then(() => {
-        idProduto = produto["_id"]; // ir buscar o id do produto criado
-        FornecedorModel.updateOne(
-            {_id: emailFornecedor},
-            {
-                $push: {produtos: idProduto}
-            }
-        )
         res.status(201).send("Produto criado com sucesso");
     })
     .catch(err => {
         res.status(400).send(err);
     });
 }
+
+
 
 const removerProdutos = (req, res) => {
     ProdutoModel.deleteMany({})
@@ -46,6 +42,8 @@ const removerProdutos = (req, res) => {
         res.status(400).send(err);
     })
 }
+
+
 
 const removerProduto = (req, res) => {
     //const emailFornecedor = req.params.idF;
@@ -65,6 +63,15 @@ const removerProduto = (req, res) => {
         res.status(400).send(err);
     });
 }
+// async function removerProduto (id, email)
+// {
+//     await conexao;
+//     await ProdutoModel.deleteOne({_id: id})
+//     await FornecedorModel.updateOne(
+//         {_id: email},
+//         {$set: {produtos: id}}
+//     )
 
+// }
 
 module.exports = {criarProduto, removerProduto, removerProdutos};

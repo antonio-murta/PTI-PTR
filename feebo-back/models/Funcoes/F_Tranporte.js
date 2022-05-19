@@ -1,12 +1,9 @@
 const monggose = require('mongoose');
 const TransporteModel = require("../Colecoes/Transportador");
-const VeiculosModel = require("../Colecoes/veiculos");
-const conexao = require('../../conexao');
-// const bcrypt = require('bcrypt');
+// const conexao = require('../../conexao');
 
 
-
-
+//talvez esteja a mais
 const criarTransportador = (req, res) => {
     const transportador = new TransporteModel(req.body);
     transportador.save()
@@ -17,7 +14,22 @@ const criarTransportador = (req, res) => {
         res.status(400).send(err);
     });
 }
+// async function criarTransportador(email, caminhos, veiculo){
+//     await conexao;
 
+//     await TransporteModel.create(
+//         {
+//             _id: email,
+//             caminhos: caminhos,
+//             veiculo: veiculo
+//         }
+//     )
+// }
+
+
+
+
+//talvez tambem esteja a mais
 const getByNome = (req, res) => {
     const nome = req.body.nome;
 
@@ -33,6 +45,13 @@ const getByNome = (req, res) => {
         res.status(400).send(err);
     });
 }
+// async function getByNome(email){
+//     await conexao;
+
+//     const transportador = await TransporteModel.findOne({_id: email})
+//     console.log(transportador)
+//     return transportador
+// }
 
 
 
@@ -56,6 +75,7 @@ const updateCaminhos = (req, res) => {
 
 
 
+
 const updateVeiculo = (req, res) => {
     const email = req.params.id;
     TransporteModel.updateOne(
@@ -74,25 +94,6 @@ const updateVeiculo = (req, res) => {
 
 
 
-
-const adicionarveiculo = (req, res) => {
-    const email = req.params.id;
-    const veiculo = new VeiculosModel(req.body);
-    veiculo.save()
-    .then(() => {
-        res.status(201).send("veiculo criado com sucesso");
-    })
-    .catch(err => {
-        res.status(400).send(err);
-    });
-}
-
-
-
-
-
-
-
 const deleteByEmail = (req, res) => {
     TransporteModel.findByIdAndDelete(req.body.email)
     .then(() => {
@@ -102,6 +103,10 @@ const deleteByEmail = (req, res) => {
         res.status(404).send("Utilizador nao existe");
     })
 }
+// async function deleteByEmail(email){
+//     await conexao;
 
+//     await TransporteModel.deleteOne({email: email})
+// }
 
-module.exports = {/*getByNome, */updateCaminhos, updateVeiculo, adicionarveiculo, deleteByEmail};
+module.exports = {/*getByNome, */updateCaminhos, updateVeiculo, deleteByEmail};

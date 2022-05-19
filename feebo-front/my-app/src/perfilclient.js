@@ -135,7 +135,6 @@ export default function SignUp() {
                   name="email"
                   type="email"
                   autoComplete="email"
-                  disabled="disabled"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
