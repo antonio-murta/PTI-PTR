@@ -14,11 +14,12 @@ import Transportador from "./pages/transportador/transportador"
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Fornecedor from "./pages/fornecedor/fornecedor"
 import PerfilClient from "./perfilclient"
-
-
+import Produto from "./pages/produtos/produto"
 import AddTransportador from "./addTransportes"
 import AddArmazem from "./addArmazem"
 import InfoArmazens from "./pages/fornecedor/mainpage/InfoArmazens"
+import InfoProdutos from "./pages/produtos/main/InfoProdutos"
+
 
 function App() {
   const THEME = createTheme({
@@ -35,6 +36,7 @@ function App() {
   const { shopItems } = Sdata
   const { infoTransportes } = InfoTransportes
   const { infoArmazens } = InfoArmazens
+  const { infoProdutos } = InfoProdutos
   const [CartItem, setCartItem] = useState([])
 
   const addToCart = (product) => {
@@ -76,8 +78,7 @@ function App() {
           <Route path='/perfilclient'  element={<PerfilClient productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
           <Route path='/addTransportes'  element={<AddTransportador productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
           <Route path='/addArmazem'  element={<AddArmazem productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
-
-
+          <Route path='/produto'  element={<Produto productItems={productItems} addToCart={addToCart} infoProdutos={infoProdutos} /> }/>
         </Routes>
         <Footer />
       </Router>
