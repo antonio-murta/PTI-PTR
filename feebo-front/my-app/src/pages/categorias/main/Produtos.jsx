@@ -1,9 +1,8 @@
 import React, { useState } from "react"
-import { HiPlusSm } from "react-icons/hi";
-import "./style-transporte.css"
+import { RiSettings3Fill } from "react-icons/ri";
+import "./pizza.css"
 
-
-const Transportes = ({ infoTransportes, addToCart }) => {
+const Produtos = ({ infoProdutos, addToCart }) => {
   const [count, setCount] = useState(0)
   const increment = () => {
     setCount(count + 1)
@@ -11,17 +10,18 @@ const Transportes = ({ infoTransportes, addToCart }) => {
 
   return (
     <>
-      {infoTransportes.map((item, index) => {
+      {infoProdutos.map((item, index) => {
         return (
           <div key={index} className='box'>
             <div className='transport mtop'>
+              <div className='img'>
+                <img src={infoProdutos.foto} alt='' /> 
+              </div>
               <div className='product-details'>
                 <h3>{item.name}</h3>
-                <h3>Saída: {item.saida}</h3>
-                <h3>Chegada prevista: {item.chegada}</h3>
                 <div className='settings'>
                   <button onClick={() => addToCart(item)}>
-                    <div className="setts"><HiPlusSm/></div>
+                    <div className="setts"><RiSettings3Fill/></div>
                   </button>
                 </div>
               </div>
@@ -33,4 +33,4 @@ const Transportes = ({ infoTransportes, addToCart }) => {
   )
 }
 
-export default Transportes
+export default Produtos

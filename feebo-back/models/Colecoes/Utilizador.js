@@ -10,7 +10,7 @@ const UtilizadorSchema = new monggose.Schema({
         required: true,
     },
     dataNasc: {
-        type: String,
+        type: Date,
         required: true,
     },
     nif: {

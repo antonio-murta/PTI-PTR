@@ -11,9 +11,9 @@ const bcrypt = require('bcryptjs');
 
 const registar = (req, res) => {
     let utipo = req.body.utipo;
-    // var salt = bcrypt.genSaltSync(10);
+    var salt = bcrypt.genSaltSync(10);
     //console.log(salt)
-    // req.body.password = String( bcrypt.hashSync(req.body.password, salt));
+    req.body.password = bcrypt.hashSync(req.body.password, salt);
     const utilizador = new UtilizadorModel(req.body);
     utilizador.save()
     .then(() => {
@@ -35,8 +35,7 @@ const registar = (req, res) => {
             FornecedorModel.create(
                 {
                     _id: email,
-                    armazens: [],
-                    produtos: []
+                    armazens: []
                 }
             )
             .then(() => {
@@ -48,7 +47,7 @@ const registar = (req, res) => {
                 {
                     _id: email,
                     caminhos: [],
-                    veiculo: null
+                    veiculo: []
                 }
             )
             .then(() => {
@@ -79,7 +78,6 @@ const editarConta = (req, res) => {
     UtilizadorModel.updateOne(
         { _id: email },
         {
-            nome: req.body.nome,
             morada: req.body.morada,
             telemovel: req.body.telemovel
         }
@@ -134,4 +132,29 @@ const apagarUtilizadores_byID = (req, res) => {
     })
 }
 
-module.exports = { registar, editarConta, alterarPassword, login, apagarUtilizadores, apagarUtilizadores_byID }
+
+
+
+
+
+const getByDados = (req, res) => {
+    const email = req.params.id;
+    const utilizador = UtilizadorModel.findOne({ _id: email })
+    .then(result => {
+        if (result.length == 0) {
+            res.status(404).send("nao encontrado");
+        } else {
+            res.status(200).send(result);
+        }
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    });
+
+}
+
+
+
+
+
+module.exports = { registar, editarConta, editarConta, alterarPassword, login, apagarUtilizadores, apagarUtilizadores_byID, getByDados }

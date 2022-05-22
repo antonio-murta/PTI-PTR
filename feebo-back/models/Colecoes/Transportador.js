@@ -5,12 +5,12 @@ const TransportadorSchema = new monggose.Schema({
         type: String,
         required: true,
     },
-    caminhos: {
+    caminhos: {         // [partida, chegada, data_inicio, data_chegada]
         type: [],
         required: true,
     },
     veiculo: {
-        type: String,
+        type: [],
         required: false,
     }
 });

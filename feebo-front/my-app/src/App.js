@@ -7,18 +7,19 @@ import Data from "./components/Data"
 import Cart from "./common/Cart/Cart"
 import Footer from "./common/footer/Footer"
 import Sdata from "./components/shops/Sdata"
+import InfoArmazens from "./pages/fornecedor/mainpage/InfoArmazens"
 import InfoTransportes from "./pages/transportador/main/InfoTransportes"
+import InfoProdutos from "./pages/categorias/main/InfoProdutos"
 import SignIn from "./pages/login"
 import Registar from "./pages/registar"
 import Transportador from "./pages/transportador/transportador"
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Categorias from "./pages/categorias/categorias"
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 import Fornecedor from "./pages/fornecedor/fornecedor"
 import PerfilClient from "./perfilclient"
-
-
 import AddTransportador from "./addTransportes"
 import AddArmazem from "./addArmazem"
-import InfoArmazens from "./pages/fornecedor/mainpage/InfoArmazens"
+
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
   const { shopItems } = Sdata
   const { infoTransportes } = InfoTransportes
   const { infoArmazens } = InfoArmazens
+  const { infoProdutos } = InfoProdutos
   const [CartItem, setCartItem] = useState([])
 
   
@@ -87,13 +89,14 @@ function App() {
           <Route path='/cart' element={<Cart CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} /> }/>
           <Route path='/login' element={<SignIn CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} /> }/>
           <Route path='/registar' element={<Registar CartItem={CartItem} addToCart={addToCart} decreaseQty={decreaseQty} /> }/>
+          <Route path='/categoria'  element={<Categorias productItems={productItems} addToCart={addToCart} infoProdutos={infoProdutos} /> }/> 
           <Route path='/transportador' element={<Transportador productItems={productItems} addToCart={addToCart} infoTransportes={infoTransportes} /> }/>
           <Route path='/fornecedor'  element={<Fornecedor productItems={productItems} addToCart={addToCart} infoArmazens={infoArmazens} /> }/>
           <Route path='/perfilclient'  element={<PerfilClient productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
           <Route path='/addTransportes'  element={<AddTransportador productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
           <Route path='/addArmazem'  element={<AddArmazem productItems={productItems} addToCart={addToCart} shopItems={shopItems} /> }/>
         </Routes>
-        <Footer />
+        <Footer/>
       </Router>
     </ThemeProvider>
     </>

@@ -1,5 +1,5 @@
 import React from "react"
-import "./style.css"
+import "./style-armazens.css"
 
 const Notif = () => {
   const data = [
@@ -27,15 +27,15 @@ const Notif = () => {
         </div>
         {data.map((value, index) => {
           return (
-            <div className='box noti_flex' key={index}>
-              <span>{value.temaNotif}</span>
-              <span>{value.infoNotif}</span>
-              <span className="tempo">{value.tempoNotif}</span>
+            <div className='box f_flex' key={index}>
+{/*               <span>{value.temaNotif}</span>
+              <span>{value.infoNotif}</span> */}
+              <span className="tempo">{value.icon}</span>
             </div>
           )
         })}
-        <div className='box box2'>
-          <button>Ver todas as notificações</button>
+        <div className='box see-more'>
+          <button>Ver mais</button>
         </div>
       </div>
     </>
