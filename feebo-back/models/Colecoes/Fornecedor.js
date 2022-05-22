@@ -5,11 +5,7 @@ const FornecedorSchema = new monggose.Schema({
         type: String,
         required: true,
     },
-    armazens: {
-        type: [],
-        required: true,
-    },
-    produtos: {
+    armazens: {               // id armazens
         type: [],
         required: true,
     }
