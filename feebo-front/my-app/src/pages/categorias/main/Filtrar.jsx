@@ -5,18 +5,22 @@ import "./pizza.css"
 const Notifications = () => {
   const data = [
     {
-      cateName: "Transporte 1 saiu do Armazém X",
-      icon: <RiTruckFill/>,
+      cateName: "Preço inferior a 20€",
     },
     {
-      cateName: "Transporte 2 chegou ao Armazém Y",
-      icon: <RiTruckFill/>,
-      //cateImg: "./images/category/cat-2.png",
+      cateName: "Poluição média inferior a 1kg",
     },
     {
-      cateName: "Transporte 3 chegou ao Armazém Z",
-      icon: <RiTruckFill/>,
-      //cateImg: "./images/category/cat-2.png",
+      cateName: "Casual",
+    },
+    {
+      cateName: "Formal",
+    },
+    {
+      cateName: "Outdoor",
+    },
+    {
+      cateName: "Calçado",
     },
   ]
   return (
@@ -30,14 +34,10 @@ const Notifications = () => {
         {data.map((value, index) => {
           return (
             <div className='box f_flex' key={index}>
-              <div className="icon">{value.icon} </div>
               <span>{value.cateName}</span>
             </div>
           )
         })}
-        </div>
-        <div className='box see-more'>
-          <button>Ver mais</button>
         </div>
         </div>
       </div>

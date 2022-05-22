@@ -12,18 +12,16 @@ const Produtos = ({ infoProdutos, addToCart }) => {
     <>
       {infoProdutos.map((item, index) => {
         return (
-          <div key={index} className='box'>
-            <div className='transport mtop'>
-              <div className='img'>
-                <img src={infoProdutos.foto} alt='' /> 
-              </div>
-              <div className='product-details'>
-                <h3>{item.name}</h3>
-                <div className='settings'>
-                  <button onClick={() => addToCart(item)}>
-                    <div className="setts"><RiSettings3Fill/></div>
-                  </button>
+          <div key={index} className='caixa'>
+            <div className='item mtop'>
+                <div className='fotos'>
+                  <img src={item.foto} alt='' /> 
                 </div>
+              <div className='product-details'>
+                <h2>{item.name}</h2>
+                <h4>{item.preco}</h4>
+                <h3>{item.tipo}</h3>
+                <h3>Poluição média: {item.poluicao}</h3>
               </div>
             </div>
           </div>
