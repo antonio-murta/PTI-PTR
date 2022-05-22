@@ -132,29 +132,17 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
+            <Button className="buttonT"
+                type="submit"
+                variant="contained"
+                sx={{ mt: 3, ml:14}}
+                >
+                {'Adicionar Veículo'}
+            </Button>
             {/* <button onClick={handleCreate}>
                   Click me
             </button> */}
-            <Grid>
-            <Button className="button"
-              type="submit"
-              variant="contained"
-              sx={{ mt: 5}}
-            >
-              {'Adicionar Veículo'}
-            </Button>
-            {/* <ThemeProvider theme={theme}>
-              <Button className="button2"
-              type="submit"
-              variant="contained"
-              sx={{ mt: 5, ml:2}}
-              color="primary"
-              >
-              {'Eliminar Conta'} */}
-                {/* tentar descobrir como meter o botão vermelho */}
-              {/* </Button>
-            </ThemeProvider> */}
-            </Grid>
+            
             {/* <Grid container >
               <Grid item xs>
                 <Link href="#" variant="body2">
