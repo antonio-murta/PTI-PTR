@@ -119,7 +119,7 @@ export default function SignUp() {
                   fullWidth
                   variant="standard"
                   id="date"
-                  //label="Data de Nascimento" //ver depois
+                  label=" " //ver depois
                   name="date"
                   type="date"
                   autoComplete="family-name"
@@ -183,17 +183,6 @@ export default function SignUp() {
                   autoComplete="family-name"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
-              <TextField
-                  fullWidth
-                  variant="standard"
-                  id="nCliente"
-                  label="Número de Cliente"
-                  name="nCliente"
-                  autoComplete="family-name"
-                  disabled="disabled"
-                />
-              </Grid>
             </Grid>
             {/* <button onClick={handleCreate}>
                   Click me
@@ -204,13 +193,20 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 5}}
             >
-              {'Confirmar alterações'}
+              {'Alterar Password'}
             </Button>
-            <ThemeProvider theme={theme}>
-              <Button className="button2"
+            <Button className="button2"
               type="submit"
               variant="contained"
               sx={{ mt: 5, ml:2}}
+            >
+              {'Confirmar alterações'}
+            </Button>
+            <ThemeProvider theme={theme}>
+              <Button className="button3"
+              type="submit"
+              variant="contained"
+              sx={{ mt: 3}}
               color="primary"
               >
               {'Eliminar Conta'}
