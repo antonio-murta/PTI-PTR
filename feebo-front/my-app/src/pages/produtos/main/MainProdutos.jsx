@@ -9,7 +9,7 @@ const MainProdutos = ({ addToCart, infoProdutos }) => {
           <div className='container d_flex'>
             <div className='contentWidth'>
               <div className='heading d_flex'>
-                <h2>Produtos</h2>
+                <h2>Nome Produto</h2>
                 </div>
               <div className='product-content  grid1'>
                 <Produtos addToCart={addToCart} infoProdutos={infoProdutos} />
