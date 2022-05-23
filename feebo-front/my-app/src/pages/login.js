@@ -27,6 +27,8 @@ export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
+    localStorage.setItem("LoggedIn",data.get('email') )
     Axios.post("http://localhost:3001/login", {
       email: data.get('email'),
       password: data.get('password'),

@@ -1,6 +1,5 @@
 import './css/perfil.css';
 import * as React from 'react';
-// import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -11,10 +10,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { red} from '@mui/material/colors';
-// import FormControl from '@mui/material/FormControl';
-// import InputLabel from '@mui/material/InputLabel';
-// import MenuItem from '@mui/material/MenuItem';
-// import Select from '@mui/material/Select';
 
 
 const theme = createTheme({ palette: { primary: red } });
@@ -35,45 +30,68 @@ function Copyright(props) {
 // const theme = createTheme();
 
 export default function SignUp() {
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password'),
-  //   });
-  // };
 
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
 
-    const email = data.get('email');
+const handleSubmit = (event) => {
+  event.preventDefault();
 
-    fetch('http://localhost:3001/utilizador/' + email,
-        {
-          method: "PUT",
-          body: JSON.stringify({
-            nome: data.get('name'),
-            morada: data.get('morada'),
-            telemovel: data.get('telefone')
-          }),
-          headers: {
-            "Content-Type": "application/json"
-          }
+  const data = new FormData(event.currentTarget);
+  
+  fetch('http://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn"),
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          nome: data.get('name'),
+          morada: data.get('morada'),
+          telemovel: data.get('telefone')
+        }),
+        headers: {
+          "Content-Type": "application/json"
         }
-      )
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(myJson) {
-        console.log(myJson);
-      });
+      }
+    )
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(myJson) {
+      console.log(myJson);
+    });
 
-    window.location.href = "./login";
+  window.location.href = "./login";
 };
+
+
+
+
+function obterDados(parent, el) {
+  fetch('http://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn"),{ method: 'GET' })
+    .then(response => response.text())
+    .then(texto => {
+      texto = JSON.parse(texto)
+      const nome = texto.nome
+      const email = texto._id
+      const telemovel = texto.telemovel
+      const nif = texto.nif
+      const morada = texto.morada
+      const dataNascAux = texto.dataNasc
+      const dataNasc = dataNascAux.split("T");
+
+      document.getElementById("name").value = nome
+      document.getElementById("email").value = email
+      document.getElementById("email").disabled = true;
+      document.getElementById("telefone").value = telemovel
+      document.getElementById("NIF").value = nif
+      document.getElementById("NIF").disabled = true;
+      document.getElementById("morada").value = morada
+      document.getElementById("date").value = dataNasc[0]
+      document.getElementById("date").disabled = true;
+  })
+    .catch(err => console.log(err.message))
+  };
+
+
+window.onload = obterDados()
 
 
 
@@ -108,7 +126,6 @@ export default function SignUp() {
                   fullWidth
                   variant="standard"
                   id="name"
-                  label="Nome Completo"
                   name="name"
                   autoComplete="given-name"
                   autoFocus
@@ -119,7 +136,6 @@ export default function SignUp() {
                   fullWidth
                   variant="standard"
                   id="date"
-                  label=" " //ver depois
                   name="date"
                   type="date"
                   autoComplete="family-name"
@@ -131,9 +147,9 @@ export default function SignUp() {
                   fullWidth
                   variant="standard"
                   id="email"
-                  label="E-mail"
                   name="email"
                   type="email"
+                  disabled="disabled"
                   autoComplete="email"
                 />
               </Grid>
@@ -153,7 +169,6 @@ export default function SignUp() {
                 fullWidth
                 variant="standard"
                 id="telefone"
-                label="Telemóvel"
                 name="telefone"
                 type="text"
                 autoComplete="telefone"
@@ -165,7 +180,6 @@ export default function SignUp() {
                 fullWidth
                 variant="standard"
                 id="NIF"
-                label="NIF"
                 name="NIF"
                 type="text"
                 autoComplete="NIF"
@@ -178,7 +192,6 @@ export default function SignUp() {
                   fullWidth
                   variant="standard"
                   id="morada"
-                  label="Morada"
                   name="morada"
                   autoComplete="family-name"
                 />
