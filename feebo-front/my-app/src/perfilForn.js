@@ -80,7 +80,7 @@ export default function SignUp() {
                 <TextField
                   fullWidth
                   id="date"
-                  //label="Data de Nascimento" //ver depois
+                  label=" " //ver depois
                   name="date"
                   type="date"
                   autoComplete="family-name"
@@ -182,13 +182,6 @@ export default function SignUp() {
                 {/* tentar descobrir como meter o botão vermelho */}
             </Button>
             </Grid>
-            {/* <Grid container >
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Já tem uma conta? Faça Login
-                </Link>
-              </Grid>
-            </Grid> */}
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />

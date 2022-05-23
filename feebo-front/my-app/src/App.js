@@ -39,6 +39,7 @@ function App() {
   const { infoProdutos } = InfoProdutos;
   const [CartItem, setCartItem] = useState([]);
 
+
   const addToCart = (product) => {
     const productExit = CartItem.find((item) => item.id === product.id);
 
