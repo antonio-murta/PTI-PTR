@@ -78,6 +78,7 @@ const editarConta = (req, res) => {
     UtilizadorModel.updateOne(
         { _id: email },
         {
+            nome: req.body.nome,
             morada: req.body.morada,
             telemovel: req.body.telemovel
         }
