@@ -34,9 +34,15 @@ export default function SignUp() {
 
 
 const handleSubmit = (event) => {
+
+  console.log("qqqq")
   event.preventDefault();
 
+  // et result = bcrypt.compare(password, texto.password).valueOf();
+
   const data = new FormData(event.currentTarget);
+  console.log( data.get('name'))
+
   
   fetch('http://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn"),
       {
@@ -58,7 +64,9 @@ const handleSubmit = (event) => {
       console.log(myJson);
     });
 
+
   window.location.href = "./login";
+
 };
 
 
@@ -90,13 +98,7 @@ function obterDados(parent, el) {
     .catch(err => console.log(err.message))
   };
 
-
 window.onload = obterDados()
-
-
-
-
-
 
   return (
     // <ThemeProvider theme={theme}>
@@ -122,6 +124,7 @@ window.onload = obterDados()
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:4}}> {/* numero de "blocos"*/}
               <Grid item xs={12} sm={6} > {/* 6 = comprimento*/}
+                <label>Nome completo</label>
                 <TextField
                   fullWidth
                   variant="standard"
@@ -132,39 +135,7 @@ window.onload = obterDados()
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  variant="standard"
-                  id="date"
-                  name="date"
-                  type="date"
-                  autoComplete="family-name"
-                  disabled="disabled"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  variant="standard"
-                  id="email"
-                  name="email"
-                  type="email"
-                  disabled="disabled"
-                  autoComplete="email"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  variant="standard"
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              <label>Telemovel</label>
                 <TextField
                 fullWidth
                 variant="standard"
@@ -176,6 +147,42 @@ window.onload = obterDados()
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
+              <label>Morada</label>
+                <TextField
+                  fullWidth
+                  variant="standard"
+                  id="morada"
+                  name="morada"
+                  autoComplete="family-name"
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+              <label>Data de nascimento</label>
+                <TextField
+                  fullWidth
+                  variant="standard"
+                  id="date"
+                  name="date"
+                  type="date"
+                  autoComplete="family-name"
+                  disabled="disabled"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+              <label>E-mail</label>
+                <TextField
+                  fullWidth
+                  variant="standard"
+                  id="email"
+                  name="email"
+                  type="email"
+                  disabled="disabled"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+              <label>NIF</label>
                 <TextField
                 fullWidth
                 variant="standard"
@@ -187,15 +194,19 @@ window.onload = obterDados()
                 inputProps={{ maxLength: 9}}
                 />
               </Grid>
+
               <Grid item xs={12} sm={6}>
+              <label>Password</label>
                 <TextField
                   fullWidth
                   variant="standard"
-                  id="morada"
-                  name="morada"
-                  autoComplete="family-name"
+                  name="password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
                 />
               </Grid>
+              
             </Grid>
             {/* <button onClick={handleCreate}>
                   Click me

@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { HiPlusSm } from "react-icons/hi";
 import "./style-transporte.css"
 
-
 const Transportes = ({ infoTransportes, addToCart }) => {
   const [count, setCount] = useState(0)
   const increment = () => {
