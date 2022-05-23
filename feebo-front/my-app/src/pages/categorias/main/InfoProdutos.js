@@ -7,7 +7,6 @@ const InfoProdutos = {
       preco: "12.99€",
       poluicao: "0.7kg de CO2",
       tipo:"Casual",
-
     },
     {
       id: 2,
@@ -44,8 +43,7 @@ const InfoProdutos = {
       poluicao: "1.5kg de CO2",
       tipo:"Formal",
 
-    },
-
+    }
   ],
 }
 export default InfoProdutos

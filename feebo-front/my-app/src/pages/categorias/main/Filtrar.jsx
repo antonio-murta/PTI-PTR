@@ -2,7 +2,7 @@ import React from "react"
 import { RiTruckFill } from "react-icons/ri";
 import "./pizza.css"
 
-const Notifications = () => {
+const Filtro = () => {
   const data = [
     {
       cateName: "Preço inferior a 20€",
@@ -23,6 +23,8 @@ const Notifications = () => {
       cateName: "Calçado",
     },
   ]
+
+  
   return (
     <>
       <div className='notifications'>
@@ -38,6 +40,9 @@ const Notifications = () => {
             </div>
           )
         })}
+        <div className='box see-more'>
+          <button>Comparar</button>
+        </div>
         </div>
         </div>
       </div>
@@ -45,4 +50,4 @@ const Notifications = () => {
   )
 }
 
-export default Notifications
+export default Filtro
