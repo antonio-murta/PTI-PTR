@@ -7,18 +7,19 @@ import Data from "./components/Data";
 import Cart from "./common/Cart/Cart";
 import Footer from "./common/footer/Footer";
 import Sdata from "./components/shops/Sdata";
+import InfoArmazens from "./pages/fornecedor/mainpage/InfoArmazens";
 import InfoTransportes from "./pages/transportador/main/InfoTransportes";
+import InfoProdutos from "./pages/categorias/main/InfoProdutos";
 import SignIn from "./pages/login";
 import Registar from "./pages/registar";
 import Transportador from "./pages/transportador/transportador";
+import Categorias from "./pages/categorias/categorias";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Fornecedor from "./pages/fornecedor/fornecedor";
 import PerfilClient from "./perfilclient";
-import Produtos from "./pages/produtos/Produtos";
 import AddTransportador from "./addTransportes";
 import AddArmazem from "./addArmazem";
-import InfoArmazens from "./pages/fornecedor/mainpage/InfoArmazens";
-import InfoProdutos from "./pages/produtos/main/InfoProdutos";
+import Produtos from "./pages/produtos/Produtos";
 import Produto from "./pages/produtos/main/Produto";
 
 function App() {
@@ -114,6 +115,16 @@ function App() {
                   CartItem={CartItem}
                   addToCart={addToCart}
                   decreaseQty={decreaseQty}
+                />
+              }
+            />
+            <Route
+              path="/categoria"
+              element={
+                <Categorias
+                  productItems={productItems}
+                  addToCart={addToCart}
+                  infoProdutos={infoProdutos}
                 />
               }
             />

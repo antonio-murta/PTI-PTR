@@ -6,20 +6,36 @@ const EncomendaSchema = new monggose.Schema({
         type: String,
         required: true,
     },
-    data_inicio: {
-        type: Date,
-        required: true,
-    },
-    produtos: {
-        type: [],
-        required: true,
-    },
-    transporte: {
+    fornecedor: {
         type: String,
         required: true,
     },
-    pagamento: {
+    veiculo: {
+        type: String,
+        required: true,
+    },
+    transportador: {
+        type: String,
+        required: true,
+    },
+    produtos: {               // [id produto, qnd]
         type: [],
+        required: true,
+    },
+    recursos: {               // [id dos recursos utilizados, qnd de recursos]
+        type: [],
+        required: true,
+    },
+    poluicao: {
+        type: Number,
+        required: true,
+    },
+    pagamento: {              // tipo de pagamento, dados necessarios para cada tipo de pagamento
+        type: [],
+        required: true,
+    },
+    data_inicio: {
+        type: Date,
         required: true,
     }
 });

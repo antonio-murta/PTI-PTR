@@ -80,7 +80,7 @@ export default function SignUp() {
                 <TextField
                   fullWidth
                   id="date"
-                  //label="Data de Nascimento" //ver depois
+                  label=" " //ver depois
                   name="date"
                   type="date"
                   autoComplete="family-name"

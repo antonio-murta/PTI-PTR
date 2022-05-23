@@ -1,5 +1,6 @@
 const monggose = require('mongoose');
 
+
 const ArmazemSchema = new monggose.Schema({
     nome: {
         type: String,
@@ -13,16 +14,13 @@ const ArmazemSchema = new monggose.Schema({
         type: Number,
         required: true,
     },
-    produtos: {
+    produtos: {                   // [id produto, qnd, fornecedor do produto]
         type: [],
         required: true,
     }
 });
 
-//fornecedorCollection.update_one(
-//    {"_id": emailFornecedor},
-//    {"$push": {"armazens": idArmazem} }
-//)
+
 
 const armazem = monggose.model("armazen", ArmazemSchema);
 module.exports = armazem;

@@ -17,6 +17,52 @@ const criarArmazem = (req, res) => {
     });
 }
 
+
+
+
+
+
+
+
+
+
+const get_all = (req, res) => {
+    ArmazemModel.find({})
+    .then(result => {
+        if (result.length == 0) {
+            res.status(404).send("Nao existem armazens registados");
+        } else {
+            res.status(200).send(result);
+        }
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    })
+}
+
+
+const getById = (req, res) => {
+    const id = req.params.id;
+
+    ArmazemModel.findOne({_id: id})
+    .then(result => {
+        if (result.length == 0) {
+            res.status(404).send("Armazem nao encontrado");
+        } else {
+            res.status(200).send(result);
+        }
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    });
+}
+
+
+
+
+
+
+
 const getByNome = (req, res) => {
     const nome = req.body.nome;
 
@@ -32,6 +78,8 @@ const getByNome = (req, res) => {
         res.status(400).send(err);
     });
 }
+
+
 
 const getByMorada = (req, res) => {
     const morada = req.body.morada;
@@ -49,6 +97,10 @@ const getByMorada = (req, res) => {
     });
 }
 
+
+
+
+
 const getByTelemovel = (req, res) => {
     const telemovel = req.body.telemovel;
 
@@ -64,6 +116,7 @@ const getByTelemovel = (req, res) => {
         res.status(400).send(err);
     });
 }
+
 
 const deleteById = (req, res) => {
     const id = req.params.id;
@@ -97,4 +150,5 @@ const deleteByNome = (req, res) => {
     });
 }
 
-module.exports = {criarArmazem, getByMorada, getByNome, getByTelemovel, deleteByNome, deleteById};
+
+module.exports = {criarArmazem, getByMorada, getByNome, getByTelemovel, deleteByNome, deleteById, get_all, getById};

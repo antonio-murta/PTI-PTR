@@ -70,6 +70,7 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
                   id="tipo"
                   label="Tipo de Produtos"
                   name="tipo"
@@ -81,6 +82,7 @@ export default function SignUp() {
                 <TextField
                   required
                   fullWidth
+                  variant="standard"
                   id="morada"
                   label="Morada"
                   name="morada"
@@ -91,6 +93,7 @@ export default function SignUp() {
               <TextField
                   required
                   fullWidth
+                  variant="standard"
                   id="nForn"
                   label="Número de Fornecedor"
                   name="nForn"
@@ -101,6 +104,7 @@ export default function SignUp() {
                 <TextField
                 required
                 fullWidth
+                variant="standard"
                 id="idArm"
                 label="Número de Armazém"
                 name="idArm"
@@ -116,7 +120,7 @@ export default function SignUp() {
             <Button className="button"
               type="submit"
               variant="contained"
-              sx={{ mt: 5}}
+              sx={{ mt: 5, ml:13}}
             >
               {'Adicionar Armazém'}
             </Button>
