@@ -68,7 +68,6 @@ export default function SignUp() {
 
 
 
-
   return (
     // <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -81,13 +80,7 @@ export default function SignUp() {
             alignItems: 'center'
           }}
         >
-          <h1  className="h1">Transporte</h1>
-          {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar> */}
-          {/* <Typography component="h1" variant="h5">
-            Futuro Logo
-          </Typography> */}
+          <h1  className="h1">Veículo</h1>
           
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:4}}> {/* numero de "blocos"*/}
@@ -139,29 +132,17 @@ export default function SignUp() {
                 />
               </Grid>
             </Grid>
+            <Button className="buttonT"
+                type="submit"
+                variant="contained"
+                sx={{ mt: 3, ml:14}}
+                >
+                {'Adicionar Veículo'}
+            </Button>
             {/* <button onClick={handleCreate}>
                   Click me
             </button> */}
-            <Grid>
-            <Button className="button"
-              type="submit"
-              variant="contained"
-              sx={{ mt: 5}}
-            >
-              {'Adicionar Transporte'}
-            </Button>
-            {/* <ThemeProvider theme={theme}>
-              <Button className="button2"
-              type="submit"
-              variant="contained"
-              sx={{ mt: 5, ml:2}}
-              color="primary"
-              >
-              {'Eliminar Conta'} */}
-                {/* tentar descobrir como meter o botão vermelho */}
-              {/* </Button>
-            </ThemeProvider> */}
-            </Grid>
+            
             {/* <Grid container >
               <Grid item xs>
                 <Link href="#" variant="body2">
