@@ -1,7 +1,7 @@
 /*------header-----------*/
 .head {
   background-color: #0f3460;
-  padding: 10px 0;
+  padding: 5px 0;
   color: #fff;
 }
 .head i {
@@ -14,7 +14,7 @@
 
 /*------search-----------*/
 .search {
-  padding: 20px 0;
+  padding: 20px;
 }
 .search .logo img {
   left: 150px;
@@ -26,8 +26,8 @@
 }
 .search-box {
   width: 80%;
+  height: 60px;
   border: 2px solid rgba(0, 0, 0, 0.1);
-  /*padding: 10px;*/
   border-radius: 50px;
 }
 .search-box i {
@@ -41,6 +41,7 @@
 .search-box input {
   width: 100%;
   padding: 10px;
+  display: flex;
 }
 ::placeholder {
   font-size: 15px;
@@ -50,6 +51,9 @@
   opacity: 0.5;
   border-left: 2px solid rgba(0, 0, 0, 0.1);
   padding: 10px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
 }
 .cart {
   position: relative;
@@ -69,7 +73,6 @@
 .search .f_flex {
   justify-content: end;
 }
-
 
 /*------search-----------*/
 .categories {
@@ -132,7 +135,8 @@ header ul li a:hover {
     position: absolute;
     display: block;
     list-style: none;
-    box-shadow: rgba(50, 50, 93, 0.23) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    box-shadow: rgba(50, 50, 93, 0.23) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     left: 0;
     top: 0;
     transition: all 0.5s ease-in-out;

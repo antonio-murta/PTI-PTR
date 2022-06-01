@@ -1,23 +1,23 @@
 import React from "react";
+import "./style-armazens.css";
 import { RiTruckFill } from "react-icons/ri";
-import "./style-transporte.css";
 
 const Notifications = () => {
   const data = [
     {
-      notif: "Transporte 1 saiu do Armazém X",
+      notif: "Armazém X - novos produtos a caminho",
       icon: <RiTruckFill />,
       time: "5m",
     },
     {
-      notif: "Transporte 2 chegou ao Armazém Y",
-      icon: <RiTruckFill />,
-      time: "24m",
-    },
-    {
-      notif: "Transporte 3 chegou ao Armazém Z",
+      notif: "Armazém Y - transporte de batatas começou",
       icon: <RiTruckFill />,
       time: "2h",
+    },
+    {
+      notif: "Encomenda NR58Z - encomenda não aceite",
+      icon: <RiTruckFill />,
+      time: "4d",
     },
   ];
   return (
