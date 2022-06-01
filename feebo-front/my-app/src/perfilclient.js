@@ -46,9 +46,12 @@ const handleSubmit = (event) => {
       {
         method: "PUT",
         body: JSON.stringify({
-          nome: data.get("name"),
-          morada: data.get("morada"),
-          telemovel: data.get("telefone"),
+
+          nome: data.get('name'),
+          morada: data.get('morada'),
+          telemovel: data.get('telefone'),
+          passwordEscrita: data.get('password')
+
         }),
         headers: {
           "Content-Type": "application/json",

@@ -1,5 +1,5 @@
 const InfoProdutos = {
-  infoProdutos: [
+  InfoProdutos: [
     {
       id: 1,
       name: "Produto A",
