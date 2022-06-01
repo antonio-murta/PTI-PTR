@@ -1,0 +1,29 @@
+.caixa {
+  text-align: left;
+  background: #fff;
+  padding: 20px;
+  position: relative;
+  border-radius: 8px;
+  box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
+  margin: auto;
+  height: 150px;
+  width: 100%;
+}
+
+.cont {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.type {
+  font-size: small;
+  color: #999999;
+  padding-bottom: 7px;
+}
+
+.price {
+  font-size: larger;
+  font-weight: 900;
+  color: #e94560;
+}
