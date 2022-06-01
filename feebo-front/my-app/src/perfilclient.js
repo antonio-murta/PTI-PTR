@@ -30,17 +30,19 @@ function Copyright(props) {
 // const theme = createTheme();
 
 export default function SignUp() {
-  const handleSubmit = (event) => {
-    console.log("qqqq");
-    event.preventDefault();
 
-    // et result = bcrypt.compare(password, texto.password).valueOf();
+const handleSubmit = (event) => {
 
-    const data = new FormData(event.currentTarget);
-    console.log(data.get("name"));
+  console.log("qqqq")
+  event.preventDefault();
 
-    fetch(
-      "http://localhost:3001/utilizador/" + localStorage.getItem("LoggedIn"),
+  // et result = bcrypt.compare(password, texto.password).valueOf();
+
+  const data = new FormData(event.currentTarget);
+  console.log( data.get('name'))
+
+  
+  fetch('http://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn"),
       {
         method: "PUT",
         body: JSON.stringify({
@@ -92,6 +94,7 @@ export default function SignUp() {
       .catch((err) => console.log(err.message));
   }
   window.onload = obterDados();
+
 
   return (
     // <ThemeProvider theme={theme}>
@@ -155,6 +158,7 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
+
               <label>Data de nascimento</label>
               <TextField
                 fullWidth

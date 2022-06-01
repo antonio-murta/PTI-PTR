@@ -1,5 +1,5 @@
 import React from "react"
-import Notifications from "./Filtrar"
+import Filtro from "./Filtrar"
 import Produtos from "./Produtos"
 import { AiOutlinePlus } from "react-icons/ai";
 import "./pizza.css"
@@ -9,7 +9,7 @@ const MainProdutos = ({ addToCart, infoProdutos }) => {
     <>
       <section className='shop background'>
         <div className='container d_flex'>
-          <Notifications />
+          <Filtro />
           <div className='contentWidth'>
             <div className='heading d_flex'>
               <div className='heading-left row  f_flex'>
