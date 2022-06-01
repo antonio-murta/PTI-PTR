@@ -37,9 +37,6 @@ const Navbar = () => {
                 <Link to="/fornecedor">Fornecedor</Link>
               </li>
               <li>
-                <Link to="/addArmazem">Adicionar Armazem</Link>
-              </li>
-              <li>
                 <Link to="/produtos">Produtos</Link>
               </li>
             </ul>
