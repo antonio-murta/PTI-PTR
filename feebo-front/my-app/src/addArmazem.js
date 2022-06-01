@@ -123,7 +123,7 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 5}}
             >
-              {'Continuar sem adicionar Produtos'}
+              {'Continuar sem Produtos'}
             </Button>
             {/* <ThemeProvider theme={theme}>
               <Button className="button2"
@@ -137,13 +137,6 @@ export default function SignUp() {
               {/* </Button>
             </ThemeProvider> */}
             </Grid>
-            {/* <Grid container >
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Já tem uma conta? Faça Login
-                </Link>
-              </Grid>
-            </Grid> */}
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />
