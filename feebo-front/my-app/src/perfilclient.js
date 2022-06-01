@@ -11,38 +11,24 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { red } from "@mui/material/colors";
 import ChangePwdModal from "./ChangePwdModal";
+import DeleteAccountModal from "./DeleteAccountModal";
 
 const theme = createTheme({ palette: { primary: red } });
-
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {new Date().getFullYear()}
-    </Typography>
-  );
-}
 
 // const theme = createTheme();
 
 export default function SignUp() {
+  const handleSubmit = (event) => {
+    console.log("qqqq");
+    event.preventDefault();
 
-const handleSubmit = (event) => {
+    // et result = bcrypt.compare(password, texto.password).valueOf();
 
-  console.log("qqqq")
-  event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log(data.get("name"));
 
-  // et result = bcrypt.compare(password, texto.password).valueOf();
-
-  const data = new FormData(event.currentTarget);
-  console.log( data.get('name'))
-
-  
-  fetch('http://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn"),
+    fetch(
+      "http://localhost:3001/utilizador/" + localStorage.getItem("LoggedIn"),
       {
         method: "PUT",
         body: JSON.stringify({
@@ -95,7 +81,6 @@ const handleSubmit = (event) => {
   }
   window.onload = obterDados();
 
-
   return (
     // <ThemeProvider theme={theme}>
 
@@ -111,20 +96,16 @@ const handleSubmit = (event) => {
         }}
       >
         <h1 className="h1"> Editar Perfil</h1>
-        {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar> */}
-        {/* <Typography component="h1" variant="h5">
-            Futuro Logo
-          </Typography> */}
 
-        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+        <Box
+          className="gridBox"
+          component="form"
+          noValidate
+          onSubmit={handleSubmit}
+          sx={{ mt: 3 }}
+        >
           <Grid container spacing={{ xs: 4, md: 4 }}>
-            {" "}
-            {/* numero de "blocos"*/}
             <Grid item xs={12} sm={6}>
-              {" "}
-              {/* 6 = comprimento*/}
               <label>Nome completo</label>
               <TextField
                 fullWidth
@@ -136,7 +117,7 @@ const handleSubmit = (event) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <label>Telemovel</label>
+              <label>Telemóvel</label>
               <TextField
                 fullWidth
                 variant="standard"
@@ -158,7 +139,6 @@ const handleSubmit = (event) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-
               <label>Data de nascimento</label>
               <TextField
                 fullWidth
@@ -206,40 +186,27 @@ const handleSubmit = (event) => {
                 autoComplete="new-password"
               />
             </Grid>
-          </Grid>
-          <Grid>
-            <ChangePwdModal />
-            <Button
-              className="button2"
-              type="submit"
-              variant="contained"
-              sx={{ mt: 5, ml: 2 }}
-            >
-              {"Confirmar alterações"}
-            </Button>
-            <ThemeProvider theme={theme}>
+            <Grid item xs={12} sm={6} className="confirmarAlteracoes">
               <Button
-                className="button3"
+                style={{
+                  backgroundColor: "#1c5fb0",
+                }}
+                className="button2"
                 type="submit"
                 variant="contained"
-                sx={{ mt: 3 }}
-                color="primary"
               >
-                {"Eliminar Conta"}
-                {/* tentar descobrir como meter o botão vermelho */}
+                {"Confirmar alterações"}
               </Button>
-            </ThemeProvider>
+            </Grid>
+            <Grid item sm={6} className="botoes">
+              <ChangePwdModal />
+            </Grid>
+            <Grid item sm={6} className="botoes">
+              <DeleteAccountModal />
+            </Grid>
           </Grid>
-          {/* <Grid container >
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Já tem uma conta? Faça Login
-                </Link>
-              </Grid>
-            </Grid> */}
         </Box>
       </Box>
-      <Copyright sx={{ mt: 5 }} />
     </Container>
     /* </ThemeProvider> */
   );

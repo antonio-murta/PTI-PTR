@@ -3,7 +3,7 @@
 }
 
 .h1 {
-  color: #ff014f;
+  color: #e94560;
 }
 
 .box-perfil {
@@ -21,7 +21,13 @@
 }
 
 .button2 {
-  width: 40%;
+  width: 80%;
+}
+
+.confirmarAlteracoes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button3 {
@@ -33,13 +39,35 @@
 }
 
 .confirm {
-  align-items: center;
+  width: 75%;
+  display: flex !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  margin: auto !important;
 }
 
-.currentPwd {
-  margin-bottom: 40px;
+.pwd {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column !important;
+  padding: 0 30px;
 }
 
 .newPwd {
   margin: 20px 0px;
+}
+
+.botoes {
+  display: flex;
+  justify-content: space-around;
+}
+
+.gridBox {
+  margin-bottom: 40px;
+}
+
+.botaoDelete {
+  margin-bottom: 10px;
+  margin-top: 20px;
 }

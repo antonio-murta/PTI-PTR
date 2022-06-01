@@ -19,7 +19,7 @@ const style = {
   p: 4,
 };
 
-export default function ChangePwdModal() {
+export default function DeleteAccountModal() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -28,7 +28,7 @@ export default function ChangePwdModal() {
     <div>
       <Button
         style={{
-          backgroundColor: "#1c5fb0",
+          backgroundColor: "#f12735",
         }}
         onClick={handleOpen}
         className="button"
@@ -36,7 +36,7 @@ export default function ChangePwdModal() {
         variant="contained"
         sx={{ mt: 5 }}
       >
-        {"Alterar Password"}
+        {"Eliminar conta"}
       </Button>
       <Modal
         open={open}
@@ -46,12 +46,13 @@ export default function ChangePwdModal() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Alterar password
+            Deseja eliminar a sua conta permanentemente? Se sim, confirme a sua
+            password:
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <div className="currentPwd">
               <Grid className="pwd" item xs={12} sm={12}>
-                <label>Password atual:</label>
+                <label>Password</label>
                 <TextField
                   fullWidth
                   variant="standard"
@@ -62,33 +63,20 @@ export default function ChangePwdModal() {
                 />
               </Grid>
             </div>
-            <div className="newPwd">
-              <Grid className="pwd" item xs={12} sm={12}>
-                <label>Nova password:</label>
-                <TextField
-                  fullWidth
-                  variant="standard"
-                  name="password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid>
-            </div>
-            <div className="newPwd">
-              <Grid className="pwd" item xs={12} sm={12}>
-                <label>Confirmar nova password:</label>
-                <TextField
-                  fullWidth
-                  variant="standard"
-                  name="password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid>
-            </div>
-            <Grid>
+            <Grid className="botaoDelete">
+              <Button
+                style={{
+                  backgroundColor: "#f12735",
+                }}
+                className="confirm"
+                type="submit"
+                variant="contained"
+                sx={{ mt: 5, ml: 2 }}
+              >
+                {"Eliminar"}
+              </Button>
+            </Grid>
+            <Grid className="botaoDelete">
               <Button
                 style={{
                   backgroundColor: "#1c5fb0",
@@ -96,8 +84,9 @@ export default function ChangePwdModal() {
                 className="confirm"
                 type="submit"
                 variant="contained"
+                sx={{ mt: 5, ml: 2 }}
               >
-                {"Confirmar"}
+                {"Cancelar"}
               </Button>
             </Grid>
           </Typography>
