@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './pizza.css';
 import infoProdutos from './InfoProdutos';
 import Produto from '../../produtos/main/Produto';
 
