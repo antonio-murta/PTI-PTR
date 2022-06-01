@@ -24,6 +24,40 @@ export default function ChangePwdModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    fetch('http://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn") + "/password",
+      {
+        method: "PUT",
+        body: JSON.stringify({
+
+          passwordAtual: data.get('passwordAtual'),
+          passwordNova: data.get('passwordNova'),
+          passwordConf: data.get('passwordConf')
+
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          'Accept': 'application/json'
+        },
+      }
+    )
+    .then(function (response) {
+      return response.json();
+    })
+    // .then(res => res.json) 
+      .then(function (myJson) {
+        console.log(myJson);
+      });
+      document.getElementById("passwordAtual").value = "";
+      document.getElementById("passwordNova").value = "";
+      document.getElementById("passwordConf").value = "";
+  };
+
   return (
     <div>
       <Button
@@ -40,8 +74,10 @@ export default function ChangePwdModal() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
+        >
+
+
+        <Box component="form" noValidate onSubmit={handleSubmit} sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Alterar password
           </Typography>
@@ -52,10 +88,11 @@ export default function ChangePwdModal() {
                 <TextField
                   fullWidth
                   variant="standard"
-                  name="password"
+                  name="passwordAtual"
                   type="password"
-                  id="password"
+                  id="passwordAtual"
                   autoComplete="new-password"
+                  
                 />
               </Grid>
             </div>
@@ -65,9 +102,9 @@ export default function ChangePwdModal() {
                 <TextField
                   fullWidth
                   variant="standard"
-                  name="password"
+                  name="passwordNova"
                   type="password"
-                  id="password"
+                  id="passwordNova"
                   autoComplete="new-password"
                 />
               </Grid>
@@ -78,9 +115,9 @@ export default function ChangePwdModal() {
                 <TextField
                   fullWidth
                   variant="standard"
-                  name="password"
+                  name="passwordConf"
                   type="password"
-                  id="password"
+                  id="passwordConf"
                   autoComplete="new-password"
                 />
               </Grid>
