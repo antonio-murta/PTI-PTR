@@ -75,21 +75,40 @@ const login = (req, res) => {
 
 const editarConta = (req, res) => {
     const email = req.params.id;
-    UtilizadorModel.updateOne(
-        { _id: email },
-        {
-            nome: req.body.nome,
-            morada: req.body.morada,
-            telemovel: req.body.telemovel
-        }
-    )
-    .then(result => {
-        res.status(200).send(result);
-    })
-    .catch(err => {
-        res.status(400).send(err);
+    let password = req.body.passwordEscrita;
+
+    let utilizador = UtilizadorModel.findById(email, function(err, result){
+        console.log(result["password"]);
+        let match =  bcrypt.compare(password, result["password"]);
+        match.then(function(result) {
+            console.log(result);
+            if (result) {
+                UtilizadorModel.updateOne(
+                    { _id: email },
+                    {
+                        nome: req.body.nome,
+                        morada: req.body.morada,
+                        telemovel: req.body.telemovel
+                    }
+                    )
+                    .then(result => {
+                        res.status(200).send(result);
+                    })
+                    .catch(err => {
+                        res.status(400).send(err);
+                    });
+            }
+            else {
+                res.status(400).send("Password incorreta");
+            }
+        })
     });
 }
+
+
+
+
+
 
 const alterarPassword = (req, res) => {
     const email = req.params.id;
