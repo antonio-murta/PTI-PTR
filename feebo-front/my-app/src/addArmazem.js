@@ -57,12 +57,6 @@ export default function SignUp() {
           }}
         >
           <h1  className="h1">Armazém</h1>
-          {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar> */}
-          {/* <Typography component="h1" variant="h5">
-            Futuro Logo
-          </Typography> */}
           
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:4}}> {/* numero de "blocos"*/}
@@ -71,9 +65,9 @@ export default function SignUp() {
                   required
                   fullWidth
                   variant="standard"
-                  id="tipo"
-                  label="Tipo de Produtos"
-                  name="tipo"
+                  id="nome"
+                  label="Nome"
+                  name="nome"
                   autoComplete="given-name"
                   autoFocus
                 />
@@ -94,20 +88,20 @@ export default function SignUp() {
                   required
                   fullWidth
                   variant="standard"
-                  id="nForn"
-                  label="Número de Fornecedor"
-                  name="nForn"
+                  id="tel"
+                  label="Telemóvel"
+                  name="tel"
                   autoComplete="family-name"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                required
+                // required
                 fullWidth
                 variant="standard"
-                id="idArm"
-                label="Número de Armazém"
-                name="idArm"
+                id="addProd"
+                label="Adicionar Produtos"
+                name="addProd"
                 type="text"
                 autoComplete="family-name"
                 />
@@ -123,6 +117,13 @@ export default function SignUp() {
               sx={{ mt: 5, ml:13}}
             >
               {'Adicionar Armazém'}
+            </Button>
+            <Button className="button"
+              type="submit"
+              variant="contained"
+              sx={{ mt: 5, ml:13}}
+            >
+              {'Continuar sem adicionar Produtos'}
             </Button>
             {/* <ThemeProvider theme={theme}>
               <Button className="button2"
