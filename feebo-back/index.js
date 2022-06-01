@@ -11,6 +11,7 @@ const UtilizadorModel = require("./models/Colecoes/Utilizador");
 const FornecedorController = require("./models/Funcoes/F_Fornecedor")
 const ProdutoController = require("./models/Funcoes/F_Produto")
 const ArmazemController = require("./models/Funcoes/F_Armazem")
+const ConsumidorController = require("./models/Funcoes/F_Consumidor")
 app.use(express.json());
 app.use(cors());
 
@@ -58,8 +59,8 @@ app.delete("/armazem/:id", ArmazemController.deleteById)
 
 
 
-
-
+app.get("/consumidor", ConsumidorController.get_all)
+app.get("/consumidor/:id", ConsumidorController.encomendarCesto);
 
 
 

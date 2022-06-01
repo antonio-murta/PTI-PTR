@@ -23,7 +23,7 @@ function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {/* {'Copyright © '} */}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit">
         PTI/PTR
       </Link>{' '}
       {new Date().getFullYear()}
@@ -57,12 +57,6 @@ export default function SignUp() {
           }}
         >
           <h1  className="h1"> Editar Perfil - Fornecedor</h1>
-          {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar> */}
-          {/* <Typography component="h1" variant="h5">
-            Futuro Logo
-          </Typography> */}
           
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:4}}> {/* numero de "blocos"*/}
@@ -170,7 +164,6 @@ export default function SignUp() {
               color="primary"
               >
               {'Eliminar Conta'}
-                {/* tentar descobrir como meter o botão vermelho */}
               </Button>
             </ThemeProvider>
             <Button className="button2"
@@ -179,7 +172,6 @@ export default function SignUp() {
               sx={{ mt: 3}}
             >
               {'Ver armazéns'}
-                {/* tentar descobrir como meter o botão vermelho */}
             </Button>
             </Grid>
           </Box>

@@ -213,6 +213,7 @@ function App() {
                 />
               }
             />
+            {/* <Route path='/categoria'  element={<Categorias productItems={productItems} addToCart={addToCart} infoProdutos={infoProdutos} /> }/>  */}
           </Routes>
           <Footer />
         </Router>
