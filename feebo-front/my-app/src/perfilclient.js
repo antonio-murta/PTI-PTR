@@ -32,16 +32,14 @@ function Copyright(props) {
 
 export default function SignUp() {
   const handleSubmit = (event) => {
-    console.log("qqqq");
     event.preventDefault();
 
-    // et result = bcrypt.compare(password, texto.password).valueOf();
 
     const data = new FormData(event.currentTarget);
-    console.log(data.get("name"));
 
     fetch(
       "http://localhost:3001/utilizador/" + localStorage.getItem("LoggedIn"),
+
       {
         method: "PUT",
         body: JSON.stringify({
@@ -52,9 +50,11 @@ export default function SignUp() {
         }),
         headers: {
           "Content-Type": "application/json",
+          'Accept': 'application/json'
         },
       }
     )
+      // .then(res => res.json) 
       .then(function (response) {
         return response.json();
       })
@@ -62,7 +62,7 @@ export default function SignUp() {
         console.log(myJson);
       });
 
-    // window.location.href = "./login";
+      document.getElementById("password").value = "";
   };
 
   function obterDados(parent, el) {
@@ -177,6 +177,29 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
+              <label>Password</label>
+              <TextField
+                fullWidth
+                variant="standard"
+                name="password"
+                type="password"
+                id="password"
+                autoComplete="new-password"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <label>Telemóvel</label>
+              <TextField
+                fullWidth
+                variant="standard"
+                id="telefone"
+                name="telefone"
+                type="text"
+                autoComplete="telefone"
+                inputProps={{ maxLength: 9 }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
               <label>NIF</label>
               <TextField
                 fullWidth
@@ -190,14 +213,22 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <label>Password</label>
+              
+            </Grid>
+
+          </Grid>
+          <Grid >
+            <Grid item xs={2} sm={4} md={4} >
+                
+              </Grid>
+              <Grid item xs={12} sm={6}>
+              <label>Password para confirmação</label>
               <TextField
                 fullWidth
                 variant="standard"
-                name="password"
-                type="password"
-                id="password"
-                autoComplete="new-password"
+                id="morada"
+                name="morada"
+                autoComplete="family-name"
               />
             </Grid>
             <Grid item xs={12} sm={6} className="confirmarAlteracoes">
@@ -220,7 +251,21 @@ export default function SignUp() {
             </Grid>
           </Grid>
         </Box>
+
+        <ChangePwdModal />
+        <ThemeProvider theme={theme}>
+          <Button
+            className="button3"
+            type="submit"
+            variant="contained"
+            sx={{ mt: 3 }}
+            color="primary"
+          >
+            {"Eliminar Conta"}
+          </Button>
+        </ThemeProvider>
       </Box>
+      <Copyright sx={{ mt: 5 }} />
     </Container>
     /* </ThemeProvider> */
   );
