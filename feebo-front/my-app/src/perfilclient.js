@@ -11,6 +11,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { red } from "@mui/material/colors";
 import ChangePwdModal from "./ChangePwdModal";
+import DeleteAccountModal from "./DeleteAccountModal";
 
 const theme = createTheme({ palette: { primary: red } });
 
@@ -22,7 +23,7 @@ function Copyright(props) {
       align="center"
       {...props}
     >
-      {new Date().getFullYear()}
+      <Link color="inherit">PTI/PTR</Link> {new Date().getFullYear()}
     </Typography>
   );
 }
@@ -30,25 +31,22 @@ function Copyright(props) {
 // const theme = createTheme();
 
 export default function SignUp() {
-
   const handleSubmit = (event) => {
-
     event.preventDefault();
 
 
     const data = new FormData(event.currentTarget);
 
+    fetch(
+      "http://localhost:3001/utilizador/" + localStorage.getItem("LoggedIn"),
 
-    fetch('http://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn"),
       {
         method: "PUT",
         body: JSON.stringify({
-
-          nome: data.get('name'),
-          morada: data.get('morada'),
-          telemovel: data.get('telefone'),
-          passwordEscrita: data.get('password')
-
+          nome: data.get("name"),
+          morada: data.get("morada"),
+          telemovel: data.get("telefone"),
+          passwordEscrita: data.get("password"),
         }),
         headers: {
           "Content-Type": "application/json",
@@ -97,7 +95,6 @@ export default function SignUp() {
   }
   window.onload = obterDados();
 
-
   return (
     // <ThemeProvider theme={theme}>
 
@@ -113,20 +110,16 @@ export default function SignUp() {
         }}
       >
         <h1 className="h1"> Editar Perfil</h1>
-        {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar> */}
-        {/* <Typography component="h1" variant="h5">
-            Futuro Logo
-          </Typography> */}
 
-        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+        <Box
+          className="gridBox"
+          component="form"
+          noValidate
+          onSubmit={handleSubmit}
+          sx={{ mt: 3 }}
+        >
           <Grid container spacing={{ xs: 4, md: 4 }}>
-            {" "}
-            {/* numero de "blocos"*/}
             <Grid item xs={12} sm={6}>
-              {" "}
-              {/* 6 = comprimento*/}
               <label>Nome completo</label>
               <TextField
                 fullWidth
@@ -138,7 +131,7 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <label>Telemovel</label>
+              <label>Telemóvel</label>
               <TextField
                 fullWidth
                 variant="standard"
@@ -160,7 +153,6 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-
               <label>Data de nascimento</label>
               <TextField
                 fullWidth
@@ -216,34 +208,26 @@ export default function SignUp() {
                 id="password"
                 autoComplete="new-password"
               />
-              </Grid>
-              <Grid >
-               
-              </Grid>
+            </Grid>
+            <Grid item xs={12} sm={6} className="confirmarAlteracoes">
+              <Button
+                style={{
+                  backgroundColor: "#1c5fb0",
+                }}
+                className="button2"
+                type="submit"
+                variant="contained"
+              >
+                {"Confirmar alterações"}
+              </Button>
+            </Grid>
+            <Grid item sm={6} className="botoes">
+              <ChangePwdModal />
+            </Grid>
+            <Grid item sm={6} className="botoes">
+              <DeleteAccountModal />
+            </Grid>
           </Grid>
-          <Grid>
-
-            <Button
-              className="button2"
-              type="submit"
-              variant="contained"
-              sx={{ mt: 5, ml: 2 }}
-            >
-              {"Confirmar alterações"}
-            </Button>
-
-
-
-
-
-          </Grid>
-          {/* <Grid container >
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Já tem uma conta? Faça Login
-                </Link>
-              </Grid>
-            </Grid> */}
         </Box>
 
         <ChangePwdModal />
@@ -259,7 +243,6 @@ export default function SignUp() {
           </Button>
         </ThemeProvider>
       </Box>
-
       <Copyright sx={{ mt: 5 }} />
     </Container>
     /* </ThemeProvider> */

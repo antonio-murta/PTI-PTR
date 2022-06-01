@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Header from "./common/header/Header";
-import Pages from "./pages/Pages";
-import Data from "./components/Data";
-import Cart from "./common/Cart/Cart";
-import Footer from "./common/footer/Footer";
-import Sdata from "./components/shops/Sdata";
-import InfoArmazens from "./pages/fornecedor/mainpage/InfoArmazens";
-import InfoTransportes from "./pages/transportador/main/InfoTransportes";
-import InfoProdutos from "./pages/categorias/main/InfoProdutos";
-import SignIn from "./pages/login";
-import Registar from "./pages/registar";
-import Transportador from "./pages/transportador/transportador";
-import Categorias from "./pages/categorias/categorias";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Fornecedor from "./pages/fornecedor/fornecedor";
-import PerfilClient from "./perfilclient";
-import AddTransportador from "./addTransportes";
-import AddArmazem from "./addArmazem";
-import Produtos from "./pages/produtos/Produtos";
-import Produto from "./pages/produtos/main/Produto";
+import React, { useState } from 'react';
+import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Header from './common/header/Header';
+import Pages from './pages/Pages';
+import Data from './components/Data';
+import Cart from './common/Cart/Cart';
+import Footer from './common/footer/Footer';
+import Sdata from './components/shops/Sdata';
+import InfoArmazens from './pages/fornecedor/mainpage/InfoArmazens';
+import InfoTransportes from './pages/transportador/main/InfoTransportes';
+import InfoProdutos from './pages/categorias/main/InfoProdutos';
+import SignIn from './pages/login';
+import Registar from './pages/registar';
+import Transportador from './pages/transportador/transportador';
+import Categorias from './pages/categorias/categorias';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Fornecedor from './pages/fornecedor/fornecedor';
+import PerfilClient from './perfilclient';
+import AddTransportador from './addTransportes';
+import AddArmazem from './addArmazem';
+import Produtos from './pages/produtos/Produtos';
+import Produto from './pages/produtos/main/Produto';
 
 function App() {
   const THEME = createTheme({
@@ -39,6 +39,16 @@ function App() {
   const { infoArmazens } = InfoArmazens;
   const { infoProdutos } = InfoProdutos;
   const [CartItem, setCartItem] = useState([]);
+
+  const [artigo, setArtigo] = useState(infoProdutos);
+  const categoriaArtigo = [...new Set(infoProdutos.map((Val) => Val.tipo))];
+
+  const filterArtigo = (curcat) => {
+    const newArtigo = infoProdutos.filter((newVal) => {
+      return newVal.tipo === curcat;
+    });
+    setArtigo(newArtigo);
+  };
 
   const addToCart = (product) => {
     const productExit = CartItem.find((item) => item.id === product.id);
@@ -125,6 +135,10 @@ function App() {
                   productItems={productItems}
                   addToCart={addToCart}
                   infoProdutos={infoProdutos}
+                  artigo={artigo}
+                  categoriaArtigo={categoriaArtigo}
+                  filterArtigo={filterArtigo}
+                  setArtigo={setArtigo}
                 />
               }
             />
@@ -185,6 +199,7 @@ function App() {
                   productItems={productItems}
                   addToCart={addToCart}
                   infoProdutos={infoProdutos}
+                  artigo={artigo}
                 />
               }
             />

@@ -14,7 +14,8 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "2.5px solid #ff014f",
+  borderRadius: "5px",
   boxShadow: 24,
   p: 4,
 };
@@ -61,6 +62,9 @@ export default function ChangePwdModal() {
   return (
     <div>
       <Button
+        style={{
+          backgroundColor: "#1c5fb0",
+        }}
         onClick={handleOpen}
         className="button"
         type="submit"
@@ -74,17 +78,17 @@ export default function ChangePwdModal() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        >
-
+      >
 
         <Box component="form" noValidate onSubmit={handleSubmit} sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
+
             Alterar password
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <div className="currentPwd">
-              <Grid item xs={12} sm={6}>
-                <label>Password atual</label>
+              <Grid className="pwd" item xs={12} sm={12}>
+                <label>Password atual:</label>
                 <TextField
                   fullWidth
                   variant="standard"
@@ -97,8 +101,8 @@ export default function ChangePwdModal() {
               </Grid>
             </div>
             <div className="newPwd">
-              <Grid item xs={12} sm={6}>
-                <label>Nova password</label>
+              <Grid className="pwd" item xs={12} sm={12}>
+                <label>Nova password:</label>
                 <TextField
                   fullWidth
                   variant="standard"
@@ -110,8 +114,8 @@ export default function ChangePwdModal() {
               </Grid>
             </div>
             <div className="newPwd">
-              <Grid item xs={12} sm={6}>
-                <label>Confirmar nova password</label>
+              <Grid className="pwd" item xs={12} sm={12}>
+                <label>Confirmar nova password:</label>
                 <TextField
                   fullWidth
                   variant="standard"
@@ -122,14 +126,18 @@ export default function ChangePwdModal() {
                 />
               </Grid>
             </div>
-            <Button
-              className="confirm"
-              type="submit"
-              variant="contained"
-              sx={{ mt: 5, ml: 2 }}
-            >
-              {"Confirmar"}
-            </Button>
+            <Grid>
+              <Button
+                style={{
+                  backgroundColor: "#1c5fb0",
+                }}
+                className="confirm"
+                type="submit"
+                variant="contained"
+              >
+                {"Confirmar"}
+              </Button>
+            </Grid>
           </Typography>
         </Box>
       </Modal>

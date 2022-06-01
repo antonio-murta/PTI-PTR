@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
 import './pizza.css';
 
-const Produtos = ({ infoProdutos }) => {
-  const [count, setCount] = useState(0);
-  const increment = () => {
-    setCount(count + 1);
-  };
+const Produtos = ({ artigo }) => {
+  // const [count, setCount] = useState(0);
+  // const increment = () => {
+  //   setCount(count + 1);
+  // };
 
   return (
     <>
-      {infoProdutos.map((item, index) => {
+      {artigo.map((Val) => {
         return (
-          <div key={index} className="caixa">
+          <div className="caixa2">
             <div className="item mtop">
               <div className="fotos">
-                <img src={item.foto} alt="" />
+                <img src={Val.foto} alt="" />
               </div>
               <div className="product-details">
-                <h2>{item.name}</h2>
-                <h4>{item.preco}</h4>
-                <h3>{item.tipo}</h3>
-                <h3>Poluição média: {item.poluicao}</h3>
+                <h2>{Val.name}</h2>
+                <h4>{Val.preco}</h4>
+                <h3>{Val.tipo}</h3>
+                <h3>Poluição média: {Val.poluicao}</h3>
               </div>
             </div>
           </div>
