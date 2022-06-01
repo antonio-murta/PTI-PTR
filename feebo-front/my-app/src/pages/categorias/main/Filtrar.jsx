@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import './pizza.css';
-import infoProdutos from './InfoProdutos';
-import Produto from '../../produtos/main/Produto';
+import React, { useState } from "react";
+import "./pizza.css";
 
 const Filtro = ({
   filterArtigo,
@@ -12,10 +10,10 @@ const Filtro = ({
 }) => {
   const data = [
     {
-      cateName: 'Preço inferior a 20€',
+      cateName: "Preço inferior a 20€",
     },
     {
-      cateName: 'Poluição média inferior a 1kg',
+      cateName: "Poluição média inferior a 1kg",
     },
   ];
   const [isOpen, setIsOpen] = useState(false);
