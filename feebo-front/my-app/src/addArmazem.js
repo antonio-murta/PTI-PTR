@@ -11,10 +11,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { red} from '@mui/material/colors';
-// import FormControl from '@mui/material/FormControl';
-// import InputLabel from '@mui/material/InputLabel';
-// import MenuItem from '@mui/material/MenuItem';
-// import Select from '@mui/material/Select';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
 
 
 const theme = createTheme({ palette: { primary: red } });
@@ -48,7 +48,7 @@ export default function SignUp() {
     // <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box className="box"
+        <Box className="box-perfil"
           sx={{
             marginTop: 8,
             display: 'flex',
@@ -77,6 +77,18 @@ export default function SignUp() {
                   required
                   fullWidth
                   variant="standard"
+                  id="poluicao"
+                  label="Poluição"
+                  name="poluicao"
+                  autoComplete="given-name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  variant="standard"
                   id="morada"
                   label="Morada"
                   name="morada"
@@ -93,6 +105,24 @@ export default function SignUp() {
                   name="tel"
                   autoComplete="family-name"
                 />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+              <FormControl required fullWidth>
+                  <InputLabel id="demo-simple-select-label">Tipo de Prodruto</InputLabel>
+                    <Select
+                      variant="standard"
+                    // setSelectValue
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      // value={Tipo}
+                      label="Tipo"
+                      // onChange={handleChange}
+                    >
+                    <MenuItem  value={"CasaJardim"}>Casa e Jardim</MenuItem>
+                    <MenuItem  value={"Eletronicos"}>Eletrónicos</MenuItem>
+                    <MenuItem  value={"Roupa"}>Roupa</MenuItem>
+                    </Select>
+                </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
