@@ -76,13 +76,15 @@ const login = (req, res) => {
 const editarConta = (req, res) => {
     const email = req.params.id;
     let password = req.body.passwordEscrita;
+    console.log("editaperfil");
 
     let utilizador = UtilizadorModel.findById(email, function(err, result){
         console.log(result["password"]);
+        console.log("qq");
         let match =  bcrypt.compare(password, result["password"]);
         match.then(function(result) {
-            console.log(result);
             if (result) {
+                console.log("qq");
                 UtilizadorModel.updateOne(
                     { _id: email },
                     {
@@ -99,7 +101,7 @@ const editarConta = (req, res) => {
                     });
             }
             else {
-                res.status(400).send("Password incorreta");
+                res.status(200).send("Password incorreta");
             }
         })
     });
@@ -111,25 +113,74 @@ const editarConta = (req, res) => {
 
 
 const alterarPassword = (req, res) => {
+    console.log("altearar");
     const email = req.params.id;
-    const utilizador = UtilizadorModel.findOne({ _id: email });
-    if (bcrypt.compare(req.body.passwordAntiga, utilizador["password"])) {
-        const salt = bcrypt.genSalt(10);
-        passwordNovaEnc = bcrypt.hash(req.body.passwordNova, salt);
-        UtilizadorModel.updateOne(
-            { _id: email },
-            {
-                password: passwordNovaEnc
+    let passwordAtual = req.body.passwordAtual;
+    let passwordNova = req.body.passwordNova;
+    let passwordConf = req.body.passwordConf;
+    
+
+    let utilizador = UtilizadorModel.findById(email, function(err, result){
+        let match =  bcrypt.compare(passwordAtual, result["password"]);
+        match.then(function(result) {
+            if (result) {
+                if (passwordNova == passwordConf) {
+                    var salt = bcrypt.genSaltSync(10);
+                    let pass = bcrypt.hashSync(passwordNova, salt);
+                    UtilizadorModel.updateOne(
+                        { _id: email },
+                        {
+                            password: pass
+                        }
+                        )
+                        .then(result => {
+                            res.status(200).send(result);
+                        })
+                        .catch(err => {
+                            res.status(400).send(err);
+                        });
+                }
+                else {
+                    console.log("diferentes");
+                    res.status(400).send("Passwords nao coincidem");
+                }  
             }
-        )
-        .then(() => {
-            res.status(200).send("Password alterada com sucesso");
+            else {
+                res.status(400).send("Password não corresponde");
+            }
         })
-    }
-    else {
-        res.status(400).send("Password antiga nao corresponde com a dada");
-    }
+    });
+
+
+
+
+
+
+
+
+
+
+    // const utilizador = UtilizadorModel.findOne({ _id: email });
+    // if (bcrypt.compare(req.body.passwordAntiga, utilizador["password"])) {
+    //     const salt = bcrypt.genSalt(10);
+    //     passwordNovaEnc = bcrypt.hash(req.body.passwordNova, salt);
+    //     UtilizadorModel.updateOne(
+    //         { _id: email },
+    //         {
+    //             password: passwordNovaEnc
+    //         }
+    //     )
+    //     .then(() => {
+    //         res.status(200).send("Password alterada com sucesso");
+    //     })
+    // }
+    // else {
+    //     res.status(400).send("Password antiga nao corresponde com a dada");
+    // }
 }
+
+
+
 
 const apagarUtilizadores = (req, res) => {
     UtilizadorModel.deleteMany({})

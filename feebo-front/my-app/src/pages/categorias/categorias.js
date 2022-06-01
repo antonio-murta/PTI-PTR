@@ -1,14 +1,28 @@
-import React from "react"
-import Wrapper from "../../components/wrapper/Wrapper"
-import MainProdutos from "./main/MainProdutos"
+import React from 'react';
+import Wrapper from '../../components/wrapper/Wrapper';
+import MainProdutos from './main/MainProdutos';
 
-const Categorias = ({ productItems, addToCart, CartItem, infoProdutos }) => {
+const Categorias = ({
+  addToCart,
+  infoProdutos,
+  artigo,
+  categoriaArtigo,
+  filterArtigo,
+  setArtigo,
+}) => {
   return (
     <>
-    <MainProdutos infoProdutos={infoProdutos} addToCart={addToCart} />
-          <Wrapper />
+      <MainProdutos
+        infoProdutos={infoProdutos}
+        addToCart={addToCart}
+        artigo={artigo}
+        categoriaArtigo={categoriaArtigo}
+        filterArtigo={filterArtigo}
+        setArtigo={setArtigo}
+      />
+      <Wrapper />
     </>
-  )
-}
+  );
+};
 
-export default Categorias
+export default Categorias;

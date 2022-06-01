@@ -25,9 +25,46 @@ export default function ChangePwdModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    fetch('http://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn") + "/password",
+      {
+        method: "PUT",
+        body: JSON.stringify({
+
+          passwordAtual: data.get('passwordAtual'),
+          passwordNova: data.get('passwordNova'),
+          passwordConf: data.get('passwordConf')
+
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          'Accept': 'application/json'
+        },
+      }
+    )
+    .then(function (response) {
+      return response.json();
+    })
+    // .then(res => res.json) 
+      .then(function (myJson) {
+        console.log(myJson);
+      });
+      document.getElementById("passwordAtual").value = "";
+      document.getElementById("passwordNova").value = "";
+      document.getElementById("passwordConf").value = "";
+  };
+
   return (
     <div>
       <Button
+        style={{
+          backgroundColor: "#1c5fb0",
+        }}
         onClick={handleOpen}
         className="button"
         type="submit"
@@ -42,58 +79,65 @@ export default function ChangePwdModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2" className="h2">
+
+        <Box component="form" noValidate onSubmit={handleSubmit} sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+
             Alterar password
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <div className="currentPwd">
-              <Grid item xs={12} sm={6}>
-                <label>Password atual</label>
+              <Grid className="pwd" item xs={12} sm={12}>
+                <label>Password atual:</label>
                 <TextField
                   fullWidth
                   variant="standard"
-                  name="password"
+                  name="passwordAtual"
                   type="password"
-                  id="password"
+                  id="passwordAtual"
+                  autoComplete="new-password"
+                  
+                />
+              </Grid>
+            </div>
+            <div className="newPwd">
+              <Grid className="pwd" item xs={12} sm={12}>
+                <label>Nova password:</label>
+                <TextField
+                  fullWidth
+                  variant="standard"
+                  name="passwordNova"
+                  type="password"
+                  id="passwordNova"
                   autoComplete="new-password"
                 />
               </Grid>
             </div>
             <div className="newPwd">
-              <Grid item xs={12} sm={6}>
-                <label>Nova password</label>
+              <Grid className="pwd" item xs={12} sm={12}>
+                <label>Confirmar nova password:</label>
                 <TextField
                   fullWidth
                   variant="standard"
-                  name="password"
+                  name="passwordConf"
                   type="password"
-                  id="password"
+                  id="passwordConf"
                   autoComplete="new-password"
                 />
               </Grid>
             </div>
-            <div className="newPwd">
-              <Grid item xs={12} sm={6}>
-                <label>Confirmar nova password</label>
-                <TextField
-                  fullWidth
-                  variant="standard"
-                  name="password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid>
-            </div>
-            <Button
-              className="confirm"
-              type="submit"
-              variant="contained"
-              sx={{ mt: 5, ml: 2 }}
-            >
-              {"Confirmar"}
-            </Button>
+            <Grid>
+              <Button
+                style={{
+                  backgroundColor: "#1c5fb0",
+                }}
+                className="confirm"
+                type="submit"
+                variant="contained"
+              >
+                {"Confirmar"}
+              </Button>
+            </Grid>
           </Typography>
         </Box>
       </Modal>
