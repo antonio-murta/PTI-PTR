@@ -15,14 +15,15 @@ import DeleteAccountModal from "./DeleteAccountModal";
 
 const theme = createTheme({ palette: { primary: red } });
 
-
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      <Link color="inherit">
-        PTI/PTR
-      </Link>{' '}
-      {new Date().getFullYear()}
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      <Link color="inherit">PTI/PTR</Link> {new Date().getFullYear()}
     </Typography>
   );
 }
@@ -44,12 +45,10 @@ export default function SignUp() {
       {
         method: "PUT",
         body: JSON.stringify({
-
-          nome: data.get('name'),
-          morada: data.get('morada'),
-          telemovel: data.get('telefone'),
-          passwordEscrita: data.get('password')
-
+          nome: data.get("name"),
+          morada: data.get("morada"),
+          telemovel: data.get("telefone"),
+          passwordEscrita: data.get("password"),
         }),
         headers: {
           "Content-Type": "application/json",
