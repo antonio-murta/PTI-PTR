@@ -34,17 +34,15 @@ export default function SignUp() {
 
 
 const handleSubmit = (event) => {
+
   console.log("qqqq")
   event.preventDefault();
 
-
-  
-
   // et result = bcrypt.compare(password, texto.password).valueOf();
-
 
   const data = new FormData(event.currentTarget);
   console.log( data.get('name'))
+
   
   fetch('http://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn"),
       {
@@ -66,7 +64,9 @@ const handleSubmit = (event) => {
       console.log(myJson);
     });
 
-  // window.location.href = "./login";
+
+  window.location.href = "./login";
+
 };
 
 
@@ -97,12 +97,8 @@ function obterDados(parent, el) {
   })
     .catch(err => console.log(err.message))
   };
+
 window.onload = obterDados()
-
-
-
-
-
 
   return (
     // <ThemeProvider theme={theme}>
@@ -160,14 +156,6 @@ window.onload = obterDados()
                   autoComplete="family-name"
                 />
               </Grid>
-
-
-
-
-
-
-
-
 
               <Grid item xs={12} sm={6}>
               <label>Data de nascimento</label>
