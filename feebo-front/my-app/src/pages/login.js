@@ -13,12 +13,10 @@ import Axios from 'axios';
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright Â© '}
       <Link color="inherit">
         PTI/PTR
       </Link>{' '}
       {new Date().getFullYear()}
-      {'.'}
     </Typography>
   );
 }
@@ -29,10 +27,8 @@ export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    localStorage.setItem('loggedin',data.get('email'));
 
-    console.log(localStorage.getItem('loggedin'));
-
+    localStorage.setItem("LoggedIn",data.get('email') )
     Axios.post("http://localhost:3001/login", {
 
       email: data.get('email'),

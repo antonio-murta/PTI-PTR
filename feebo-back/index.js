@@ -57,6 +57,7 @@ app.get("/armazem/nome", ArmazemController.getByNome)
 
 // ver
 app.get("/armazem", ArmazemController.get_all)
+app.get("/armazem/:id", ArmazemController.getById)
 app.get("/armazem/morada", ArmazemController.getByMorada)
 app.get("/armazem/telemovel", ArmazemController.getByTelemovel)
 

@@ -1,8 +1,7 @@
-import React from "react"
-import Home from "../components/MainPage/Home"
-import NewArrivals from "../components/newarrivals/NewArrivals"
-import Shop from "../components/shops/Shop"
-import Wrapper from "../components/wrapper/Wrapper"
+import React from 'react';
+import Home from '../components/MainPage/Home';
+import Shop from '../components/shops/Shop';
+import Wrapper from '../components/wrapper/Wrapper';
 
 const Pages = ({ productItems, addToCart, CartItem, shopItems }) => {
   return (
@@ -11,7 +10,7 @@ const Pages = ({ productItems, addToCart, CartItem, shopItems }) => {
       <Shop shopItems={shopItems} addToCart={addToCart} />
       <Wrapper />
     </>
-  )
-}
+  );
+};
 
-export default Pages
+export default Pages;

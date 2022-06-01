@@ -1,6 +1,5 @@
 import './css/perfil.css';
 import * as React from 'react';
-// import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -11,10 +10,6 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { red} from '@mui/material/colors';
-// import FormControl from '@mui/material/FormControl';
-// import InputLabel from '@mui/material/InputLabel';
-// import MenuItem from '@mui/material/MenuItem';
-// import Select from '@mui/material/Select';
 
 
 const theme = createTheme({ palette: { primary: red } });
@@ -35,50 +30,75 @@ function Copyright(props) {
 // const theme = createTheme();
 
 export default function SignUp() {
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password'),
-  //   });
-  // };
 
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
 
-    const email = data.get('email');
+const handleSubmit = (event) => {
 
-    fetch('http://localhost:3001/utilizador/' + email,
-        {
-          method: "PUT",
-          body: JSON.stringify({
-            nome: data.get('name'),
-            morada: data.get('morada'),
-            telemovel: data.get('telefone')
-          }),
-          headers: {
-            "Content-Type": "application/json"
-          }
+  console.log("qqqq")
+  event.preventDefault();
+
+  // et result = bcrypt.compare(password, texto.password).valueOf();
+
+  const data = new FormData(event.currentTarget);
+  console.log( data.get('name'))
+
+  
+  fetch('http://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn"),
+      {
+        method: "PUT",
+        body: JSON.stringify({
+          nome: data.get('name'),
+          morada: data.get('morada'),
+          telemovel: data.get('telefone')
+        }),
+        headers: {
+          "Content-Type": "application/json"
         }
-      )
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(myJson) {
-        console.log(myJson);
-      });
+      }
+    )
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(myJson) {
+      console.log(myJson);
+    });
 
-    window.location.href = "./login";
+
+  window.location.href = "./login";
+
 };
 
 
 
 
+function obterDados(parent, el) {
+  fetch('http://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn"),{ method: 'GET' })
+    .then(response => response.text())
+    .then(texto => {
+      texto = JSON.parse(texto)
+      const nome = texto.nome
+      const email = texto._id
+      const telemovel = texto.telemovel
+      const nif = texto.nif
+      const morada = texto.morada
+      const dataNascAux = texto.dataNasc
+      const dataNasc = dataNascAux.split("T");
 
+      document.getElementById("name").value = nome
+      document.getElementById("email").value = email
+      document.getElementById("email").disabled = true;
+      document.getElementById("telefone").value = telemovel
+      document.getElementById("NIF").value = nif
+      document.getElementById("NIF").disabled = true;
+      document.getElementById("morada").value = morada
+      document.getElementById("date").value = dataNasc[0]
+      document.getElementById("date").disabled = true;
+  })
+    .catch(err => console.log(err.message))
+  };
+
+window.onload = obterDados()
 
   return (
     // <ThemeProvider theme={theme}>
@@ -104,56 +124,22 @@ export default function SignUp() {
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:4}}> {/* numero de "blocos"*/}
               <Grid item xs={12} sm={6} > {/* 6 = comprimento*/}
+                <label>Nome completo</label>
                 <TextField
                   fullWidth
                   variant="standard"
                   id="name"
-                  label="Nome Completo"
                   name="name"
                   autoComplete="given-name"
                   autoFocus
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  variant="standard"
-                  id="date"
-                  //label="Data de Nascimento" //ver depois
-                  name="date"
-                  type="date"
-                  autoComplete="family-name"
-                  disabled="disabled"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  variant="standard"
-                  id="email"
-                  label="E-mail"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  variant="standard"
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              <label>Telemovel</label>
                 <TextField
                 fullWidth
                 variant="standard"
                 id="telefone"
-                label="Telemóvel"
                 name="telefone"
                 type="text"
                 autoComplete="telefone"
@@ -161,11 +147,46 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
+              <label>Morada</label>
+                <TextField
+                  fullWidth
+                  variant="standard"
+                  id="morada"
+                  name="morada"
+                  autoComplete="family-name"
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+              <label>Data de nascimento</label>
+                <TextField
+                  fullWidth
+                  variant="standard"
+                  id="date"
+                  name="date"
+                  type="date"
+                  autoComplete="family-name"
+                  disabled="disabled"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+              <label>E-mail</label>
+                <TextField
+                  fullWidth
+                  variant="standard"
+                  id="email"
+                  name="email"
+                  type="email"
+                  disabled="disabled"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+              <label>NIF</label>
                 <TextField
                 fullWidth
                 variant="standard"
                 id="NIF"
-                label="NIF"
                 name="NIF"
                 type="text"
                 autoComplete="NIF"
@@ -173,27 +194,19 @@ export default function SignUp() {
                 inputProps={{ maxLength: 9}}
                 />
               </Grid>
+
               <Grid item xs={12} sm={6}>
+              <label>Password</label>
                 <TextField
                   fullWidth
                   variant="standard"
-                  id="morada"
-                  label="Morada"
-                  name="morada"
-                  autoComplete="family-name"
+                  name="password"
+                  type="password"
+                  id="password"
+                  autoComplete="new-password"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
-              <TextField
-                  fullWidth
-                  variant="standard"
-                  id="nCliente"
-                  label="Número de Cliente"
-                  name="nCliente"
-                  autoComplete="family-name"
-                  disabled="disabled"
-                />
-              </Grid>
+              
             </Grid>
             {/* <button onClick={handleCreate}>
                   Click me
@@ -204,13 +217,20 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 5}}
             >
-              {'Confirmar alterações'}
+              {'Alterar Password'}
             </Button>
-            <ThemeProvider theme={theme}>
-              <Button className="button2"
+            <Button className="button2"
               type="submit"
               variant="contained"
               sx={{ mt: 5, ml:2}}
+            >
+              {'Confirmar alterações'}
+            </Button>
+            <ThemeProvider theme={theme}>
+              <Button className="button3"
+              type="submit"
+              variant="contained"
+              sx={{ mt: 3}}
               color="primary"
               >
               {'Eliminar Conta'}

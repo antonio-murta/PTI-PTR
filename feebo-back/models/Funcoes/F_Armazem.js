@@ -41,6 +41,22 @@ const get_all = (req, res) => {
 }
 
 
+const getById = (req, res) => {
+    const id = req.params.id;
+
+    ArmazemModel.findOne({_id: id})
+    .then(result => {
+        if (result.length == 0) {
+            res.status(404).send("Armazem nao encontrado");
+        } else {
+            res.status(200).send(result);
+        }
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    });
+}
+
 
 
 
@@ -135,4 +151,4 @@ const deleteByNome = (req, res) => {
 }
 
 
-module.exports = {criarArmazem, getByMorada, getByNome, getByTelemovel, deleteByNome, deleteById, get_all};
+module.exports = {criarArmazem, getByMorada, getByNome, getByTelemovel, deleteByNome, deleteById, get_all, getById};
