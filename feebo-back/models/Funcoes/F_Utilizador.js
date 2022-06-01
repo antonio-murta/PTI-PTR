@@ -107,13 +107,7 @@ const editarConta = (req, res) => {
     });
 }
 
-
-
-
-
-
 const alterarPassword = (req, res) => {
-    console.log("altearar");
     const email = req.params.id;
     let passwordAtual = req.body.passwordAtual;
     let passwordNova = req.body.passwordNova;
@@ -124,26 +118,50 @@ const alterarPassword = (req, res) => {
         let match =  bcrypt.compare(passwordAtual, result["password"]);
         match.then(function(result) {
             if (result) {
-                if (passwordNova == passwordConf) {
-                    var salt = bcrypt.genSaltSync(10);
-                    let pass = bcrypt.hashSync(passwordNova, salt);
-                    UtilizadorModel.updateOne(
-                        { _id: email },
-                        {
-                            password: pass
-                        }
-                        )
-                        .then(result => {
-                            res.status(200).send(result);
-                        })
-                        .catch(err => {
-                            res.status(400).send(err);
-                        });
-                }
-                else {
-                    console.log("diferentes");
-                    res.status(400).send("Passwords nao coincidem");
-                }  
+                // if (passwordNova == passwordConf) {
+                //     var salt = bcrypt.genSaltSync(10);
+                //     let pass = bcrypt.hashSync(passwordNova, salt);
+                //     UtilizadorModel.updateOne(
+                //         { _id: email },
+                //         {
+                //             password: pass
+                //         }
+                //         )
+                //         .then(result => {
+                //             res.status(200).send(result);
+                //         })
+                //         .catch(err => {
+                //             res.status(400).send(err);
+                //         });
+                // }
+                // else {
+                //     console.log("diferentes");
+                //     res.status(400).send("Passwords nao coincidem");
+                // }  
+            }
+            else {
+                res.status(400).send("Password não corresponde");
+            }
+        })
+    });
+}
+
+
+const apagarConta = (req, res) => {
+    const email = req.params.id;
+    let password = req.body.password;
+
+    let utilizador = UtilizadorModel.findById(email, function(err, result){
+        let match =  bcrypt.compare(password, result["password"]);
+        match.then(function(result) {
+            if (result) {
+                UtilizadorModel.findByIdAndDelete(email)
+                .then(() => {
+                    res.status(200).send("Utilizador apagado com sucesso");
+                })
+                .catch(() => {
+                    res.status(404).send("Utilizador nao existe");
+                })
             }
             else {
                 res.status(400).send("Password não corresponde");
@@ -157,28 +175,8 @@ const alterarPassword = (req, res) => {
 
 
 
-
-
-
-    // const utilizador = UtilizadorModel.findOne({ _id: email });
-    // if (bcrypt.compare(req.body.passwordAntiga, utilizador["password"])) {
-    //     const salt = bcrypt.genSalt(10);
-    //     passwordNovaEnc = bcrypt.hash(req.body.passwordNova, salt);
-    //     UtilizadorModel.updateOne(
-    //         { _id: email },
-    //         {
-    //             password: passwordNovaEnc
-    //         }
-    //     )
-    //     .then(() => {
-    //         res.status(200).send("Password alterada com sucesso");
-    //     })
-    // }
-    // else {
-    //     res.status(400).send("Password antiga nao corresponde com a dada");
-    // }
+   
 }
-
 
 
 
@@ -228,4 +226,4 @@ const getByDados = (req, res) => {
 
 
 
-module.exports = { registar, editarConta, editarConta, alterarPassword, login, apagarUtilizadores, apagarUtilizadores_byID, getByDados }
+module.exports = { registar, editarConta, editarConta, alterarPassword, login, apagarUtilizadores, apagarUtilizadores_byID, getByDados, apagarConta }

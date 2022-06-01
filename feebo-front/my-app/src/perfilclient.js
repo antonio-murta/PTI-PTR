@@ -209,6 +209,7 @@ export default function SignUp() {
                 autoComplete="new-password"
               />
             </Grid>
+
             <Grid item xs={12} sm={6} className="confirmarAlteracoes">
               <Button
                 style={{
@@ -221,27 +222,11 @@ export default function SignUp() {
                 {"Confirmar alterações"}
               </Button>
             </Grid>
-            <Grid item sm={6} className="botoes">
-              <ChangePwdModal />
-            </Grid>
-            <Grid item sm={6} className="botoes">
-              <DeleteAccountModal />
-            </Grid>
           </Grid>
         </Box>
 
         <ChangePwdModal />
-        <ThemeProvider theme={theme}>
-          <Button
-            className="button3"
-            type="submit"
-            variant="contained"
-            sx={{ mt: 3 }}
-            color="primary"
-          >
-            {"Eliminar Conta"}
-          </Button>
-        </ThemeProvider>
+        <DeleteAccountModal />
       </Box>
       <Copyright sx={{ mt: 5 }} />
     </Container>
