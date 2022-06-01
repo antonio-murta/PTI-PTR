@@ -33,11 +33,10 @@ body {
 }
 .f_flex {
   display: flex;
-  
 }
 
 .noti_flex {
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -265,7 +264,7 @@ button {
   color: #e94560;
 }
 
-.settings{
+.settings {
   margin-left: auto;
   display: flex;
   justify-content: right;
