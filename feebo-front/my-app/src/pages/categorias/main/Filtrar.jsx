@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './pizza.css';
-import infoProdutos from './InfoProdutos';
-import Produto from '../../produtos/main/Produto';
+import InfoProdutos from './InfoProdutos';
 
 const Filtro = ({
   filterArtigo,
@@ -35,10 +34,11 @@ const Filtro = ({
                 <div className="cena">
                   {categoriaArtigo.map((Val, id) => {
                     return (
-                      <div className="box f_flex">
-                        <button onClick={() => filterArtigo(Val)} key={id}>
-                          {Val}
-                        </button>
+                      <div
+                        onClick={() => filterArtigo(Val)}
+                        className="box f_flex"
+                      >
+                        <button key={id}>{Val}</button>
                       </div>
                     );
                   })}
@@ -54,8 +54,11 @@ const Filtro = ({
               );
             })}
 
-            <div className="box f_flex">
-              <button onClick={() => Produtos(artigo)}>Todos</button>
+            <div
+              onClick={() => setArtigo(InfoProdutos.infoProdutos)}
+              className="box f_flex"
+            >
+              <button>Todos</button>
             </div>
             <div className="box see-more">
               <button>Comparar</button>

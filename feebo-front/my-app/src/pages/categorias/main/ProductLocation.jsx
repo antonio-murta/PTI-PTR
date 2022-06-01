@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./style-produto.css";
+import "./ProdutoIndividual.css";
 import { useLocation } from "react-router-dom";
 
-const Produto = () => {
+const ProductLocation = () => {
   let location = useLocation();
   console.log(location.state);
   return (
@@ -27,4 +27,4 @@ const Produto = () => {
   );
 };
 
-export default Produto;
+export default ProductLocation;
