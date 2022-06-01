@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import "./pizza.css";
+import React, { useState } from 'react';
+import './pizza.css';
+import InfoProdutos from './InfoProdutos';
 
 const Filtro = ({
   filterArtigo,
@@ -10,10 +11,10 @@ const Filtro = ({
 }) => {
   const data = [
     {
-      cateName: "Preço inferior a 20€",
+      cateName: 'Preço inferior a 20€',
     },
     {
-      cateName: "Poluição média inferior a 1kg",
+      cateName: 'Poluição média inferior a 1kg',
     },
   ];
   const [isOpen, setIsOpen] = useState(false);
@@ -54,7 +55,7 @@ const Filtro = ({
             })}
 
             <div
-              onClick={() => setArtigo(infoProdutos.infoProdutos)}
+              onClick={() => setArtigo(InfoProdutos.infoProdutos)}
               className="box f_flex"
             >
               <button>Todos</button>
