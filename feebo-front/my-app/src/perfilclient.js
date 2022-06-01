@@ -177,6 +177,29 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
+              <label>Password</label>
+              <TextField
+                fullWidth
+                variant="standard"
+                name="password"
+                type="password"
+                id="password"
+                autoComplete="new-password"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <label>Telemóvel</label>
+              <TextField
+                fullWidth
+                variant="standard"
+                id="telefone"
+                name="telefone"
+                type="text"
+                autoComplete="telefone"
+                inputProps={{ maxLength: 9 }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
               <label>NIF</label>
               <TextField
                 fullWidth
@@ -203,10 +226,9 @@ export default function SignUp() {
               <TextField
                 fullWidth
                 variant="standard"
-                name="password"
-                type="password"
-                id="password"
-                autoComplete="new-password"
+                id="morada"
+                name="morada"
+                autoComplete="family-name"
               />
             </Grid>
             <Grid item xs={12} sm={6} className="confirmarAlteracoes">
