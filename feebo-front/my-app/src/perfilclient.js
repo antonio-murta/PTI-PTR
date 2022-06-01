@@ -112,12 +112,6 @@ const handleSubmit = (event) => {
         }}
       >
         <h1 className="h1"> Editar Perfil</h1>
-        {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar> */}
-        {/* <Typography component="h1" variant="h5">
-            Futuro Logo
-          </Typography> */}
 
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={{ xs: 4, md: 4 }}>
@@ -137,29 +131,6 @@ const handleSubmit = (event) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <label>Telemóvel</label>
-              <TextField
-                fullWidth
-                variant="standard"
-                id="telefone"
-                name="telefone"
-                type="text"
-                autoComplete="telefone"
-                inputProps={{ maxLength: 9 }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <label>Morada</label>
-              <TextField
-                fullWidth
-                variant="standard"
-                id="morada"
-                name="morada"
-                autoComplete="family-name"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-
               <label>Data de nascimento</label>
               <TextField
                 fullWidth
@@ -184,6 +155,29 @@ const handleSubmit = (event) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
+              <label>Password</label>
+              <TextField
+                fullWidth
+                variant="standard"
+                name="password"
+                type="password"
+                id="password"
+                autoComplete="new-password"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <label>Telemóvel</label>
+              <TextField
+                fullWidth
+                variant="standard"
+                id="telefone"
+                name="telefone"
+                type="text"
+                autoComplete="telefone"
+                inputProps={{ maxLength: 9 }}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
               <label>NIF</label>
               <TextField
                 fullWidth
@@ -197,14 +191,13 @@ const handleSubmit = (event) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <label>Password</label>
+              <label>Morada</label>
               <TextField
                 fullWidth
                 variant="standard"
-                name="password"
-                type="password"
-                id="password"
-                autoComplete="new-password"
+                id="morada"
+                name="morada"
+                autoComplete="family-name"
               />
             </Grid>
           </Grid>
