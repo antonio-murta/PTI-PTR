@@ -16,12 +16,10 @@ const theme = createTheme({ palette: { primary: red } });
 
 function Copyright(props) {
   return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      <Link color="inherit">
+        PTI/PTR
+      </Link>{' '}
       {new Date().getFullYear()}
     </Typography>
   );
@@ -139,7 +137,7 @@ const handleSubmit = (event) => {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <label>Telemovel</label>
+              <label>Telemóvel</label>
               <TextField
                 fullWidth
                 variant="standard"
@@ -229,17 +227,9 @@ const handleSubmit = (event) => {
                 color="primary"
               >
                 {"Eliminar Conta"}
-                {/* tentar descobrir como meter o botão vermelho */}
               </Button>
             </ThemeProvider>
           </Grid>
-          {/* <Grid container >
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Já tem uma conta? Faça Login
-                </Link>
-              </Grid>
-            </Grid> */}
         </Box>
       </Box>
       <Copyright sx={{ mt: 5 }} />
