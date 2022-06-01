@@ -114,14 +114,14 @@ export default function SignUp() {
             <Button className="button"
               type="submit"
               variant="contained"
-              sx={{ mt: 5, ml:13}}
+              sx={{ mt: 5 }}
             >
               {'Adicionar Armazém'}
             </Button>
             <Button className="button"
               type="submit"
               variant="contained"
-              sx={{ mt: 5, ml:13}}
+              sx={{ mt: 5}}
             >
               {'Continuar sem adicionar Produtos'}
             </Button>
