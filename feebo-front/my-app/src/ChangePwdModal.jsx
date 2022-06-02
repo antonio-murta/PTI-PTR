@@ -66,10 +66,10 @@ export default function ChangePwdModal() {
           backgroundColor: "#1c5fb0",
         }}
         onClick={handleOpen}
-        className="button"
+        className="buttonAlt"
         type="submit"
         variant="contained"
-        sx={{ mt: 5 }}
+        sx={{ ml: 24 , mt: -17.9}}
       >
         {"Alterar Password"}
       </Button>
@@ -81,8 +81,7 @@ export default function ChangePwdModal() {
       >
 
         <Box component="form" noValidate onSubmit={handleSubmit} sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-
+          <Typography id="modal-modal-title" variant="h6" className="h2" component="h2">
             Alterar password
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
