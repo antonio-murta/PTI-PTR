@@ -78,14 +78,6 @@ function App() {
   };
 
 
-  if(!localStorage.getItem('loggedin') && localStorage.getItem('loggedin')=='') {
-    console.log(localStorage.getItem('loggedin'));  
-    return <SignIn />
-  }
-  else{
-    return <PerfilClient />
-  }
-
   return (
     <>
       <ThemeProvider theme={THEME}>
