@@ -1,25 +1,23 @@
-import "./css/login.css";
-import * as React from "react";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Axios from "axios";
+import './css/login.css';
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Axios from 'axios';
 
 
 function Copyright(props) {
   return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      <Link color="inherit">PTI/PTR</Link> {new Date().getFullYear()}
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      <Link color="inherit">
+        PTI/PTR
+      </Link>{' '}
+      {new Date().getFullYear()}
     </Typography>
   );
 }
@@ -58,17 +56,17 @@ function checkCookie() {
 }
 
 function logOut() {
-  let Token = getCookie("Token")
-  if (Token !=""){
+  let Token = getCookie("Token");
+  if(Token != ""){
     document.cookie = "Token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    alert("Logged Out, See you soon ;)")
+    alert("Logged out, see you soon ;)")
   }else{
-    alert("Not Logged in.")
+    alert("Please login first.")
   }
-  
 }
 
 export default function SignIn() {
+
   const handleSubmit = (event) => {
     let Token = getCookie("Token");
     if(Token != ""){
@@ -101,7 +99,10 @@ export default function SignIn() {
       setCookie("UserName", UserName, 1);
       alert("Logged In :D")
     })
+    
     }
+
+    
   };
 
   return (
@@ -116,7 +117,7 @@ export default function SignIn() {
             alignItems: 'center'
           }}
         >
-          <h1 className='h1'> Login <button onClick={checkCookie}>Login</button> <button onClick={logOut}>LogOut</button></h1>
+          <h1 className='h1'> Login <button onClick={checkCookie}>Check If Logged In</button> <button onClick={logOut}>LogOut</button></h1>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField className='mail-login'
               alignItems='center'
@@ -156,10 +157,9 @@ export default function SignIn() {
                 </Link>
               </Grid>
             </Grid>
-          </Grid>
+          </Box>
         </Box>
-      </Box>
-      <Copyright sx={{ mt: 8, mb: 4 }} />
-    </Container>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
   );
 }
