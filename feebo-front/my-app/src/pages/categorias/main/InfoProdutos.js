@@ -8,7 +8,6 @@ const InfoProdutos = {
       poluicao: "0.7kg de CO2",
       tipo: "Casual",
       subtipo: "Subtipo",
-
     },
     {
       id: 2,
@@ -46,7 +45,6 @@ const InfoProdutos = {
       tipo: "Formal",
       subtipo: "Subtipo",
     },
-
   ],
 };
 export default InfoProdutos;

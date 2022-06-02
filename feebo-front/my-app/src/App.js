@@ -19,7 +19,7 @@ import Fornecedor from "./pages/fornecedor/fornecedor";
 import PerfilClient from "./perfilclient";
 import AddTransportador from "./addTransportes";
 import AddArmazem from "./addArmazem";
-import Produto from "./pages/categorias/main/ProductLocation";
+import Produto from "./pages/categorias/main/BoxProdutos";
 
 function App() {
   const THEME = createTheme({
