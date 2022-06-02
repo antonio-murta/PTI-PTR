@@ -14,7 +14,8 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "2px solid #ff014f",
+  borderRadius: "5px",
   boxShadow: 24,
   p: 4,
 };
@@ -61,10 +62,10 @@ export default function DeleteAccountModal() {
           backgroundColor: "#f12735",
         }}
         onClick={handleOpen}
-        className="button"
+        className="buttonDel"
         type="submit"
         variant="contained"
-        sx={{ mt: 5 }}
+        sx={{ mt: -5 }}
       >
         {"Eliminar conta"}
       </Button>
