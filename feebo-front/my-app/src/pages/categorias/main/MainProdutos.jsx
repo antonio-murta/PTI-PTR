@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
-import Filtro from './Filtrar';
-import Produtos from './Produtos';
-import Procura from './procurar';
-import './pizza.css';
-
+import React, { useState } from "react";
+import Filtro from "./Filtrar";
+import Produtos from "./Produtos";
+import "./pizza.css";
 
 const MainProdutos = ({
   addToCart,
@@ -26,7 +24,6 @@ const MainProdutos = ({
             <div className="heading d_flex">
               <div className="heading-left row  f_flex">
                 <h2>Moda</h2>
-                <
               </div>
             </div>
             <div className="product-content  grid1">

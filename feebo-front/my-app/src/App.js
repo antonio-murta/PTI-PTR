@@ -21,7 +21,11 @@ import AddTransportador from "./addTransportes";
 import AddArmazem from "./addArmazem";
 import Produto from "./pages/categorias/main/BoxProdutos";
 
+
 function App() {
+
+  
+
   const THEME = createTheme({
     typography: {
       fontFamily: `"Poppins", sans-serif`,
@@ -80,6 +84,7 @@ function App() {
       );
     }
   };
+
 
   return (
     <>

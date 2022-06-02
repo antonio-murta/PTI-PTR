@@ -21,6 +21,12 @@ monggose.connect("mongodb+srv://grupo16:123@basedados.rthod.mongodb.net/Loja?ret
 });
 
 
+// Fornecedor
+app.post("/produto", FornecedorController.criarProduto)
+app.delete("/produto", FornecedorController.removerProdutos)
+app.delete("/produto/:id", FornecedorController.removerProduto)
+
+// Produto
 
 
 app.get("/produto", ProdutoController.get_all)
