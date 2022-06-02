@@ -2,11 +2,12 @@ const InfoProdutos = {
   infoProdutos: [
     {
       id: 1,
-      foto: './images/moda/tshirt.png',
-      name: 'T-shirt',
-      preco: '12.99€',
-      poluicao: '0.7kg de CO2',
-      tipo: 'Casual',
+      foto: "./images/moda/tshirt.png",
+      name: "T-shirt",
+      preco: "12.99€",
+      poluicao: "0.7kg de CO2",
+      tipo: "Casual",
+      subtipo: "Subtipo",
     },
     {
       id: 2,

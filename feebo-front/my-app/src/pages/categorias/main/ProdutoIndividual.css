@@ -6,7 +6,7 @@
   border-radius: 8px;
   box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
   margin: auto;
-  height: 150px;
+  height: 100%;
   width: 100%;
 }
 
@@ -14,6 +14,8 @@
   margin: auto;
   display: flex;
   justify-content: center;
+  margin: 0 22%;
+  height: 600px;
 }
 
 .type {
@@ -26,4 +28,30 @@
   font-size: larger;
   font-weight: 900;
   color: #e94560;
+}
+
+.foto {
+  display: block;
+  opacity: 1;
+  width: 50%;
+  height: auto;
+  border: 3px solid #f2f2f2;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.favorito {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.heart {
+  height: 50px;
+  padding: 10px 0;
+  color: #e94560;
+}
+
+.textofav {
+  padding-top: 11px;
+  padding-left: 5px;
 }

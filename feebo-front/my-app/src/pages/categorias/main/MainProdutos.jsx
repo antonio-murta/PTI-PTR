@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Filtro from './Filtrar';
 import Produtos from './Produtos';
 import Procura from './procurar';
-import { AiOutlinePlus } from 'react-icons/ai';
 import './pizza.css';
+
 
 const MainProdutos = ({
   addToCart,

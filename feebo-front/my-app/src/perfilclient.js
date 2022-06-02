@@ -131,28 +131,6 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <label>Telemóvel</label>
-              <TextField
-                fullWidth
-                variant="standard"
-                id="telefone"
-                name="telefone"
-                type="text"
-                autoComplete="telefone"
-                inputProps={{ maxLength: 9 }}
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <label>Morada</label>
-              <TextField
-                fullWidth
-                variant="standard"
-                id="morada"
-                name="morada"
-                autoComplete="family-name"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
               <label>Data de nascimento</label>
               <TextField
                 fullWidth
@@ -174,17 +152,6 @@ export default function SignUp() {
                 type="email"
                 disabled="disabled"
                 autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <label>Password</label>
-              <TextField
-                fullWidth
-                variant="standard"
-                name="password"
-                type="password"
-                id="password"
-                autoComplete="new-password"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -213,16 +180,7 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              
-            </Grid>
-
-          </Grid>
-          <Grid >
-            <Grid item xs={2} sm={4} md={4} >
-                
-              </Grid>
-              <Grid item xs={12} sm={6}>
-              <label>Password para confirmação</label>
+              <label>Morada</label>
               <TextField
                 fullWidth
                 variant="standard"
@@ -231,7 +189,18 @@ export default function SignUp() {
                 autoComplete="family-name"
               />
             </Grid>
-            <Grid item xs={12} sm={6} className="confirmarAlteracoes">
+            <Grid item xs={12} sm={6} ml={18}>
+              <label>Password para confirmação</label>
+              <TextField
+                fullWidth
+                variant="standard"
+                id="morada"
+                type="password"
+                name="morada"
+                autoComplete="family-name"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} ml={4} className="confirmarAlteracoes">
               <Button
                 style={{
                   backgroundColor: "#1c5fb0",
@@ -243,27 +212,10 @@ export default function SignUp() {
                 {"Confirmar alterações"}
               </Button>
             </Grid>
-            <Grid item sm={6} className="botoes">
-              <ChangePwdModal />
-            </Grid>
-            <Grid item sm={6} className="botoes">
-              <DeleteAccountModal />
-            </Grid>
           </Grid>
         </Box>
-
         <ChangePwdModal />
-        <ThemeProvider theme={theme}>
-          <Button
-            className="button3"
-            type="submit"
-            variant="contained"
-            sx={{ mt: 3 }}
-            color="primary"
-          >
-            {"Eliminar Conta"}
-          </Button>
-        </ThemeProvider>
+        <DeleteAccountModal />
       </Box>
       <Copyright sx={{ mt: 5 }} />
     </Container>

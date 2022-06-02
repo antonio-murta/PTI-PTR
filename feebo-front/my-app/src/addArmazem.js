@@ -15,6 +15,9 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { useState, useEffect } from "react";
+// import Checkbox from '@mui/material/Checkbox'
+// import { FormControlLabel } from '@mui/material';
 
 
 const theme = createTheme({ palette: { primary: red } });
@@ -42,6 +45,13 @@ export default function SignUp() {
       email: data.get('email'),
       password: data.get('password'),
     });
+  };
+
+  const [tlm, setTlm] = useState();
+
+  const handleTlm = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    setTlm(value);
   };
 
   return (
@@ -103,11 +113,13 @@ export default function SignUp() {
                   id="tel"
                   label="Telemóvel"
                   name="tel"
-                  autoComplete="family-name"
+                  inputProps={{ maxLength: 9 }}
+                  value={tlm}
+                  onChange={handleTlm}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-              <FormControl required fullWidth>
+              <FormControl fullWidth>
                   <InputLabel id="demo-simple-select-label">Tipo de Prodruto</InputLabel>
                     <Select
                       variant="standard"
@@ -125,16 +137,22 @@ export default function SignUp() {
                 </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                // required
-                fullWidth
-                variant="standard"
-                id="addProd"
-                label="Adicionar Produtos"
-                name="addProd"
-                type="text"
-                autoComplete="family-name"
-                />
+              <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Prodruto</InputLabel>
+                    <Select
+                      variant="standard"
+                    // setSelectValue
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      // value={Tipo}
+                      label="Tipo"
+                      // onChange={handleChange}
+                    >
+                    <MenuItem  value={"Camisa"}>Camisa</MenuItem>
+                    <MenuItem  value={"Casaco"}>Casaco</MenuItem>
+                    <MenuItem  value={"Vestido"}>Vestido</MenuItem>
+                    </Select>
+                </FormControl>
               </Grid>
             </Grid>
             {/* <button onClick={handleCreate}>
@@ -148,13 +166,13 @@ export default function SignUp() {
             >
               {'Adicionar Armazém'}
             </Button>
-            <Button className="button"
+            {/* <Button className="button"
               type="submit"
               variant="contained"
-              sx={{ mt: 5}}
+              sx={{ mt: 5, ml: 2}}
             >
               {'Continuar sem Produtos'}
-            </Button>
+            </Button> */}
             {/* <ThemeProvider theme={theme}>
               <Button className="button2"
               type="submit"

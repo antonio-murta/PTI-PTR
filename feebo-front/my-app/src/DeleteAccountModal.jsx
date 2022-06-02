@@ -14,7 +14,8 @@ const style = {
   transform: "translate(-50%, -50%)",
   width: 400,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "2px solid #ff014f",
+  borderRadius: "5px",
   boxShadow: 24,
   p: 4,
 };
@@ -23,6 +24,36 @@ export default function DeleteAccountModal() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    fetch('http://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn"),
+      {
+        method: "DELETE",
+        body: JSON.stringify({
+
+          password: data.get('password')
+
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          'Accept': 'application/json'
+        },
+      }
+    )
+    .then(function (response) {
+      return response.json();
+    })
+    // .then(res => res.json) 
+      .then(function (myJson) {
+        console.log(myJson);
+      });
+
+      window.location.href = "./Login";
+  };
+
+
 
   return (
     <div>
@@ -31,10 +62,10 @@ export default function DeleteAccountModal() {
           backgroundColor: "#f12735",
         }}
         onClick={handleOpen}
-        className="button"
+        className="buttonDel"
         type="submit"
         variant="contained"
-        sx={{ mt: 5 }}
+        sx={{ mt: -7}}
       >
         {"Eliminar conta"}
       </Button>
@@ -49,7 +80,8 @@ export default function DeleteAccountModal() {
             Deseja eliminar a sua conta permanentemente? Se sim, confirme a sua
             password:
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          
+          <Typography component="form" noValidate onSubmit={handleSubmit} id="modal-modal-description" sx={{ mt: 2 }}>
             <div className="currentPwd">
               <Grid className="pwd" item xs={12} sm={12}>
                 <label>Password</label>
@@ -76,8 +108,9 @@ export default function DeleteAccountModal() {
                 {"Eliminar"}
               </Button>
             </Grid>
+            </Typography>
             <Grid className="botaoDelete">
-              <Button
+              <Button 
                 style={{
                   backgroundColor: "#1c5fb0",
                 }}
@@ -85,13 +118,17 @@ export default function DeleteAccountModal() {
                 type="submit"
                 variant="contained"
                 sx={{ mt: 5, ml: 2 }}
-              >
+                >
                 {"Cancelar"}
               </Button>
             </Grid>
-          </Typography>
+            
+          
         </Box>
+        
+        
       </Modal>
+      
     </div>
   );
 }

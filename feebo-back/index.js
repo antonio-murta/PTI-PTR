@@ -65,8 +65,9 @@ app.get("/consumidor/:id", ConsumidorController.encomendarCesto);
 
 
 app.post("/utilizador", UtilizadorControler.registar);
-app.delete("/utilizador", UtilizadorControler.apagarUtilizadores);
-app.delete("/utilizador/:id", UtilizadorControler.apagarUtilizadores_byID);
+app.delete("/utilizadores", UtilizadorControler.apagarUtilizadores);
+app.delete("/utilizadores/:id", UtilizadorControler.apagarUtilizadores_byID);
+app.delete("/utilizador/:id", UtilizadorControler.apagarConta);
 app.put("/utilizador/:id", UtilizadorControler.editarConta);
 
 // falta ver
