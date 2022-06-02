@@ -6,7 +6,8 @@ const InfoProdutos = {
       name: "T-shirt",
       preco: "12.99€",
       poluicao: "0.7kg de CO2",
-      tipo:"Casual",
+      tipo: "Casual",
+      subtipo: "Subtipo",
     },
     {
       id: 2,
@@ -14,8 +15,8 @@ const InfoProdutos = {
       name: "Vestido",
       preco: "22.00€",
       poluicao: "1kg de CO2",
-      tipo:"Formal",
-
+      tipo: "Formal",
+      subtipo: "Subtipo",
     },
     {
       id: 3,
@@ -23,8 +24,8 @@ const InfoProdutos = {
       name: "Sapatos",
       preco: "50.50€",
       poluicao: "3kg de CO2",
-      tipo:"Calçado",
-
+      tipo: "Calçado",
+      subtipo: "Subtipo",
     },
     {
       id: 4,
@@ -32,8 +33,8 @@ const InfoProdutos = {
       name: "Casaco",
       preco: "20.99€",
       poluicao: "2kg de CO2",
-      tipo:"Outdoor",
-
+      tipo: "Outdoor",
+      subtipo: "Subtipo",
     },
     {
       id: 5,
@@ -41,9 +42,9 @@ const InfoProdutos = {
       name: "Camisa",
       preco: "15.99€",
       poluicao: "1.5kg de CO2",
-      tipo:"Formal",
-
-    }
+      tipo: "Formal",
+      subtipo: "Subtipo",
+    },
   ],
-}
-export default InfoProdutos
+};
+export default InfoProdutos;

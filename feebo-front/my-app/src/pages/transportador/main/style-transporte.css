@@ -1,5 +1,6 @@
 .box {
   text-align: left;
+  width: 100%;
 }
 
 .notifications {
@@ -20,8 +21,8 @@
   position: relative;
   border-radius: 8px;
   box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
-  margin: 10px;
   height: 150px;
+  margin: 0px;
 }
 
 .transport h3 {
@@ -29,7 +30,7 @@
   font-size: 17px;
 }
 
-.f_flex {
+.d_flex {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -38,10 +39,11 @@
 .new-transport {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-left: 20px;
 }
 
-.new-transport button{
+.new-transport button {
   background-color: #e94560;
   color: white;
   padding: 6px 12px;
@@ -52,7 +54,7 @@
   transition: 0.2s;
 }
 
-.new-transport button:hover{
+.new-transport button:hover {
   background-color: #e94560;
   color: white;
   padding: 6px 12px;
@@ -72,7 +74,7 @@
   height: 100%;
 }
 
-.see-more button{
+.see-more button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,7 +84,7 @@
   border-radius: 5px;
 }
 
-.see-more button:hover{
+.see-more button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -93,7 +95,7 @@
   size: 100%;
 }
 
-.box .box2{
+.box .box2 {
   margin-top: 0px !important;
 }
 
@@ -114,13 +116,13 @@
   border-radius: 5px;
 }
 
-.box .box2{
+.box .box2 {
   display: flex;
   justify-content: center;
   align-items: baseline;
 }
 
-.notification-container{
+.notification-container {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -129,14 +131,13 @@
 .notifications .time {
   display: flex;
   justify-content: right;
-  align-items:baseline
+  align-items: baseline;
 }
 
 .notifications .icon {
   display: flex;
   justify-content: baseline;
   align-items: right;
-  
 }
 .notifications .box:hover {
   background-color: #fff;
@@ -155,10 +156,18 @@
   margin-left: 30px;
 }
 
+.full {
+  display: flex;
+  flex-direction: column;
+  vertical-align: auto;
+  justify-content: center;
+}
+
 .grid1 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
+  margin-top: 10px;
 }
 .product img {
   width: 100%;

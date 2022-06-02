@@ -11,10 +11,13 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { red} from '@mui/material/colors';
-// import FormControl from '@mui/material/FormControl';
-// import InputLabel from '@mui/material/InputLabel';
-// import MenuItem from '@mui/material/MenuItem';
-// import Select from '@mui/material/Select';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import { useState, useEffect } from "react";
+// import Checkbox from '@mui/material/Checkbox'
+// import { FormControlLabel } from '@mui/material';
 
 
 const theme = createTheme({ palette: { primary: red } });
@@ -44,11 +47,18 @@ export default function SignUp() {
     });
   };
 
+  const [tlm, setTlm] = useState();
+
+  const handleTlm = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    setTlm(value);
+  };
+
   return (
     // <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box className="box"
+        <Box className="box-perfil"
           sx={{
             marginTop: 8,
             display: 'flex',
@@ -57,12 +67,6 @@ export default function SignUp() {
           }}
         >
           <h1  className="h1">Armazém</h1>
-          {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar> */}
-          {/* <Typography component="h1" variant="h5">
-            Futuro Logo
-          </Typography> */}
           
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:4}}> {/* numero de "blocos"*/}
@@ -71,9 +75,21 @@ export default function SignUp() {
                   required
                   fullWidth
                   variant="standard"
-                  id="tipo"
-                  label="Tipo de Produtos"
-                  name="tipo"
+                  id="nome"
+                  label="Nome"
+                  name="nome"
+                  autoComplete="given-name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  required
+                  fullWidth
+                  variant="standard"
+                  id="poluicao"
+                  label="Poluição"
+                  name="poluicao"
                   autoComplete="given-name"
                   autoFocus
                 />
@@ -94,23 +110,49 @@ export default function SignUp() {
                   required
                   fullWidth
                   variant="standard"
-                  id="nForn"
-                  label="Número de Fornecedor"
-                  name="nForn"
-                  autoComplete="family-name"
+                  id="tel"
+                  label="Telemóvel"
+                  name="tel"
+                  inputProps={{ maxLength: 9 }}
+                  value={tlm}
+                  onChange={handleTlm}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
-                <TextField
-                required
-                fullWidth
-                variant="standard"
-                id="idArm"
-                label="Número de Armazém"
-                name="idArm"
-                type="text"
-                autoComplete="family-name"
-                />
+              <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Tipo de Prodruto</InputLabel>
+                    <Select
+                      variant="standard"
+                    // setSelectValue
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      // value={Tipo}
+                      label="Tipo"
+                      // onChange={handleChange}
+                    >
+                    <MenuItem  value={"CasaJardim"}>Casa e Jardim</MenuItem>
+                    <MenuItem  value={"Eletronicos"}>Eletrónicos</MenuItem>
+                    <MenuItem  value={"Roupa"}>Roupa</MenuItem>
+                    </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Prodruto</InputLabel>
+                    <Select
+                      variant="standard"
+                    // setSelectValue
+                      labelId="demo-simple-select-label"
+                      id="demo-simple-select"
+                      // value={Tipo}
+                      label="Tipo"
+                      // onChange={handleChange}
+                    >
+                    <MenuItem  value={"Camisa"}>Camisa</MenuItem>
+                    <MenuItem  value={"Casaco"}>Casaco</MenuItem>
+                    <MenuItem  value={"Vestido"}>Vestido</MenuItem>
+                    </Select>
+                </FormControl>
               </Grid>
             </Grid>
             {/* <button onClick={handleCreate}>
@@ -120,10 +162,17 @@ export default function SignUp() {
             <Button className="button"
               type="submit"
               variant="contained"
-              sx={{ mt: 5, ml:13}}
+              sx={{ mt: 5 }}
             >
               {'Adicionar Armazém'}
             </Button>
+            {/* <Button className="button"
+              type="submit"
+              variant="contained"
+              sx={{ mt: 5, ml: 2}}
+            >
+              {'Continuar sem Produtos'}
+            </Button> */}
             {/* <ThemeProvider theme={theme}>
               <Button className="button2"
               type="submit"
@@ -136,13 +185,6 @@ export default function SignUp() {
               {/* </Button>
             </ThemeProvider> */}
             </Grid>
-            {/* <Grid container >
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Já tem uma conta? Faça Login
-                </Link>
-              </Grid>
-            </Grid> */}
           </Box>
         </Box>
         <Copyright sx={{ mt: 5 }} />

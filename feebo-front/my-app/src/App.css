@@ -1,16 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 html {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
 }
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #ffffff;
 }
 .background {
@@ -33,11 +33,10 @@ body {
 }
 .f_flex {
   display: flex;
-  
 }
 
 .noti_flex {
-  display:flex;
+  display: flex;
   flex-direction: column;
 }
 
@@ -86,8 +85,9 @@ button {
 .category {
   box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
   background-color: #fff;
+  height: fit-content;
   width: 23%;
-  padding: 15px 0;
+  padding: 30px 0;
   border-radius: 5px;
   margin-top: 5px;
 }
@@ -265,7 +265,7 @@ button {
   color: #e94560;
 }
 
-.settings{
+.settings {
   margin-left: auto;
   display: flex;
   justify-content: right;

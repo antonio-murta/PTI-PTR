@@ -65,14 +65,11 @@ export default function SignUp() {
     window.location.href = "./login";
   };
 
-
-
-
   return (
     // <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box className="box"
+        <Box className="box-perfil"
           sx={{
             marginTop: 8,
             display: 'flex',
@@ -85,7 +82,7 @@ export default function SignUp() {
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={{xs: 4, md:4}}> {/* numero de "blocos"*/}
               <Grid item xs={12} sm={6} > {/* 6 = comprimento*/}
-                <TextField
+                <TextField  
                   required
                   fullWidth
                   variant="standard"
@@ -135,7 +132,7 @@ export default function SignUp() {
             <Button className="buttonT"
                 type="submit"
                 variant="contained"
-                sx={{ mt: 3, ml:14}}
+                sx={{ mt: 3}}
                 >
                 {'Adicionar Veículo'}
             </Button>

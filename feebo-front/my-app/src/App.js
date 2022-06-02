@@ -19,8 +19,7 @@ import Fornecedor from "./pages/fornecedor/fornecedor";
 import PerfilClient from "./perfilclient";
 import AddTransportador from "./addTransportes";
 import AddArmazem from "./addArmazem";
-import Produtos from "./pages/produtos/Produtos";
-import Produto from "./pages/produtos/main/Produto";
+import Produto from "./pages/categorias/main/BoxProdutos";
 
 
 function App() {
@@ -44,7 +43,16 @@ function App() {
   const { infoProdutos } = InfoProdutos;
   const [CartItem, setCartItem] = useState([]);
 
-  
+  const [artigo, setArtigo] = useState(infoProdutos);
+  const categoriaArtigo = [...new Set(infoProdutos.map((Val) => Val.tipo))];
+
+  const filterArtigo = (curcat) => {
+    const newArtigo = infoProdutos.filter((newVal) => {
+      return newVal.tipo === curcat;
+    });
+    setArtigo(newArtigo);
+  };
+
   const addToCart = (product) => {
     const productExit = CartItem.find((item) => item.id === product.id);
 
@@ -131,6 +139,10 @@ function App() {
                   productItems={productItems}
                   addToCart={addToCart}
                   infoProdutos={infoProdutos}
+                  artigo={artigo}
+                  categoriaArtigo={categoriaArtigo}
+                  filterArtigo={filterArtigo}
+                  setArtigo={setArtigo}
                 />
               }
             />
@@ -185,16 +197,6 @@ function App() {
               }
             />
             <Route
-              path="/produtos"
-              element={
-                <Produtos
-                  productItems={productItems}
-                  addToCart={addToCart}
-                  infoProdutos={infoProdutos}
-                />
-              }
-            />
-            <Route
               path="/produto"
               element={
                 <Produto
@@ -204,6 +206,7 @@ function App() {
                 />
               }
             />
+            {/* <Route path='/categoria'  element={<Categorias productItems={productItems} addToCart={addToCart} infoProdutos={infoProdutos} /> }/>  */}
           </Routes>
           <Footer />
         </Router>

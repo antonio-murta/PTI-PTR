@@ -1,18 +1,22 @@
 .App {
-    text-align: center;
-  }
-  
-.h1{
+  text-align: center;
+}
+
+.h1 {
+  color: #e94560;
+}
+
+.h2 {
   color: #ff014f;
 }
-  
-.box-perfil{
+
+.box-perfil {
   max-width: 600px;
   min-width: 300px;
   max-height: 700px;
   width: 150%;
   height: 100%;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 25px;
   text-align: center;
   align-items: center;
@@ -20,14 +24,58 @@
   margin-left: -20%;
 }
 
-.button2{
-  width: 40%;
+.buttonAlt{
+  width: 47.9%;
 }
 
-.button3{
+.button2 {
+  width: 78.8%;
+}
+
+.confirmarAlteracoes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button3 {
   width: 29%;
 }
 
-.buttonT{
+.buttonT {
   align-items: center;
+}
+
+.confirm {
+  width: 75%;
+  display: flex !important;
+  justify-content: center !important;
+  flex-direction: column !important;
+  margin: auto !important;
+}
+
+.pwd {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column !important;
+  padding: 0 30px;
+}
+
+.newPwd {
+  margin: 20px 0px;
+}
+
+.botoes {
+  display: flex;
+  justify-content: space-around;
+}
+
+.gridBox {
+  margin-bottom: 40px;
+}
+
+.botaoDelete {
+  margin-bottom: 10px;
+  margin-top: 20px;
 }
