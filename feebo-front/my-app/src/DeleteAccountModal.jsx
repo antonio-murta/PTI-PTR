@@ -65,7 +65,7 @@ export default function DeleteAccountModal() {
         className="buttonDel"
         type="submit"
         variant="contained"
-        sx={{ mt: -5 }}
+        sx={{ mt: -7}}
       >
         {"Eliminar conta"}
       </Button>
