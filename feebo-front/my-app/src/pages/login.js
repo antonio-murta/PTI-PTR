@@ -56,7 +56,14 @@ function checkCookie() {
 }
 
 function logOut() {
-  document.cookie = "Token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  let Token = getCookie("Token")
+  if (Token !=""){
+    document.cookie = "Token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    alert("Logged Out, See you soon ;)")
+  }else{
+    alert("Not Logged in.")
+  }
+  
 }
 
 export default function SignIn() {
