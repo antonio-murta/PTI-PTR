@@ -64,13 +64,25 @@ const login = (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
 
-    let utilizador = UtilizadorModel.findOne({_id: email});
-    let result = bcrypt.compare(password, utilizador["password"]).valueOf();
-    if (result) {
-        res.status(200).send("login feito com sucesso");
-    } else {
-        res.status(400).send("email/password invalidos");
-    }
+    let utilizador = UtilizadorModel.findById(email, function(err, result){
+        let match =  bcrypt.compare(password, result["password"]);
+    
+        match.then(function(result){
+            if(result){
+                const rand = () => {
+                    return Math.random().toString(36).substr(2);
+                  };
+                  
+                  const token = () => {
+                    return email + ";" + rand() + rand();
+                  };
+                console.log(token())
+                res.status(200).send(token());
+            } else {
+                res.status(400).send("email/password invalidos");
+            }
+        })
+    })  
 }
 
 const editarConta = (req, res) => {
