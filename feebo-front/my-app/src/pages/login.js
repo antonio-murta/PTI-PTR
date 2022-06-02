@@ -98,11 +98,9 @@ export default function SignIn() {
       setCookie("Token", text, 1);
       const UserName = text.split(";")[0];
       setCookie("UserName", UserName, 1);
+      alert("Logged In :D")
     })
-    
     }
-
-    
   };
 
   return (
