@@ -24,6 +24,9 @@ import BoxProdutos from "./pages/categorias/main/BoxProdutos";
 import Armazem from "./pages/fornecedor/mainpage/BoxArmazem";
 
 function App() {
+
+  
+
   const THEME = createTheme({
     typography: {
       fontFamily: `"Poppins", sans-serif`,
@@ -93,6 +96,7 @@ function App() {
       );
     }
   };
+
 
   return (
     <>
