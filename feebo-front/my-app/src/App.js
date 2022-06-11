@@ -1,5 +1,6 @@
-import React, { useState } from "react";
 import "./App.css";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Header from "./common/header/Header";
 import Pages from "./pages/Pages";
@@ -19,7 +20,8 @@ import Fornecedor from "./pages/fornecedor/fornecedor";
 import PerfilClient from "./perfilclient";
 import AddTransportador from "./addTransportes";
 import AddArmazem from "./addArmazem";
-import Produto from "./pages/categorias/main/BoxProdutos";
+import BoxProdutos from "./pages/categorias/main/BoxProdutos";
+import Armazem from "./pages/fornecedor/mainpage/BoxArmazem";
 
 function App() {
   const THEME = createTheme({
@@ -40,6 +42,17 @@ function App() {
   const [CartItem, setCartItem] = useState([]);
 
   const [artigo, setArtigo] = useState(infoProdutos);
+
+  /*****************************************/
+  /*           fetching produtos           */
+  /*****************************************/
+  const [produtos, setProdutos] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:3001/produto/").then((res) => {
+      setProdutos(res.data);
+    });
+  }, []);
+
   const categoriaArtigo = [...new Set(infoProdutos.map((Val) => Val.tipo))];
 
   const filterArtigo = (curcat) => {
@@ -138,6 +151,7 @@ function App() {
                   categoriaArtigo={categoriaArtigo}
                   filterArtigo={filterArtigo}
                   setArtigo={setArtigo}
+                  produtos={produtos}
                 />
               }
             />
@@ -194,7 +208,17 @@ function App() {
             <Route
               path="/produto"
               element={
-                <Produto
+                <BoxProdutos
+                  productItems={productItems}
+                  addToCart={addToCart}
+                  infoProdutos={infoProdutos}
+                />
+              }
+            />
+            <Route
+              path="/armazem"
+              element={
+                <Armazem
                   productItems={productItems}
                   addToCart={addToCart}
                   infoProdutos={infoProdutos}

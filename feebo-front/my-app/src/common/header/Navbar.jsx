@@ -7,12 +7,12 @@ const Navbar = () => {
     <>
       <header className="header">
         <div className="container d_flex">
-          <div className="categories d_flex">
+          {/* <div className="categories d_flex">
             <span className="fa-solid fa-border-all"></span>
             <h4>
               Categorias <i className="fa fa-chevron-down"></i>
             </h4>
-          </div>
+          </div> */}
 
           <div className="navlink">
             <ul
@@ -35,9 +35,6 @@ const Navbar = () => {
               </li>
               <li>
                 <Link to="/fornecedor">Fornecedor</Link>
-              </li>
-              <li>
-                <Link to="/produtos">Produtos</Link>
               </li>
             </ul>
 

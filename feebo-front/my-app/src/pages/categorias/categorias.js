@@ -1,6 +1,6 @@
-import React from 'react';
-import Wrapper from '../../components/wrapper/Wrapper';
-import MainProdutos from './main/MainProdutos';
+import React from "react";
+import Wrapper from "../../components/wrapper/Wrapper";
+import MainProdutos from "./main/MainProdutos";
 
 const Categorias = ({
   addToCart,
@@ -9,6 +9,7 @@ const Categorias = ({
   categoriaArtigo,
   filterArtigo,
   setArtigo,
+  produtos,
 }) => {
   return (
     <>
@@ -19,6 +20,7 @@ const Categorias = ({
         categoriaArtigo={categoriaArtigo}
         filterArtigo={filterArtigo}
         setArtigo={setArtigo}
+        produtos={produtos}
       />
       <Wrapper />
     </>

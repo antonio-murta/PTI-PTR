@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./pizza.css";
 import { useNavigate } from "react-router-dom";
 
-const Produtos = ({ artigo }) => {
+const Produtos = ({ artigo, produtos }) => {
   let navigate = useNavigate();
   // const [count, setCount] = useState(0);
   // const increment = () => {
@@ -11,18 +11,19 @@ const Produtos = ({ artigo }) => {
 
   return (
     <>
-      {artigo.map((Val, index) => {
+      {produtos.map((val, index) => {
         return (
           <div
             onClick={() => {
               navigate("/produto", {
                 state: {
-                  name: Val.name,
-                  preco: Val.preco,
-                  tipo: Val.tipo,
-                  subtipo: Val.subtipo,
-                  foto: Val.foto,
-                  poluicao: Val.poluicao,
+                  id: val._id,
+                  name: val.name,
+                  preco: val.preco,
+                  tipo: val.tipo,
+                  subtipo: val.subtipo,
+                  foto: val.foto,
+                  poluicao: val.poluicao,
                 },
               });
             }}
@@ -32,14 +33,14 @@ const Produtos = ({ artigo }) => {
             <div className="caixa2">
               <div className="item mtop">
                 <div className="fotos">
-                  <img src={Val.foto} alt="" />
+                  <img src={val.foto} alt="" />
                 </div>
                 <div className="product-details">
-                  <h2>{Val.name}</h2>
-                  <h4>{Val.preco}</h4>
-                  <h3>{Val.tipo}</h3>
-                  <h3>{Val.subtipo}</h3>
-                  <h3>Poluição média: {Val.poluicao}</h3>
+                  <h2>{val.name}</h2>
+                  <h4>{val.preco}</h4>
+                  <h3>{val.tipo}</h3>
+                  <h3>{val.subtipo}</h3>
+                  <h3>Poluição média: {val.poluicao}</h3>
                 </div>
               </div>
             </div>

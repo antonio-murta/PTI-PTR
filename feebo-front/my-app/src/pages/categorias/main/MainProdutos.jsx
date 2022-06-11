@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import Filtro from "./Filtrar";
 import Produtos from "./Produtos";
 import "./pizza.css";
@@ -10,6 +11,7 @@ const MainProdutos = ({
   categoriaArtigo,
   filterArtigo,
   setArtigo,
+  produtos,
 }) => {
   return (
     <>
@@ -27,7 +29,7 @@ const MainProdutos = ({
               </div>
             </div>
             <div className="product-content  grid1">
-              <Produtos artigo={artigo} />
+              <Produtos artigo={artigo} produtos={produtos} />
             </div>
           </div>
         </div>
