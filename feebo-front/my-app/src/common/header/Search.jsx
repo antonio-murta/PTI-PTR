@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../../components/assets/images/logo.png";
 import { Link } from "react-router-dom";
+import { BsFillCartFill } from "react-icons/bs";
 
 const Search = ({ CartItem }) => {
   window.addEventListener("scroll", function () {
@@ -31,7 +32,9 @@ const Search = ({ CartItem }) => {
             <div className="cart">
               <Link to="/cart">
                 <i className="fa fa-shopping-bag icon-circle"></i>
-                <span>{CartItem.length === 0 ? "" : CartItem.length}</span>
+                <span>
+                  <BsFillCartFill size={25} />
+                </span>
               </Link>
             </div>
           </div>

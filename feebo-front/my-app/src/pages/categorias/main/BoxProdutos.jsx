@@ -3,11 +3,27 @@ import "./ProdutoIndividual.css";
 import { useLocation } from "react-router-dom";
 import { HiOutlineHeart } from "react-icons/hi";
 import { HiHeart } from "react-icons/hi";
+import { BsCartPlus } from "react-icons/bs";
+import { BsCartXFill } from "react-icons/bs";
 
-const BoxProdutos = () => {
+const BoxProdutos = ({ addToCart }) => {
   let location = useLocation();
-  const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
+  const produto = {
+    id: location.state.id,
+    foto: location.state.foto,
+    name: location.state.name,
+    preco: location.state.preco,
+    poluicao: location.state.poluicao,
+    tipo: location.state.tipo,
+    subtipo: location.state.subtipo,
+  };
+  const [clickFav, setClickFav] = useState(false);
+  const [clickCart, setClickCart] = useState(false);
+  const handleClickFav = () => setClickFav(!clickFav);
+  const handleClickCart = () => {
+    setClickCart(!clickCart);
+    addToCart(produto);
+  };
 
   console.log(location.state);
   return (
@@ -27,14 +43,25 @@ const BoxProdutos = () => {
               </div>
               <div className="favorito">
                 <div className="heart">
-                  {click ? (
-                    <HiHeart size={25} onClick={handleClick} />
+                  {clickFav ? (
+                    <HiHeart size={25} onClick={handleClickFav} />
                   ) : (
-                    <HiOutlineHeart size={25} onClick={handleClick} />
+                    <HiOutlineHeart size={25} onClick={handleClickFav} />
                   )}
                 </div>
                 <div className="textofav">{"Wishlist"}</div>
+                <div className="carro">
+                  {clickCart ? (
+                    <BsCartXFill size={24} onClick={handleClickCart} />
+                  ) : (
+                    <BsCartPlus size={24} onClick={handleClickCart} />
+                  )}
+                </div>
+                <div className="textofav">{"Adicionar ao carrinho"}</div>
               </div>
+
+              {/* <button onClick={() => addToCart(item)}></button> */}
+
 
               <p className="price">{location.state.preco}</p>
               <p>Poluição: {location.state.poluicao}</p>
