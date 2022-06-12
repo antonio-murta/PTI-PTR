@@ -60,8 +60,6 @@ const BoxProdutos = ({ addToCart }) => {
                 <div className="textofav">{"Adicionar ao carrinho"}</div>
               </div>
 
-              {/* <button onClick={() => addToCart(item)}></button> */}
-
               <p className="price">{location.state.preco}</p>
               <p>Poluição: {location.state.poluicao}</p>
             </div>
