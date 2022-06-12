@@ -23,10 +23,8 @@ import AddArmazem from "./addArmazem";
 import BoxProdutos from "./pages/categorias/main/BoxProdutos";
 import Armazem from "./pages/fornecedor/mainpage/BoxArmazem";
 
+
 function App() {
-
-  
-
   const THEME = createTheme({
     typography: {
       fontFamily: `"Poppins", sans-serif`,
@@ -97,7 +95,6 @@ function App() {
     }
   };
 
-
   return (
     <>
       <ThemeProvider theme={THEME}>
@@ -155,6 +152,9 @@ function App() {
                   categoriaArtigo={categoriaArtigo}
                   filterArtigo={filterArtigo}
                   setArtigo={setArtigo}
+                  // addToCompare={addToCompare}
+                  // removeFromCompare={removeFromCompare}
+                  // selected={selected}
                   produtos={produtos}
                 />
               }
@@ -229,7 +229,6 @@ function App() {
                 />
               }
             />
-            {/* <Route path='/categoria'  element={<Categorias productItems={productItems} addToCart={addToCart} infoProdutos={infoProdutos} /> }/>  */}
           </Routes>
           <Footer />
         </Router>

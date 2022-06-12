@@ -273,3 +273,7 @@
 }
 
 /* Collapsable */
+
+button :hover {
+  cursor: pointer;
+}

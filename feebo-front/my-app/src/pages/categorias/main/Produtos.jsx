@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import "./pizza.css";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import './pizza.css';
+import { useNavigate } from 'react-router-dom';
 
+// npm install semantic-ui-react
+// const Produtos = ({ artigo }) => {
 const Produtos = ({ artigo, produtos }) => {
+
   let navigate = useNavigate();
-  // const [count, setCount] = useState(0);
-  // const increment = () => {
-  //   setCount(count + 1);
-  // };
+  const [count, setCount] = useState(0);
+  const increment = () => {
+    setCount(count + 1);
+  };
 
   return (
     <>
@@ -15,7 +18,7 @@ const Produtos = ({ artigo, produtos }) => {
         return (
           <div
             onClick={() => {
-              navigate("/produto", {
+              navigate('/produto', {
                 state: {
                   id: val._id,
                   name: val.name,
