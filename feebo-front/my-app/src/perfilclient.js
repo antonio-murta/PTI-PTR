@@ -33,12 +33,13 @@ function Copyright(props) {
 export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
+    let username = getCookie("UserName");
 
 
     const data = new FormData(event.currentTarget);
 
     fetch(
-      "http://localhost:3001/utilizador/" + localStorage.getItem("LoggedIn"),
+      "http://localhost:3001/utilizador/" + username,
 
       {
         method: "PUT",
@@ -65,9 +66,33 @@ export default function SignUp() {
       document.getElementById("password").value = "";
   };
 
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  
+
+
+
+
   function obterDados(parent, el) {
+    let username = getCookie("UserName");
     fetch(
-      "http://localhost:3001/utilizador/" + localStorage.getItem("LoggedIn"),
+      "http://localhost:3001/utilizador/" +  username,
+      // localStorage.getItem("LoggedIn"),
       { method: "GET" }
     )
       .then((response) => response.text())

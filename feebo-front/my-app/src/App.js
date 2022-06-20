@@ -59,7 +59,22 @@ function App() {
   const categoriaArtigo = [...new Set(todosprodutos.map((Val) => Val.tipo))];
 
   const filterArtigo = (curcat) => {
+    
+    
+    
+// <<<<<<< catarina
+//     const newArtigo = infoProdutos.filter((newVal) => {
+//       console.log(newVal)
+//       console.log(curcat)
+// =======
+    
+    
+    
     const newProduto = todosprodutos.filter((newVal) => {
+// >>>>>>> main
+      
+      
+      
       return newVal.tipo === curcat;
     });
     setProdutos(newProduto);

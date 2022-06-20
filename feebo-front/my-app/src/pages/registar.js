@@ -40,6 +40,7 @@ export default function Registar() {
     const data = new FormData(event.currentTarget);
 
     fetch("http://localhost:3001/utilizador", {
+    // fetch("http://api.feeboo.me/utilizador", {
       method: "POST",
       body: JSON.stringify({
         _id: data.get("email"),
