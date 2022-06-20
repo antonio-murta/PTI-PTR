@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { HiPlusSm } from 'react-icons/hi';
-import './style-transporte.css';
+import React, { useState } from "react";
+import { CgTrash } from "react-icons/cg";
+import "./style-transporte.css";
 
 const Transportes = ({ infoTransportes, addToCart }) => {
   const [count, setCount] = useState(0);
@@ -21,7 +21,7 @@ const Transportes = ({ infoTransportes, addToCart }) => {
                 <div className="settings">
                   <button onClick={() => addToCart(item)}>
                     <div className="setts">
-                      <HiPlusSm />
+                      <CgTrash />
                     </div>
                   </button>
                 </div>

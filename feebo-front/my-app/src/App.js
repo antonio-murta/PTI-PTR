@@ -1,31 +1,29 @@
-import React, { useState } from "react";
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Header from "./common/header/Header";
-import Pages from "./pages/Pages";
-import Data from "./components/Data";
-import Cart from "./common/Cart/Cart";
-import Footer from "./common/footer/Footer";
-import Sdata from "./components/shops/Sdata";
-import InfoArmazens from "./pages/fornecedor/mainpage/InfoArmazens";
-import InfoTransportes from "./pages/transportador/main/InfoTransportes";
-import InfoProdutos from "./pages/categorias/main/InfoProdutos";
-import SignIn from "./pages/login";
-import Registar from "./pages/registar";
-import Transportador from "./pages/transportador/transportador";
-import Categorias from "./pages/categorias/categorias";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Fornecedor from "./pages/fornecedor/fornecedor";
-import PerfilClient from "./perfilclient";
-import AddTransportador from "./addTransportes";
-import AddArmazem from "./addArmazem";
-import Produto from "./pages/categorias/main/BoxProdutos";
-
+import './App.css';
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Header from './common/header/Header';
+import Pages from './pages/Pages';
+import Data from './components/Data';
+import Cart from './common/Cart/Cart';
+import Footer from './common/footer/Footer';
+import Sdata from './components/shops/Sdata';
+import InfoArmazens from './pages/fornecedor/mainpage/InfoArmazens';
+import InfoTransportes from './pages/transportador/main/InfoTransportes';
+import InfoProdutos from './pages/categorias/main/InfoProdutos';
+import SignIn from './pages/login';
+import Registar from './pages/registar';
+import Transportador from './pages/transportador/transportador';
+import Categorias from './pages/categorias/categorias';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Fornecedor from './pages/fornecedor/fornecedor';
+import PerfilClient from './perfilclient';
+import AddTransportador from './addTransportes';
+import AddArmazem from './addArmazem';
+import BoxProdutos from './pages/categorias/main/BoxProdutos';
+import Armazem from './pages/fornecedor/mainpage/BoxArmazem';
 
 function App() {
-
-  
-
   const THEME = createTheme({
     typography: {
       fontFamily: `"Poppins", sans-serif`,
@@ -44,17 +42,45 @@ function App() {
   const [CartItem, setCartItem] = useState([]);
 
   const [artigo, setArtigo] = useState(infoProdutos);
-  const categoriaArtigo = [...new Set(infoProdutos.map((Val) => Val.tipo))];
+
+  /*****************************************/
+  /*           fetching produtos           */
+  /*****************************************/
+  const [produtos, setProdutos] = useState([]);
+  const [todosprodutos, setTodosProdutos] = useState([]);
+  useEffect(() => {
+    Axios.get('http://localhost:3001/produto/').then((res) => {
+      setProdutos(res.data);
+      setTodosProdutos(res.data);
+    });
+  }, []);
+
+  // filtrar por tipo //
+  const categoriaArtigo = [...new Set(todosprodutos.map((Val) => Val.tipo))];
 
   const filterArtigo = (curcat) => {
-    const newArtigo = infoProdutos.filter((newVal) => {
-      console.log(newVal)
-      console.log(curcat)
+    
+    
+    
+// <<<<<<< catarina
+//     const newArtigo = infoProdutos.filter((newVal) => {
+//       console.log(newVal)
+//       console.log(curcat)
+// =======
+    
+    
+    
+    const newProduto = todosprodutos.filter((newVal) => {
+// >>>>>>> main
+      
+      
+      
       return newVal.tipo === curcat;
     });
-    setArtigo(newArtigo);
+    setProdutos(newProduto);
   };
 
+  // carrinho //
   const addToCart = (product) => {
     const productExit = CartItem.find((item) => item.id === product.id);
 
@@ -87,6 +113,7 @@ function App() {
     }
   };
 
+  //
 
   return (
     <>
@@ -145,6 +172,12 @@ function App() {
                   categoriaArtigo={categoriaArtigo}
                   filterArtigo={filterArtigo}
                   setArtigo={setArtigo}
+                  // addToCompare={addToCompare}
+                  // removeFromCompare={removeFromCompare}
+                  // selected={selected}
+                  produtos={produtos}
+                  setProdutos={setProdutos}
+                  todosprodutos={todosprodutos}
                 />
               }
             />
@@ -201,14 +234,23 @@ function App() {
             <Route
               path="/produto"
               element={
-                <Produto
+                <BoxProdutos
                   productItems={productItems}
                   addToCart={addToCart}
                   infoProdutos={infoProdutos}
                 />
               }
             />
-            {/* <Route path='/categoria'  element={<Categorias productItems={productItems} addToCart={addToCart} infoProdutos={infoProdutos} /> }/>  */}
+            <Route
+              path="/armazem"
+              element={
+                <Armazem
+                  productItems={productItems}
+                  addToCart={addToCart}
+                  infoProdutos={infoProdutos}
+                />
+              }
+            />
           </Routes>
           <Footer />
         </Router>

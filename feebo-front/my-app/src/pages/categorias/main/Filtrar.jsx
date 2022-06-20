@@ -8,6 +8,9 @@ const Filtro = ({
   categoriaArtigo,
   Produtos,
   artigo,
+  produtos,
+  setProdutos,
+  todosprodutos,
 }) => {
   const data = [
     {
@@ -35,6 +38,7 @@ const Filtro = ({
                   {categoriaArtigo.map((Val, id) => {
                     return (
                       <div
+                        key={id}
                         onClick={() => filterArtigo(Val)}
                         className="box f_flex"
                       >
@@ -55,7 +59,12 @@ const Filtro = ({
             })}
 
             <div
-              onClick={() => setArtigo(InfoProdutos.infoProdutos)}
+              onClick={() =>
+                setProdutos(
+                  //InfoProdutos.infoProdutos
+                  todosprodutos
+                )
+              }
               className="box f_flex"
             >
               <button>Todos</button>

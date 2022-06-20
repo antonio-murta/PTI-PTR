@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import Filtro from "./Filtrar";
-import Produtos from "./Produtos";
-import "./pizza.css";
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
+import Filtro from './Filtrar';
+import Produtos from './Produtos';
+import './pizza.css';
 
 const MainProdutos = ({
   addToCart,
@@ -10,12 +11,18 @@ const MainProdutos = ({
   categoriaArtigo,
   filterArtigo,
   setArtigo,
+  produtos,
+  setProdutos,
+  todosprodutos,
 }) => {
   return (
     <>
       <section className="shop background-filtromoda">
         <div className="container1 d_flex1">
           <Filtro
+            produtos={produtos}
+            setProdutos={setProdutos}
+            todosprodutos={todosprodutos}
             categoriaArtigo={categoriaArtigo}
             filterArtigo={filterArtigo}
             setArtigo={setArtigo}
@@ -27,7 +34,7 @@ const MainProdutos = ({
               </div>
             </div>
             <div className="product-content  grid1">
-              <Produtos artigo={artigo} />
+              <Produtos artigo={artigo} produtos={produtos} />
             </div>
           </div>
         </div>
