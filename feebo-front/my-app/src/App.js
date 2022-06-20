@@ -48,6 +48,8 @@ function App() {
 
   const filterArtigo = (curcat) => {
     const newArtigo = infoProdutos.filter((newVal) => {
+      console.log(newVal)
+      console.log(curcat)
       return newVal.tipo === curcat;
     });
     setArtigo(newArtigo);

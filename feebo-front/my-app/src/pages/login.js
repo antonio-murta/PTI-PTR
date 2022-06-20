@@ -68,6 +68,7 @@ function logOut() {
 export default function SignIn() {
 
   const handleSubmit = (event) => {
+    
     let Token = getCookie("Token");
     if(Token != ""){
       alert("Already logged in.")
@@ -75,6 +76,8 @@ export default function SignIn() {
       event.preventDefault();
       const data = new FormData(event.currentTarget);
       const email= data.get('email');
+      
+      
 
       fetch('http://localhost:3001/utilizador/login',
       {
@@ -101,6 +104,8 @@ export default function SignIn() {
     })
     
     }
+
+    
 
     
   };
