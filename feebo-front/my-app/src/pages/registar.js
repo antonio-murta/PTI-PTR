@@ -34,8 +34,22 @@ function Copyright(props) {
 
 // const theme = createTheme();
 
+
+
+
+
 export default function Registar() {
+
+  const handleClick = event => {
+    const { myValue } = event.currentTarget.dataset;
+    console.log(myValue) // --> 123
+}
+
+
+
   const handleSubmit = (event) => {
+
+    
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
@@ -49,7 +63,7 @@ export default function Registar() {
         dataNasc: data.get("dataNasc"),
         telemovel: data.get("telefone"),
         morada: data.get("morada"),
-        utipo: "consumidor",
+        utipo: "qq",
       }),
       headers: {
         "Content-Type": "application/json",
@@ -195,7 +209,7 @@ export default function Registar() {
                   // setSelectValue
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  // value={Tipo}
+                  // value={tipo}
                   label="Tipo"
                   // onChange={handleChange}
                 >
