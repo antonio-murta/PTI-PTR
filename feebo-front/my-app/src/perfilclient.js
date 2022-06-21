@@ -34,6 +34,7 @@ export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     let username = getCookie("UserName");
+    // let username = "j@j";
 
 
     const data = new FormData(event.currentTarget);
@@ -90,8 +91,11 @@ export default function SignUp() {
 
   function obterDados(parent, el) {
     let username = getCookie("UserName");
+    // let username = "j@j";
     fetch(
       "http://localhost:3001/utilizador/" +  username,
+      // fetch("http://api.feeboo.me/utilizador/" +  username, {
+        
       // localStorage.getItem("LoggedIn"),
       { method: "GET" }
     )

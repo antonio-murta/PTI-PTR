@@ -6,12 +6,13 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const UtilizadorControler = require("./models/Funcoes/F_Utilizador")
-const TransporteControler = require("./models/Funcoes/F_Tranporte")
+const TransportadorControler = require("./models/Funcoes/F_Tranportador")
 const UtilizadorModel = require("./models/Colecoes/Utilizador");
 const FornecedorController = require("./models/Funcoes/F_Fornecedor")
 const ProdutoController = require("./models/Funcoes/F_Produto")
 const ArmazemController = require("./models/Funcoes/F_Armazem")
 const ConsumidorController = require("./models/Funcoes/F_Consumidor")
+const TransporteController = require("./models/Funcoes/F_Transporte")
 app.use(express.json());
 app.use(cors());
 
@@ -40,8 +41,9 @@ app.delete("/produto", FornecedorController.removerProdutos)
 app.delete("/produto/:id", FornecedorController.removerProduto)
 
 // ainda n vi
-app.put("/utilizador/:id/veiculo", TransporteControler.updateVeiculo)
-app.put("/utilizador/:id/caminhos", TransporteControler.updateCaminhos)
+app.post("/utilizador/veiculo", TransportadorControler.criarVeiculo)
+app.put("/utilizador/:id/veiculo", TransportadorControler.updateVeiculo)
+// app.put("/utilizador/:id/caminhos", TransportadorControler.updateCaminhos)
 
 app.post("/armazem", ArmazemController.criarArmazem)
 app.get("/armazem/nome", ArmazemController.getByNome)
@@ -91,6 +93,23 @@ app.get("/utilizador", async(req, res) => {
 
 
 
+app.get("/transporteProdEnco", TransporteController.obterIDsProdutosEncomenda)
+app.get("/transporteProdArm", TransporteController.obterIDsProdutosArmazem)
+app.get("/transporteCaminho", TransporteController.verificarMorada)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -123,8 +142,8 @@ app.get("/utilizador", async(req, res) => {
 
 
 // // ainda n vi
-// app.put("http://api.feeboo.me/utilizador/:id/veiculo", TransporteControler.updateVeiculo)
-// app.put("http://api.feeboo.me/utilizador/:id/caminhos", TransporteControler.updateCaminhos)
+// app.put("http://api.feeboo.me/utilizador/:id/veiculo", TransportadorControler.updateVeiculo)
+// // app.put("http://api.feeboo.me/utilizador/:id/caminhos", TransportadorControler.updateCaminhos)
 
 
 
