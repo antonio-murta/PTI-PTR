@@ -24,6 +24,7 @@ import AddProduto from "./addProduto";
 import BoxProdutos from "./pages/categorias/main/BoxProdutos";
 import Armazem from "./pages/fornecedor/mainpage/BoxArmazem";
 
+
 function App() {
   const THEME = createTheme({
     typography: {
@@ -48,21 +49,40 @@ function App() {
   /*           fetching produtos           */
   /*****************************************/
   const [produtos, setProdutos] = useState([]);
+  const [todosprodutos, setTodosProdutos] = useState([]);
   useEffect(() => {
-    Axios.get("http://localhost:3001/produto/").then((res) => {
+    Axios.get('http://localhost:3001/produto/').then((res) => {
       setProdutos(res.data);
+      setTodosProdutos(res.data);
     });
   }, []);
 
-  const categoriaArtigo = [...new Set(infoProdutos.map((Val) => Val.tipo))];
+  // filtrar por tipo //
+  const categoriaArtigo = [...new Set(todosprodutos.map((Val) => Val.tipo))];
 
   const filterArtigo = (curcat) => {
-    const newArtigo = infoProdutos.filter((newVal) => {
+    
+    
+    
+// <<<<<<< catarina
+//     const newArtigo = infoProdutos.filter((newVal) => {
+//       console.log(newVal)
+//       console.log(curcat)
+// =======
+    
+    
+    
+    const newProduto = todosprodutos.filter((newVal) => {
+// >>>>>>> main
+      
+      
+      
       return newVal.tipo === curcat;
     });
-    setArtigo(newArtigo);
+    setProdutos(newProduto);
   };
 
+  // carrinho //
   const addToCart = (product) => {
     const productExit = CartItem.find((item) => item.id === product.id);
 
@@ -152,7 +172,12 @@ function App() {
                   categoriaArtigo={categoriaArtigo}
                   filterArtigo={filterArtigo}
                   setArtigo={setArtigo}
+                  // addToCompare={addToCompare}
+                  // removeFromCompare={removeFromCompare}
+                  // selected={selected}
                   produtos={produtos}
+                  setProdutos={setProdutos}
+                  todosprodutos={todosprodutos}
                 />
               }
             />
@@ -236,7 +261,6 @@ function App() {
                 />
               }
             />
-            {/* <Route path='/categoria'  element={<Categorias productItems={productItems} addToCart={addToCart} infoProdutos={infoProdutos} /> }/>  */}
           </Routes>
           <Footer />
         </Router>

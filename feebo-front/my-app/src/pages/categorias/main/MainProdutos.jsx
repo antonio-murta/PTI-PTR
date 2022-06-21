@@ -5,12 +5,15 @@ import "./pizza.css";
 import { useNavigate } from "react-router-dom";
 import { AiOutlinePlus } from "react-icons/ai";
 
+
 const MainProdutos = ({
   artigo,
   categoriaArtigo,
   filterArtigo,
   setArtigo,
   produtos,
+  setProdutos,
+  todosprodutos,
 }) => {
   let navigate = useNavigate();
   return (
@@ -18,6 +21,9 @@ const MainProdutos = ({
       <section className="shop background-filtromoda">
         <div className="container1 d_flex1">
           <Filtro
+            produtos={produtos}
+            setProdutos={setProdutos}
+            todosprodutos={todosprodutos}
             categoriaArtigo={categoriaArtigo}
             filterArtigo={filterArtigo}
             setArtigo={setArtigo}
