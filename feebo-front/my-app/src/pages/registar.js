@@ -25,7 +25,6 @@ function Copyright(props) {
       align="center"
       {...props}
     >
-      {"Copyright © "}
       <Link color="inherit">PTI/PTR</Link> {new Date().getFullYear()}
       {"."}
     </Typography>

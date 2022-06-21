@@ -20,13 +20,11 @@ import Fornecedor from "./pages/fornecedor/fornecedor";
 import PerfilClient from "./perfilclient";
 import AddTransportador from "./addTransportes";
 import AddArmazem from "./addArmazem";
+import AddProduto from "./addProduto";
 import BoxProdutos from "./pages/categorias/main/BoxProdutos";
 import Armazem from "./pages/fornecedor/mainpage/BoxArmazem";
 
 function App() {
-
-  
-
   const THEME = createTheme({
     typography: {
       fontFamily: `"Poppins", sans-serif`,
@@ -96,7 +94,6 @@ function App() {
       );
     }
   };
-
 
   return (
     <>
@@ -203,6 +200,16 @@ function App() {
               path="/addArmazem"
               element={
                 <AddArmazem
+                  productItems={productItems}
+                  addToCart={addToCart}
+                  shopItems={shopItems}
+                />
+              }
+            />
+            <Route
+              path="/addProduto"
+              element={
+                <AddProduto
                   productItems={productItems}
                   addToCart={addToCart}
                   shopItems={shopItems}

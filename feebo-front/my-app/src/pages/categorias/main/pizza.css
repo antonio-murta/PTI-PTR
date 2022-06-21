@@ -185,6 +185,7 @@
 
 .contentWidth {
   margin-left: 30px;
+  width: 100%;
 }
 
 .grid1 {
@@ -272,4 +273,45 @@
   font-weight: 500;
 }
 
-/* Collapsable */
+.plus-icon {
+  margin-right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.new-product {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+.new-product button {
+  background-color: #e94560;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-product button:hover {
+  background-color: #e94560;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+}
