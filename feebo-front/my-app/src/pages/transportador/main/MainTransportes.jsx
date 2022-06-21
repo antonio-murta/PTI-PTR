@@ -20,7 +20,7 @@ const MainTransportes = ({ addToCart, infoTransportes }) => {
                   <div className="plus-icon">
                     <TiPlus />
                   </div>
-                  Novo Transporte
+                  Novo Veículo
                 </button>
               </div>
             </div>

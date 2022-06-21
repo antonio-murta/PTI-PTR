@@ -1,6 +1,5 @@
 import "./css/perfil.css";
 import React, { useState, useEffect } from "react";
-// import Avatar from '@mui/material/Avatar';
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
@@ -11,10 +10,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { red } from "@mui/material/colors";
-// import FormControl from '@mui/material/FormControl';
-// import InputLabel from '@mui/material/InputLabel';
-// import MenuItem from '@mui/material/MenuItem';
-// import Select from '@mui/material/Select';
+import Axios from "axios";
 
 const theme = createTheme({ palette: { primary: red } });
 
@@ -35,6 +31,10 @@ function Copyright(props) {
 
 export default function SignUp() {
   const [matricula, setMatricula] = useState("");
+  const [polution, setPolution] = useState("");
+  const [brand, setBrand] = useState("");
+  const [model, setModel] = useState("");
+
   console.log(matricula);
   const handleMatricula = (value) => {
     setMatricula(
@@ -51,27 +51,20 @@ export default function SignUp() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    fetch("http://localhost:3001/transportador", {
-      method: "POST",
-      body: JSON.stringify({
-        _id: data.get("matricula"),
-        marca: data.get("marca"),
-        modelo: data.get("modelo"),
-        poluicao: data.get("poluicao"),
-      }),
-      headers: {
-        "Content-Type": "application/json",
+    // preferencialmente, usar sempre axios em vez de fetch!! :)
+    Axios.post("http://localhost:3001/utilizador/:id/veiculo", {
+      matricula: matricula,
+      poluicao: polution,
+      marca: brand,
+      modelo: model,
+    }).then(
+      (response) => {
+        console.log(response);
       },
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        console.log(myJson);
-      });
-
-    // Vai para a pagina dos veiculos desse transportador
-    window.location.href = "./login";
+      (error) => {
+        console.log(error);
+      }
+    );
   };
 
   return (
@@ -106,7 +99,6 @@ export default function SignUp() {
                 placeholder="XX-XX-XX"
                 onChange={(e) => handleMatricula(e.target.value)}
                 value={matricula}
-                autoComplete="given-name"
                 autoFocus
               />
             </Grid>
@@ -118,7 +110,8 @@ export default function SignUp() {
                 id="poluicao"
                 label="Poluição"
                 name="poluicao"
-                autoComplete="given-name"
+                onChange={(e) => setPolution(e.target.value)}
+                value={polution}
                 autoFocus
               />
             </Grid>
@@ -130,7 +123,8 @@ export default function SignUp() {
                 id="marca"
                 label="Marca"
                 name="marca"
-                autoComplete="given-name"
+                onChange={(e) => setBrand(e.target.value)}
+                value={brand}
                 autoFocus
               />
             </Grid>
@@ -142,7 +136,8 @@ export default function SignUp() {
                 name="modelo"
                 label="Modelo"
                 id="modelo"
-                autoComplete="family-name"
+                onChange={(e) => setModel(e.target.value)}
+                value={model}
               />
             </Grid>
           </Grid>
