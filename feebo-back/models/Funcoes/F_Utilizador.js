@@ -11,20 +11,26 @@ const bcrypt = require('bcryptjs');
 
 const registar = (req, res) => {
     let utipo = req.body.utipo;
+    console.log(utipo)
+    let email = req.body._id;
+    console.log(email)
     var salt = bcrypt.genSaltSync(10);
     //console.log(salt)
     req.body.password = bcrypt.hashSync(req.body.password, salt);
     const utilizador = new UtilizadorModel(req.body);
     utilizador.save()
     .then(() => {
+        console.log(utipo)
+        console.log(email)
         if (utipo == "consumidor") {
+            console.log("E   ", utipo)
             ConsumidorModel.create(
                 {
-                    _id: email,
-                    metodoPagamento: [],
-                    cesto: [],
-                    recursosCesto: [],
-                    poluicaoCesto: 0
+                    "_id": email,
+                    "metodoPagamento": [],
+                    "cesto": [],
+                    "recursosCesto": [],
+                    "poluicaoCesto": 0
                 }
             )
             .then(() => {
@@ -32,22 +38,24 @@ const registar = (req, res) => {
             });
         }
         else if (utipo == "fornecedor") {
+            console.log("E   ", utipo)
             FornecedorModel.create(
                 {
-                    _id: email,
-                    armazens: []
+                    "_id": email,
+                    "armazens": []
                 }
             )
             .then(() => {
                 res.status(201).send("Utilizador criado com sucesso");
             });
         }
-        else {
+        else if (utipo == "transportador") {
+            console.log("E   ", utipo)
             TransportadorModel.create(
                 {
-                    _id: email,
-                    caminhos: [],
-                    veiculo: []
+                    "_id": email,
+                    "veiculo": [],
+                    "transportes": []
                 }
             )
             .then(() => {
