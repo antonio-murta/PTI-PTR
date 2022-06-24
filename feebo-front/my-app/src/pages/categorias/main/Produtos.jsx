@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import './pizza.css';
 import { useNavigate } from 'react-router-dom';
+import ProductCard from './TabelaProdutosC';
+import { Item, Button } from 'semantic-ui-react';
 
 // npm install semantic-ui-react
 // const Produtos = ({ artigo }) => {
-const Produtos = ({ artigo, produtos }) => {
-
+const Produtos = ({
+  artigo,
+  produtos,
+  produto,
+  addToCompare,
+  removeFromCompare,
+  selected,
+}) => {
   let navigate = useNavigate();
   const [count, setCount] = useState(0);
   const increment = () => {
@@ -44,6 +52,29 @@ const Produtos = ({ artigo, produtos }) => {
                   <h3>{val.tipo}</h3>
                   <h3>{val.subtipo}</h3>
                   <h3>Poluição média: {val.poluicao}</h3>
+                  <ProductCard
+                    produto={produto}
+                    addToCompare={addToCompare}
+                    removeFromCompare={removeFromCompare}
+                    selected={selected}
+                  />
+                  {/* <Item.Extra>
+                    {selected && selected.includes(produto) ? (
+                      <Button
+                        color="red"
+                        onClick={() => removeFromCompare(produto)}
+                      >
+                        Remove
+                      </Button>
+                    ) : (
+                      <Button
+                        color="blue"
+                        onClick={() => addToCompare(produto)}
+                      >
+                        Compare
+                      </Button>
+                    )}
+                  </Item.Extra> */}
                 </div>
               </div>
             </div>

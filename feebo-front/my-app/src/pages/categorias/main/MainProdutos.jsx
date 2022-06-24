@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import Filtro from './Filtrar';
 import Produtos from './Produtos';
+import ProductComparison from './CompararProdutos';
 import './pizza.css';
 
 const MainProdutos = ({
@@ -14,6 +15,7 @@ const MainProdutos = ({
   produtos,
   setProdutos,
   todosprodutos,
+  addToCompare,
 }) => {
   return (
     <>
@@ -33,6 +35,9 @@ const MainProdutos = ({
                 <h2>Moda</h2>
               </div>
             </div>
+            {/* <div className="tabelaComparar">
+              <ProductComparison produtos={produtos}></ProductComparison>
+            </div> */}
             <div className="product-content  grid1">
               <Produtos artigo={artigo} produtos={produtos} />
             </div>
