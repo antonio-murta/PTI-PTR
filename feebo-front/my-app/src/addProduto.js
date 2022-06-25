@@ -3,10 +3,8 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { red } from "@mui/material/colors";
@@ -17,48 +15,44 @@ import Select from "@mui/material/Select";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {/* {'Copyright © '} */}
-      <Link color="inherit" href="https://mui.com/">
-        PTI/PTR
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {/* {'.'} */}
-    </Typography>
-  );
-}
-
-// const theme = createTheme();
-
-export default function AddArmazem() {
+export default function AddProduto() {
   const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
   const [polution, setPolution] = useState("");
+  const [price, setPrice] = useState("");
+  const [qty, setQty] = useState("");
+  const [chain, setChain] = useState("");
+  const [resources, setResources] = useState("");
+  const [origin, setOrigin] = useState("");
+  const [provider, setProvider] = useState("");
   const [type, setType] = useState("");
-  const [product, setProduct] = useState("");
-  const [phone, setPhone] = useState();
-  const handlePhone = (e) => {
-    const value = e.target.value.replace(/\D/g, "");
-    setPhone(value);
-  };
+  const [subtype, setSubtype] = useState();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(name, address, polution, phone, product, type);
+    console.log(
+      name,
+      polution,
+      price,
+      qty,
+      chain,
+      resources,
+      origin,
+      type,
+      subtype
+    );
 
     // preferencialmente, usar sempre axios em vez de fetch!! :)
-    Axios.post("http://localhost:3001/armazem", {
+    Axios.post("http://localhost:3001/produto", {
       nome: name,
-      morada: address,
       poluicao: polution,
-      telemovel: phone,
+      preco: price,
+      quantidade: qty,
+      cadeia: chain,
+      recursos: resources,
+      armazem: origin,
+      fornecedor: provider,
       tipo: type,
+      subtipo: subtype,
     }).then(
       (response) => {
         console.log(response);
@@ -82,7 +76,7 @@ export default function AddArmazem() {
           alignItems: "center",
         }}
       >
-        <h1 className="h1">Armazém</h1>
+        <h1 className="h1">Produto</h1>
 
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={{ xs: 4, md: 4 }}>
@@ -100,7 +94,6 @@ export default function AddArmazem() {
                 name="nome"
                 onChange={(e) => setName(e.target.value)}
                 value={name}
-                autoComplete="given-name"
                 autoFocus
               />
             </Grid>
@@ -114,7 +107,6 @@ export default function AddArmazem() {
                 name="poluicao"
                 onChange={(e) => setPolution(e.target.value)}
                 value={polution}
-                autoComplete="given-name"
                 autoFocus
               />
             </Grid>
@@ -123,12 +115,11 @@ export default function AddArmazem() {
                 required
                 fullWidth
                 variant="standard"
-                id="morada"
-                label="Morada"
-                name="morada"
-                onChange={(e) => setAddress(e.target.value)}
-                value={address}
-                autoComplete="family-name"
+                id="preco"
+                label="Preço"
+                name="preco"
+                onChange={(e) => setPrice(e.target.value)}
+                value={price}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -136,49 +127,104 @@ export default function AddArmazem() {
                 required
                 fullWidth
                 variant="standard"
-                id="tel"
-                label="Telemóvel"
-                name="tel"
-                onChange={(e) => handlePhone(e)}
-                value={phone}
-                inputProps={{ maxLength: 9 }}
+                id="qty"
+                label="Quantidade Inicial"
+                name="qty"
+                onChange={(e) => setQty(e.target.value)}
+                value={qty}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                variant="standard"
+                id="chain"
+                label="Cadeia Logística"
+                name="chain"
+                onChange={(e) => setChain(e.target.value)}
+                value={chain}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                required
+                fullWidth
+                variant="standard"
+                id="resources"
+                label="Recursos"
+                name="resources"
+                onChange={(e) => setResources(e.target.value)}
+                value={resources}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Armazém</InputLabel>
+                <Select
+                  variant="standard"
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={origin}
+                  onChange={(e) => setOrigin(e.target.value)}
+                  label="Armazém de Origem"
+                >
+                  <MenuItem value={"ArmazémA"}>Armazém A</MenuItem>
+                  <MenuItem value={"ArmazémB"}>Armazém B</MenuItem>
+                  <MenuItem value={"ArmazémC"}>Armazém C</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">
-                  Tipo de Produto
+                  Fornecedor
                 </InputLabel>
                 <Select
                   variant="standard"
-                  // setSelectValue
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={provider}
+                  onChange={(e) => setProvider(e.target.value)}
+                  label="Fornecedor"
+                >
+                  <MenuItem value={"FornecedorA"}>Fornecedor A</MenuItem>
+                  <MenuItem value={"FornecedorB"}>Fornecedor B</MenuItem>
+                  <MenuItem value={"FornecedorC"}>Fornecedor C</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
+                <Select
+                  variant="standard"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   value={type}
                   onChange={(e) => setType(e.target.value)}
                   label="Tipo"
                 >
-                  <MenuItem value={"CasaJardim"}>Casa e Jardim</MenuItem>
-                  <MenuItem value={"Eletronicos"}>Eletrónicos</MenuItem>
                   <MenuItem value={"Roupa"}>Roupa</MenuItem>
+                  <MenuItem value={"Comida"}>Comida</MenuItem>
+                  <MenuItem value={"Higiene"}>Higiene</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Produto</InputLabel>
+                <InputLabel id="demo-simple-select-label">Subtipo</InputLabel>
                 <Select
                   variant="standard"
-                  // setSelectValue
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={product}
-                  onChange={(e) => setProduct(e.target.value)}
-                  label="Tipo"
+                  value={subtype}
+                  onChange={(e) => setSubtype(e.target.value)}
+                  label="Subipo"
                 >
-                  <MenuItem value={"Camisa"}>Camisa</MenuItem>
-                  <MenuItem value={"Casaco"}>Casaco</MenuItem>
-                  <MenuItem value={"Vestido"}>Vestido</MenuItem>
+                  <MenuItem value={"Camisa"}>Fruta</MenuItem>
+                  <MenuItem value={"Casaco"}>Carne</MenuItem>
+                  <MenuItem value={"Vestido"}>Doces</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -190,13 +236,11 @@ export default function AddArmazem() {
               variant="contained"
               sx={{ mt: 5 }}
             >
-              {"Adicionar Armazém"}
+              {"Adicionar Produto"}
             </Button>
           </Grid>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 5 }} />
     </Container>
-    /* </ThemeProvider> */
   );
 }

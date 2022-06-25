@@ -1,12 +1,19 @@
 import React from "react";
 import logo from "../../components/assets/images/logo.png";
 import { Link } from "react-router-dom";
+import { BsFillCartFill } from "react-icons/bs";
+import "./../../App.css";
 
 const Search = ({ CartItem }) => {
   window.addEventListener("scroll", function () {
     const search = document.querySelector(".search");
     search.classList.toggle("active", window.scrollY > 100);
   });
+
+  // const [carrinho, addCarrinho] = useState(false);
+  // const handleCarrinho = () => {
+  //   addToCart(produto);
+  // };
 
   return (
     <>
@@ -30,8 +37,10 @@ const Search = ({ CartItem }) => {
             </Link>
             <div className="cart">
               <Link to="/cart">
-                <i className="fa fa-shopping-bag icon-circle"></i>
-                <span>{CartItem.length === 0 ? "" : CartItem.length}</span>
+                <i className="fa icon-circle carrinho">
+                  <BsFillCartFill size={18} />
+                </i>
+                <span>{CartItem.length}</span>
               </Link>
             </div>
           </div>

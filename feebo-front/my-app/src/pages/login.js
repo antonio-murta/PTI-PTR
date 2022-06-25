@@ -69,9 +69,11 @@ export default function SignIn() {
 
   const handleSubmit = (event) => {
     let Token = getCookie("Token");
+    
     if(Token != ""){
       alert("Already logged in.")
-    }else{
+    }
+    else{
       event.preventDefault();
       const data = new FormData(event.currentTarget);
       const email= data.get('email');
@@ -94,9 +96,15 @@ export default function SignIn() {
       return response.text();
     })
     .then(function(text){
-      setCookie("Token", text, 1);
+            setCookie("Token", text, 1);
       const UserName = text.split(";")[0];
       setCookie("UserName", UserName, 1);
+
+      alert(text)
+      alert(UserName)
+
+     
+
       alert("Logged In :D")
     })
     

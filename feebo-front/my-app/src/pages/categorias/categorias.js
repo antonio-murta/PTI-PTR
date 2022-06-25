@@ -9,6 +9,9 @@ const Categorias = ({
   categoriaArtigo,
   filterArtigo,
   setArtigo,
+  produtos,
+  setProdutos,
+  todosprodutos,
 }) => {
   return (
     <>
@@ -19,6 +22,9 @@ const Categorias = ({
         categoriaArtigo={categoriaArtigo}
         filterArtigo={filterArtigo}
         setArtigo={setArtigo}
+        produtos={produtos}
+        setProdutos={setProdutos}
+        todosprodutos={todosprodutos}
       />
       <Wrapper />
     </>
