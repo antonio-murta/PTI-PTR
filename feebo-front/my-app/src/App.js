@@ -68,6 +68,18 @@ function App() {
     });
   }, []);
 
+  /*****************************************/
+  /*           fetching armazens        */
+  /*****************************************/
+  const [armazens, setArmazens] = useState([]);
+  const [todosarmazens, setTodosArmazens] = useState([]);
+  useEffect(() => {
+    Axios.get('http://localhost:3001/armazem').then((res) => {
+      setArmazens(res.data);
+      setTodosArmazens(res.data);
+    });
+  }, []);
+
   // filtrar por tipo //
   const categoriaArtigo = [...new Set(todosprodutos.map((Val) => Val.tipo))];
 
@@ -206,6 +218,9 @@ function App() {
                   productItems={productItems}
                   addToCart={addToCart}
                   infoArmazens={infoArmazens}
+                  armazens={armazens}
+                  setArmazens={setArmazens}
+                  todosarmazens={todosarmazens}
                 />
               }
             />

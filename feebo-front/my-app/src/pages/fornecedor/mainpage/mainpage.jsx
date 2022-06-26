@@ -1,11 +1,17 @@
-import React from "react";
-import Notifications from "./notifications";
-import Armazens from "./todosArmazens";
-import { AiOutlinePlus } from "react-icons/ai";
-import "./style.css";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import Notifications from './notifications';
+import Armazens from './todosArmazens';
+import { AiOutlinePlus } from 'react-icons/ai';
+import './style.css';
+import { useNavigate } from 'react-router-dom';
 
-const Main = ({ addToCart, infoArmazens }) => {
+const Main = ({
+  addToCart,
+  infoArmazens,
+  armazens,
+  setArmazens,
+  todosarmazens,
+}) => {
   let navigate = useNavigate();
   return (
     <>
@@ -16,7 +22,7 @@ const Main = ({ addToCart, infoArmazens }) => {
             <div className="heading d_flex">
               <h2>Armazéns</h2>
               <div className="new-transport">
-                <button onClick={() => navigate("/addArmazem")}>
+                <button onClick={() => navigate('/addArmazem')}>
                   <div className="plus-icon">
                     <AiOutlinePlus />
                   </div>
@@ -25,7 +31,13 @@ const Main = ({ addToCart, infoArmazens }) => {
               </div>
             </div>
             <div className="product-content  grid1">
-              <Armazens addToCart={addToCart} infoArmazens={infoArmazens} />
+              <Armazens
+                addToCart={addToCart}
+                infoArmazens={infoArmazens}
+                armazens={armazens}
+                setArmazens={setArmazens}
+                todosarmazens={todosarmazens}
+              />
             </div>
           </div>
         </div>
