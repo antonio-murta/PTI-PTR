@@ -16,8 +16,8 @@ const Transportes = ({ infoTransportes, addToCart }) => {
             <div className="transport mtop">
               <div className="product-details">
                 <h3>{item.name}</h3>
-                <h3>Saída: {item.saida}</h3>
-                <h3>Chegada prevista: {item.chegada}</h3>
+                <h3>Estado: {item.estado}</h3>
+                <h3>Encomenda: {item.encomenda}</h3>
                 <div className="settings">
                   <button onClick={() => addToCart(item)}>
                     <div className="setts">

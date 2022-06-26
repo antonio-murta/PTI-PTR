@@ -18,12 +18,11 @@ import Categorias from "./pages/categorias/categorias";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Fornecedor from "./pages/fornecedor/fornecedor";
 import PerfilClient from "./perfilclient";
-import AddTransportador from "./addTransportes";
+import AddTransportador from "./addVeiculo";
 import AddArmazem from "./addArmazem";
 import AddProduto from "./addProduto";
 import BoxProdutos from "./pages/categorias/main/BoxProdutos";
 import Armazem from "./pages/fornecedor/mainpage/BoxArmazem";
-
 
 function App() {
   const THEME = createTheme({
@@ -51,7 +50,7 @@ function App() {
   const [produtos, setProdutos] = useState([]);
   const [todosprodutos, setTodosProdutos] = useState([]);
   useEffect(() => {
-    Axios.get('http://localhost:3001/produto/').then((res) => {
+    Axios.get("http://localhost:3001/produto/").then((res) => {
       setProdutos(res.data);
       setTodosProdutos(res.data);
     });
@@ -61,22 +60,15 @@ function App() {
   const categoriaArtigo = [...new Set(todosprodutos.map((Val) => Val.tipo))];
 
   const filterArtigo = (curcat) => {
-    
-    
-    
-// <<<<<<< catarina
-//     const newArtigo = infoProdutos.filter((newVal) => {
-//       console.log(newVal)
-//       console.log(curcat)
-// =======
-    
-    
-    
+    // <<<<<<< catarina
+    //     const newArtigo = infoProdutos.filter((newVal) => {
+    //       console.log(newVal)
+    //       console.log(curcat)
+    // =======
+
     const newProduto = todosprodutos.filter((newVal) => {
-// >>>>>>> main
-      
-      
-      
+      // >>>>>>> main
+
       return newVal.tipo === curcat;
     });
     setProdutos(newProduto);
@@ -121,6 +113,7 @@ function App() {
         <Router>
           <Header CartItem={CartItem} />
           <Routes>
+            {/* <Route path="/" element={<Layout />}></Route> */}
             <Route
               path="/"
               element={
@@ -222,16 +215,6 @@ function App() {
               }
             />
             <Route
-              path="/addArmazem"
-              element={
-                <AddArmazem
-                  productItems={productItems}
-                  addToCart={addToCart}
-                  shopItems={shopItems}
-                />
-              }
-            />
-            <Route
               path="/addProduto"
               element={
                 <AddProduto
@@ -251,6 +234,7 @@ function App() {
                 />
               }
             />
+            {/* <Route element={<RequireAuth />}> */}
             <Route
               path="/armazem"
               element={
@@ -261,6 +245,17 @@ function App() {
                 />
               }
             />
+            <Route
+              path="/addArmazem"
+              element={
+                <AddArmazem
+                  productItems={productItems}
+                  addToCart={addToCart}
+                  shopItems={shopItems}
+                />
+              }
+            />
+            {/* </Route> */}
           </Routes>
           <Footer />
         </Router>
