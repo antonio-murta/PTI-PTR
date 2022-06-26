@@ -5,10 +5,6 @@ const VeiculoSchema = new monggose.Schema({
     type: String,
     required: true,
   },
-  matricula: {
-    type: String,
-    required: true,
-  },
   marca: {
     type: String,
     required: true,

@@ -17,26 +17,6 @@ import Select from "@mui/material/Select";
 import { useState, useEffect } from "react";
 import Axios from "axios";
 
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {/* {'Copyright © '} */}
-      <Link color="inherit" href="https://mui.com/">
-        PTI/PTR
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {/* {'.'} */}
-    </Typography>
-  );
-}
-
-// const theme = createTheme();
-
 export default function AddArmazem() {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -70,7 +50,6 @@ export default function AddArmazem() {
   };
 
   return (
-    // <ThemeProvider theme={theme}>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
@@ -195,8 +174,6 @@ export default function AddArmazem() {
           </Grid>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 5 }} />
     </Container>
-    /* </ThemeProvider> */
   );
 }

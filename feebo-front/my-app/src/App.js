@@ -50,7 +50,7 @@ function App() {
   const [produtos, setProdutos] = useState([]);
   const [todosprodutos, setTodosProdutos] = useState([]);
   useEffect(() => {
-    Axios.get('http://localhost:3001/produto/').then((res) => {
+    Axios.get("http://localhost:3001/produto/").then((res) => {
       setProdutos(res.data);
       setTodosProdutos(res.data);
     });
@@ -125,6 +125,7 @@ function App() {
         <Router>
           <Header CartItem={CartItem} />
           <Routes>
+            {/* <Route path="/" element={<Layout />}></Route> */}
             <Route
               path="/"
               element={
@@ -229,16 +230,6 @@ function App() {
               }
             />
             <Route
-              path="/addArmazem"
-              element={
-                <AddArmazem
-                  productItems={productItems}
-                  addToCart={addToCart}
-                  shopItems={shopItems}
-                />
-              }
-            />
-            <Route
               path="/addProduto"
               element={
                 <AddProduto
@@ -258,6 +249,7 @@ function App() {
                 />
               }
             />
+            {/* <Route element={<RequireAuth />}> */}
             <Route
               path="/armazem"
               element={
@@ -268,6 +260,17 @@ function App() {
                 />
               }
             />
+            <Route
+              path="/addArmazem"
+              element={
+                <AddArmazem
+                  productItems={productItems}
+                  addToCart={addToCart}
+                  shopItems={shopItems}
+                />
+              }
+            />
+            {/* </Route> */}
           </Routes>
           <Footer />
         </Router>
