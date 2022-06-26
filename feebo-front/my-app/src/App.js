@@ -18,7 +18,7 @@ import Categorias from './pages/categorias/categorias';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Fornecedor from './pages/fornecedor/fornecedor';
 import PerfilClient from './perfilclient';
-import AddTransportador from './addTransportes';
+import AddVeiculo from './addVeiculo';
 import AddArmazem from './addArmazem';
 import AddProduto from './addProduto';
 import BoxProdutos from './pages/categorias/main/BoxProdutos';
@@ -50,7 +50,7 @@ function App() {
   const [produtos, setProdutos] = useState([]);
   const [todosprodutos, setTodosProdutos] = useState([]);
   useEffect(() => {
-    Axios.get("http://localhost:3001/produto/").then((res) => {
+    Axios.get('http://localhost:3001/produto/').then((res) => {
       setProdutos(res.data);
       setTodosProdutos(res.data);
     });
@@ -237,7 +237,7 @@ function App() {
             <Route
               path="/addTransportes"
               element={
-                <AddTransportador
+                <AddVeiculo
                   productItems={productItems}
                   addToCart={addToCart}
                   shopItems={shopItems}
