@@ -1,17 +1,17 @@
-import App from "./App";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import App from "../feebo-front/my-app/src/App.js";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <AuthProvider>
-        <Routes>
-          <Route path="/*" element={<App />} />
-        </Routes>
-      </AuthProvider>
-    </BrowserRouter>
-  </React.StrictMode>
-);
+// ReactDOM.render(
+//   <React.StrictMode>
+//     <BrowserRouter>
+//       <AuthProvider>
+//         <Routes>
+//           <Route path="/*" element={<App />} />
+//         </Routes>
+//       </AuthProvider>
+//     </BrowserRouter>
+//   </React.StrictMode>
+// );
 
 const express = require("express");
 const monggose = require("mongoose");
