@@ -1,29 +1,29 @@
-body{
-  background: rgb(34,193,195);
+body {
+  background: rgb(34, 193, 195);
   /* background: linear-gradient(135deg, rgba(34,193,195,1) 0%,     rgba(253,187,45,1) 100%); */
-  background: linear-gradient(135deg, #45D3EC 0%,     #87FAA0 100%);
+  background: linear-gradient(135deg, #45d3ec 0%, #87faa0 100%);
   /* background: linear-gradient(135deg, #9DE8F5 0%,     #BFFACC 100%); */
-  font-family: "work sans";
+  font-family: 'work sans';
   background-repeat: no-repeat;
 }
 
-.box{
-    max-width: 500px;
-    min-width: 300px;
-    max-height: 700px;
-    width: 100%;
-    height: 100%;
-    background-color: #FFFFFF;
-    border-radius: 25px;
-    text-align: center;
-    align-items: center;
-    padding: 5% 1% 5% 1%;
+.box {
+  max-width: 500px;
+  min-width: 300px;
+  max-height: 700px;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 25px;
+  text-align: center;
+  align-items: center;
+  padding: 5% 1% 5% 1%;
 }
 
-.mail{
+.mail {
   width: 80%;
 }
 
-.button{
+.button {
   width: 30%;
-}  
+}

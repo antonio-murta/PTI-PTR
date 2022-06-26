@@ -1,11 +1,17 @@
-import React from "react";
-import Notifications from "./Notifications";
-import Transportes from "./Transportes";
-import "./style-transporte.css";
-import { TiPlus } from "react-icons/ti";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import Notifications from './Notifications';
+import Transportes from './Transportes';
+import './style-transporte.css';
+import { TiPlus } from 'react-icons/ti';
+import { useNavigate } from 'react-router-dom';
 
-const MainTransportes = ({ addToCart, infoTransportes }) => {
+const MainTransportes = ({
+  addToCart,
+  infoTransportes,
+  transportes,
+  setTransportes,
+  todostransportes,
+}) => {
   let navigate = useNavigate();
   return (
     <>
@@ -16,7 +22,7 @@ const MainTransportes = ({ addToCart, infoTransportes }) => {
             <div className="heading d_flex">
               <h2>Veículos</h2>
               <div className="new-transport">
-                <button onClick={() => navigate("/addTransportes")}>
+                <button onClick={() => navigate('/addTransportes')}>
                   <div className="plus-icon">
                     <TiPlus />
                   </div>
@@ -28,6 +34,9 @@ const MainTransportes = ({ addToCart, infoTransportes }) => {
               <Transportes
                 addToCart={addToCart}
                 infoTransportes={infoTransportes}
+                transportes={transportes}
+                setTransportes={setTransportes}
+                todostransportes={todostransportes}
               />
             </div>
           </div>
