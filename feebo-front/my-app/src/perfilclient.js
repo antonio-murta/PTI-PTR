@@ -219,7 +219,7 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12} sm={6} ml={18}>
-              <label>Password para confirmação</label>
+              <label>Password</label>
               <TextField
                 fullWidth
                 variant="standard"
