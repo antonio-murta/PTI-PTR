@@ -1,29 +1,28 @@
-import "./App.css";
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Header from "./common/header/Header";
-import Pages from "./pages/Pages";
-import Data from "./components/Data";
-import Cart from "./common/Cart/Cart";
-import Footer from "./common/footer/Footer";
-import Sdata from "./components/shops/Sdata";
-import InfoArmazens from "./pages/fornecedor/mainpage/InfoArmazens";
-import InfoTransportes from "./pages/transportador/main/InfoTransportes";
-import InfoProdutos from "./pages/categorias/main/InfoProdutos";
-import SignIn from "./pages/login";
-import Registar from "./pages/registar";
-import Transportador from "./pages/transportador/transportador";
-import Categorias from "./pages/categorias/categorias";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Fornecedor from "./pages/fornecedor/fornecedor";
-import PerfilClient from "./perfilclient";
-import AddTransportador from "./addTransportes";
-import AddArmazem from "./addArmazem";
-import AddProduto from "./addProduto";
-import BoxProdutos from "./pages/categorias/main/BoxProdutos";
-import Armazem from "./pages/fornecedor/mainpage/BoxArmazem";
-
+import './App.css';
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Header from './common/header/Header';
+import Pages from './pages/Pages';
+import Data from './components/Data';
+import Cart from './common/Cart/Cart';
+import Footer from './common/footer/Footer';
+import Sdata from './components/shops/Sdata';
+import InfoArmazens from './pages/fornecedor/mainpage/InfoArmazens';
+import InfoTransportes from './pages/transportador/main/InfoTransportes';
+import InfoProdutos from './pages/categorias/main/InfoProdutos';
+import SignIn from './pages/login';
+import Registar from './pages/registar';
+import Transportador from './pages/transportador/transportador';
+import Categorias from './pages/categorias/categorias';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Fornecedor from './pages/fornecedor/fornecedor';
+import PerfilClient from './perfilclient';
+import AddTransportador from './addTransportes';
+import AddArmazem from './addArmazem';
+import AddProduto from './addProduto';
+import BoxProdutos from './pages/categorias/main/BoxProdutos';
+import Armazem from './pages/fornecedor/mainpage/BoxArmazem';
 
 function App() {
   const THEME = createTheme({
@@ -57,26 +56,31 @@ function App() {
     });
   }, []);
 
+  /*****************************************/
+  /*           fetching transportes        */
+  /*****************************************/
+  const [transportes, setTransportes] = useState([]);
+  const [todostransportes, setTodosTransportes] = useState([]);
+  useEffect(() => {
+    Axios.get('http://localhost:3001/utilizador/veiculo').then((res) => {
+      setTransportes(res.data);
+      setTodosTransportes(res.data);
+    });
+  }, []);
+
   // filtrar por tipo //
   const categoriaArtigo = [...new Set(todosprodutos.map((Val) => Val.tipo))];
 
   const filterArtigo = (curcat) => {
-    
-    
-    
-// <<<<<<< catarina
-//     const newArtigo = infoProdutos.filter((newVal) => {
-//       console.log(newVal)
-//       console.log(curcat)
-// =======
-    
-    
-    
+    // <<<<<<< catarina
+    //     const newArtigo = infoProdutos.filter((newVal) => {
+    //       console.log(newVal)
+    //       console.log(curcat)
+    // =======
+
     const newProduto = todosprodutos.filter((newVal) => {
-// >>>>>>> main
-      
-      
-      
+      // >>>>>>> main
+
       return newVal.tipo === curcat;
     });
     setProdutos(newProduto);
@@ -188,6 +192,9 @@ function App() {
                   productItems={productItems}
                   addToCart={addToCart}
                   infoTransportes={infoTransportes}
+                  transportes={transportes}
+                  setTransportes={setTransportes}
+                  todostransportes={todostransportes}
                 />
               }
             />
