@@ -1,33 +1,12 @@
 import "./css/perfil.css";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { red } from "@mui/material/colors";
 import Axios from "axios";
-
-const theme = createTheme({ palette: { primary: red } });
-
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {/* {'Copyright © '} */}
-      <Link color="inherit">PTI/PTR</Link> {new Date().getFullYear()}
-      {/* {'.'} */}
-    </Typography>
-  );
-}
 
 export default function SignUp() {
   const [matricula, setMatricula] = useState("");
@@ -35,7 +14,6 @@ export default function SignUp() {
   const [brand, setBrand] = useState("");
   const [model, setModel] = useState("");
 
-  console.log(matricula);
   const handleMatricula = (value) => {
     setMatricula(
       value
@@ -49,11 +27,11 @@ export default function SignUp() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    console.log(matricula, polution, brand, model);
 
     // preferencialmente, usar sempre axios em vez de fetch!! :)
-    Axios.post("http://localhost:3001/utilizador/:id/veiculo", {
-      matricula: matricula,
+    Axios.post("http://localhost:3001/utilizador/veiculo", {
+      _id: matricula,
       poluicao: polution,
       marca: brand,
       modelo: model,
@@ -68,7 +46,6 @@ export default function SignUp() {
   };
 
   return (
-    // <ThemeProvider theme={theme}>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
@@ -149,21 +126,8 @@ export default function SignUp() {
           >
             {"Adicionar Veículo"}
           </Button>
-          {/* <button onClick={handleCreate}>
-                  Click me
-            </button> */}
-
-          {/* <Grid container >
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Já tem uma conta? Faça Login
-                </Link>
-              </Grid>
-            </Grid> */}
         </Box>
       </Box>
-      <Copyright sx={{ mt: 5 }} />
     </Container>
-    /* </ThemeProvider> */
   );
 }

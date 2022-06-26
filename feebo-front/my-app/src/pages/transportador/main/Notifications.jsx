@@ -5,17 +5,17 @@ import "./style-transporte.css";
 const Notifications = () => {
   const data = [
     {
-      notif: "Transporte 1 saiu do Armazém X",
+      notif: "Veículo A saiu do Armazém 1",
       icon: <RiTruckFill />,
       time: "5m",
     },
     {
-      notif: "Transporte 2 chegou ao Armazém Y",
+      notif: "Veículo B chegou ao Armazém 2",
       icon: <RiTruckFill />,
       time: "24m",
     },
     {
-      notif: "Transporte 3 chegou ao Armazém Z",
+      notif: "Veículo C chegou ao Armazém 3",
       icon: <RiTruckFill />,
       time: "2h",
     },
