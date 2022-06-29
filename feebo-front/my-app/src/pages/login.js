@@ -109,7 +109,7 @@ export default function SignIn() {
             (response) => {
               console.log(response.data);
               const utilizador = response.data.filter(
-                (user) => user._id === getCookie("UserName")
+                (user) => user._id === UserName
               );
               const uTipo = utilizador[0].utipo;
               setCookie("UTipo", uTipo, 1);
