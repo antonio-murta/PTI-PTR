@@ -8,8 +8,9 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Axios from "axios";
+import axios from "axios";
 import { Link as routerLink, useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 function Copyright(props) {
   return (
@@ -59,6 +60,8 @@ function checkCookie() {
 
 function logOut() {
   let Token = getCookie("Token");
+  setCookie("UTipo", "", 1);
+  setCookie("UserName", "", 1);
   if (Token != "") {
     document.cookie = "Token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     alert("Logged out, see you soon ;)");
@@ -102,6 +105,21 @@ export default function SignIn() {
 
           navigate(from, { replace: true });
 
+          axios.get("http://localhost:3001/utilizador").then(
+            (response) => {
+              console.log(response.data);
+              const utilizador = response.data.filter(
+                (user) => user._id === getCookie("UserName")
+              );
+              const uTipo = utilizador[0].utipo;
+              setCookie("UTipo", uTipo, 1);
+              console.log(uTipo);
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+
           alert(text);
           alert(UserName);
 
@@ -123,7 +141,6 @@ export default function SignIn() {
         }}
       >
         <h1 className="h1">
-          {" "}
           Login <button onClick={checkCookie}>Check If Logged In</button>{" "}
           <button onClick={logOut}>LogOut</button>
         </h1>

@@ -23,7 +23,7 @@ export default function AddProduto() {
   const [origin, setOrigin] = useState("");
   const [provider, setProvider] = useState("");
   const [type, setType] = useState("");
-  const [subtype, setSubtype] = useState();
+  const [subtype, setSubtype] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
