@@ -6,15 +6,27 @@ const EncomendaSchema = new monggose.Schema({
         type: String,
         required: true,
     },
-    fornecedor: {
+    nome_completo: {
         type: String,
         required: true,
     },
-    veiculo: {
+    rua: {
         type: String,
         required: true,
     },
-    transportador: {
+    cidade: {
+        type: String,
+        required: true,
+    },
+    distrito: {
+        type: String,
+        required: true,
+    },
+    codigo_postal: {
+        type: Number,
+        required: true,
+    },
+    pais: {
         type: String,
         required: true,
     },
@@ -30,7 +42,7 @@ const EncomendaSchema = new monggose.Schema({
         type: Number,
         required: true,
     },
-    pagamento: {              // tipo de pagamento, dados necessarios para cada tipo de pagamento
+    pagamento: {              // nome do titular, numero do cartao, validade, cvv
         type: [],
         required: true,
     },
