@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import Axios from 'axios';
-import Filtro from './Filtrar';
-import Produtos from './Produtos';
-import ProductComparison from './CompararProdutos';
-import './pizza.css';
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
+import Filtro from "./Filtrar";
+import Produtos from "./Produtos";
+import ProductComparison from "./CompararProdutos";
+import "./pizza.css";
 import { useNavigate } from "react-router-dom";
 import { AiOutlinePlus } from "react-icons/ai";
-
 
 const MainProdutos = ({
   artigo,
@@ -19,6 +18,7 @@ const MainProdutos = ({
   addToCompare,
 }) => {
   let navigate = useNavigate();
+
   return (
     <>
       <section className="shop background-filtromoda">

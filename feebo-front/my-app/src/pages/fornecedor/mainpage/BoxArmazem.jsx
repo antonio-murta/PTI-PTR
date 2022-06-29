@@ -19,7 +19,7 @@ const BoxArmazem = () => {
               <Link to="/fornecedor">
                 <BsFillArrowLeftCircleFill className="arrow" size={25} />
               </Link>
-              <div className="heading">
+              <div className="title">
                 <h2>Armazém {location.state.name}</h2>
               </div>
               <p>Tipo: {location.state.tipo}</p>

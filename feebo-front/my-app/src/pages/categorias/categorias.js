@@ -1,6 +1,6 @@
-import React from 'react';
-import Wrapper from '../../components/wrapper/Wrapper';
-import MainProdutos from './main/MainProdutos';
+import React from "react";
+import Wrapper from "../../components/wrapper/Wrapper";
+import MainProdutos from "./main/MainProdutos";
 
 const Categorias = ({
   addToCart,

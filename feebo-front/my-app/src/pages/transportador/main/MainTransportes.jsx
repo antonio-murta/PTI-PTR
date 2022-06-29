@@ -28,7 +28,7 @@ const MainTransportes = ({ addToCart, infoTransportes }) => {
         <div className="container d_flex">
           <Notifications />
           <div className="contentWidth">
-            <div className="title d_flex">
+            <div className="heading d_flex">
               <h2>Veículos</h2>
               <div className="new-transport">
                 <button onClick={() => navigate("/addTransportes")}>
