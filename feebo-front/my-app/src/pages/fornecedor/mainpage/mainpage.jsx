@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import Notifications from "./notifications";
-import Armazens from "./todosArmazens";
+import Armazens from "./Armazens.jsx";
 import { AiOutlinePlus } from "react-icons/ai";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
 
 const Main = ({ addToCart, infoArmazens }) => {
   let navigate = useNavigate();
+
+  /*****************************************/
+  /*           fetching armazens        */
+  /*****************************************/
+  const [armazens, setArmazens] = useState([]);
+  const [todosarmazens, setTodosArmazens] = useState([]);
+  useEffect(() => {
+    Axios.get("http://localhost:3001/armazem").then((res) => {
+      setArmazens(res.data);
+      setTodosArmazens(res.data);
+    });
+  }, []);
+
   return (
     <>
       <section className="shop background">
@@ -25,7 +39,13 @@ const Main = ({ addToCart, infoArmazens }) => {
               </div>
             </div>
             <div className="product-content  grid1">
-              <Armazens addToCart={addToCart} infoArmazens={infoArmazens} />
+              <Armazens
+                addToCart={addToCart}
+                infoArmazens={infoArmazens}
+                armazens={armazens}
+                setArmazens={setArmazens}
+                todosarmazens={todosarmazens}
+              />
             </div>
           </div>
         </div>

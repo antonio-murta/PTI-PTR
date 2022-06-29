@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import Filtro from './Filtrar';
 import Produtos from './Produtos';
+import ProductComparison from './CompararProdutos';
 import './pizza.css';
+import { useNavigate } from "react-router-dom";
+import { AiOutlinePlus } from "react-icons/ai";
+
 
 const MainProdutos = ({
-  addToCart,
-  infoProdutos,
   artigo,
   categoriaArtigo,
   filterArtigo,
@@ -14,7 +16,9 @@ const MainProdutos = ({
   produtos,
   setProdutos,
   todosprodutos,
+  addToCompare,
 }) => {
+  let navigate = useNavigate();
   return (
     <>
       <section className="shop background-filtromoda">
@@ -28,11 +32,20 @@ const MainProdutos = ({
             setArtigo={setArtigo}
           />
           <div className="contentWidth">
-            <div className="heading d_flex">
-              <div className="heading-left row  f_flex">
-                <h2>Moda</h2>
+            <div className="heading">
+              <h2>Moda</h2>
+              <div className="new-product">
+                <button onClick={() => navigate("/addProduto")}>
+                  <div className="plus-icon">
+                    <AiOutlinePlus />
+                  </div>
+                  Novo Produto
+                </button>
               </div>
             </div>
+            {/* <div className="tabelaComparar">
+              <ProductComparison produtos={produtos}></ProductComparison>
+            </div> */}
             <div className="product-content  grid1">
               <Produtos artigo={artigo} produtos={produtos} />
             </div>

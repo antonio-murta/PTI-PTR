@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Header, Grid, Item, Table, Label } from 'semantic-ui-react';
 import InfoProdutos from './InfoProdutos';
 import Produtos from './Produtos';
+import ProductCard from './TabelaProdutosC';
 
 const style = {
   h1: {
@@ -19,7 +20,7 @@ const style = {
   },
 };
 
-const ProductComparison = ({ infoProdutos }) => {
+const ProductComparison = ({ produtos }) => {
   const [selectedItems, setSelectedItems] = useState([]);
 
   const addToCompare = (item) => {
@@ -28,7 +29,7 @@ const ProductComparison = ({ infoProdutos }) => {
 
   const removeFromCompare = (item) => {
     const filteredItems = selectedItems.filter(
-      (product) => product.id !== item.id
+      (produto) => produto.id !== item.id
     );
     setSelectedItems((selectedItems) => filteredItems);
   };
@@ -47,7 +48,7 @@ const ProductComparison = ({ infoProdutos }) => {
             <Table.Row>
               <Table.HeaderCell></Table.HeaderCell>
               {selectedItems.map((el) => (
-                <Table.HeaderCell key={el.id}>{el.name}</Table.HeaderCell>
+                <Table.HeaderCell key={el.id}>{el.nome}</Table.HeaderCell>
               ))}
             </Table.Row>
           </Table.Header>
@@ -87,10 +88,10 @@ const ProductComparison = ({ infoProdutos }) => {
       )}
       <Grid columns={selectedItems.length} stackable padded divided>
         <Item.Group>
-          {InfoProdutos.map((product) => (
-            <Produtos
-              key={product.id}
-              product={product}
+          {InfoProdutos.map((produto) => (
+            <ProductCard
+              key={produto.id}
+              produto={produto}
               selected={selectedItems}
               addToCompare={addToCompare}
               removeFromCompare={removeFromCompare}

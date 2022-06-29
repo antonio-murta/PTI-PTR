@@ -66,9 +66,6 @@
 
 /* */
 
-.contentWidth {
-  width: 77%;
-}
 .notificações {
   box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
   background-color: #fff;
@@ -188,6 +185,7 @@
 
 .contentWidth {
   margin-left: 30px;
+  width: 77%;
 }
 
 .grid1 {
@@ -204,4 +202,8 @@
 }
 .product:hover {
   box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
+}
+
+.h3 {
+  float: left;
 }

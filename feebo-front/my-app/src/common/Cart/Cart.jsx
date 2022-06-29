@@ -1,12 +1,16 @@
-import React from "react";
-import "./style.css";
+import React from 'react';
+import './style.css';
 
 const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   const totalPrice = CartItem.reduce(
-    (price, item) => price + item.qty * item.price,
+    (price, item) => price + item.qty * item.preco,
     0
   );
 
+  const totalPoluicao = CartItem.reduce(
+    (poluicao, item) => poluicao + item.qty * item.poluicao,
+    0
+  );
   return (
     <>
       <section className="cart-items">
@@ -19,18 +23,18 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
             )}
 
             {CartItem.map((item) => {
-              const productQty = item.price * item.qty;
+              // const productQty = item.price * item.qty;
 
               return (
                 <div className="cart-list product d_flex" key={item.id}>
                   <div className="img">
-                    <img src={item.cover} alt="" />
+                    <img src={item.foto} alt="" />
                   </div>
                   <div className="cart-details">
                     <h3>{item.name}</h3>
                     <h4>
-                      ${item.price}.00 * {item.qty}
-                      <span>${productQty}.00</span>
+                      {item.preco}€ * {item.qty}
+                      {/* <span>${productQty}.00</span> */}
                     </h4>
                   </div>
                   <div className="cart-items-function">
@@ -65,7 +69,11 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
             <h2>Suas compras</h2>
             <div className=" d_flex">
               <h4>Valor final :</h4>
-              <h3>${totalPrice}.00</h3>
+              <h3>{totalPrice}€</h3>
+            </div>
+            <div className=" d_flex">
+              <h4>Poluição total :</h4>
+              <h3>{totalPoluicao}</h3>
             </div>
           </div>
         </div>

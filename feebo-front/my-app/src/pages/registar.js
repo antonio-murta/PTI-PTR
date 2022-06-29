@@ -1,100 +1,60 @@
 import "./css/registar.css";
 import * as React from "react";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import { Link as Link2 } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-import { useState, useEffect } from "react";
-
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit">PTI/PTR</Link> {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-// const theme = createTheme();
-
-
-
-
 
 export default function Registar() {
+  let navigate = useNavigate();
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     const { myValue } = event.currentTarget.dataset;
-    console.log(myValue) // --> 123
-}
+    console.log(myValue); // --> 123
+  };
 
-
+  const [name, setName] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [tlm, setTlm] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [nif, setNif] = useState("");
+  const [type, setType] = useState("");
 
   const handleSubmit = (event) => {
-
-    
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
 
-    fetch("http://localhost:3001/utilizador", {
-    // fetch("http://api.feeboo.me/utilizador", {
-      method: "POST",
-      body: JSON.stringify({
-        _id: data.get("email"),
-        nome: data.get("nome"),
-        password: data.get("password"),
-        dataNasc: data.get("dataNasc"),
-        telemovel: data.get("telefone"),
-        morada: data.get("morada"),
-        utipo: "qq",
-      }),
-      headers: {
-        "Content-Type": "application/json",
+    Axios.post("http://localhost:3001/utilizador", {
+      _id: email,
+      nome: name,
+      password: pwd,
+      dataNasc: birthday,
+      nif: nif,
+      telemovel: tlm,
+      morada: address,
+      utipo: type,
+    }).then(
+      (response) => {
+        console.log(response);
       },
-    })
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (myJson) {
-        console.log(myJson);
-      });
-
-    window.location.href = "./login";
-  };
-
-  const [tlm, setTlm] = useState();
-
-  const handleTlm = (e) => {
-    const value = e.target.value.replace(/\D/g, "");
-    setTlm(value);
-  };
-
-  const [nif, setNif] = useState();
-
-  const handleNif = (e) => {
-    const value = e.target.value.replace(/\D/g, "");
-    setNif(value);
+      (error) => {
+        console.log(error);
+      }
+    );
+    navigate("/");
   };
 
   return (
-    // <ThemeProvider theme={theme}>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
@@ -107,7 +67,7 @@ export default function Registar() {
         }}
       >
         <h1 className="h1"> Registar </h1>
-        <Box onSubmit={handleSubmit} component="form" noValidate sx={{ mt: 3 }}>
+        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
           <Grid container spacing={{ xs: 4, md: 2 }}>
             {" "}
             {/* numero de "blocos"*/}
@@ -121,7 +81,8 @@ export default function Registar() {
                 id="nome"
                 label="Nome Completo"
                 name="nome"
-                autoComplete="given-name"
+                onChange={(e) => setName(e.target.value)}
+                value={name}
                 autoFocus
               />
             </Grid>
@@ -133,8 +94,9 @@ export default function Registar() {
                 id="dataNasc"
                 label=" " //ver depois
                 name="dataNasc"
+                onChange={(e) => setBirthday(e.target.value)}
+                value={birthday}
                 type="date"
-                autoComplete="family-name"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -145,7 +107,8 @@ export default function Registar() {
                 id="email"
                 label="E-mail"
                 name="email"
-                autoComplete="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -157,7 +120,8 @@ export default function Registar() {
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="new-password"
+                onChange={(e) => setPwd(e.target.value)}
+                value={pwd}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -169,10 +133,9 @@ export default function Registar() {
                 label="Telemóvel"
                 name="telefone"
                 type="text"
-                autoComplete="telefone"
                 inputProps={{ maxLength: 9 }}
                 value={tlm}
-                onChange={handleTlm}
+                onChange={(e) => setTlm(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -184,10 +147,9 @@ export default function Registar() {
                 label="NIF"
                 name="nif"
                 type="text"
-                autoComplete="NIF"
                 inputProps={{ maxLength: 9 }}
                 value={nif}
-                onChange={handleNif}
+                onChange={(e) => setNif(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -198,7 +160,8 @@ export default function Registar() {
                 id="morada"
                 label="Morada"
                 name="morada"
-                autoComplete="family-name"
+                onChange={(e) => setAddress(e.target.value)}
+                value={address}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -206,12 +169,11 @@ export default function Registar() {
                 <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
                 <Select
                   variant="standard"
-                  // setSelectValue
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  // value={tipo}
+                  value={type}
+                  onChange={(e) => setType(e.target.value)}
                   label="Tipo"
-                  // onChange={handleChange}
                 >
                   <MenuItem value={"Cliente"}>Cliente</MenuItem>
                   <MenuItem value={"Fornecedor"}>Fornecedor</MenuItem>
@@ -220,13 +182,9 @@ export default function Registar() {
               </FormControl>
             </Grid>
           </Grid>
-          {/* <button onClick={handleCreate}>
-                  Click me
-            </button> */}
           <Button
             className="button"
             type="submit"
-            //onClick={addToDataBase}
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
@@ -234,8 +192,6 @@ export default function Registar() {
           </Button>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 5 }} />
     </Container>
-    /* </ThemeProvider> */
   );
 }

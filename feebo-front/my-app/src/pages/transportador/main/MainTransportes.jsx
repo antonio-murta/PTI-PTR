@@ -14,13 +14,13 @@ const MainTransportes = ({ addToCart, infoTransportes }) => {
           <Notifications />
           <div className="contentWidth">
             <div className="heading d_flex">
-              <h2>Transportes</h2>
+              <h2>Veículos</h2>
               <div className="new-transport">
                 <button onClick={() => navigate("/addTransportes")}>
                   <div className="plus-icon">
                     <TiPlus />
                   </div>
-                  Novo Transporte
+                  Novo Veículo
                 </button>
               </div>
             </div>

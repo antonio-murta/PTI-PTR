@@ -2,29 +2,29 @@ import React from 'react';
 import { Item, Button } from 'semantic-ui-react';
 
 const ProductCard = ({
-  product,
+  produto,
   addToCompare,
   removeFromCompare,
   selected,
 }) => (
-  <Item key={product.name}>
-    <Item.Image size="small" src={product.image} />
-    <Item.Content verticalAlign="middle">
-      <Item.Header>{product.name}</Item.Header>
-      <Item.Description>{product.price}</Item.Description>
-      <Item.Extra>
-        {selected && selected.includes(product) ? (
-          <Button color="red" onClick={() => removeFromCompare(product)}>
-            Remove
-          </Button>
-        ) : (
-          <Button color="blue" onClick={() => addToCompare(product)}>
-            Compare
-          </Button>
-        )}
-      </Item.Extra>
-    </Item.Content>
-  </Item>
+  // <Item key={produto.nome}>
+  //   {/* <Item.Image size="small" src={produto.imagem} /> */}
+  //   <Item.Content verticalAlign="middle">
+  //     <Item.Header>{produto.nome}</Item.Header>
+  //     <Item.Description>{produto.preco}</Item.Description>
+  <Item.Extra>
+    {selected && selected.includes(produto) ? (
+      <Button color="red" onClick={() => removeFromCompare(produto)}>
+        Remove
+      </Button>
+    ) : (
+      <Button color="blue" onClick={() => addToCompare(produto)}>
+        Compare
+      </Button>
+    )}
+  </Item.Extra>
+  //   </Item.Content>
+  // </Item>
 );
 
 export default ProductCard;
