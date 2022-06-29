@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Notifications from "./notifications";
-import Armazens from "./Armazens";
+import Armazens from "./Armazens.jsx";
 import { AiOutlinePlus } from "react-icons/ai";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
@@ -27,7 +27,7 @@ const Main = ({ addToCart, infoArmazens }) => {
         <div className="container d_flex">
           <Notifications />
           <div className="contentWidth">
-            <div className="heading d_flex">
+            <div className="title d_flex">
               <h2>Armazéns</h2>
               <div className="new-transport">
                 <button onClick={() => navigate("/addArmazem")}>

@@ -33,7 +33,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
                     <img src={item.foto} alt="" />
                   </div>
                   <div className="cart-details">
-                    <h3>{item.name}</h3>
+                    <h3>{item.nome}</h3>
                     <h4>
                       {item.preco}€ * {item.qty}
                       {/* <span>${productQty}.00</span> */}

@@ -22,9 +22,10 @@ import AddVeiculo from "./addVeiculo";
 import AddArmazem from "./addArmazem";
 import AddProduto from "./addProduto";
 import BoxProdutos from "./pages/categorias/main/BoxProdutos";
-import Armazem from "./pages/fornecedor/mainpage/BoxArmazem";
+import BoxArmazem from "./pages/fornecedor/mainpage/BoxArmazem";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Checkout from "./checkout";
+import BoxVeiculo from "./pages/transportador/main/BoxVeiculo";
 
 function App() {
   const THEME = createTheme({
@@ -174,7 +175,7 @@ function App() {
                 />
               }
             />
-            <Route element={<ProtectedRoutes />}>
+            <Route element={<ProtectedRoutes allowedRoles={"Transportador"} />}>
               <Route
                 path="/transportador"
                 element={
@@ -227,6 +228,16 @@ function App() {
               }
             />
             <Route
+              path="/utilizador/veiculo"
+              element={
+                <BoxVeiculo
+                  productItems={productItems}
+                  addToCart={addToCart}
+                  shopItems={shopItems}
+                />
+              }
+            />
+            <Route
               path="/addProduto"
               element={
                 <AddProduto
@@ -250,7 +261,7 @@ function App() {
             <Route
               path="/armazem"
               element={
-                <Armazem
+                <BoxArmazem
                   productItems={productItems}
                   addToCart={addToCart}
                   infoProdutos={infoProdutos}

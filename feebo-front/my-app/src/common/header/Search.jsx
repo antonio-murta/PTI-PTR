@@ -10,11 +10,6 @@ const Search = ({ CartItem }) => {
     search.classList.toggle("active", window.scrollY > 100);
   });
 
-  // const [carrinho, addCarrinho] = useState(false);
-  // const handleCarrinho = () => {
-  //   addToCart(produto);
-  // };
-
   return (
     <>
       <section className="search">

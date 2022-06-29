@@ -41,33 +41,39 @@ app.post("/produto", FornecedorController.criarProduto);
 app.delete("/produto", FornecedorController.removerProdutos);
 app.delete("/produto/:id", FornecedorController.removerProduto);
 
-// ainda n vi
-app.post("/utilizador/veiculo", TransportadorControler.criarVeiculo);
-app.put("/utilizador/:id/veiculo", TransportadorControler.updateVeiculo);
+
+// Transportador
+app.post("/utilizador/veiculo", TransportadorControler.criarVeiculo)
+app.put("/utilizador/:id/veiculo", TransportadorControler.updateVeiculo)
+app.get("/veiculos", TransportadorControler.get_all_veiculos)
 // app.put("/utilizador/:id/caminhos", TransportadorControler.updateCaminhos)
 
-app.post("/armazem", ArmazemController.criarArmazem);
-app.get("/armazem/nome", ArmazemController.getByNome);
 
-// ver
-app.get("/armazem", ArmazemController.get_all);
-app.get("/armazem/:id", ArmazemController.getById);
-app.get("/armazem/morada", ArmazemController.getByMorada);
-app.get("/armazem/telemovel", ArmazemController.getByTelemovel);
+// Armazem
+app.post("/armazem", ArmazemController.criarArmazem)
+app.get("/armazem/nome", ArmazemController.getByNome)
+
+app.get("/armazem", ArmazemController.get_all)
+app.get("/armazem/:id", ArmazemController.getById)
+app.get("/armazem/morada", ArmazemController.getByMorada)
+app.get("/armazem/telemovel", ArmazemController.getByTelemovel)
 
 app.delete("/armazem", ArmazemController.deleteByNome);
 app.delete("/armazem/:id", ArmazemController.deleteById);
 
-app.get("/consumidor", ConsumidorController.get_all);
+
+// Consumidor
+app.get("/consumidor", ConsumidorController.get_all)
 app.get("/consumidor/:id", ConsumidorController.encomendarCesto);
 
+
+// Utilizador
 app.post("/utilizador", UtilizadorControler.registar);
 app.delete("/utilizadores", UtilizadorControler.apagarUtilizadores);
 app.delete("/utilizadores/:id", UtilizadorControler.apagarUtilizadores_byID);
 app.delete("/utilizador/:id", UtilizadorControler.apagarConta);
 app.put("/utilizador/:id", UtilizadorControler.editarConta);
 
-// falta ver
 app.post("/utilizador/login", UtilizadorControler.login);
 app.put("/utilizador/:id/password", UtilizadorControler.alterarPassword);
 app.get("/utilizador/:id", UtilizadorControler.getByDados);
@@ -84,9 +90,36 @@ app.get("/utilizador", async (req, res) => {
   });
 });
 
-app.get("/transporteProdEnco", TransporteController.obterIDsProdutosEncomenda);
-app.get("/transporteProdArm", TransporteController.obterIDsProdutosArmazem);
-app.get("/transporteCaminho", TransporteController.verificarMorada);
+
+
+// Transporte
+app.get("/transporteProdEnco", TransporteController.obterIDsProdutosEncomenda)
+app.get("/transporteProdArm", TransporteController.obterIDsProdutosArmazem)
+app.get("/transporteCaminho", TransporteController.verificarMorada)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // // Fornecedor
 // app.post("http://api.feeboo.me/produto", FornecedorController.criarProduto)

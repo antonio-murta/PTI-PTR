@@ -18,6 +18,11 @@
   height: 600px;
 }
 
+.heading {
+  font-size: large;
+  color: #154784;
+}
+
 .type {
   font-size: small;
   color: #999999;
@@ -27,7 +32,7 @@
 .price {
   font-size: larger;
   font-weight: 900;
-  color: #e94560;
+  color: #0f3460;
 }
 
 .foto {
@@ -58,6 +63,9 @@
   color: #e94560;
 }
 
+.arrow {
+  color: #b3b3b3;
+}
 
 .textofav {
   padding-top: 11px;
