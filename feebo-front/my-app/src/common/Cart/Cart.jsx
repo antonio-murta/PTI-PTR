@@ -1,9 +1,12 @@
 import React from 'react';
 import './style.css';
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const Cart = ({ CartItem, addToCart, decreaseQty }) => {
+  let navigate = useNavigate();
+
   const totalPrice = CartItem.reduce(
     (price, item) => price + item.qty * item.preco,
     0
@@ -83,9 +86,9 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
               }}
               className="button"
               variant="contained"
+              onClick={() => navigate("/checkout")}
             >
-            {"Checkout"}
-            <Link to="/checkout"></Link>
+            Checkout
             </Button>
           </div>
         </div>
