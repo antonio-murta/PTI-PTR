@@ -137,7 +137,6 @@ export default function SignIn() {
           marginTop: 8,
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
         }}
       >
         <h1 className="h1">
@@ -147,7 +146,6 @@ export default function SignIn() {
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             className="mail-login"
-            alignItems="center"
             margin="normal"
             required
             variant="standard"
