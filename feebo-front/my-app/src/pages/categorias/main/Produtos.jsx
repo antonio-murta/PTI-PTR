@@ -47,8 +47,8 @@ const Produtos = ({
                   <img src={val.foto} alt="" />
                 </div>
                 <div className="product-details">
-                  <h2>{val.name}</h2>
-                  <h4>{val.preco}</h4>
+                  <h2>{val.nome}</h2>
+                  <h4>{val.preco}€</h4>
                   <h3>{val.tipo}</h3>
                   <h3>{val.subtipo}</h3>
                   <h3>Poluição média: {val.poluicao}</h3>
