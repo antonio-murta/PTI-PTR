@@ -51,6 +51,7 @@ function getCookie(cname) {
 function checkCookie() {
   let Token = getCookie("Token");
   let username = getCookie("UserName");
+  
   if (Token != "") {
     alert("Welcome again " + username);
   } else {
