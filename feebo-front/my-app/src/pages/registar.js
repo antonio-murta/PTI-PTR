@@ -33,27 +33,18 @@ function Copyright(props) {
 
 // const theme = createTheme();
 
-
-
-
-
 export default function Registar() {
-
-  const handleClick = event => {
+  const handleClick = (event) => {
     const { myValue } = event.currentTarget.dataset;
-    console.log(myValue) // --> 123
-}
-
-
+    console.log(myValue); // --> 123
+  };
 
   const handleSubmit = (event) => {
-
-    
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
     fetch("http://localhost:3001/utilizador", {
-    // fetch("http://api.feeboo.me/utilizador", {
+      // fetch("http://api.feeboo.me/utilizador", {
       method: "POST",
       body: JSON.stringify({
         _id: data.get("email"),

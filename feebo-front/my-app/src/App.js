@@ -1,28 +1,29 @@
-import './App.css';
-import React, { useState, useEffect } from 'react';
-import Axios from 'axios';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Header from './common/header/Header';
-import Pages from './pages/Pages';
-import Data from './components/Data';
-import Cart from './common/Cart/Cart';
-import Footer from './common/footer/Footer';
-import Sdata from './components/shops/Sdata';
-import InfoArmazens from './pages/fornecedor/mainpage/InfoArmazens';
-import InfoTransportes from './pages/transportador/main/InfoTransportes';
-import InfoProdutos from './pages/categorias/main/InfoProdutos';
-import SignIn from './pages/login';
-import Registar from './pages/registar';
-import Transportador from './pages/transportador/transportador';
-import Categorias from './pages/categorias/categorias';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Fornecedor from './pages/fornecedor/fornecedor';
-import PerfilClient from './perfilclient';
-import AddVeiculo from './addVeiculo';
-import AddArmazem from './addArmazem';
-import AddProduto from './addProduto';
-import BoxProdutos from './pages/categorias/main/BoxProdutos';
-import Armazem from './pages/fornecedor/mainpage/BoxArmazem';
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Header from "./common/header/Header";
+import Pages from "./pages/Pages";
+import Data from "./components/Data";
+import Cart from "./common/Cart/Cart";
+import Footer from "./common/footer/Footer";
+import Sdata from "./components/shops/Sdata";
+import InfoArmazens from "./pages/fornecedor/mainpage/InfoArmazens";
+import InfoTransportes from "./pages/transportador/main/InfoTransportes";
+import InfoProdutos from "./pages/categorias/main/InfoProdutos";
+import SignIn from "./pages/login";
+import Registar from "./pages/registar";
+import Transportador from "./pages/transportador/transportador";
+import Categorias from "./pages/categorias/categorias";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Fornecedor from "./pages/fornecedor/fornecedor";
+import PerfilClient from "./perfilclient";
+import AddVeiculo from "./addVeiculo";
+import AddArmazem from "./addArmazem";
+import AddProduto from "./addProduto";
+import BoxProdutos from "./pages/categorias/main/BoxProdutos";
+import Armazem from "./pages/fornecedor/mainpage/BoxArmazem";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 function App() {
   const THEME = createTheme({
@@ -50,33 +51,9 @@ function App() {
   const [produtos, setProdutos] = useState([]);
   const [todosprodutos, setTodosProdutos] = useState([]);
   useEffect(() => {
-    Axios.get('http://localhost:3001/produto/').then((res) => {
+    Axios.get("http://localhost:3001/produto/").then((res) => {
       setProdutos(res.data);
       setTodosProdutos(res.data);
-    });
-  }, []);
-
-  /*****************************************/
-  /*           fetching transportes        */
-  /*****************************************/
-  const [transportes, setTransportes] = useState([]);
-  const [todostransportes, setTodosTransportes] = useState([]);
-  useEffect(() => {
-    Axios.get('http://localhost:3001/utilizador/veiculo').then((res) => {
-      setTransportes(res.data);
-      setTodosTransportes(res.data);
-    });
-  }, []);
-
-  /*****************************************/
-  /*           fetching armazens        */
-  /*****************************************/
-  const [armazens, setArmazens] = useState([]);
-  const [todosarmazens, setTodosArmazens] = useState([]);
-  useEffect(() => {
-    Axios.get('http://localhost:3001/armazem').then((res) => {
-      setArmazens(res.data);
-      setTodosArmazens(res.data);
     });
   }, []);
 
@@ -91,8 +68,6 @@ function App() {
     // =======
 
     const newProduto = todosprodutos.filter((newVal) => {
-      // >>>>>>> main
-
       return newVal.tipo === curcat;
     });
     setProdutos(newProduto);
@@ -198,32 +173,28 @@ function App() {
                 />
               }
             />
-            <Route
-              path="/transportador"
-              element={
-                <Transportador
-                  productItems={productItems}
-                  addToCart={addToCart}
-                  infoTransportes={infoTransportes}
-                  transportes={transportes}
-                  setTransportes={setTransportes}
-                  todostransportes={todostransportes}
-                />
-              }
-            />
-            <Route
-              path="/fornecedor"
-              element={
-                <Fornecedor
-                  productItems={productItems}
-                  addToCart={addToCart}
-                  infoArmazens={infoArmazens}
-                  armazens={armazens}
-                  setArmazens={setArmazens}
-                  todosarmazens={todosarmazens}
-                />
-              }
-            />
+            <Route element={<ProtectedRoutes />}>
+              <Route
+                path="/transportador"
+                element={
+                  <Transportador
+                    productItems={productItems}
+                    addToCart={addToCart}
+                    infoTransportes={infoTransportes}
+                  />
+                }
+              />
+              <Route
+                path="/fornecedor"
+                element={
+                  <Fornecedor
+                    productItems={productItems}
+                    addToCart={addToCart}
+                    infoArmazens={infoArmazens}
+                  />
+                }
+              />
+            </Route>
             <Route
               path="/perfilclient"
               element={

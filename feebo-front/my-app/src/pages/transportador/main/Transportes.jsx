@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { CgTrash } from 'react-icons/cg';
-import { useNavigate } from 'react-router';
-import './style-transporte.css';
+import React, { useState } from "react";
+import { CgTrash } from "react-icons/cg";
+import { useNavigate } from "react-router";
+import "./style-transporte.css";
 
 const Transportes = ({ infoTransportes, addToCart, transportes }) => {
   let navigate = useNavigate();
@@ -9,16 +9,16 @@ const Transportes = ({ infoTransportes, addToCart, transportes }) => {
   const increment = () => {
     setCount(count + 1);
   };
-
+  console.log(transportes);
   return (
     <>
       {transportes.map((val, index) => {
         return (
           <div
             onClick={() => {
-              navigate('/utilizador/veiculo', {
+              navigate("/utilizador/veiculo", {
                 state: {
-                  id: val._id,
+                  id: val.matricula,
                   name: val.marca,
                   modelo: val.modelo,
                   poluicao: val.poluicao,
@@ -28,18 +28,19 @@ const Transportes = ({ infoTransportes, addToCart, transportes }) => {
             key={index}
             className="box"
           >
-            <div className="transport mtop">
-              <div className="product-details">
-                <h3>{val.name}</h3>
-                <h3>Saída: {val.estado}</h3>
-                <h3>Chegada prevista: {val.encomenda}</h3>
-                <div className="settings">
+            <div className="transport">
+              <div className="details">
+                <h3>Carro: {val.matricula}</h3>
+                <h3>Poluição: {val.poluicao}</h3>
+                <h3>Marca: {val.marca}</h3>
+                <h3>Modelo: {val.modelo}</h3>
+                {/* <div className="settings">
                   <button onClick={() => addToCart(val)}>
                     <div className="setts">
                       <CgTrash />
                     </div>
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
