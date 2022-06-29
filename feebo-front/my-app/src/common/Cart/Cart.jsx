@@ -1,5 +1,7 @@
 import React from 'react';
 import './style.css';
+import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   const totalPrice = CartItem.reduce(
@@ -75,6 +77,16 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
               <h4>Poluição total :</h4>
               <h3>{totalPoluicao}</h3>
             </div>
+            <Button
+              style={{
+              backgroundColor: "#e94560",
+              }}
+              className="button"
+              variant="contained"
+            >
+            {"Checkout"}
+            <Link to="/checkout"></Link>
+            </Button>
           </div>
         </div>
       </section>
