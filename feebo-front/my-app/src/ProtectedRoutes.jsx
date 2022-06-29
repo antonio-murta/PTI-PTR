@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import axios from "axios";
 
 function getCookie(cname) {
   let name = cname + "=";
@@ -25,10 +23,13 @@ const useAuth = () => {
 
 const ProtectedRoutes = ({ allowedRoles }) => {
   let username = getCookie("UserName");
+  let utipo = getCookie("UTipo");
+
+  console.log(utipo);
 
   const location = useLocation();
   const isAuth = useAuth();
-  return isAuth ? (
+  return isAuth && utipo === allowedRoles ? (
     <Outlet />
   ) : (
     <Navigate to="/login" state={{ from: location }} replace />

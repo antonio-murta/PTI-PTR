@@ -16,6 +16,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { useState, useEffect } from "react";
 import Axios from "axios";
+import NewArmazemModal from "./NewArmazemModal";
 
 export default function AddArmazem() {
   const [name, setName] = useState("");
@@ -94,7 +95,6 @@ export default function AddArmazem() {
                 onChange={(e) => setPolution(e.target.value)}
                 value={polution}
                 autoComplete="given-name"
-                autoFocus
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -129,8 +129,8 @@ export default function AddArmazem() {
                   Tipo de Produto
                 </InputLabel>
                 <Select
+                  required
                   variant="standard"
-                  // setSelectValue
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   value={type}
@@ -147,8 +147,8 @@ export default function AddArmazem() {
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">Produto</InputLabel>
                 <Select
+                  required
                   variant="standard"
-                  // setSelectValue
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   value={product}
@@ -163,14 +163,7 @@ export default function AddArmazem() {
             </Grid>
           </Grid>
           <Grid>
-            <Button
-              className="button"
-              type="submit"
-              variant="contained"
-              sx={{ mt: 5 }}
-            >
-              {"Adicionar Armazém"}
-            </Button>
+            <NewArmazemModal />
           </Grid>
         </Box>
       </Box>

@@ -174,7 +174,7 @@ function App() {
                 />
               }
             />
-            <Route element={<ProtectedRoutes />}>
+            <Route element={<ProtectedRoutes allowedRoles={"Transportador"} />}>
               <Route
                 path="/transportador"
                 element={

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Notifications from "./notifications";
-import Armazens from "./Armazens";
+import Armazens from "./Armazens.jsx";
 import { AiOutlinePlus } from "react-icons/ai";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
