@@ -70,6 +70,24 @@ const updateVeiculo = (req, res) => {
 }
 
 
+const get_all_veiculos = (req, res) => {
+    VeiculoModel.find({})
+    .then(result => {
+        if (result.length == 0) {
+            res.status(404).send("Nao existem veiculos registados");
+        } else {
+            res.status(200).send(result);
+        }
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    })
+}
+
+
+
+
+
 
 const deleteByEmail = (req, res) => {
     TransportadorModel.findByIdAndDelete(req.body.email)
@@ -82,4 +100,4 @@ const deleteByEmail = (req, res) => {
 }
 
 
-module.exports = {/*getByNome, updateCaminhos,*/criarVeiculo, updateVeiculo, deleteByEmail};
+module.exports = {/*getByNome, updateCaminhos,*/criarVeiculo, updateVeiculo, get_all_veiculos, deleteByEmail};
