@@ -19,7 +19,7 @@ const BoxVeiculo = () => {
               <Link to="/transportador">
                 <BsFillArrowLeftCircleFill className="arrow" size={25} />
               </Link>
-              <div className="heading">
+              <div className="title">
                 <h2>Veículo {location.state.id}</h2>
               </div>
               <p>Marca: {location.state.marca}</p>

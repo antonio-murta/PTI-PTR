@@ -18,7 +18,7 @@
   height: 600px;
 }
 
-.heading {
+.title {
   font-size: large;
   color: #154784;
 }
@@ -32,7 +32,7 @@
 .price {
   font-size: larger;
   font-weight: 900;
-  color: #0f3460;
+  color: #154784;
 }
 
 .foto {
