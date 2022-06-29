@@ -5,6 +5,8 @@ const EncomendaModel = require("../Colecoes/Encomenda");
 // const conexao = require('../../conexao');
 
 
+
+
 const obterIDsProdutosArmazem = (req, res) => {
     const lista_prodArmazens = [];
     ArmazemModel.find({})
