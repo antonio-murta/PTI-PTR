@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import "./style-armazens.css";
 import { useNavigate } from "react-router-dom";
 
-const Armazens = ({ infoArmazens, addToCart, armazens }) => {
+const Armazens = ({ armazens }) => {
   let navigate = useNavigate();
+
   const [count, setCount] = useState(0);
   const increment = () => {
     setCount(count + 1);
@@ -30,12 +31,12 @@ const Armazens = ({ infoArmazens, addToCart, armazens }) => {
             key={index}
             className="box"
           >
-            <div className="transport">
+            <div className="armazem">
               <div className="details">
                 <h2>{val.nome}</h2>
                 <h3>Tipo: {val.tipo}</h3>
                 <h3>Local: {val.morada}</h3>
-                <h3>Poluição: {val.poluicao}</h3>
+                <h3>Poluição: {val.poluicao}gCO2/km</h3>
               </div>
             </div>
           </div>

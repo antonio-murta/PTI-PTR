@@ -1,23 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Axios from "axios";
-import { CgTrash } from "react-icons/cg";
 import { useNavigate } from "react-router";
 import "./style-transporte.css";
 
-const Transportes = () => {
+const Transportes = ({ veiculos }) => {
   let navigate = useNavigate();
-
-  /*****************************************/
-  /*            fetching veículos          */
-  /*****************************************/
-  const [transportes, setTransportes] = useState([]);
-  const [todostransportes, setTodosTransportes] = useState([]);
-  // useEffect(() => {
-  //   Axios.get("http://localhost:3001/utilizador/veiculo").then((res) => {
-  //     setTransportes(res.data);
-  //     setTodosTransportes(res.data);
-  //   });
-  // }, []);
 
   const [count, setCount] = useState(0);
   const increment = () => {
@@ -25,14 +11,14 @@ const Transportes = () => {
   };
   return (
     <>
-      {transportes.map((val, index) => {
+      {veiculos.map((val, index) => {
         return (
           <div
             onClick={() => {
               navigate("/utilizador/veiculo", {
                 state: {
-                  id: val.matricula,
-                  name: val.marca,
+                  id: val._id,
+                  marca: val.marca,
                   modelo: val.modelo,
                   poluicao: val.poluicao,
                 },
@@ -43,17 +29,10 @@ const Transportes = () => {
           >
             <div className="transport">
               <div className="details">
-                <h3>Carro: {val.matricula}</h3>
-                <h3>Poluição: {val.poluicao}</h3>
+                <h2>Carro: {val._id}</h2>
+                <h3>Poluição: {val.poluicao}gCO2/km</h3>
                 <h3>Marca: {val.marca}</h3>
                 <h3>Modelo: {val.modelo}</h3>
-                {/* <div className="settings">
-                  <button onClick={() => addToCart(val)}>
-                    <div className="setts">
-                      <CgTrash />
-                    </div>
-                  </button>
-                </div> */}
               </div>
             </div>
           </div>

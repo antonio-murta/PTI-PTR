@@ -35,6 +35,11 @@
   font-size: 17px;
 }
 
+.transport h2 {
+  font-weight: bolder;
+  font-size: 18px;
+}
+
 .d_flex {
   display: flex;
   flex-direction: row;
