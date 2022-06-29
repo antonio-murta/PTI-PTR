@@ -15,8 +15,8 @@ import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import Endereco from './checkoutEnd';
-import Pagamento from './checkoutPaga';
+import Endereco from './Endereco';
+import Pagamento from './Pagamento';
 
 
 const theme = createTheme();
@@ -63,7 +63,7 @@ export default function Checkout() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar
+      {/* <AppBar
         position="absolute"
         color="default"
         elevation={0}
@@ -77,7 +77,7 @@ export default function Checkout() {
             Feeboo
           </Typography>
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
         <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
           <Typography component="h1" variant="h4" className='h1' align="center">

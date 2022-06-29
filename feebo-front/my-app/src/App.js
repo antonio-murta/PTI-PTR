@@ -23,6 +23,7 @@ import AddArmazem from "./addArmazem";
 import AddProduto from "./addProduto";
 import BoxProdutos from "./pages/categorias/main/BoxProdutos";
 import Armazem from "./pages/fornecedor/mainpage/BoxArmazem";
+import Checkout from "./checkout";
 
 
 function App() {
@@ -198,6 +199,16 @@ function App() {
                   productItems={productItems}
                   addToCart={addToCart}
                   infoArmazens={infoArmazens}
+                />
+              }
+            />
+            <Route
+              path="/checkout"
+              element={
+                <Checkout
+                  productItems={productItems}
+                  addToCart={addToCart}
+                  shopItems={shopItems}
                 />
               }
             />

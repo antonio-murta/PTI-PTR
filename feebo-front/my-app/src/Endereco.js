@@ -47,6 +47,7 @@ export default function Endereco() {
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+            required
             fullWidth
             id="distrito"
             name="distrito"
