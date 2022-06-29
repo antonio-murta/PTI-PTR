@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import './ProdutoIndividual.css';
-import { useLocation } from 'react-router-dom';
-import { HiOutlineHeart } from 'react-icons/hi';
-import { HiHeart } from 'react-icons/hi';
-import { BsCartPlus } from 'react-icons/bs';
-import { BsCartXFill } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import "./ProdutoIndividual.css";
+import { useLocation } from "react-router-dom";
+import { HiOutlineHeart } from "react-icons/hi";
+import { HiHeart } from "react-icons/hi";
+import { BsCartPlus } from "react-icons/bs";
+import { BsCartXFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 
 const BoxProdutos = ({ addToCart }) => {
   let location = useLocation();
@@ -38,13 +39,13 @@ const BoxProdutos = ({ addToCart }) => {
           <div className="contentWidth">
             <div className="caixa">
               <Link to="/categoria">
-                <img src="./images/category/setas.png"></img>
+                <BsFillArrowLeftCircleFill className="arrow" size={25} />{" "}
               </Link>
               <div className="heading">
                 <h2>{location.state.name}</h2>
               </div>
               <div className="type">
-                {location.state.tipo} {'>'} {location.state.subtipo}
+                {location.state.tipo} {">"} {location.state.subtipo}
               </div>
               <div>
                 <img src={location.state.foto} className="foto" />
@@ -57,7 +58,7 @@ const BoxProdutos = ({ addToCart }) => {
                     <HiOutlineHeart size={25} onClick={handleClickFav} />
                   )}
                 </div>
-                <div className="textofav">{'Wishlist'}</div>
+                <div className="textofav">{"Wishlist"}</div>
                 <div className="carro">
                   {clickCart ? (
                     <BsCartXFill size={24} onClick={handleClickCart} />
@@ -65,11 +66,11 @@ const BoxProdutos = ({ addToCart }) => {
                     <BsCartPlus size={24} onClick={handleClickCart} />
                   )}
                 </div>
-                <div className="textofav">{'Adicionar ao carrinho'}</div>
+                <div className="textofav">{"Adicionar ao carrinho"}</div>
               </div>
 
-              <p className="price">{location.state.preco}</p>
-              <p>Poluição: {location.state.poluicao}</p>
+              <p className="price">{location.state.preco}€</p>
+              <p>Poluição: {location.state.poluicao}gCO2/km</p>
             </div>
           </div>
         </div>
