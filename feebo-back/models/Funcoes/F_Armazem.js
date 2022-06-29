@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 
 const criarArmazem = (req, res) => {
   const armazem = new ArmazemModel(req.body);
+  console.log(res);
   armazem
     .save()
     .then(() => {

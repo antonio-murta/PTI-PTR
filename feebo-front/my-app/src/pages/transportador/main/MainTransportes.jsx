@@ -7,6 +7,19 @@ import { useNavigate } from "react-router-dom";
 
 const MainTransportes = ({ addToCart, infoTransportes }) => {
   let navigate = useNavigate();
+
+  /*****************************************/
+  /*           fetching armazens        */
+  /*****************************************/
+  // const [veiculos, setVeiculos] = useState([]);
+  // const [todosVeiculos, setTodosVeiculos] = useState([]);
+  // useEffect(() => {
+  //   Axios.get("http://localhost:3001/armazem").then((res) => {
+  //     setVeiculos(res.data);
+  //     setTodosVeiculos(res.data);
+  //   });
+  // }, []);
+
   return (
     <>
       <section className="shop background">

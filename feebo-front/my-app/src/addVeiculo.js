@@ -1,13 +1,11 @@
 import "./css/perfil.css";
 import React, { useState } from "react";
-import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Axios from "axios";
-import NewVeiculoModal from "./NewVeiculoModal";
 
 export default function AddVeiculo() {
   const [matricula, setMatricula] = useState("");
@@ -24,6 +22,10 @@ export default function AddVeiculo() {
         ?.join("-")
         .substr(0, 8) || ""
     );
+  };
+  const handlePolution = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    setPolution(value);
   };
 
   const handleSubmit = (event) => {
@@ -88,7 +90,7 @@ export default function AddVeiculo() {
                 id="poluicao"
                 label="Poluição"
                 name="poluicao"
-                onChange={(e) => setPolution(e.target.value)}
+                onChange={(e) => handlePolution(e)}
                 value={polution}
               />
             </Grid>
@@ -119,7 +121,6 @@ export default function AddVeiculo() {
           </Grid>
         </Box>
       </Box>
-      <NewVeiculoModal />
     </Container>
   );
 }

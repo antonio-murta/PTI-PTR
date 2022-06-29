@@ -3,31 +3,35 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { red } from "@mui/material/colors";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-import NewArmazemModal from "./NewArmazemModal";
 
 export default function AddArmazem() {
+  let navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [polution, setPolution] = useState("");
   const [type, setType] = useState("");
   const [product, setProduct] = useState("");
-  const [phone, setPhone] = useState();
+  const [phone, setPhone] = useState("");
+
   const handlePhone = (e) => {
     const value = e.target.value.replace(/\D/g, "");
     setPhone(value);
+  };
+
+  const handlePolution = (e) => {
+    const value = e.target.value.replace(/\D/g, "");
+    setPolution(value);
   };
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,6 +47,7 @@ export default function AddArmazem() {
     }).then(
       (response) => {
         console.log(response);
+        navigate("/fornecedor");
       },
       (error) => {
         console.log(error);
@@ -92,7 +97,7 @@ export default function AddArmazem() {
                 id="poluicao"
                 label="Poluição"
                 name="poluicao"
-                onChange={(e) => setPolution(e.target.value)}
+                onChange={(e) => handlePolution(e)}
                 value={polution}
                 autoComplete="given-name"
               />
@@ -163,7 +168,17 @@ export default function AddArmazem() {
             </Grid>
           </Grid>
           <Grid>
-            <NewArmazemModal />
+            <Button
+              style={{
+                backgroundColor: "#1c5fb0",
+              }}
+              className="buttonNewArmazem"
+              type="submit"
+              variant="contained"
+              sx={{ ml: 24, mt: -17.9 }}
+            >
+              {"Adicionar armazém"}
+            </Button>
           </Grid>
         </Box>
       </Box>
