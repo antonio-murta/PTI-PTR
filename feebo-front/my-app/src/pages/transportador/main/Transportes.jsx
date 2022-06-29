@@ -1,30 +1,59 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import { CgTrash } from "react-icons/cg";
+import { useNavigate } from "react-router";
 import "./style-transporte.css";
 
-const Transportes = ({ infoTransportes, addToCart }) => {
+const Transportes = () => {
+  let navigate = useNavigate();
+
+  /*****************************************/
+  /*            fetching veículos          */
+  /*****************************************/
+  const [transportes, setTransportes] = useState([]);
+  const [todostransportes, setTodosTransportes] = useState([]);
+  // useEffect(() => {
+  //   Axios.get("http://localhost:3001/utilizador/veiculo").then((res) => {
+  //     setTransportes(res.data);
+  //     setTodosTransportes(res.data);
+  //   });
+  // }, []);
+
   const [count, setCount] = useState(0);
   const increment = () => {
     setCount(count + 1);
   };
-
   return (
     <>
-      {infoTransportes.map((item, index) => {
+      {transportes.map((val, index) => {
         return (
-          <div key={index} className="box">
-            <div className="transport mtop">
-              <div className="product-details">
-                <h3>{item.name}</h3>
-                <h3>Saída: {item.saida}</h3>
-                <h3>Chegada prevista: {item.chegada}</h3>
-                <div className="settings">
-                  <button onClick={() => addToCart(item)}>
+          <div
+            onClick={() => {
+              navigate("/utilizador/veiculo", {
+                state: {
+                  id: val.matricula,
+                  name: val.marca,
+                  modelo: val.modelo,
+                  poluicao: val.poluicao,
+                },
+              });
+            }}
+            key={index}
+            className="box"
+          >
+            <div className="transport">
+              <div className="details">
+                <h3>Carro: {val.matricula}</h3>
+                <h3>Poluição: {val.poluicao}</h3>
+                <h3>Marca: {val.marca}</h3>
+                <h3>Modelo: {val.modelo}</h3>
+                {/* <div className="settings">
+                  <button onClick={() => addToCart(val)}>
                     <div className="setts">
                       <CgTrash />
                     </div>
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

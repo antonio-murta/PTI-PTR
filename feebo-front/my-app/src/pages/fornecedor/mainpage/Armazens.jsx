@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./style-armazens.css";
 import { useNavigate } from "react-router-dom";
 
-const Armazens = ({ infoArmazens, addToCart }) => {
+const Armazens = ({ infoArmazens, addToCart, armazens }) => {
   let navigate = useNavigate();
   const [count, setCount] = useState(0);
   const increment = () => {
@@ -11,14 +11,19 @@ const Armazens = ({ infoArmazens, addToCart }) => {
 
   return (
     <>
-      {infoArmazens.map((item, index) => {
+      {armazens.map((val, index) => {
         return (
           <div
             onClick={() => {
               navigate("/armazem", {
                 state: {
-                  name: item.name,
-                  local: item.saida,
+                  id: val._id,
+                  name: val.nome,
+                  local: val.morada,
+                  poluicao: val.poluicao,
+                  telemovel: val.telemovel,
+                  tipo: val.tipo,
+                  produtos: val.produtos,
                 },
               });
             }}
@@ -27,8 +32,10 @@ const Armazens = ({ infoArmazens, addToCart }) => {
           >
             <div className="transport">
               <div className="details">
-                <h3>{item.name}</h3>
-                <h3>Local: {item.saida}</h3>
+                <h2>{val.nome}</h2>
+                <h3>Tipo: {val.tipo}</h3>
+                <h3>Local: {val.morada}</h3>
+                <h3>Poluição: {val.poluicao}</h3>
               </div>
             </div>
           </div>
