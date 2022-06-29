@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import './style-armazens.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import "./style-armazens.css";
+import { useNavigate } from "react-router-dom";
 
 const Armazens = ({ infoArmazens, addToCart, armazens }) => {
   let navigate = useNavigate();
@@ -15,7 +15,7 @@ const Armazens = ({ infoArmazens, addToCart, armazens }) => {
         return (
           <div
             onClick={() => {
-              navigate('/armazem', {
+              navigate("/armazem", {
                 state: {
                   id: val._id,
                   name: val.nome,
@@ -33,6 +33,7 @@ const Armazens = ({ infoArmazens, addToCart, armazens }) => {
             <div className="transport">
               <div className="details">
                 <h2>{val.nome}</h2>
+                <h3>Tipo: {val.tipo}</h3>
                 <h3>Local: {val.morada}</h3>
                 <h3>Poluição: {val.poluicao}</h3>
               </div>

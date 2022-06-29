@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 import { CgTrash } from "react-icons/cg";
 import { useNavigate } from "react-router";
 import "./style-transporte.css";
 
-const Transportes = ({ infoTransportes, addToCart, transportes }) => {
+const Transportes = () => {
   let navigate = useNavigate();
+
+  /*****************************************/
+  /*            fetching veículos          */
+  /*****************************************/
+  const [transportes, setTransportes] = useState([]);
+  const [todostransportes, setTodosTransportes] = useState([]);
+  // useEffect(() => {
+  //   Axios.get("http://localhost:3001/utilizador/veiculo").then((res) => {
+  //     setTransportes(res.data);
+  //     setTodosTransportes(res.data);
+  //   });
+  // }, []);
+
   const [count, setCount] = useState(0);
   const increment = () => {
     setCount(count + 1);
   };
-  console.log(transportes);
   return (
     <>
       {transportes.map((val, index) => {
