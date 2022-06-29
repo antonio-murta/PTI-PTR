@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import "./../../categorias/main/ProdutoIndividual.css";
-import { useLocation } from "react-router-dom";
+import React, { useState } from 'react';
+import './../../categorias/main/ProdutoIndividual.css';
+import { useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const BoxArmazem = () => {
   let location = useLocation();
@@ -14,6 +15,9 @@ const BoxArmazem = () => {
         <div className="cont">
           <div className="contentWidth">
             <div className="caixa">
+              <Link to="/armazem">
+                <img src="./images/category/setas.png"></img>
+              </Link>
               <div className="heading">
                 <h2>{location.state.name}</h2>
               </div>
