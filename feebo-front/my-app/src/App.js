@@ -24,6 +24,7 @@ import AddProduto from "./addProduto";
 import BoxProdutos from "./pages/categorias/main/BoxProdutos";
 import Armazem from "./pages/fornecedor/mainpage/BoxArmazem";
 import ProtectedRoutes from "./ProtectedRoutes";
+import Checkout from "./checkout";
 
 function App() {
   const THEME = createTheme({
@@ -195,6 +196,16 @@ function App() {
                 }
               />
             </Route>
+            <Route
+              path="/checkout"
+              element={
+                <Checkout
+                  productItems={productItems}
+                  addToCart={addToCart}
+                  shopItems={shopItems}
+                />
+              }
+            />
             <Route
               path="/perfilclient"
               element={
