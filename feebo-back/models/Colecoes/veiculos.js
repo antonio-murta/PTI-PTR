@@ -1,7 +1,7 @@
 const monggose = require("mongoose");
 
 const VeiculoSchema = new monggose.Schema({
-  _id: {
+  matricula: {
     type: String,
     required: true,
   },
@@ -17,6 +17,10 @@ const VeiculoSchema = new monggose.Schema({
     type: Number,
     required: true,
   },
+  utilizacao: {
+    type: String,
+    required: true,
+  }
 });
 
 const veiculo = monggose.model("veiculo", VeiculoSchema);

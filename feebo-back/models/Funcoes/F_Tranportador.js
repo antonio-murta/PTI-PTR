@@ -87,5 +87,33 @@ const deleteByEmail = (req, res) => {
 };
 
 
-module.exports = {/*getByNome, updateCaminhos,*/criarVeiculo, updateVeiculo, get_all_veiculos, deleteByEmail};
+
+
+
+const deleteVeiculoById = (req, res) => {
+  const id = req.params.id;
+
+  VeiculoModel.findOne({ _id: id })
+    .then((result) => {
+      if (result.length == 0) {
+        res.status(404).send("Veiculo nao encontrado");
+      } else {
+        if (result["utilizacao"] == "no") {
+          VeiculoModel.findByIdAndDelete(id)
+          .then(() => {
+            res.status(200).send("veiculo apagado com sucesso");
+          })
+          .catch(() => {
+            res.status(404).send("veiculo nao existe");
+          });
+        }
+      }
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+};
+
+
+module.exports = {/*getByNome, updateCaminhos,*/criarVeiculo, updateVeiculo, get_all_veiculos, deleteByEmail, deleteVeiculoById};
 
