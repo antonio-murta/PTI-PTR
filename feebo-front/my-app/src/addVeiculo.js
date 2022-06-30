@@ -1,13 +1,17 @@
 import "./css/perfil.css";
 import React, { useState } from "react";
+import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function AddVeiculo() {
+  let navigate = useNavigate();
+
   const [matricula, setMatricula] = useState("");
   const [polution, setPolution] = useState("");
   const [brand, setBrand] = useState("");
@@ -42,6 +46,7 @@ export default function AddVeiculo() {
     }).then(
       (response) => {
         console.log(response);
+        navigate("/transportador");
       },
       (error) => {
         console.log(error);
@@ -117,6 +122,17 @@ export default function AddVeiculo() {
                 value={model}
               />
             </Grid>
+            <Button
+              style={{
+                backgroundColor: "#1c5fb0",
+              }}
+              className="buttonNewArmazem"
+              type="submit"
+              variant="contained"
+              sx={{ ml: 24, mt: -17.9 }}
+            >
+              {"Adicionar veículo"}
+            </Button>
           </Grid>
         </Box>
       </Box>

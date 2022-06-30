@@ -18,10 +18,9 @@ const MainTransportes = ({ addToCart, infoTransportes }) => {
     Axios.get("http://localhost:3001/veiculos").then((res) => {
       setVeiculos(res.data);
       setTodosVeiculos(res.data);
-      console.log(veiculos);
     });
   }, []);
-
+  console.log(veiculos);
   return (
     <>
       <section className="shop background">
