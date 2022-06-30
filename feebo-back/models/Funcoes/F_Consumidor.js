@@ -69,26 +69,28 @@ const get_all = (req, res) => {
 
 const encomendarCesto = (req, res) => {
     // const email = req.params.id;
-    const email = "catarina@gmail.com";
 
-    ConsumidorModel.findOne({_id: email})
-    .then(result => {
-        if (result.length == 0) {
-            res.status(404).send("nao encontrado");
-        } else {
+    // outraData.setDate(time.getDate() + 3);
 
-            const cesto = result[0].cesto;
-            res.status(200).send(cesto);
-        
-
-
-            res.status(200).send(result);
+    EncomendaModel.create(
+        {
+            "cliente": req.body.cliente,
+            "nome_completo": req.body.nome_completo,
+            "rua": req.body.rua,
+            "cidade": req.body.cidade,
+            "distrito": req.body.distrito,
+            "codigo_postal": req.body.codigo_postal,
+            "pais": req.body.pais,
+            "produtos": req.body.produtos,
+            "recursos": req.body.recursos,
+            "poluicao": req.body.poluicao,
+            "pagamento": req.body.pagamento,
+            "data_inicio": new Date()
         }
-    })
-    .catch(err => {
-        res.status(400).send(err);
+    )
+    .then(() => {
+        res.status(201).send("Encomenda criada com sucesso");
     });
-
 
 }
 
