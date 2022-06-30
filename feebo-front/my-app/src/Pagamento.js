@@ -4,10 +4,41 @@ import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import Box from "@mui/material/Box";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Axios from "axios";
 
 export default function Pagamento() {
+  let navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [numero, setNum] = useState("");
+  const [val, setVal] = useState("");
+  const [cv, setCv] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    Axios.post("https://api.feeboo.me/Cartao", {
+      nome: name,
+      numero: numero,
+      validade: val,
+      cvv: cv,
+    }).then(
+      (response) => {
+        console.log(response);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+    navigate("/");
+  };
+
   return (
     <React.Fragment>
+      <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
       <Typography variant="h6" gutterBottom>
         Método de Pagamento
       </Typography>
@@ -20,6 +51,8 @@ export default function Pagamento() {
             label="Nome do cartão"
             autoComplete="cc-name"
             variant="standard"
+            onChange={(e) => setName(e.target.value)}
+            value={name}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -30,6 +63,8 @@ export default function Pagamento() {
             label="Número do cartão"
             autoComplete="cc-number"
             variant="standard"
+            onChange={(e) => setNum(e.target.value)}
+            value={numero}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -40,6 +75,8 @@ export default function Pagamento() {
             label="Validade"
             autoComplete="cc-exp"
             variant="standard"
+            onChange={(e) => setVal(e.target.value)}
+            value={val}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -51,6 +88,8 @@ export default function Pagamento() {
             helperText="Os três últimos números"
             autoComplete="cc-csc"
             variant="standard"
+            onChange={(e) => setCv(e.target.value)}
+            value={cv}
           />
         </Grid>
         <Grid item xs={12}>
@@ -60,6 +99,7 @@ export default function Pagamento() {
           />
         </Grid>
       </Grid>
+      </Box>
     </React.Fragment>
   );
 }

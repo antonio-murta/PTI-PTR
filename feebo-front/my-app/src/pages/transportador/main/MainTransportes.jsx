@@ -15,13 +15,12 @@ const MainTransportes = ({ addToCart, infoTransportes }) => {
   const [veiculos, setVeiculos] = useState([]);
   const [todosVeiculos, setTodosVeiculos] = useState([]);
   useEffect(() => {
-    Axios.get("http://localhost:3001/veiculos").then((res) => {
+    Axios.get("https://api.feeboo.me/veiculos").then((res) => {
       setVeiculos(res.data);
       setTodosVeiculos(res.data);
-      console.log(veiculos);
     });
   }, []);
-
+  console.log(veiculos);
   return (
     <>
       <section className="shop background">
