@@ -24,7 +24,7 @@ const style = {
 };
 
 const client = axios.create({
-  baseURL: "http://localhost:3001/veiculo",
+  baseURL: "http://localhost:3001/veiculo/",
 });
 
 export default function DeleteVeiculoModal() {
@@ -42,7 +42,7 @@ export default function DeleteVeiculoModal() {
       console.log(error);
     }
   };
-
+  console.log(location.state.id);
   return (
     <div>
       <Button
