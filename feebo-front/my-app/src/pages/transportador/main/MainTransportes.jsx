@@ -15,7 +15,7 @@ const MainTransportes = ({ addToCart, infoTransportes }) => {
   const [veiculos, setVeiculos] = useState([]);
   const [todosVeiculos, setTodosVeiculos] = useState([]);
   useEffect(() => {
-    Axios.get("http://localhost:3001/veiculos").then((res) => {
+    Axios.get("http://api.feeboo.me/veiculos").then((res) => {
       setVeiculos(res.data);
       setTodosVeiculos(res.data);
     });

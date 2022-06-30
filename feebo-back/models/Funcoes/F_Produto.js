@@ -9,7 +9,7 @@ const get_all = (req, res) => {
     ProdutoModel.find({})
     .then(result => {
         if (result.length == 0) {
-            res.status(404).send("Nao existem produto registados");
+            res.status(400).send("Nao existem produto registados");
         } else {
             res.status(200).send(result);
         }
