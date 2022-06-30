@@ -6,7 +6,7 @@
   border-radius: 8px;
   box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
   margin: auto;
-  height: 100%;
+  height: 55%;
   width: 100%;
 }
 
@@ -18,7 +18,7 @@
   height: 600px;
 }
 
-.heading {
+.title {
   font-size: large;
   color: #154784;
 }
@@ -32,7 +32,7 @@
 .price {
   font-size: larger;
   font-weight: 900;
-  color: #0f3460;
+  color: #154784;
 }
 
 .foto {
@@ -70,4 +70,12 @@
 .textofav {
   padding-top: 11px;
   padding-left: 5px;
+}
+
+.informacao {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  gap: 7px;
 }

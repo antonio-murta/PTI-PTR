@@ -46,6 +46,7 @@ app.delete("/produto/:id", FornecedorController.removerProduto);
 app.post("/utilizador/veiculo", TransportadorControler.criarVeiculo)
 app.put("/utilizador/:id/veiculo", TransportadorControler.updateVeiculo)
 app.get("/veiculos", TransportadorControler.get_all_veiculos)
+app.delete("/veiculo/:id", TransportadorControler.deleteVeiculoById) 
 // app.put("/utilizador/:id/caminhos", TransportadorControler.updateCaminhos)
 
 
@@ -64,7 +65,7 @@ app.delete("/armazem/:id", ArmazemController.deleteById);
 
 // Consumidor
 app.get("/consumidor", ConsumidorController.get_all)
-app.get("/consumidor/:id", ConsumidorController.encomendarCesto);
+app.put("/consumidor/encomenda", ConsumidorController.encomendarCesto);
 
 
 // Utilizador
@@ -122,55 +123,55 @@ app.get("/transporteCaminho", TransporteController.verificarMorada)
 
 
 // // Fornecedor
-// app.post("http://api.feeboo.me/produto", FornecedorController.criarProduto)
-// app.delete("http://api.feeboo.me/produto", FornecedorController.removerProdutos)
-// app.delete("http://api.feeboo.me/produto/:id", FornecedorController.removerProduto)
+// app.post("https://api.feeboo.me/produto", FornecedorController.criarProduto)
+// app.delete("https://api.feeboo.me/produto", FornecedorController.removerProdutos)
+// app.delete("https://api.feeboo.me/produto/:id", FornecedorController.removerProduto)
 
 // // Produto
 
-// app.get("http://api.feeboo.me/produto", ProdutoController.get_all)
-// app.get("http://api.feeboo.me/produto/nome", ProdutoController.getByNome)
-// app.get("http://api.feeboo.me/produto/preco", ProdutoController.getByPreco)
-// app.get("http://api.feeboo.me/produto/cadeialogistica", ProdutoController.getByCadeiaLogistica)
-// app.get("http://api.feeboo.me/produto/tipo", ProdutoController.getByTipo)
-// app.get("http://api.feeboo.me/produto/subtipo", ProdutoController.getBySubtipo)
-// app.get("http://api.feeboo.me/produto/poluicao", ProdutoController.getByPoluicao)
-// app.get("http://api.feeboo.me/produto/recursos", ProdutoController.getByRecursos);
-// app.post("http://api.feeboo.me/produto", FornecedorController.criarProduto)
-// app.delete("http://api.feeboo.me/produto", FornecedorController.removerProdutos)
-// app.delete("http://api.feeboo.me/produto/:id", FornecedorController.removerProduto)
+// app.get("https://api.feeboo.me/produto", ProdutoController.get_all)
+// app.get("https://api.feeboo.me/produto/nome", ProdutoController.getByNome)
+// app.get("https://api.feeboo.me/produto/preco", ProdutoController.getByPreco)
+// app.get("https://api.feeboo.me/produto/cadeialogistica", ProdutoController.getByCadeiaLogistica)
+// app.get("https://api.feeboo.me/produto/tipo", ProdutoController.getByTipo)
+// app.get("https://api.feeboo.me/produto/subtipo", ProdutoController.getBySubtipo)
+// app.get("https://api.feeboo.me/produto/poluicao", ProdutoController.getByPoluicao)
+// app.get("https://api.feeboo.me/produto/recursos", ProdutoController.getByRecursos);
+// app.post("https://api.feeboo.me/produto", FornecedorController.criarProduto)
+// app.delete("https://api.feeboo.me/produto", FornecedorController.removerProdutos)
+// app.delete("https://api.feeboo.me/produto/:id", FornecedorController.removerProduto)
 
 // // ainda n vi
-// app.put("http://api.feeboo.me/utilizador/:id/veiculo", TransportadorControler.updateVeiculo)
-// // app.put("http://api.feeboo.me/utilizador/:id/caminhos", TransportadorControler.updateCaminhos)
+// app.put("https://api.feeboo.me/utilizador/:id/veiculo", TransportadorControler.updateVeiculo)
+// // app.put("https://api.feeboo.me/utilizador/:id/caminhos", TransportadorControler.updateCaminhos)
 
-// app.post("http://api.feeboo.me/armazem", ArmazemController.criarArmazem)
-// app.get("http://api.feeboo.me/armazem/nome", ArmazemController.getByNome)
+// app.post("https://api.feeboo.me/armazem", ArmazemController.criarArmazem)
+// app.get("https://api.feeboo.me/armazem/nome", ArmazemController.getByNome)
 
 // // ver
-// app.get("http://api.feeboo.me/armazem", ArmazemController.get_all)
-// app.get("http://api.feeboo.me/armazem/:id", ArmazemController.getById)
-// app.get("http://api.feeboo.me/armazem/morada", ArmazemController.getByMorada)
-// app.get("http://api.feeboo.me/armazem/telemovel", ArmazemController.getByTelemovel)
+// app.get("https://api.feeboo.me/armazem", ArmazemController.get_all)
+// app.get("https://api.feeboo.me/armazem/:id", ArmazemController.getById)
+// app.get("https://api.feeboo.me/armazem/morada", ArmazemController.getByMorada)
+// app.get("https://api.feeboo.me/armazem/telemovel", ArmazemController.getByTelemovel)
 
-// app.delete("http://api.feeboo.me/armazem", ArmazemController.deleteByNome)
-// app.delete("http://api.feeboo.me/armazem/:id", ArmazemController.deleteById)
+// app.delete("https://api.feeboo.me/armazem", ArmazemController.deleteByNome)
+// app.delete("https://api.feeboo.me/armazem/:id", ArmazemController.deleteById)
 
-// app.get("http://api.feeboo.me/consumidor", ConsumidorController.get_all)
-// app.get("http://api.feeboo.me/consumidor/:id", ConsumidorController.encomendarCesto);
+// app.get("https://api.feeboo.me/consumidor", ConsumidorController.get_all)
+// app.get("https://api.feeboo.me/consumidor/:id", ConsumidorController.encomendarCesto);
 
-// app.post("http://api.feeboo.me/utilizador", UtilizadorControler.registar);
-// app.delete("http://api.feeboo.me/utilizadores", UtilizadorControler.apagarUtilizadores);
-// app.delete("http://api.feeboo.me/utilizadores/:id", UtilizadorControler.apagarUtilizadores_byID);
-// app.delete("http://api.feeboo.me/utilizador/:id", UtilizadorControler.apagarConta);
-// app.put("http://api.feeboo.me/utilizador/:id", UtilizadorControler.editarConta);
+// app.post("https://api.feeboo.me/utilizador", UtilizadorControler.registar);
+// app.delete("https://api.feeboo.me/utilizadores", UtilizadorControler.apagarUtilizadores);
+// app.delete("https://api.feeboo.me/utilizadores/:id", UtilizadorControler.apagarUtilizadores_byID);
+// app.delete("https://api.feeboo.me/utilizador/:id", UtilizadorControler.apagarConta);
+// app.put("https://api.feeboo.me/utilizador/:id", UtilizadorControler.editarConta);
 
 // // falta ver
-// app.post("http://api.feeboo.me/utilizador/login", UtilizadorControler.login);
-// app.put("http://api.feeboo.me/utilizador/:id/password", UtilizadorControler.alterarPassword);
-// app.get("http://api.feeboo.me/utilizador/:id", UtilizadorControler.getByDados)
+// app.post("https://api.feeboo.me/utilizador/login", UtilizadorControler.login);
+// app.put("https://api.feeboo.me/utilizador/:id/password", UtilizadorControler.alterarPassword);
+// app.get("https://api.feeboo.me/utilizador/:id", UtilizadorControler.getByDados)
 
-// app.get("http://api.feeboo.me/utilizador", async(req, res) => {
+// app.get("https://api.feeboo.me/utilizador", async(req, res) => {
 //     UtilizadorModel.find({}, (err, result)=> {
 //         if(err){
 //             res.status(400).send(err);

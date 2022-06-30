@@ -51,7 +51,7 @@ const Produtos = ({
                   <h4>{val.preco}€</h4>
                   <h3>{val.tipo}</h3>
                   <h3>{val.subtipo}</h3>
-                  <h3>Poluição média: {val.poluicao}</h3>
+                  <h3>Poluição média: {val.poluicao}gCO2/km</h3>
                   <ProductCard
                     produto={produto}
                     addToCompare={addToCompare}

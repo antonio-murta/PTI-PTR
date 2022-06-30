@@ -9,6 +9,7 @@ const Transportes = ({ veiculos }) => {
   const increment = () => {
     setCount(count + 1);
   };
+  console.log(veiculos);
   return (
     <>
       {veiculos.map((val, index) => {
@@ -18,9 +19,11 @@ const Transportes = ({ veiculos }) => {
               navigate("/utilizador/veiculo", {
                 state: {
                   id: val._id,
+                  matricula: val.matricula,
                   marca: val.marca,
                   modelo: val.modelo,
                   poluicao: val.poluicao,
+                  veiculos: veiculos,
                 },
               });
             }}
@@ -29,7 +32,7 @@ const Transportes = ({ veiculos }) => {
           >
             <div className="transport">
               <div className="details">
-                <h2>Carro: {val._id}</h2>
+                <h2>Carro: {val.matricula}</h2>
                 <h3>Poluição: {val.poluicao}gCO2/km</h3>
                 <h3>Marca: {val.marca}</h3>
                 <h3>Modelo: {val.modelo}</h3>

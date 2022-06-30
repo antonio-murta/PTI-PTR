@@ -50,8 +50,8 @@ const BoxProdutos = ({ addToCart, addCarrinho }) => {
               <Link to="/categoria">
                 <BsFillArrowLeftCircleFill className="arrow" size={25} />{' '}
               </Link>
-              <div className="heading">
-                <h2>{location.state.name}</h2>
+              <div className="title">
+                <h2>{location.state.nome}</h2>
               </div>
               <div className="type">
                 {location.state.tipo} {'>'} {location.state.subtipo}

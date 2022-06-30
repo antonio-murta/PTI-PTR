@@ -36,11 +36,6 @@
   margin-top: 50px !important;
 }
 
-.buttonNewVeiculo {
-  margin-left: 0 !important;
-  margin-top: 10px !important;
-}
-
 .buttonAlt {
   width: 47.9%;
 }
@@ -95,4 +90,31 @@
 .botaoDelete {
   margin-bottom: 10px;
   margin-top: 20px;
+}
+
+.button {
+  width: 33%;
+}
+
+.deletemodal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trash {
+  background-color: #ff014f;
+  color: white;
+  padding: 10px 30px;
+  margin-top: 20px;
+  border-radius: 3%;
+  font-size: 17px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lixo {
+  margin-right: 10px;
 }

@@ -51,7 +51,7 @@ function getCookie(cname) {
 function checkCookie() {
   let Token = getCookie("Token");
   let username = getCookie("UserName");
-  
+
   if (Token != "") {
     alert("Welcome again " + username);
   } else {
@@ -85,7 +85,7 @@ export default function SignIn() {
       const data = new FormData(event.currentTarget);
       const email = data.get("email");
 
-      fetch("http://localhost:3001/utilizador/login", {
+      fetch("https://api.feeboo.me/utilizador/login", {
         method: "POST",
         body: JSON.stringify({
           email: data.get("email"),
@@ -106,7 +106,7 @@ export default function SignIn() {
 
           navigate(from, { replace: true });
 
-          axios.get("http://localhost:3001/utilizador").then(
+          axios.get("https://api.feeboo.me/utilizador").then(
             (response) => {
               console.log(response.data);
               const utilizador = response.data.filter(

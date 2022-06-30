@@ -18,6 +18,7 @@ const MainProdutos = ({
   addToCompare,
 }) => {
   let navigate = useNavigate();
+
   return (
     <>
       <section className="shop background-filtromoda">

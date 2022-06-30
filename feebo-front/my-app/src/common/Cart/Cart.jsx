@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './style.css';
+import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = ({ CartItem, addToCart, decreaseQty, addCarrinho }) => {
+  let navigate = useNavigate();
+
   const totalPrice = CartItem.reduce(
     (price, item) => price + item.qty * item.preco,
     0
@@ -120,6 +124,16 @@ const Cart = ({ CartItem, addToCart, decreaseQty, addCarrinho }) => {
               <h4>Poluição total :</h4>
               <h3>{totalPol}gCO2</h3>
             </div>
+            <Button
+              style={{
+                backgroundColor: '#e94560',
+              }}
+              className="button"
+              variant="contained"
+              onClick={() => navigate('/checkout')}
+            >
+              Checkout
+            </Button>
           </div>
         </div>
       </section>

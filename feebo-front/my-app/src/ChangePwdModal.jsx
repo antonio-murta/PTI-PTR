@@ -31,7 +31,7 @@ export default function ChangePwdModal() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    fetch('http://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn") + "/password",
+    fetch('https://api.feeboo.me/utilizador/' + localStorage.getItem("LoggedIn") + "/password",
       {
         method: "PUT",
         body: JSON.stringify({
