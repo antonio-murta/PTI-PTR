@@ -18,6 +18,7 @@ const Transportes = ({ veiculos }) => {
             onClick={() => {
               navigate("/utilizador/veiculo", {
                 state: {
+                  id: val._id,
                   matricula: val.matricula,
                   marca: val.marca,
                   modelo: val.modelo,
