@@ -40,7 +40,7 @@ export default function SignUp() {
     const data = new FormData(event.currentTarget);
 
     fetch(
-      "http://api.feeboo.me/utilizador/" + username,
+      "https://api.feeboo.me/utilizador/" + username,
 
       {
         method: "PUT",
@@ -93,8 +93,8 @@ export default function SignUp() {
     let username = getCookie("UserName");
     // let username = "j@j";
     fetch(
-      "http://api.feeboo.me/utilizador/" +  username,
-      // fetch("http://api.feeboo.me/utilizador/" +  username, {
+      "https://api.feeboo.me/utilizador/" +  username,
+      // fetch("https://api.feeboo.me/utilizador/" +  username, {
         
       // localStorage.getItem("LoggedIn"),
       { method: "GET" }

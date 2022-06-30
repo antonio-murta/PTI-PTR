@@ -24,7 +24,7 @@ const style = {
 };
 
 const client = axios.create({
-  baseURL: "http://api.feeboo.me/veiculo/",
+  baseURL: "https://api.feeboo.me/veiculo/",
 });
 
 export default function DeleteVeiculoModal() {

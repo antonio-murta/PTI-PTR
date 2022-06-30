@@ -20,7 +20,7 @@ export default function Pagamento() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    Axios.post("http://api.feeboo.me/Cartao", {
+    Axios.post("https://api.feeboo.me/Cartao", {
       nome: name,
       numero: numero,
       validade: val,

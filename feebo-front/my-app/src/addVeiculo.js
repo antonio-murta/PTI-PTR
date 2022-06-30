@@ -37,7 +37,7 @@ export default function AddVeiculo() {
     //console.log(matricula, polution, brand, model);
 
     // preferencialmente, usar sempre axios em vez de fetch!! :)
-    Axios.post("http://api.feeboo.me/utilizador/veiculo", {
+    Axios.post("https://api.feeboo.me/utilizador/veiculo", {
       matricula: matricula,
       poluicao: polution,
       marca: brand,

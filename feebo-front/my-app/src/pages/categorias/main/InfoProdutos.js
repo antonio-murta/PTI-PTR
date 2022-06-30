@@ -60,7 +60,7 @@
 
 //   useEffect(() => {
 //     fetch(
-//       "http://api.feeboo.me/produto/",
+//       "https://api.feeboo.me/produto/",
 //       { method: "GET" }
 //     )
 //       .then((response) => response.text())

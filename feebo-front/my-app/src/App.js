@@ -53,7 +53,7 @@ function App() {
   const [produtos, setProdutos] = useState([]);
   const [todosprodutos, setTodosProdutos] = useState([]);
   useEffect(() => {
-    Axios.get("http://api.feeboo.me/produto/").then((res) => {
+    Axios.get("https://api.feeboo.me/produto/").then((res) => {
       setProdutos(res.data);
       setTodosProdutos(res.data);
     });
