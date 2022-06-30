@@ -40,7 +40,7 @@ export default function AddProduto() {
     );
 
     // preferencialmente, usar sempre axios em vez de fetch!! :)
-    Axios.post("http://api.feeboo.me/produto", {
+    Axios.post("https://api.feeboo.me/produto", {
       nome: name,
       poluicao: polution,
       preco: price,

@@ -24,7 +24,7 @@ const style = {
 };
 
 const client = axios.create({
-  baseURL: "http://api.feeboo.me/armazem/",
+  baseURL: "https://api.feeboo.me/armazem/",
 });
 
 export default function DeleteArmazemModal() {

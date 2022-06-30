@@ -38,7 +38,7 @@ export default function AddArmazem() {
     //console.log(name, address, polution, phone, product, type);
 
     // preferencialmente, usar sempre axios em vez de fetch!! :)
-    Axios.post("http://api.feeboo.me/armazem", {
+    Axios.post("https://api.feeboo.me/armazem", {
       nome: name,
       morada: address,
       poluicao: polution,
