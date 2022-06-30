@@ -28,7 +28,7 @@ export default function DeleteAccountModal() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    fetch('https://localhost:3001/utilizador/' + localStorage.getItem("LoggedIn"),
+    fetch('https://api.feeboo.me/utilizador/' + localStorage.getItem("LoggedIn"),
       {
         method: "DELETE",
         body: JSON.stringify({
