@@ -30,14 +30,15 @@ export default function AddVeiculo() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(matricula, polution, brand, model);
+    //console.log(matricula, polution, brand, model);
 
     // preferencialmente, usar sempre axios em vez de fetch!! :)
     Axios.post("http://localhost:3001/utilizador/veiculo", {
-      _id: matricula,
+      matricula: matricula,
       poluicao: polution,
       marca: brand,
       modelo: model,
+      utilizacao: "no",
     }).then(
       (response) => {
         console.log(response);
@@ -64,10 +65,8 @@ export default function AddVeiculo() {
 
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={{ xs: 4, md: 4 }}>
-            {" "}
             {/* numero de "blocos"*/}
             <Grid item xs={12} sm={6}>
-              {" "}
               {/* 6 = comprimento*/}
               <TextField
                 required

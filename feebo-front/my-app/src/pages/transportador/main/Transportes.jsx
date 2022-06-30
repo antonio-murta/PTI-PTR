@@ -21,6 +21,7 @@ const Transportes = ({ veiculos }) => {
                   marca: val.marca,
                   modelo: val.modelo,
                   poluicao: val.poluicao,
+                  veiculos: veiculos,
                 },
               });
             }}
