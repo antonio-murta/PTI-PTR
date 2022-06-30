@@ -4,9 +4,8 @@ import Filtro from './Filtrar';
 import Produtos from './Produtos';
 import ProductComparison from './CompararProdutos';
 import './pizza.css';
-import { useNavigate } from "react-router-dom";
-import { AiOutlinePlus } from "react-icons/ai";
-
+import { useNavigate } from 'react-router-dom';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 const MainProdutos = ({
   artigo,
@@ -35,7 +34,7 @@ const MainProdutos = ({
             <div className="heading">
               <h2>Moda</h2>
               <div className="new-product">
-                <button onClick={() => navigate("/addProduto")}>
+                <button onClick={() => navigate('/addProduto')}>
                   <div className="plus-icon">
                     <AiOutlinePlus />
                   </div>

@@ -29,7 +29,7 @@ const Produtos = ({
               navigate('/produto', {
                 state: {
                   id: val._id,
-                  name: val.name,
+                  name: val.nome,
                   preco: val.preco,
                   tipo: val.tipo,
                   subtipo: val.subtipo,

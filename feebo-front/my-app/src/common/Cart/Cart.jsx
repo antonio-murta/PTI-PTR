@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './style.css';
 
-const Cart = ({ CartItem, addToCart, decreaseQty }) => {
+const Cart = ({ CartItem, addToCart, decreaseQty, addCarrinho }) => {
   const totalPrice = CartItem.reduce(
     (price, item) => price + item.qty * item.preco,
     0
@@ -11,30 +11,75 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
     (poluicao, item) => poluicao + item.qty * item.poluicao,
     0
   );
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const cartItems = JSON.parse(localStorage.getItem('carrinho'));
+    if (cartItems) {
+      setCartItems(cartItems);
+      dinheiroTotal();
+      poluicaoTotal();
+    }
+  }, []);
+  console.log(cartItems);
+
+  let carrinho = JSON.parse(localStorage.getItem('carrinho'));
+
+  function addCarrinho(produtoId) {
+    carrinho.push(produtoId);
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  }
+
+  function removerCarrinho(produtoId) {
+    let temp = carrinho.filter((item) => item.id != produtoId);
+    localStorage.setItem('carrinho', JSON.stringify(temp));
+  }
+
+  // dinheiro total do carrinho//
+  function dinheiroTotal() {
+    let temp = carrinho.map(function (item) {
+      setTotal(parseFloat(item.preco));
+    });
+
+    let sum = temp.reduce(function (prev, next) {
+      return prev + next;
+    }, 0);
+  }
+  // poluicao total do carrinho //
+  function poluicaoTotal() {
+    let temp = carrinho.map(function (item) {
+      setTotalPol(parseFloat(item.poluicao));
+    });
+
+    let sum = temp.reduce(function (prev, next) {
+      return prev + next;
+    }, 0);
+  }
+  const [total, setTotal] = useState(0);
+  const [totalPol, setTotalPol] = useState(0);
+
   return (
     <>
       <section className="cart-items">
         <div className="container d_flex">
           <div className="cart-details">
-            {CartItem.length === 0 && (
+            {cartItems.length === 0 && (
               <h1 className="no-items product">
                 Não tem produtos no seu carrinho
               </h1>
             )}
 
-            {CartItem.map((item) => {
+            {cartItems.map((item) => {
               // const productQty = item.price * item.qty;
-
               return (
                 <div className="cart-list product d_flex" key={item.id}>
                   <div className="img">
                     <img src={item.foto} alt="" />
                   </div>
                   <div className="cart-details">
-                    <h3>{item.nome}</h3>
+                    <h3>{item.name}</h3>
                     <h4>
                       {item.preco}€ * {item.qty}
-                      {/* <span>${productQty}.00</span> */}
                     </h4>
                   </div>
                   <div className="cart-items-function">
@@ -46,13 +91,13 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
                     <div className="cartControl d_flex">
                       <button
                         className="incCart"
-                        onClick={() => addToCart(item)}
+                        onClick={() => addCarrinho(item)}
                       >
                         <i className="fa-solid fa-plus"></i>
                       </button>
                       <button
                         className="desCart"
-                        onClick={() => decreaseQty(item)}
+                        onClick={() => removerCarrinho(item.id)}
                       >
                         <i className="fa-solid fa-minus"></i>
                       </button>
@@ -69,11 +114,11 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
             <h2>Suas compras</h2>
             <div className=" d_flex">
               <h4>Valor final :</h4>
-              <h3>{totalPrice}€</h3>
+              <h3>{total}€</h3>
             </div>
             <div className=" d_flex">
               <h4>Poluição total :</h4>
-              <h3>{totalPoluicao}</h3>
+              <h3>{totalPol}gCO2</h3>
             </div>
           </div>
         </div>
