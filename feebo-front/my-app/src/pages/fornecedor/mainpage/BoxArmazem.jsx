@@ -3,27 +3,12 @@ import "./../../categorias/main/ProdutoIndividual.css";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
-import axios from "axios";
 import DeleteArmazemModal from "../../../DeleteArmazemModal";
-
-// const client = axios.create({
-//   baseURL: "http://localhost:3001/armazem/",
-// });
 
 const BoxArmazem = () => {
   let location = useLocation();
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
-
-  console.log(location.state);
-
-  // const deleteArmazem = async (id) => {
-  //   try {
-  //     await client.delete(`${id}`);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   return (
     <>

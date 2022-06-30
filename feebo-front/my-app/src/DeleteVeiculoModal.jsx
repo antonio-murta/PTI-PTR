@@ -24,10 +24,10 @@ const style = {
 };
 
 const client = axios.create({
-  baseURL: "http://localhost:3001/armazem/",
+  baseURL: "http://localhost:3001/veiculo",
 });
 
-export default function DeleteArmazemModal() {
+export default function DeleteVeiculoModal() {
   let location = useLocation();
   let navigate = useNavigate();
 
@@ -35,7 +35,7 @@ export default function DeleteArmazemModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const deleteArmazem = async (id) => {
+  const deleteVeiculo = async (id) => {
     try {
       await client.delete(`${id}`);
     } catch (error) {
@@ -54,7 +54,7 @@ export default function DeleteArmazemModal() {
         type="submit"
         variant="contained"
       >
-        {"Eliminar Armazém"}
+        {"Eliminar Veículo"}
       </Button>
       <Modal
         open={open}
@@ -64,14 +64,14 @@ export default function DeleteArmazemModal() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Deseja eliminar este armazém permanentemente?
+            Deseja eliminar este veículo permanentemente?
           </Typography>
           <div className="deletemodal">
             <button
               className="trash"
               onClick={() => {
-                deleteArmazem(location.state.id);
-                navigate("/fornecedor");
+                deleteVeiculo(location.state.id);
+                navigate("/transportador");
               }}
             >
               <BiTrash size={20} className="lixo" />
