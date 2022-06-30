@@ -16,7 +16,7 @@ import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Endereco from './Endereco';
-import Pagamento from './Pagamento';
+// import Pagamento from './Pagamento';
 
 
 const theme = createTheme();
@@ -31,14 +31,14 @@ function Copyright() {
   );
 }
 
-const steps = ['Endereço de Entrega', 'Pagamento'];
+const steps = ['Endereço de Entrega e Método de Pagamento'];
 
 function getStepContent(step) {
   switch (step) {
     case 0:
       return <Endereco />;
-    case 1:
-      return <Pagamento />;
+    // case 1:
+    //   return <Pagamento />;
     // case 2:
   //     return <Review />;
     default:

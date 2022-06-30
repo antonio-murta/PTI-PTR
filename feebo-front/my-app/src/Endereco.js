@@ -56,7 +56,7 @@ export default function Endereco() {
             variant="standard"
           />
         </Grid>
-        {/* <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={6}>
           <TextField
             required
             fullWidth
@@ -65,8 +65,8 @@ export default function Endereco() {
             label="Distrito"
             variant="standard"
           />
-        </Grid> */}
-        {/* <Grid item xs={12} sm={6}>
+        </Grid>
+        <Grid item xs={12} sm={6}>
           <TextField
             required
             fullWidth
@@ -76,7 +76,7 @@ export default function Endereco() {
             autoComplete="shipping country"
             variant="standard"
           />
-        </Grid> */}
+        </Grid>
         <Grid item xs={12}>
           <FormControlLabel
             control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
