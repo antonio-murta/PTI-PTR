@@ -35,7 +35,7 @@ export default function AddArmazem() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(name, address, polution, phone, product, type);
+    //console.log(name, address, polution, phone, product, type);
 
     // preferencialmente, usar sempre axios em vez de fetch!! :)
     Axios.post("http://localhost:3001/armazem", {
