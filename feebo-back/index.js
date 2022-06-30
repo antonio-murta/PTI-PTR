@@ -46,6 +46,7 @@ app.delete("/produto/:id", FornecedorController.removerProduto);
 app.post("/utilizador/veiculo", TransportadorControler.criarVeiculo)
 app.put("/utilizador/:id/veiculo", TransportadorControler.updateVeiculo)
 app.get("/veiculos", TransportadorControler.get_all_veiculos)
+app.delete("/veiculo/:id", TransportadorControler.deleteVeiculoById) 
 // app.put("/utilizador/:id/caminhos", TransportadorControler.updateCaminhos)
 
 
@@ -64,7 +65,7 @@ app.delete("/armazem/:id", ArmazemController.deleteById);
 
 // Consumidor
 app.get("/consumidor", ConsumidorController.get_all)
-app.get("/consumidor/:id", ConsumidorController.encomendarCesto);
+app.put("/consumidor/encomenda", ConsumidorController.encomendarCesto);
 
 
 // Utilizador

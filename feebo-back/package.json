@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "devStart": "nodemon app.js"
+    "devStart": "nodemon app.js",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "cors": "^2.8.5",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "jest": "^28.1.2"
   }
 }
