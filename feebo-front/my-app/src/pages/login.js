@@ -52,23 +52,23 @@ function checkCookie() {
   let Token = getCookie("Token");
   let username = getCookie("UserName");
 
-  if (Token != "") {
-    alert("Welcome again " + username);
-  } else {
-    alert("Please login first.");
-  }
+  // if (Token != "") {
+  //   alert("Welcome again " + username);
+  // } else {
+  //   alert("Please login first.");
+  // }
 }
 
 function logOut() {
   let Token = getCookie("Token");
   setCookie("UTipo", "", 1);
   setCookie("UserName", "", 1);
-  if (Token != "") {
-    document.cookie = "Token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    alert("Logged out, see you soon ;)");
-  } else {
-    alert("Please login first.");
-  }
+  // if (Token != "") {
+  //   document.cookie = "Token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  //   alert("Logged out, see you soon ;)");
+  // } else {
+  //   alert("Please login first.");
+  // }
 }
 
 export default function SignIn() {
@@ -85,7 +85,7 @@ export default function SignIn() {
       const data = new FormData(event.currentTarget);
       const email = data.get("email");
 
-      fetch("https://api.feeboo.me/utilizador/login", {
+      fetch("http://localhost:3001/utilizador/login", {
         method: "POST",
         body: JSON.stringify({
           email: data.get("email"),
@@ -106,7 +106,7 @@ export default function SignIn() {
 
           navigate(from, { replace: true });
 
-          axios.get("https://api.feeboo.me/utilizador").then(
+          axios.get("http://localhost:3001/utilizador").then(
             (response) => {
               console.log(response.data);
               const utilizador = response.data.filter(
@@ -121,10 +121,10 @@ export default function SignIn() {
             }
           );
 
-          alert(text);
-          alert(UserName);
+          // alert(text);
+          // alert(UserName);
 
-          alert("Logged In :D");
+          // alert("Logged In :D");
         });
     }
   };

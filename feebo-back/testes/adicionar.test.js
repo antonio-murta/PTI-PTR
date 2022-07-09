@@ -1,8 +1,8 @@
 
 
+const axios = require("axios")
 
 
-var token_addProduto = "";
 test("Adicionar Produto", async() => {
     const config = {
         "nome": "vassoura",
@@ -17,17 +17,15 @@ test("Adicionar Produto", async() => {
         "armazem": "ArmazemA"
     }
 
-    let response = await axios.post("http://localhost:8080/produto", config)
-    token_registar = response.data["data"]["auth_token"];
+    let response = await axios.post("http://localhost:3001/produto", config)
 
-    expect(response.data["code"]).toBe(200);
-    expect(response.data["message"]).toBe("Sucess");
-    expect(typeof response.data["data"]["auth_token"]).toBe("string");
+    expect(response.status).toBe(201);
+    expect(response.data).toBe("Produto criado com sucesso");
 })
 
 
 
-var token_addVeiculo = "";
+
 test("Adicionar Veiculo", async() => {
     const config = {
         "matricula": "QW-12-RW",
@@ -37,17 +35,15 @@ test("Adicionar Veiculo", async() => {
         "utilizacao": "no"
     }
 
-    let response = await axios.post("http://localhost:8080/utilizador/veiculo", config)
-    token_registar = response.data["data"]["auth_token"];
+    let response = await axios.post("http://localhost:3001/utilizador/veiculo", config)
 
-    expect(response.data["code"]).toBe(200);
-    expect(response.data["message"]).toBe("Sucess");
-    expect(typeof response.data["data"]["auth_token"]).toBe("string");
+    expect(response.status).toBe(200);
+    expect(response.data).toBe("Veiculo criado com sucesso");
 })
 
 
 
-var token_addArmazem = "";
+// NAOO DEUU
 test("Adicionar Armazem", async() => {
     const config = {
         "nome": "ArmazemA",
@@ -58,10 +54,10 @@ test("Adicionar Armazem", async() => {
         "produtos": ["628587155140e5414b62b3e6", 4, "carlota@gmail.com"]
     }
 
-    let response = await axios.post("http://localhost:8080/armazem", config)
-    token_registar = response.data["data"]["auth_token"];
+    let response = await axios.post("http://localhost:3001/armazem", config)
+    // token_registar = response.data["data"]["auth_token"];
+    console.log(response)
 
-    expect(response.data["code"]).toBe(200);
-    expect(response.data["message"]).toBe("Sucess");
-    expect(typeof response.data["data"]["auth_token"]).toBe("string");
+    expect(response.status).toBe(200);
+    expect(response.data).toBe("Armazem criado com sucesso");
 })

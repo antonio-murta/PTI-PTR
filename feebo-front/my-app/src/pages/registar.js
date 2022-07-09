@@ -34,7 +34,7 @@ export default function Registar() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    Axios.post("https://api.feeboo.me/utilizador", {
+    Axios.post("http://localhost:3001/utilizador", {
       _id: email,
       nome: name,
       password: pwd,

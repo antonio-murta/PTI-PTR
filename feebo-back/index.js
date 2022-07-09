@@ -123,55 +123,55 @@ app.get("/transporteCaminho", TransporteController.verificarMorada)
 
 
 // // Fornecedor
-// app.post("https://api.feeboo.me/produto", FornecedorController.criarProduto)
-// app.delete("https://api.feeboo.me/produto", FornecedorController.removerProdutos)
-// app.delete("https://api.feeboo.me/produto/:id", FornecedorController.removerProduto)
+// app.post("http://localhost:3001/produto", FornecedorController.criarProduto)
+// app.delete("http://localhost:3001/produto", FornecedorController.removerProdutos)
+// app.delete("http://localhost:3001/produto/:id", FornecedorController.removerProduto)
 
 // // Produto
 
-// app.get("https://api.feeboo.me/produto", ProdutoController.get_all)
-// app.get("https://api.feeboo.me/produto/nome", ProdutoController.getByNome)
-// app.get("https://api.feeboo.me/produto/preco", ProdutoController.getByPreco)
-// app.get("https://api.feeboo.me/produto/cadeialogistica", ProdutoController.getByCadeiaLogistica)
-// app.get("https://api.feeboo.me/produto/tipo", ProdutoController.getByTipo)
-// app.get("https://api.feeboo.me/produto/subtipo", ProdutoController.getBySubtipo)
-// app.get("https://api.feeboo.me/produto/poluicao", ProdutoController.getByPoluicao)
-// app.get("https://api.feeboo.me/produto/recursos", ProdutoController.getByRecursos);
-// app.post("https://api.feeboo.me/produto", FornecedorController.criarProduto)
-// app.delete("https://api.feeboo.me/produto", FornecedorController.removerProdutos)
-// app.delete("https://api.feeboo.me/produto/:id", FornecedorController.removerProduto)
+// app.get("http://localhost:3001/produto", ProdutoController.get_all)
+// app.get("http://localhost:3001/produto/nome", ProdutoController.getByNome)
+// app.get("http://localhost:3001/produto/preco", ProdutoController.getByPreco)
+// app.get("http://localhost:3001/produto/cadeialogistica", ProdutoController.getByCadeiaLogistica)
+// app.get("http://localhost:3001/produto/tipo", ProdutoController.getByTipo)
+// app.get("http://localhost:3001/produto/subtipo", ProdutoController.getBySubtipo)
+// app.get("http://localhost:3001/produto/poluicao", ProdutoController.getByPoluicao)
+// app.get("http://localhost:3001/produto/recursos", ProdutoController.getByRecursos);
+// app.post("http://localhost:3001/produto", FornecedorController.criarProduto)
+// app.delete("http://localhost:3001/produto", FornecedorController.removerProdutos)
+// app.delete("http://localhost:3001/produto/:id", FornecedorController.removerProduto)
 
 // // ainda n vi
-// app.put("https://api.feeboo.me/utilizador/:id/veiculo", TransportadorControler.updateVeiculo)
-// // app.put("https://api.feeboo.me/utilizador/:id/caminhos", TransportadorControler.updateCaminhos)
+// app.put("http://localhost:3001/utilizador/:id/veiculo", TransportadorControler.updateVeiculo)
+// // app.put("http://localhost:3001/utilizador/:id/caminhos", TransportadorControler.updateCaminhos)
 
-// app.post("https://api.feeboo.me/armazem", ArmazemController.criarArmazem)
-// app.get("https://api.feeboo.me/armazem/nome", ArmazemController.getByNome)
+// app.post("http://localhost:3001/armazem", ArmazemController.criarArmazem)
+// app.get("http://localhost:3001/armazem/nome", ArmazemController.getByNome)
 
 // // ver
-// app.get("https://api.feeboo.me/armazem", ArmazemController.get_all)
-// app.get("https://api.feeboo.me/armazem/:id", ArmazemController.getById)
-// app.get("https://api.feeboo.me/armazem/morada", ArmazemController.getByMorada)
-// app.get("https://api.feeboo.me/armazem/telemovel", ArmazemController.getByTelemovel)
+// app.get("http://localhost:3001/armazem", ArmazemController.get_all)
+// app.get("http://localhost:3001/armazem/:id", ArmazemController.getById)
+// app.get("http://localhost:3001/armazem/morada", ArmazemController.getByMorada)
+// app.get("http://localhost:3001/armazem/telemovel", ArmazemController.getByTelemovel)
 
-// app.delete("https://api.feeboo.me/armazem", ArmazemController.deleteByNome)
-// app.delete("https://api.feeboo.me/armazem/:id", ArmazemController.deleteById)
+// app.delete("http://localhost:3001/armazem", ArmazemController.deleteByNome)
+// app.delete("http://localhost:3001/armazem/:id", ArmazemController.deleteById)
 
-// app.get("https://api.feeboo.me/consumidor", ConsumidorController.get_all)
-// app.get("https://api.feeboo.me/consumidor/:id", ConsumidorController.encomendarCesto);
+// app.get("http://localhost:3001/consumidor", ConsumidorController.get_all)
+// app.get("http://localhost:3001/consumidor/:id", ConsumidorController.encomendarCesto);
 
-// app.post("https://api.feeboo.me/utilizador", UtilizadorControler.registar);
-// app.delete("https://api.feeboo.me/utilizadores", UtilizadorControler.apagarUtilizadores);
-// app.delete("https://api.feeboo.me/utilizadores/:id", UtilizadorControler.apagarUtilizadores_byID);
-// app.delete("https://api.feeboo.me/utilizador/:id", UtilizadorControler.apagarConta);
-// app.put("https://api.feeboo.me/utilizador/:id", UtilizadorControler.editarConta);
+// app.post("http://localhost:3001/utilizador", UtilizadorControler.registar);
+// app.delete("http://localhost:3001/utilizadores", UtilizadorControler.apagarUtilizadores);
+// app.delete("http://localhost:3001/utilizadores/:id", UtilizadorControler.apagarUtilizadores_byID);
+// app.delete("http://localhost:3001/utilizador/:id", UtilizadorControler.apagarConta);
+// app.put("http://localhost:3001/utilizador/:id", UtilizadorControler.editarConta);
 
 // // falta ver
-// app.post("https://api.feeboo.me/utilizador/login", UtilizadorControler.login);
-// app.put("https://api.feeboo.me/utilizador/:id/password", UtilizadorControler.alterarPassword);
-// app.get("https://api.feeboo.me/utilizador/:id", UtilizadorControler.getByDados)
+// app.post("http://localhost:3001/utilizador/login", UtilizadorControler.login);
+// app.put("http://localhost:3001/utilizador/:id/password", UtilizadorControler.alterarPassword);
+// app.get("http://localhost:3001/utilizador/:id", UtilizadorControler.getByDados)
 
-// app.get("https://api.feeboo.me/utilizador", async(req, res) => {
+// app.get("http://localhost:3001/utilizador", async(req, res) => {
 //     UtilizadorModel.find({}, (err, result)=> {
 //         if(err){
 //             res.status(400).send(err);

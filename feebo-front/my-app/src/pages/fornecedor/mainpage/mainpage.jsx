@@ -15,7 +15,7 @@ const Main = ({ addToCart, infoArmazens }) => {
   const [armazens, setArmazens] = useState([]);
   const [todosarmazens, setTodosArmazens] = useState([]);
   useEffect(() => {
-    Axios.get("https://api.feeboo.me/armazem").then((res) => {
+    Axios.get("http://localhost:3001/armazem").then((res) => {
       setArmazens(res.data);
       setTodosArmazens(res.data);
     });
