@@ -23,6 +23,7 @@ import AddArmazem from "./addArmazem";
 import AddProduto from "./addProduto";
 import BoxProdutos from "./pages/categorias/main/BoxProdutos";
 import BoxArmazem from "./pages/fornecedor/mainpage/BoxArmazem";
+import Encomendar from "./pages/encomendas/Encomendar";
 import ProtectedRoutes from "./ProtectedRoutes";
 import Checkout from "./checkout";
 import BoxVeiculo from "./pages/transportador/main/BoxVeiculo";
@@ -275,6 +276,16 @@ function App() {
                   productItems={productItems}
                   addToCart={addToCart}
                   shopItems={shopItems}
+                />
+              }
+            />
+            <Route
+              path="/encomenda"
+              element={
+                <Encomendar
+                  productItems={productItems}
+                  addToCart={addToCart}
+                  infoProdutos={infoProdutos}
                 />
               }
             />
