@@ -1,17 +1,17 @@
-import "./css/perfil.css";
-import * as React from "react";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { red } from "@mui/material/colors";
-import ChangePwdModal from "./ChangePwdModal";
-import DeleteAccountModal from "./DeleteAccountModal";
+import './css/perfil.css';
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
+import ChangePwdModal from './ChangePwdModal';
+import DeleteAccountModal from './DeleteAccountModal';
 
 const theme = createTheme({ palette: { primary: red } });
 
@@ -33,30 +33,29 @@ function Copyright(props) {
 export default function SignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
-    let username = getCookie("UserName");
+    let username = getCookie('UserName');
     // let username = "j@j";
-
 
     const data = new FormData(event.currentTarget);
 
     fetch(
-      "https://api.feeboo.me/utilizador/" + username,
+      'http://localhost:3001/utilizador/' + username,
 
       {
-        method: "PUT",
+        method: 'PUT',
         body: JSON.stringify({
-          nome: data.get("name"),
-          morada: data.get("morada"),
-          telemovel: data.get("telefone"),
-          passwordEscrita: data.get("password"),
+          nome: data.get('name'),
+          morada: data.get('morada'),
+          telemovel: data.get('telefone'),
+          passwordEscrita: data.get('password'),
         }),
         headers: {
-          "Content-Type": "application/json",
-          'Accept': 'application/json'
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
         },
       }
     )
-      // .then(res => res.json) 
+      // .then(res => res.json)
       .then(function (response) {
         return response.json();
       })
@@ -64,15 +63,14 @@ export default function SignUp() {
         console.log(myJson);
       });
 
-      document.getElementById("password").value = "";
+    document.getElementById('password').value = '';
   };
 
-
   function getCookie(cname) {
-    let name = cname + "=";
+    let name = cname + '=';
     let decodedCookie = decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(';');
-    for(let i = 0; i <ca.length; i++) {
+    for (let i = 0; i < ca.length; i++) {
       let c = ca[i];
       while (c.charAt(0) == ' ') {
         c = c.substring(1);
@@ -81,23 +79,18 @@ export default function SignUp() {
         return c.substring(name.length, c.length);
       }
     }
-    return "";
+    return '';
   }
 
-  
-
-
-
-
   function obterDados(parent, el) {
-    let username = getCookie("UserName");
+    let username = getCookie('UserName');
     // let username = "j@j";
     fetch(
-      "https://api.feeboo.me/utilizador/" +  username,
-      // fetch("https://api.feeboo.me/utilizador/" +  username, {
-        
+      'http://localhost:3001/utilizador/' + username,
+      // fetch("http://localhost:3001/utilizador/" +  username, {
+
       // localStorage.getItem("LoggedIn"),
-      { method: "GET" }
+      { method: 'GET' }
     )
       .then((response) => response.text())
       .then((texto) => {
@@ -108,17 +101,17 @@ export default function SignUp() {
         const nif = texto.nif;
         const morada = texto.morada;
         const dataNascAux = texto.dataNasc;
-        const dataNasc = dataNascAux.split("T");
+        const dataNasc = dataNascAux.split('T');
 
-        document.getElementById("name").value = nome;
-        document.getElementById("email").value = email;
-        document.getElementById("email").disabled = true;
-        document.getElementById("telefone").value = telemovel;
-        document.getElementById("NIF").value = nif;
-        document.getElementById("NIF").disabled = true;
-        document.getElementById("morada").value = morada;
-        document.getElementById("date").value = dataNasc[0];
-        document.getElementById("date").disabled = true;
+        document.getElementById('name').value = nome;
+        document.getElementById('email').value = email;
+        document.getElementById('email').disabled = true;
+        document.getElementById('telefone').value = telemovel;
+        document.getElementById('NIF').value = nif;
+        document.getElementById('NIF').disabled = true;
+        document.getElementById('morada').value = morada;
+        document.getElementById('date').value = dataNasc[0];
+        document.getElementById('date').disabled = true;
       })
       .catch((err) => console.log(err.message));
   }
@@ -133,9 +126,9 @@ export default function SignUp() {
         className="box-perfil"
         sx={{
           marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
         <h1 className="h1"> Editar Perfil</h1>
@@ -232,13 +225,13 @@ export default function SignUp() {
             <Grid item xs={12} sm={6} ml={4} className="confirmarAlteracoes">
               <Button
                 style={{
-                  backgroundColor: "#1c5fb0",
+                  backgroundColor: '#1c5fb0',
                 }}
                 className="button2"
                 type="submit"
                 variant="contained"
               >
-                {"Confirmar alterações"}
+                {'Confirmar alterações'}
               </Button>
             </Grid>
           </Grid>
