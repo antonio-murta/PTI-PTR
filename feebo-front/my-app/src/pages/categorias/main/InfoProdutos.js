@@ -50,8 +50,6 @@
 //   };
 //   export default InfoProdutos;
 
-
-
 // import React, {useEffect} from 'react'
 
 // const InfoProdutos = () => {
@@ -60,13 +58,13 @@
 
 //   useEffect(() => {
 //     fetch(
-//       "https://api.feeboo.me/produto/",
+//       "http://localhost:3001/produto/",
 //       { method: "GET" }
 //     )
 //       .then((response) => response.text())
 //       .then((texto) => {
 //         texto = JSON.parse(texto);
-  
+
 //         for (let i = 0; i < texto.length; i++) {
 //           infoProdutos.push(
 //             {
@@ -82,9 +80,9 @@
 //             }
 //           );
 //           console.log(InfoProdutos)
-  
+
 //         }
-        
+
 //       })
 //       .catch((err) => console.log(err.message));
 //   }, [])

@@ -1,36 +1,36 @@
-import "./css/perfil.css";
-import * as React from "react";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
-import FormControl from "@mui/material/FormControl";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import Axios from "axios";
+import './css/perfil.css';
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Axios from 'axios';
 
 export default function AddArmazem() {
   let navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [polution, setPolution] = useState("");
-  const [type, setType] = useState("");
-  const [product, setProduct] = useState("");
-  const [phone, setPhone] = useState("");
+  const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+  const [polution, setPolution] = useState('');
+  const [type, setType] = useState('');
+  const [product, setProduct] = useState('');
+  const [phone, setPhone] = useState('');
 
   const handlePhone = (e) => {
-    const value = e.target.value.replace(/\D/g, "");
+    const value = e.target.value.replace(/\D/g, '');
     setPhone(value);
   };
 
   const handlePolution = (e) => {
-    const value = e.target.value.replace(/\D/g, "");
+    const value = e.target.value.replace(/\D/g, '');
     setPolution(value);
   };
   const handleSubmit = (event) => {
@@ -38,7 +38,7 @@ export default function AddArmazem() {
     //console.log(name, address, polution, phone, product, type);
 
     // preferencialmente, usar sempre axios em vez de fetch!! :)
-    Axios.post("https://api.feeboo.me/armazem", {
+    Axios.post('http://localhost:3001/armazem', {
       nome: name,
       morada: address,
       poluicao: polution,
@@ -47,7 +47,7 @@ export default function AddArmazem() {
     }).then(
       (response) => {
         console.log(response);
-        navigate("/fornecedor");
+        navigate('/fornecedor');
       },
       (error) => {
         console.log(error);
@@ -62,19 +62,19 @@ export default function AddArmazem() {
         className="box-perfil"
         sx={{
           marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
         <h1 className="h1">Armazém</h1>
 
         <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
           <Grid container spacing={{ xs: 4, md: 4 }}>
-            {" "}
+            {' '}
             {/* numero de "blocos"*/}
             <Grid item xs={12} sm={6}>
-              {" "}
+              {' '}
               {/* 6 = comprimento*/}
               <TextField
                 required
@@ -142,9 +142,9 @@ export default function AddArmazem() {
                   onChange={(e) => setType(e.target.value)}
                   label="Tipo"
                 >
-                  <MenuItem value={"CasaJardim"}>Casa e Jardim</MenuItem>
-                  <MenuItem value={"Eletronicos"}>Eletrónicos</MenuItem>
-                  <MenuItem value={"Roupa"}>Roupa</MenuItem>
+                  <MenuItem value={'CasaJardim'}>Casa e Jardim</MenuItem>
+                  <MenuItem value={'Eletronicos'}>Eletrónicos</MenuItem>
+                  <MenuItem value={'Roupa'}>Roupa</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -160,9 +160,9 @@ export default function AddArmazem() {
                   onChange={(e) => setProduct(e.target.value)}
                   label="Tipo"
                 >
-                  <MenuItem value={"Camisa"}>Camisa</MenuItem>
-                  <MenuItem value={"Casaco"}>Casaco</MenuItem>
-                  <MenuItem value={"Vestido"}>Vestido</MenuItem>
+                  <MenuItem value={'Camisa'}>Camisa</MenuItem>
+                  <MenuItem value={'Casaco'}>Casaco</MenuItem>
+                  <MenuItem value={'Vestido'}>Vestido</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -170,14 +170,14 @@ export default function AddArmazem() {
           <Grid>
             <Button
               style={{
-                backgroundColor: "#1c5fb0",
+                backgroundColor: '#1c5fb0',
               }}
               className="buttonNewArmazem"
               type="submit"
               variant="contained"
               sx={{ ml: 24, mt: -17.9 }}
             >
-              {"Adicionar armazém"}
+              {'Adicionar armazém'}
             </Button>
           </Grid>
         </Box>
