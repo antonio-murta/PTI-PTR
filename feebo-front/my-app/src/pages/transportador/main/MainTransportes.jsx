@@ -1,10 +1,10 @@
-import Notifications from "./Notifications";
-import Transportes from "./Transportes";
-import "./style-transporte.css";
-import { TiPlus } from "react-icons/ti";
-import { useNavigate } from "react-router-dom";
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
+import Notifications from './Notifications';
+import Transportes from './Transportes';
+import './style-transporte.css';
+import { TiPlus } from 'react-icons/ti';
+import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
 
 const MainTransportes = ({ addToCart, infoTransportes }) => {
   let navigate = useNavigate();
@@ -15,7 +15,9 @@ const MainTransportes = ({ addToCart, infoTransportes }) => {
   const [veiculos, setVeiculos] = useState([]);
   const [todosVeiculos, setTodosVeiculos] = useState([]);
   useEffect(() => {
-    Axios.get("http://localhost:3001/veiculos").then((res) => {
+
+    Axios.get('http://localhost:3001/veiculos').then((res) => {
+
       setVeiculos(res.data);
       setTodosVeiculos(res.data);
     });
@@ -30,7 +32,7 @@ const MainTransportes = ({ addToCart, infoTransportes }) => {
             <div className="heading d_flex">
               <h2>Veículos</h2>
               <div className="new-transport">
-                <button onClick={() => navigate("/addTransportes")}>
+                <button onClick={() => navigate('/addTransportes')}>
                   <div className="plus-icon">
                     <TiPlus />
                   </div>

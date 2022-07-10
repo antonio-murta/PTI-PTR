@@ -28,6 +28,7 @@ import ProtectedRoutes from "./ProtectedRoutes";
 import Checkout from "./checkout";
 import BoxVeiculo from "./pages/transportador/main/BoxVeiculo";
 
+
 function App() {
   const THEME = createTheme({
     typography: {
@@ -54,29 +55,38 @@ function App() {
   const [produtos, setProdutos] = useState([]);
   const [todosprodutos, setTodosProdutos] = useState([]);
   useEffect(() => {
-    Axios.get("http://localhost:3001/produto/").then((res) => {
-      setProdutos(res.data);
-      setTodosProdutos(res.data);
-    });
+    Axios.get('http://localhost:3001/produto/')
+      .then((res) => {
+        setProdutos(res.data);
+        setTodosProdutos(res.data);
+      })
+      .then(function (data) {
+        if (!localStorage.getItem('carrinho')) {
+          localStorage.setItem('carrinho', '[]');
+        }
+      });
   }, []);
+
+  /*****************************************/
+  /*           novo carrinho               */
+  /*****************************************/
+  localStorage.setItem('produtos', JSON.stringify(produtos));
+
+  //criar variáveis //
+  let produtosLS = JSON.parse(localStorage.getItem('produtos')); //products
+  let carrinho = JSON.parse(localStorage.getItem('carrinho'));
 
   // filtrar por tipo //
   const categoriaArtigo = [...new Set(todosprodutos.map((Val) => Val.tipo))];
 
   const filterArtigo = (curcat) => {
-    // <<<<<<< catarina
-    //     const newArtigo = infoProdutos.filter((newVal) => {
-    //       console.log(newVal)
-    //       console.log(curcat)
-    // =======
-
     const newProduto = todosprodutos.filter((newVal) => {
       return newVal.tipo === curcat;
     });
     setProdutos(newProduto);
   };
 
-  // carrinho //
+  // carrinho - NAO ESTÁ A SER NADA USADO MAS DÁ DEMASIADO TRABALHO TIRAR//
   const addToCart = (product) => {
     const productExit = CartItem.find((item) => item.id === product.id);
 
@@ -91,6 +101,7 @@ function App() {
     } else {
       setCartItem([...CartItem, { ...product, qty: 1 }]);
     }
+    console.log(productExit);
   };
 
   const decreaseQty = (product) => {
@@ -115,7 +126,6 @@ function App() {
         <Router>
           <Header CartItem={CartItem} />
           <Routes>
-            {/* <Route path="/" element={<Layout />}></Route> */}
             <Route
               path="/"
               element={
@@ -176,7 +186,7 @@ function App() {
                 />
               }
             />
-            <Route element={<ProtectedRoutes allowedRoles={"Transportador"} />}>
+            <Route element={<ProtectedRoutes allowedRoles={'Transportador'} />}>
               <Route
                 path="/transportador"
                 element={

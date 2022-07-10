@@ -1,30 +1,32 @@
-import React, { useState } from "react";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
-import "./css/perfil.css";
-import axios from "axios";
-import { BiTrash } from "react-icons/bi";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, { useState } from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import Grid from '@mui/material/Grid';
+import TextField from '@mui/material/TextField';
+import './css/perfil.css';
+import axios from 'axios';
+import { BiTrash } from 'react-icons/bi';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #ff014f",
-  borderRadius: "5px",
+  bgcolor: 'background.paper',
+  border: '2px solid #ff014f',
+  borderRadius: '5px',
   boxShadow: 24,
   p: 4,
 };
 
 const client = axios.create({
-  baseURL: "http://localhost:3001/veiculo/",
+
+  baseURL: 'http://localhost:3001/veiculo/',
+
 });
 
 export default function DeleteVeiculoModal() {
@@ -47,14 +49,14 @@ export default function DeleteVeiculoModal() {
     <div>
       <Button
         style={{
-          backgroundColor: "#ff014f",
+          backgroundColor: '#ff014f',
         }}
         onClick={handleOpen}
         className="buttonDel"
         type="submit"
         variant="contained"
       >
-        {"Eliminar Veículo"}
+        {'Eliminar Veículo'}
       </Button>
       <Modal
         open={open}
@@ -71,7 +73,7 @@ export default function DeleteVeiculoModal() {
               className="trash"
               onClick={() => {
                 deleteVeiculo(location.state.id);
-                navigate("/transportador");
+                navigate('/transportador');
               }}
             >
               <BiTrash size={20} className="lixo" />

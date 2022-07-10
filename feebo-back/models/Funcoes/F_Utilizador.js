@@ -47,6 +47,9 @@ const registar = (req, res) => {
             )
             .then(() => {
                 res.status(201).send("Utilizador criado com sucesso");
+            })
+            .catch(err => {
+                res.status(403).send(err);
             });
         }
         else if (utipo == "transportador") {
@@ -64,7 +67,7 @@ const registar = (req, res) => {
         }
     })
     .catch(err => {
-        res.status(400).send(err);
+        res.status(403).send(err);
     });
 }
 
@@ -212,7 +215,7 @@ const apagarUtilizadores = (req, res) => {
 
 
 const apagarUtilizadores_byID = (req, res) => {
-    UtilizadorModel.findByIdAndDelete(req.body.email)
+    UtilizadorModel.findByIdAndDelete(req.params.id)
     .then(() => {
         res.status(200).send("Utilizador apagado com sucesso");
     })
