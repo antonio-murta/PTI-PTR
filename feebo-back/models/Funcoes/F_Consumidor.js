@@ -5,6 +5,43 @@ const conexao = require('../../conexao');
 const moment = require("moment");
 
 
+// Encomendas
+const get_all_Encomendas = (req, res) => {
+    EncomendaModel.find({})
+    .then(result => {
+        if (result.length == 0) {
+            res.status(400).send("Nao existem encomendas registados");
+        } else {
+            res.status(200).send(result);
+        }
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    })
+}
+
+const getById_Encomendas = (req, res) => {
+    const id = req.params.id;
+
+    EncomendaModel.findOne({_id: id})
+    .then(result => {
+        if (result.length == 0) {
+            res.status(404).send("Encomenda não encontrada");
+        } else {
+            res.status(200).send(result);
+        }
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    });
+}
+
+
+
+
+
+
+
 
 // VERIFICAR
 async function visualizarRecursosCesto (email)
@@ -95,7 +132,7 @@ const encomendarCesto = (req, res) => {
 }
 
 
-module.exports = { get_all, encomendarCesto }
+module.exports = { get_all, encomendarCesto, getById_Encomendas, get_all_Encomendas }
 
 
 // pagamento = ["cartao", 123, "carlota", "02/23", 143]

@@ -36,7 +36,7 @@ const criarVeiculo = (req, res) => {
   veiculo
     .save()
     .then((result) => {
-      res.status(200).send(result);
+      res.status(200).send("Veiculo criado com sucesso");
     })
     .catch((err) => {
       res.status(400).send(err);

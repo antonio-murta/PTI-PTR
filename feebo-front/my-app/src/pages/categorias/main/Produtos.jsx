@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import "./pizza.css";
-import { useNavigate } from "react-router-dom";
-import ProductCard from "./TabelaProdutosC";
-import { Item, Button } from "semantic-ui-react";
+import React, { useState } from 'react';
+import './pizza.css';
+import { useNavigate } from 'react-router-dom';
+import ProductCard from './TabelaProdutosC';
+import { Item, Button } from 'semantic-ui-react';
 
 // npm install semantic-ui-react
 // const Produtos = ({ artigo }) => {
@@ -26,10 +26,10 @@ const Produtos = ({
         return (
           <div
             onClick={() => {
-              navigate("/produto", {
+              navigate('/produto', {
                 state: {
                   id: val._id,
-                  nome: val.nome,
+                  name: val.nome,
                   preco: val.preco,
                   tipo: val.tipo,
                   subtipo: val.subtipo,
