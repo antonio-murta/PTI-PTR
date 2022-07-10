@@ -67,6 +67,13 @@ app.delete("/armazem/:id", ArmazemController.deleteById);
 app.get("/consumidor", ConsumidorController.get_all)
 app.put("/consumidor/encomenda", ConsumidorController.encomendarCesto);
 
+app.get("/encomendas", ConsumidorController.get_all_Encomendas)
+app.get("/encomenda/:id", ConsumidorController.getById_Encomendas)
+
+
+
+
+
 
 // Utilizador
 app.post("/utilizador", UtilizadorControler.registar);

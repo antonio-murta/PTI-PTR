@@ -53,6 +53,7 @@
 
 
 // import React, {useEffect} from 'react'
+// console.log("aaa")
 
 // const InfoProdutos = () => {
 
@@ -63,15 +64,21 @@
 //       "http://localhost:3001/produto/",
 //       { method: "GET" }
 //     )
-//       .then((response) => response.text())
+//       .then(
+//         // (response) => response.text())
+
+//       (response) => {
+//         console.log("ddd", response);
+//       })
 //       .then((texto) => {
 //         texto = JSON.parse(texto);
+//         console.log("bbb  ", texto)
   
 //         for (let i = 0; i < texto.length; i++) {
 //           infoProdutos.push(
 //             {
-//               cadeiaLogistica: texto[i]["cadeiaLogistica"],
-//               fornecedorId: texto[i]["fornecedorId"],
+//               cadeiaLogistica: texto[i]["cadeia"],
+//               fornecedorId: texto[i]["fornecedor"],
 //               nome: texto[i]["nome"],
 //               poluicao: texto[i]["poluicao"],
 //               preco: texto[i]["preco"],
@@ -81,7 +88,7 @@
 //               tipo: texto[i]["tipo"]
 //             }
 //           );
-//           console.log(InfoProdutos)
+//           console.log("ccc  ", InfoProdutos)
   
 //         }
         
@@ -92,6 +99,8 @@
 
 // export default InfoProdutos
 // =======
+
+
 const InfoProdutos = {
   infoProdutos: [
     {
@@ -142,4 +151,4 @@ const InfoProdutos = {
   ],
 };
 export default InfoProdutos;
-// >>>>>>> main
+// // >>>>>>> main
