@@ -38,7 +38,9 @@ export default function AddArmazem() {
     //console.log(name, address, polution, phone, product, type);
 
     // preferencialmente, usar sempre axios em vez de fetch!! :)
+
     Axios.post('http://localhost:3001/armazem', {
+
       nome: name,
       morada: address,
       poluicao: polution,

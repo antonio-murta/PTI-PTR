@@ -28,6 +28,7 @@ export default function ChangePwdModal() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+
     fetch(
       'http://localhost:3001/utilizador/' +
         localStorage.getItem('LoggedIn') +

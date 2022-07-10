@@ -6,10 +6,9 @@ const bcrypt = require("bcryptjs");
 const criarArmazem = (req, res) => {
   const armazem = new ArmazemModel(req.body);
   console.log(res);
-  armazem
-    .save()
+  armazem.save()
     .then(() => {
-      res.status(201).send("Armazem criado com sucesso");
+      res.status(200).send("Armazem criado com sucesso");
     })
     .catch((err) => {
       res.status(400).send(err + "Erro ao criar armazem");

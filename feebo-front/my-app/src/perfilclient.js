@@ -39,7 +39,9 @@ export default function SignUp() {
     const data = new FormData(event.currentTarget);
 
     fetch(
+
       'http://localhost:3001/utilizador/' + username,
+
 
       {
         method: 'PUT',
@@ -86,6 +88,7 @@ export default function SignUp() {
     let username = getCookie('UserName');
     // let username = "j@j";
     fetch(
+
       'http://localhost:3001/utilizador/' + username,
       // fetch("http://localhost:3001/utilizador/" +  username, {
 

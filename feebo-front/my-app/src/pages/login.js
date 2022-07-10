@@ -52,6 +52,7 @@ function checkCookie() {
   let Token = getCookie('Token');
   let username = getCookie('UserName');
 
+
   if (Token != '') {
     alert('Welcome again ' + username);
   } else {
@@ -69,6 +70,7 @@ function logOut() {
   } else {
     alert('Please login first.');
   }
+
 }
 
 export default function SignIn() {
@@ -85,8 +87,10 @@ export default function SignIn() {
       const data = new FormData(event.currentTarget);
       const email = data.get('email');
 
+
       fetch('http://localhost:3001/utilizador/login', {
         method: 'POST',
+
         body: JSON.stringify({
           email: data.get('email'),
           password: data.get('password'),
@@ -106,7 +110,9 @@ export default function SignIn() {
 
           navigate(from, { replace: true });
 
+
           axios.get('http://localhost:3001/utilizador').then(
+
             (response) => {
               console.log(response.data);
               const utilizador = response.data.filter(
@@ -121,10 +127,12 @@ export default function SignIn() {
             }
           );
 
-          alert(text);
-          alert(UserName);
+          // alert(text);
+          // alert(UserName);
 
-          alert('Logged In :D');
+
+          // alert("Logged In :D");
+
         });
     }
   };
