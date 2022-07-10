@@ -29,14 +29,6 @@ const MainEncomendas = ({ addToCart }) => {
           <div className="contentWidth">
             <div className="heading d_flex">
               <h2>Encomendas</h2>
-              <div className="new-transport">
-                <button onClick={() => navigate("/addTransportes")}>
-                  <div className="plus-icon">
-                    <TiPlus />
-                  </div>
-                  Nova Encomenda
-                </button>
-              </div>
             </div>
             <div className="product-content  grid1">
               <Encomendas

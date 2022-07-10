@@ -31,10 +31,10 @@ const Encomendas = ({ encomendas }) => {
           >
             <div className="transport">
               <div className="details">
-                <h2>Carro: {val.matricula}</h2>
-                <h3>Poluição: {val.poluicao}gCO2/km</h3>
-                <h3>Marca: {val.marca}</h3>
-                <h3>Modelo: {val.modelo}</h3>
+                <h2>ID: {val.matricula}</h2>
+                <h3>Poluição: {val.poluicao} x gCO2/km</h3>
+                <h3>Armazém de origem: {val.marca}</h3>
+                <h3>Fornecedor: {val.modelo}</h3>
               </div>
             </div>
           </div>
