@@ -50,8 +50,6 @@
 //   };
 //   export default InfoProdutos;
 
-
-
 // import React, {useEffect} from 'react'
 // console.log("aaa")
 
@@ -72,8 +70,7 @@
 //       })
 //       .then((texto) => {
 //         texto = JSON.parse(texto);
-//         console.log("bbb  ", texto)
-  
+
 //         for (let i = 0; i < texto.length; i++) {
 //           infoProdutos.push(
 //             {
@@ -88,10 +85,9 @@
 //               tipo: texto[i]["tipo"]
 //             }
 //           );
-//           console.log("ccc  ", InfoProdutos)
-  
+
 //         }
-        
+
 //       })
 //       .catch((err) => console.log(err.message));
 //   }, [])

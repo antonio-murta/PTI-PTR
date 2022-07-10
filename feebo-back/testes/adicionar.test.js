@@ -1,7 +1,13 @@
 
 
+
 const axios = require("axios")
 
+
+
+
+
+var token_addProduto = "";
 
 test("Adicionar Produto", async() => {
     const config = {
@@ -17,13 +23,13 @@ test("Adicionar Produto", async() => {
         "armazem": "ArmazemA"
     }
 
+
     let response = await axios.post("http://localhost:3001/produto", config)
 
     expect(response.status).toBe(201);
     expect(response.data).toBe("Produto criado com sucesso");
+
 })
-
-
 
 
 test("Adicionar Veiculo", async() => {
@@ -35,15 +41,17 @@ test("Adicionar Veiculo", async() => {
         "utilizacao": "no"
     }
 
+
     let response = await axios.post("http://localhost:3001/utilizador/veiculo", config)
 
     expect(response.status).toBe(200);
     expect(response.data).toBe("Veiculo criado com sucesso");
+
 })
 
 
 
-// NAOO DEUU
+
 test("Adicionar Armazem", async() => {
     const config = {
         "nome": "ArmazemA",
@@ -60,4 +68,5 @@ test("Adicionar Armazem", async() => {
 
     expect(response.status).toBe(200);
     expect(response.data).toBe("Armazem criado com sucesso");
+
 })
