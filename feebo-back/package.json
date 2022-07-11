@@ -12,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "@userfront/react": "^0.2.22",
+    "async": "^3.2.4",
+    "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.0",
@@ -19,7 +21,7 @@
     "moment": "^2.29.2",
     "mongoo": "^0.3.5",
     "mongoose": "^6.2.9",
-    "nodemon": "^2.0.15",
+    "nodemon": "^1.3.3",
     "react-cookie": "^4.1.1"
   },
   "devDependencies": {
