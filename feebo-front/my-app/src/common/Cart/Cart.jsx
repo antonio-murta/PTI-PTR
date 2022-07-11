@@ -1,66 +1,74 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './style.css';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
-const Cart = ({ CartItem, addToCart, decreaseQty, addCarrinho }) => {
+const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   let navigate = useNavigate();
 
-  const totalPrice = CartItem.reduce(
-    (price, item) => price + item.qty * item.preco,
-    0
-  );
-
-  const totalPoluicao = CartItem.reduce(
-    (poluicao, item) => poluicao + item.qty * item.poluicao,
-    0
-  );
   const [cartItems, setCartItems] = useState([]);
+  //const { current: currentCartItems } = useRef(cartItems);
 
-  useEffect(() => {
-    const cartItems = JSON.parse(localStorage.getItem('carrinho'));
-    if (cartItems) {
-      setCartItems(cartItems);
-      dinheiroTotal();
-      poluicaoTotal();
-    }
-  }, []);
-  console.log(cartItems);
+  const [total, setTotal] = useState(0);
+  const [totalPol, setTotalPol] = useState(0);
 
   let carrinho = JSON.parse(localStorage.getItem('carrinho'));
 
   function addCarrinho(produtoId) {
+    // if (carrinho.some(item => val.name === item.name)
     carrinho.push(produtoId);
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    setCartItems(carrinho);
   }
 
   function removerCarrinho(produtoId) {
     let temp = carrinho.filter((item) => item.id != produtoId);
     localStorage.setItem('carrinho', JSON.stringify(temp));
+    setCartItems(temp);
   }
 
   // dinheiro total do carrinho//
   function dinheiroTotal() {
-    let temp = carrinho.map(function (item) {
-      setTotal(parseFloat(item.preco));
+    carrinho.map((item) => {
+      setTotal(total + parseFloat(item.preco));
     });
-
-    let sum = temp.reduce(function (prev, next) {
-      return prev + next;
-    }, 0);
   }
+
   // poluicao total do carrinho //
-  function poluicaoTotal() {
-    let temp = carrinho.map(function (item) {
-      setTotalPol(parseFloat(item.poluicao));
-    });
+  // function poluicaoTotal() {
+  //   let temp = carrinho.map(function (item) {
+  //     setTotalPol(parseFloat(item.poluicao));
+  //   });
 
-    let sum = temp.reduce(function (prev, next) {
-      return prev + next;
-    }, 0);
+  //   let sum = temp.reduce(function (prev, next) {
+  //     return prev + next;
+  //   }, 0);
+  // }
+  function poluicaoTotal() {
+    carrinho.map((item) => {
+      setTotalPol(total + parseFloat(item.poluicao));
+    });
   }
-  const [total, setTotal] = useState(0);
-  const [totalPol, setTotalPol] = useState(0);
+
+  useEffect(() => {
+    console.log('useeffect called');
+    console.log(carrinho);
+    if (carrinho) {
+      setCartItems(carrinho);
+      // Adicionar Total
+      let totalCart = 0;
+      carrinho.map((item) => {
+        totalCart = totalCart + parseFloat(item.preco);
+      });
+      setTotal(totalCart);
+
+      let polCart = 0;
+      carrinho.map((item) => {
+        polCart = polCart + parseFloat(item.poluicao);
+      });
+      setTotalPol(polCart);
+    }
+  }, [setTotal, setTotalPol]);
 
   return (
     <>
