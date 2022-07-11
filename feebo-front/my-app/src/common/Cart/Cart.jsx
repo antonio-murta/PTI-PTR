@@ -27,23 +27,6 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
     setCartItems(temp);
   }
 
-  // dinheiro total do carrinho//
-  function dinheiroTotal() {
-    carrinho.map((item) => {
-      setTotal(total + parseFloat(item.preco));
-    });
-  }
-
-  // poluicao total do carrinho //
-  // function poluicaoTotal() {
-  //   let temp = carrinho.map(function (item) {
-  //     setTotalPol(parseFloat(item.poluicao));
-  //   });
-
-  //   let sum = temp.reduce(function (prev, next) {
-  //     return prev + next;
-  //   }, 0);
-  // }
   function poluicaoTotal() {
     carrinho.map((item) => {
       setTotalPol(total + parseFloat(item.poluicao));
@@ -51,8 +34,6 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   }
 
   useEffect(() => {
-    console.log('useeffect called');
-    console.log(carrinho);
     if (carrinho) {
       setCartItems(carrinho);
       // Adicionar Total
@@ -68,7 +49,7 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
       });
       setTotalPol(polCart);
     }
-  }, [setTotal, setTotalPol]);
+  }, [carrinho]);
 
   return (
     <>

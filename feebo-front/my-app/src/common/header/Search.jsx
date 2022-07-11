@@ -1,14 +1,23 @@
-import React from "react";
-import logo from "../../components/assets/images/logo.png";
-import { Link } from "react-router-dom";
-import { BsFillCartFill } from "react-icons/bs";
-import "./../../App.css";
+import React, { useState, useEffect, useRef } from 'react';
+import logo from '../../components/assets/images/logo.png';
+import { Link } from 'react-router-dom';
+import { BsFillCartFill } from 'react-icons/bs';
+import './../../App.css';
 
 const Search = ({ CartItem }) => {
-  window.addEventListener("scroll", function () {
-    const search = document.querySelector(".search");
-    search.classList.toggle("active", window.scrollY > 100);
+  window.addEventListener('scroll', function () {
+    const search = document.querySelector('.search');
+    search.classList.toggle('active', window.scrollY > 100);
   });
+
+  const [numero, setNumero] = useState([]);
+
+  useEffect(() => {
+    const numero = JSON.parse(localStorage.getItem('carrinho'));
+    if (numero) {
+      setNumero(numero);
+    }
+  }, [numero]);
 
   return (
     <>
@@ -35,7 +44,7 @@ const Search = ({ CartItem }) => {
                 <i className="fa icon-circle carrinho">
                   <BsFillCartFill size={18} />
                 </i>
-                <span>{CartItem.length}</span>
+                <span>{numero.length}</span>
               </Link>
             </div>
           </div>
