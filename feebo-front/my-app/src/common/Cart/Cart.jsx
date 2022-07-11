@@ -1,24 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import './style.css';
-import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import "./style.css";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 const Cart = ({ CartItem, addToCart, decreaseQty, addCarrinho }) => {
   let navigate = useNavigate();
 
-  const totalPrice = CartItem.reduce(
-    (price, item) => price + item.qty * item.preco,
-    0
-  );
-
-  const totalPoluicao = CartItem.reduce(
-    (poluicao, item) => poluicao + item.qty * item.poluicao,
-    0
-  );
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
-    const cartItems = JSON.parse(localStorage.getItem('carrinho'));
+    const cartItems = JSON.parse(localStorage.getItem("carrinho"));
     if (cartItems) {
       setCartItems(cartItems);
       dinheiroTotal();
@@ -27,16 +18,16 @@ const Cart = ({ CartItem, addToCart, decreaseQty, addCarrinho }) => {
   }, []);
   console.log(cartItems);
 
-  let carrinho = JSON.parse(localStorage.getItem('carrinho'));
+  let carrinho = JSON.parse(localStorage.getItem("carrinho"));
 
   function addCarrinho(produtoId) {
     carrinho.push(produtoId);
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
   }
 
   function removerCarrinho(produtoId) {
     let temp = carrinho.filter((item) => item.id != produtoId);
-    localStorage.setItem('carrinho', JSON.stringify(temp));
+    localStorage.setItem("carrinho", JSON.stringify(temp));
   }
 
   // dinheiro total do carrinho//
@@ -126,11 +117,11 @@ const Cart = ({ CartItem, addToCart, decreaseQty, addCarrinho }) => {
             </div>
             <Button
               style={{
-                backgroundColor: '#e94560',
+                backgroundColor: "#e94560",
               }}
               className="button"
               variant="contained"
-              onClick={() => navigate('/checkout')}
+              onClick={() => navigate("/checkout")}
             >
               Checkout
             </Button>
