@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import './style.css';
-import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from "react";
+import "./style.css";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 
 const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   let navigate = useNavigate();
@@ -26,15 +26,13 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   function addCarrinho(produtoId) {
     // if (carrinho.some(item => val.name === item.name)
     carrinho.push(produtoId);
-
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
     setCartItems(carrinho);
   }
 
   function removerCarrinho(produtoId) {
     let temp = carrinho.filter((item) => item.id != produtoId);
-
-    localStorage.setItem('carrinho', JSON.stringify(temp));
+    localStorage.setItem("carrinho", JSON.stringify(temp));
     setCartItems(temp);
   }
 
