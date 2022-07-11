@@ -23,10 +23,10 @@ const BoxEncomenda = () => {
                 <h2>Encomenda {location.state.matricula}</h2>
               </div>
               <div className="informacao">
-                <p>Marca: {location.state.marca}</p>
-                <p>Modelo: {location.state.modelo}</p>
-                <p>Poluição: {location.state.poluicao}gCO2/km</p>
-                <p>Estado: livre/ocupado</p>
+                <p>Estado: no armazém /em trânsito / entregue</p>
+                <p>Poluição: {location.state.poluicao}x gCO2/km</p>
+                <p>Armazém de origem: {location.state.modelo}</p>
+                <p>Fornecedor: {location.state.modelo}</p>
                 <DeleteVeiculoModal />
               </div>
             </div>
