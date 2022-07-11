@@ -18,11 +18,13 @@ const Encomendas = ({ encomendas }) => {
             onClick={() => {
               navigate("/encomenda", {
                 state: {
-                  id: val._id,
-                  matricula: val.matricula,
-                  marca: val.marca,
-                  modelo: val.modelo,
-                  poluicao: val.poluicao,
+                  nome: val.nome,
+                  morada: val.morada,
+                  cidade: val.cidade,
+                  distrito: val.distrito,
+                  codico_postal: val.codico_postal,
+                  pais: val.pais,
+                  pagamento: val.pagamento,
                 },
               });
             }}
@@ -31,10 +33,10 @@ const Encomendas = ({ encomendas }) => {
           >
             <div className="transport">
               <div className="details">
-                <h2>ID: {val.matricula}</h2>
-                <h3>Poluição: {val.poluicao} x gCO2/km</h3>
-                <h3>Armazém de origem: {val.marca}</h3>
-                <h3>Fornecedor: {val.modelo}</h3>
+                <h2>ID: {val.nome}</h2>
+                <h3>Poluição: {val.morada}</h3>
+                <h3>Armazém de origem: {val.cidade}</h3>
+                <h3>Fornecedor: {val.pais}</h3>
               </div>
             </div>
           </div>
