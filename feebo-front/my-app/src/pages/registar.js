@@ -56,6 +56,13 @@ export default function Registar() {
     navigate('/');
   };
 
+  const handleNIF = (value) => {
+    setNif(
+      value
+        .match(/[0-9]{9}/)
+    );
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -138,6 +145,8 @@ export default function Registar() {
                 inputProps={{ maxLength: 9 }}
                 value={tlm}
                 onChange={(e) => setTlm(e.target.value)}
+                // type="number"
+                // onChange={(e) => handleNIF(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -148,10 +157,9 @@ export default function Registar() {
                 id="nif"
                 label="NIF"
                 name="nif"
-                type="text"
-                inputProps={{ maxLength: 9 }}
                 value={nif}
-                onChange={(e) => setNif(e.target.value)}
+                type="number"
+                onChange={(e) => handleNIF(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
