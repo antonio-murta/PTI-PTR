@@ -10,6 +10,10 @@
   color: #ff014f;
 }
 
+.h7 {
+  color: #e94560;
+}
+
 .box-perfil {
   max-width: 600px;
   min-width: 300px;
@@ -25,6 +29,32 @@
   margin-bottom: 60px;
 }
 
+.box-checkout {
+  max-width: 100%;
+  min-width: 300px;
+  max-height: 700px;
+  width: 150%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 25px;
+  text-align: center;
+  align-items: center;
+  padding: 5% 5% 5% 5%;
+  margin-bottom: 60px;
+}
+
+.checkout {
+  display: flex;
+  flex-direction: row;
+  align-items: initial;
+  justify-content: space-between;
+  gap: 10%;
+}
+
+.divisao {
+  flex: 1;
+}
+
 .popup {
   display: flex;
   align-items: center;
@@ -32,7 +62,6 @@
 }
 
 .buttonNewArmazem {
-  margin-left: 0 !important;
   margin-top: 50px !important;
 }
 
