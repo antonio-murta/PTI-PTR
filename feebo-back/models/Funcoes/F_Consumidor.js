@@ -36,58 +36,6 @@ const getById_Encomendas = (req, res) => {
     });
 }
 
-
-
-
-
-
-
-
-// VERIFICAR
-async function visualizarRecursosCesto (email)
-{
-    await conexao;
-    const consumidor = await ConsumidorModel.findOne({_id: email});
-    const recursos = consumidor["recursosCesto"]
-    // if recursos tiver vazio retur false
-    return recursos
-}
-
-
-async function visualizarPoluicaoCesto (email)
-{
-    await conexao;
-    const consumidor = await ConsumidorModel.findOne({_id: email});
-    const poluicao = consumidor["poluicaoCesto"]
-    // if polucao tiver vazio retur false
-    return poluicao
-}
-
-
-
-// async function encomendarCesto (email, emailTransportador, pagamento)
-// {
-//     now = new Date;
-//     await conexao;
-//     const Utilizador = await ConsumidorModel.findOne({_id: email});
-//     const produtos = Utilizador["cesto"];
-
-//     // let data = moment().format();
-
-
-//     const data = now.getDate() + "." + now.getMonth() + "." + now.getFullYear()
-
-//     await EncomendaModel.create (
-//         {
-//             cliente:  email,
-//             data_inicio:  data,
-//             produtos: produtos,
-//             transporte: emailTransportador,
-//             pagamento:  pagamento
-//         }
-//     )
-// }
-
 const get_all = (req, res) => {
     ConsumidorModel.find({})
     .then(result => {
@@ -103,11 +51,10 @@ const get_all = (req, res) => {
 }
 
 
-
 const encomendarCesto = (req, res) => {
     // const email = req.params.id;
 
-    // outraData.setDate(time.getDate() + 3);
+    // outraData.setDate(time.getDate() + 1);
 
     EncomendaModel.create(
         {
@@ -132,7 +79,93 @@ const encomendarCesto = (req, res) => {
 }
 
 
-module.exports = { get_all, encomendarCesto, getById_Encomendas, get_all_Encomendas }
+// const deleteEncomendaById = (req, res) => {
+//     const id = req.params.id;
+  
+//     EncomendaModel.findOne({ _id: id })
+//       .then((result) => {
+//         if (result.length == 0) {
+//           res.status(404).send("Encomnda nao encontrado");
+//         } else {
+//           if (result["utilizacao"] == "no") {
+//             VeiculoModel.findByIdAndDelete(id)
+//             .then(() => {
+//               res.status(200).send("veiculo apagado com sucesso");
+//             })
+//             .catch(() => {
+//               res.status(404).send("veiculo nao existe");
+//             });
+//           }
+//         }
+//       })
+//       .catch((err) => {
+//         res.status(400).send(err);
+//       });
+//   };
+
+
+
+
+  const deleteEncomendaById = (req, res) => {
+    const id = req.params.id;
+  
+    EncomendaModel.deleteOne({ _id: id })
+      .then((count) => {
+        if (count == 0) {
+          res.status(404).send("nao encontrado");
+        } else {
+          res.status(200).send("Encomenda apagada com sucesso");
+        }
+      })
+      .catch((err) => {
+        res.status(400).send(err);
+      });
+  };
+  
+
+
+
+
+
+module.exports = { get_all, encomendarCesto, getById_Encomendas, get_all_Encomendas, deleteEncomendaById }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// VERIFICAR
+// async function visualizarRecursosCesto (email)
+// {
+//     await conexao;
+//     const consumidor = await ConsumidorModel.findOne({_id: email});
+//     const recursos = consumidor["recursosCesto"]
+//     // if recursos tiver vazio retur false
+//     return recursos
+// }
+
+
+// async function visualizarPoluicaoCesto (email)
+// {
+//     await conexao;
+//     const consumidor = await ConsumidorModel.findOne({_id: email});
+//     const poluicao = consumidor["poluicaoCesto"]
+//     // if polucao tiver vazio retur false
+//     return poluicao
+// }
+
+
+
+// async function encomendarCesto (email, emailTransportador, pagamento)
+
+
 
 
 // pagamento = ["cartao", 123, "carlota", "02/23", 143]
