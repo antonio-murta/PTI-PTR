@@ -6,6 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
 export default function Endereco() {
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom className='h7'>
@@ -21,6 +22,7 @@ export default function Endereco() {
             label="Nome Completo"
             autoComplete="given-name"
             variant="standard"
+            // value={name}
           />
         </Grid>
         <Grid item xs={12}>
