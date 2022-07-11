@@ -148,3 +148,59 @@ const InfoProdutos = {
 };
 export default InfoProdutos;
 // // >>>>>>> main
+
+
+
+
+// import React, {useEffect} from 'react'
+
+// const InfoProdutos = () => {
+
+//   const infoProdutos = [];
+//   alert("111")
+//   console.log("1")
+
+//   useEffect(() => {
+//     fetch(
+//       "http://localhost:3001/produto/",
+//       { method: "GET" }
+//     )
+//       .then((response) => {
+//         response.text()
+//         console.log("2")
+//       })
+//       .then((texto) => {
+//         console.log("3")
+//         texto = JSON.parse(texto);
+  
+//         for (let i = 0; i < texto.length; i++) {
+//           // var dict = {};
+//           // dict['cadeiaLogistica'] = texto[i]["cadeiaLogistica"];
+//           // dict['fornecedorId'] = texto[i]["fornecedorId"];
+//           // dict['nome'] = texto[i]["nome"];
+//           // dict['poluicao'] = texto[i]["poluicao"];
+//           // dict['preco'] = texto[i]["preco"];
+//           // dict['quantidade'] = texto[i]["quantidade"];
+//           // dict['recursos'] = texto[i]["recursos"];
+//           // dict['subtipo'] = texto[i]["subtipo"];
+//           // dict['tipo'] = texto[i]["tipo"];
+
+//           infoProdutos.push({id: {i},
+//                    foto: "ola",
+//                    name: "T-shirt",
+//                    preco: "12.99€",
+//                    poluicao: "0.7kg de CO2",
+//                    tipo: "Casual",
+//                    subtipo: "Subtipo"});
+//           console.log(InfoProdutos)
+  
+//         }
+        
+//       })
+//       .catch((err) => console.log(err.message));
+//   }, [])
+// }
+
+// export default InfoProdutos
+
+
