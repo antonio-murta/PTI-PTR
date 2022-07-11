@@ -24,7 +24,9 @@ const style = {
 };
 
 const client = axios.create({
+
   baseURL: 'http://localhost:3001/armazem/',
+
 });
 
 export default function DeleteArmazemModal() {
