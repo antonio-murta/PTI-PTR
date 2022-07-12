@@ -1,33 +1,34 @@
-import './App.css';
-import React, { useState, useEffect } from 'react';
-import Axios from 'axios';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Header from './common/header/Header';
-import Pages from './pages/Pages';
-import Data from './components/Data';
-import Cart from './common/Cart/Cart';
-import Footer from './common/footer/Footer';
-import Sdata from './components/shops/Sdata';
-import InfoArmazens from './pages/fornecedor/mainpage/InfoArmazens';
-import InfoTransportes from './pages/transportador/main/InfoTransportes';
-import InfoProdutos from './pages/categorias/main/InfoProdutos';
-import SignIn from './pages/login';
-import Registar from './pages/registar';
-import Transportador from './pages/transportador/transportador';
-import Categorias from './pages/categorias/categorias';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Fornecedor from './pages/fornecedor/fornecedor';
-import PerfilClient from './perfilclient';
-import AddVeiculo from './addVeiculo';
-import AddArmazem from './addArmazem';
-import AddProduto from './addProduto';
-import BoxProdutos from './pages/categorias/main/BoxProdutos';
-import BoxArmazem from './pages/fornecedor/mainpage/BoxArmazem';
-import Encomendar from './pages/encomendas/Encomendar';
-import BoxEncomenda from './pages/encomendas/main/BoxEncomenda';
-import ProtectedRoutes from './ProtectedRoutes';
-import Checkout from './checkout';
-import BoxVeiculo from './pages/transportador/main/BoxVeiculo';
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./common/header/Header";
+import Pages from "./pages/Pages";
+import Data from "./components/Data";
+import Cart from "./common/Cart/Cart";
+import Footer from "./common/footer/Footer";
+import Sdata from "./components/shops/Sdata";
+import InfoArmazens from "./pages/fornecedor/mainpage/InfoArmazens";
+import InfoTransportes from "./pages/transportador/main/InfoTransportes";
+import InfoProdutos from "./pages/categorias/main/InfoProdutos";
+import SignIn from "./pages/login";
+import Registar from "./pages/registar";
+import Transportador from "./pages/transportador/transportador";
+import Categorias from "./pages/categorias/categorias";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import Fornecedor from "./pages/fornecedor/fornecedor";
+import PerfilClient from "./perfilclient";
+import AddVeiculo from "./addVeiculo";
+import AddArmazem from "./addArmazem";
+import AddProduto from "./addProduto";
+import BoxProdutos from "./pages/categorias/main/BoxProdutos";
+import BoxArmazem from "./pages/fornecedor/mainpage/BoxArmazem";
+import Encomenda from "./pages/encomendas/Encomenda";
+import BoxEncomenda from "./pages/encomendas/main/BoxEncomenda";
+import ProtectedRoutes from "./ProtectedRoutes";
+import BoxVeiculo from "./pages/transportador/main/BoxVeiculo";
+import Endereco from "./Endereco";
+import Checkout from "./checkout";
 
 function App() {
   const THEME = createTheme({
@@ -238,7 +239,7 @@ function App() {
             <Route
               path="/checkout"
               element={
-                <Checkout
+                <Endereco
                   productItems={productItems}
                   addToCart={addToCart}
                   shopItems={shopItems}
@@ -295,7 +296,6 @@ function App() {
                 />
               }
             />
-            {/* <Route element={<RequireAuth />}> */}
             <Route
               path="/armazem"
               element={
@@ -319,7 +319,7 @@ function App() {
             <Route
               path="/encomendas"
               element={
-                <Encomendar
+                <Encomenda
                   productItems={productItems}
                   addToCart={addToCart}
                   infoProdutos={infoProdutos}
@@ -336,7 +336,16 @@ function App() {
                 />
               }
             />
-            {/* </Route> */}
+            <Route
+              path="/checkoutconfirmation"
+              element={
+                <Checkout
+                  productItems={productItems}
+                  addToCart={addToCart}
+                  infoProdutos={infoProdutos}
+                />
+              }
+            />
           </Routes>
           <Footer />
         </Router>

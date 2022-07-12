@@ -1,18 +1,18 @@
-import './css/registar.css';
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Axios from 'axios';
+import "./css/registar.css";
+import * as React from "react";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Axios from "axios";
 
 export default function Registar() {
   let navigate = useNavigate();
@@ -22,17 +22,18 @@ export default function Registar() {
     console.log(myValue); // --> 123
   };
 
-  const [name, setName] = useState('');
-  const [pwd, setPwd] = useState('');
-  const [birthday, setBirthday] = useState('');
-  const [tlm, setTlm] = useState('');
-  const [email, setEmail] = useState('');
-  const [address, setAddress] = useState('');
-  const [nif, setNif] = useState('');
-  const [type, setType] = useState('');
+  const [name, setName] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [birthday, setBirthday] = useState("");
+  const [tlm, setTlm] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [nif, setNif] = useState("");
+  const [type, setType] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
 
     Axios.post('http://localhost:3001/utilizador', {
       _id: email,
@@ -51,14 +52,11 @@ export default function Registar() {
         console.log(error);
       }
     );
-    navigate('/');
+    navigate("/");
   };
 
   const handleNIF = (value) => {
-    setNif(
-      value
-        .match(/[0-9]{9}/)
-    );
+    setNif(value.match(/[0-9]{9}/));
   };
 
   return (
@@ -68,18 +66,18 @@ export default function Registar() {
         className="box-registar"
         sx={{
           marginTop: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
         <h1 className="h1"> Registar </h1>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
           <Grid container spacing={{ xs: 4, md: 2 }}>
-            {' '}
+            {" "}
             {/* numero de "blocos"*/}
             <Grid item xs={12} sm={6}>
-              {' '}
+              {" "}
               {/* 6 = comprimento*/}
               <TextField
                 required
@@ -183,9 +181,9 @@ export default function Registar() {
                   onChange={(e) => setType(e.target.value)}
                   label="Tipo"
                 >
-                  <MenuItem value={'Cliente'}>Cliente</MenuItem>
-                  <MenuItem value={'Fornecedor'}>Fornecedor</MenuItem>
-                  <MenuItem value={'Transportador'}>Transportador</MenuItem>
+                  <MenuItem value={"Cliente"}>Cliente</MenuItem>
+                  <MenuItem value={"Fornecedor"}>Fornecedor</MenuItem>
+                  <MenuItem value={"Transportador"}>Transportador</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -196,7 +194,7 @@ export default function Registar() {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            {'Registar'}
+            {"Registar"}
           </Button>
         </Box>
       </Box>

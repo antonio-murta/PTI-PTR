@@ -31,12 +31,7 @@ const MainEncomendas = ({ addToCart }) => {
               <h2>Encomendas</h2>
             </div>
             <div className="product-content  grid1">
-              <Encomendas
-                addToCart={addToCart}
-                encomendas={encomendas}
-                setEncomendas={setEncomendas}
-                todasEncomendas={todasEncomendas}
-              />
+              <Encomendas encomendas={encomendas} />
             </div>
           </div>
         </div>
