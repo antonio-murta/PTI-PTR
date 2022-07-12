@@ -4,9 +4,13 @@ import InfoProdutos from './InfoProdutos';
 
 const Filtro = ({
   filterArtigo,
-  setArtigo,
   categoriaArtigo,
+  filtrarPol,
+  poluicaoFiltrada,
+  filtrarPreco,
+  precoFiltrado,
   Produtos,
+  setArtigo,
   artigo,
   produtos,
   setProdutos,
@@ -14,13 +18,15 @@ const Filtro = ({
 }) => {
   const data = [
     {
-      cateName: 'Preço inferior a 20€',
+      cateName: 'x ixi',
     },
     {
       cateName: 'Poluição média inferior a 1kg',
     },
   ];
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
   return (
     <>
       <div className="notifications1">
@@ -49,28 +55,61 @@ const Filtro = ({
                 </div>
               )}
             </div>
+            <div className="box f_flex">
+              <button className="toggle" onClick={() => setIsOpen1(!isOpen1)}>
+                Valores de Poluição
+              </button>
+              {isOpen1 && (
+                <div className="cena">
+                  {poluicaoFiltrada.map((Val, id) => {
+                    return (
+                      <div
+                        key={id}
+                        onClick={() => filtrarPol(Val)}
+                        className="box f_flex"
+                      >
+                        <button key={id}>{Val} CO2/km</button>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
 
-            {data.map((value, index) => {
+            <div className="box f_flex">
+              <button className="toggle" onClick={() => setIsOpen2(!isOpen2)}>
+                Preço
+              </button>
+              {isOpen2 && (
+                <div className="cena">
+                  {precoFiltrado.map((Val, id) => {
+                    return (
+                      <div
+                        key={id}
+                        onClick={() => filtrarPreco(Val)}
+                        className="box f_flex"
+                      >
+                        <button key={id}>{Val}€</button>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* {data.map((value, index) => {
               return (
                 <div className="box f_flex" key={index}>
                   <button>{value.cateName}</button>
                 </div>
               );
-            })}
+            })} */}
 
             <div
-              onClick={() =>
-                setProdutos(
-                  //InfoProdutos.infoProdutos
-                  todosprodutos
-                )
-              }
-              className="box f_flex"
+              onClick={() => setProdutos(todosprodutos)}
+              className="box see-more"
             >
               <button>Todos</button>
-            </div>
-            <div className="box see-more">
-              <button>Comparar</button>
             </div>
           </div>
         </div>

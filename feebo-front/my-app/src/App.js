@@ -56,14 +56,14 @@ function App() {
   const [produtos, setProdutos] = useState([]);
   const [todosprodutos, setTodosProdutos] = useState([]);
   useEffect(() => {
-    Axios.get("http://localhost:3001/produto/")
+    Axios.get('http://localhost:3001/produto/')
       .then((res) => {
         setProdutos(res.data);
         setTodosProdutos(res.data);
       })
       .then(function (data) {
-        if (!localStorage.getItem("carrinho")) {
-          localStorage.setItem("carrinho", "[]");
+        if (!localStorage.getItem('carrinho')) {
+          localStorage.setItem('carrinho', '[]');
         }
       });
   }, []);
@@ -71,11 +71,11 @@ function App() {
   /*****************************************/
   /*           novo carrinho               */
   /*****************************************/
-  localStorage.setItem("produtos", JSON.stringify(produtos));
+  localStorage.setItem('produtos', JSON.stringify(produtos));
 
   //criar variáveis //
-  let produtosLS = JSON.parse(localStorage.getItem("produtos")); //products
-  let carrinho = JSON.parse(localStorage.getItem("carrinho"));
+  let produtosLS = JSON.parse(localStorage.getItem('produtos')); //products
+  let carrinho = JSON.parse(localStorage.getItem('carrinho'));
 
   // filtrar por tipo //
   const categoriaArtigo = [...new Set(todosprodutos.map((Val) => Val.tipo))];
@@ -83,6 +83,28 @@ function App() {
   const filterArtigo = (curcat) => {
     const newProduto = todosprodutos.filter((newVal) => {
       return newVal.tipo === curcat;
+    });
+    setProdutos(newProduto);
+  };
+
+  // filtrar por poluicao //
+  const poluicaoFiltrada = [
+    ...new Set(todosprodutos.map((Val) => Val.poluicao)),
+  ];
+
+  const filtrarPol = (curcat) => {
+    const newProduto = todosprodutos.filter((newVal) => {
+      return newVal.poluicao === curcat;
+    });
+    setProdutos(newProduto);
+  };
+
+  // filtrar por preco //
+  const precoFiltrado = [...new Set(todosprodutos.map((Val) => Val.preco))];
+
+  const filtrarPreco = (curcat) => {
+    const newProduto = todosprodutos.filter((newVal) => {
+      return newVal.preco === curcat;
     });
     setProdutos(newProduto);
   };
@@ -120,6 +142,7 @@ function App() {
       );
     }
   };
+  //
 
   return (
     <>
@@ -177,6 +200,10 @@ function App() {
                   artigo={artigo}
                   categoriaArtigo={categoriaArtigo}
                   filterArtigo={filterArtigo}
+                  filtrarPol={filtrarPol}
+                  poluicaoFiltrada={poluicaoFiltrada}
+                  filtrarPreco={filtrarPreco}
+                  precoFiltrado={precoFiltrado}
                   setArtigo={setArtigo}
                   // addToCompare={addToCompare}
                   // removeFromCompare={removeFromCompare}
@@ -187,7 +214,7 @@ function App() {
                 />
               }
             />
-            <Route element={<ProtectedRoutes allowedRoles={"Transportador"} />}>
+            <Route element={<ProtectedRoutes allowedRoles={'Transportador'} />}>
               <Route
                 path="/transportador"
                 element={

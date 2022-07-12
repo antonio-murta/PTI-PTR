@@ -11,6 +11,10 @@ const MainProdutos = ({
   artigo,
   categoriaArtigo,
   filterArtigo,
+  filtrarPol,
+  poluicaoFiltrada,
+  filtrarPreco,
+  precoFiltrado,
   setArtigo,
   produtos,
   setProdutos,
@@ -24,6 +28,10 @@ const MainProdutos = ({
       <section className="shop background-filtromoda">
         <div className="container1 d_flex1">
           <Filtro
+            filtrarPol={filtrarPol}
+            poluicaoFiltrada={poluicaoFiltrada}
+            filtrarPreco={filtrarPreco}
+            precoFiltrado={precoFiltrado}
             produtos={produtos}
             setProdutos={setProdutos}
             todosprodutos={todosprodutos}

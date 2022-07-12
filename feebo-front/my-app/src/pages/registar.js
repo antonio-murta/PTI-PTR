@@ -34,7 +34,8 @@ export default function Registar() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    Axios.post("http://localhost:3001/utilizador", {
+
+    Axios.post('http://localhost:3001/utilizador', {
       _id: email,
       nome: name,
       password: pwd,
