@@ -52,26 +52,23 @@ async function visualizarPoluicaoCesto(email) {
   return poluicao;
 }
 
-// async function encomendarCesto (email, emailTransportador, pagamento)
-// {
-//     now = new Date;
-//     await conexao;
-//     const Utilizador = await ConsumidorModel.findOne({_id: email});
-//     const produtos = Utilizador["cesto"];
+// async function encomendarCesto(email, emailTransportador, pagamento) {
+//   now = new Date();
+//   await conexao;
+//   const Utilizador = await ConsumidorModel.findOne({ _id: email });
+//   const produtos = Utilizador["cesto"];
 
-//     // let data = moment().format();
+//   // let data = moment().format();
 
-//     const data = now.getDate() + "." + now.getMonth() + "." + now.getFullYear()
+//   const data = now.getDate() + "." + now.getMonth() + "." + now.getFullYear();
 
-//     await EncomendaModel.create (
-//         {
-//             cliente:  email,
-//             data_inicio:  data,
-//             produtos: produtos,
-//             transporte: emailTransportador,
-//             pagamento:  pagamento
-//         }
-//     )
+//   await EncomendaModel.create({
+//     cliente: email,
+//     data_inicio: data,
+//     produtos: produtos,
+//     transporte: emailTransportador,
+//     pagamento: pagamento,
+//   });
 // }
 
 const get_all = (req, res) => {
@@ -86,36 +83,29 @@ const get_all = (req, res) => {
     .catch((err) => {
       res.status(400).send(err);
     });
+};
 
-  const encomendarCesto = (req, res) => {
-    // const email = req.params.id;
+const encomendarCesto = (req, res) => {
+  // const email = req.params.id;
 
-    // outraData.setDate(time.getDate() + 3);
+  // outraData.setDate(time.getDate() + 3);
 
-    EncomendaModel.create({
-      // "cliente": req.body.cliente,
-      nome: req.body.nome,
-      morada: req.body.morada,
-      cidade: req.body.cidade,
-      distrito: req.body.distrito,
-      codigo_postal: req.body.codigo_postal,
-      pais: req.body.pais,
-      // "produtos": req.body.produtos,
-      // "recursos": req.body.recursos,
-      // "poluicao": req.body.poluicao,
-      pagamento: req.body.pagamento,
-      // "data_inicio": new Date()
-    }).then(() => {
-      res.status(201).send("Encomenda criada com sucesso");
-    });
-  };
-
-  module.exports = {
-    get_all,
-    encomendarCesto,
-    getById_Encomendas,
-    get_all_Encomendas,
-  };
+  EncomendaModel.create({
+    cliente: req.body.cliente,
+    nome: req.body.nome,
+    morada: req.body.morada,
+    cidade: req.body.cidade,
+    distrito: req.body.distrito,
+    codigo_postal: req.body.codigo_postal,
+    pais: req.body.pais,
+    produtos: req.body.produtos,
+    poluicao: req.body.poluicao,
+    pagamento: req.body.pagamento,
+    data_inicio: new Date(),
+    // "recursos": req.body.recursos,
+  }).then(() => {
+    res.status(201).send("Encomenda criada com sucesso");
+  });
 };
 
 // const deleteEncomendaById = (req, res) => {

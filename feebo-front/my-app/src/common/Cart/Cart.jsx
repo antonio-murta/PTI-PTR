@@ -9,15 +9,6 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
   const [cartItems, setCartItems] = useState([]);
   //const { current: currentCartItems } = useRef(cartItems);
 
-  useEffect(() => {
-    const cartItems = JSON.parse(localStorage.getItem("carrinho"));
-    if (cartItems) {
-      setCartItems(cartItems);
-      dinheiroTotal();
-      poluicaoTotal();
-    }
-  }, []);
-  console.log(cartItems);
   const [total, setTotal] = useState(0);
   const [totalPol, setTotalPol] = useState(0);
 
@@ -34,6 +25,13 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
     let temp = carrinho.filter((item) => item.id != produtoId);
     localStorage.setItem("carrinho", JSON.stringify(temp));
     setCartItems(temp);
+  }
+
+  // dinheiro total do carrinho//
+  function dinheiroTotal() {
+    carrinho.map((item) => {
+      setTotal(total + parseFloat(item.preco));
+    });
   }
 
   function poluicaoTotal() {
