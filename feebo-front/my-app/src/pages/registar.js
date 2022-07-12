@@ -34,9 +34,7 @@ export default function Registar() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-
     Axios.post('http://localhost:3001/utilizador', {
-
       _id: email,
       nome: name,
       password: pwd,
@@ -68,7 +66,7 @@ export default function Registar() {
           alignItems: 'center',
         }}
       >
-        <h1 className="h1"> RegistarSSSSSS </h1>
+        <h1 className="h1"> Registar </h1>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
           <Grid container spacing={{ xs: 4, md: 2 }}>
             {' '}
