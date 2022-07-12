@@ -26,14 +26,39 @@ export default function Endereco() {
   const [expire, setExpire] = useState("");
   const [cvv, setCVV] = useState("");
 
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     let pagamento_list = [title, card, expire, cvv];
     console.log(pagamento_list);
 
+    let produtos = JSON.parse(localStorage.getItem("carrinho"));
+    let poluicao = 0;
+    produtos.map((item) => {
+      poluicao = poluicao + parseFloat(item.poluicao);
+    });
+
+    let cliente = getCookie("UserName");
+
     // preferencialmente, usar axios em vez de fetch!! :)
     Axios.post("http://localhost:3001/encomenda", {
+      cliente: cliente,
       nome: name,
       morada: address,
       codigo_postal: zip,
@@ -41,6 +66,8 @@ export default function Endereco() {
       distrito: district,
       pais: country,
       pagamento: pagamento_list,
+      produtos: produtos,
+      poluicao: poluicao,
     }).then(
       (response) => {
         console.log(response);

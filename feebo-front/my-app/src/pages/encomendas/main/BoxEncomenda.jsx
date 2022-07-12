@@ -3,10 +3,18 @@ import "./../../categorias/main/ProdutoIndividual.css";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
-import DeleteVeiculoModal from "../../../DeleteVeiculoModal";
+import DeleteEncomendaModal from "../../../DeleteEncomendaModal";
+import { addHours, differenceInHours } from "date-fns";
 
 const BoxEncomenda = () => {
   let location = useLocation();
+
+  const data_inicio = new Date(location.state.data);
+  const data_final = addHours(data_inicio, 5);
+  const cancelar = new Date();
+
+  console.log(data_inicio, data_final);
+
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
 
@@ -27,7 +35,9 @@ const BoxEncomenda = () => {
                 <p>Poluição: {location.state.poluicao}x gCO2/km</p>
                 <p>Armazém de origem: {location.state.modelo}</p>
                 <p>Fornecedor: {location.state.modelo}</p>
-                <DeleteVeiculoModal />
+                {differenceInHours(data_final, cancelar) > 0 && (
+                  <DeleteEncomendaModal />
+                )}
               </div>
             </div>
           </div>

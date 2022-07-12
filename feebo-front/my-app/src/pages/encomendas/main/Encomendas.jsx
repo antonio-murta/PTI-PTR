@@ -18,13 +18,18 @@ const Encomendas = ({ encomendas }) => {
             onClick={() => {
               navigate("/encomenda", {
                 state: {
+                  id: val._id,
+                  cliente: val.cliente,
                   nome: val.nome,
                   morada: val.morada,
                   cidade: val.cidade,
                   distrito: val.distrito,
-                  codico_postal: val.codico_postal,
+                  codigo_postal: val.codigo_postal,
                   pais: val.pais,
+                  produtos: val.produtos,
+                  poluicao: val.poluicao,
                   pagamento: val.pagamento,
+                  data: val.data_inicio,
                 },
               });
             }}

@@ -2,10 +2,10 @@ const { ObjectId } = require("mongodb");
 const monggose = require("mongoose");
 
 const EncomendaSchema = new monggose.Schema({
-  // cliente: {
-  //     type: String,
-  //     required: true,
-  // },
+  cliente: {
+    type: String,
+    required: true,
+  },
   nome: {
     type: String,
     required: true,
@@ -30,27 +30,27 @@ const EncomendaSchema = new monggose.Schema({
     type: String,
     required: true,
   },
-  //   produtos: {
-  //     // [id produto, qnd]
-  //     type: [],
-  //     required: true,
-  //   },
-  //   recursos: {
-  //     // [id dos recursos utilizados, qnd de recursos]
-  //     type: [],
-  //     required: true,
-  //   },
-  //   poluicao: {
-  //     type: Number,
-  //     required: true,
-  //   },
+  produtos: {
+    // [id produto, qnd]
+    type: [],
+    required: true,
+  },
+  poluicao: {
+    type: Number,
+    required: true,
+  },
   pagamento: {
     // nome do titular, numero do cartao, validade, cvv
     type: [],
     required: true,
   },
-  //   data_inicio: {
-  //     type: Date,
+  data_inicio: {
+    type: Date,
+    required: true,
+  },
+  //   recursos: {
+  //     // [id dos recursos utilizados, qnd de recursos]
+  //     type: [],
   //     required: true,
   //   },
 });
