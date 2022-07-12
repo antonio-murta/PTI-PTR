@@ -27,13 +27,6 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
     setCartItems(temp);
   }
 
-  // dinheiro total do carrinho//
-  function dinheiroTotal() {
-    carrinho.map((item) => {
-      setTotal(total + parseFloat(item.preco));
-    });
-  }
-
   function poluicaoTotal() {
     carrinho.map((item) => {
       setTotalPol(total + parseFloat(item.poluicao));
