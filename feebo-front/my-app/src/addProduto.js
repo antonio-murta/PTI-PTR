@@ -10,8 +10,17 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import Input from '@mui/material/Input';
 import { useState } from 'react';
 import Axios from 'axios';
+import ReactDOM from 'react-dom';
+import { FilePond, registerPlugin } from 'react-filepond';
+import 'filepond/dist/filepond.min.css';
+import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+
+registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
 
 export default function AddProduto() {
   const [name, setName] = useState('');
@@ -24,6 +33,27 @@ export default function AddProduto() {
   const [provider, setProvider] = useState('');
   const [type, setType] = useState('');
   const [subtype, setSubtype] = useState('');
+  const [fotos, setFotos] = useState([]);
+
+  const [image, setImage] = useState({});
+  const fileOnChange = (event) => {
+    setImage(event.target.files[0]);
+  };
+
+  const sendImage = (event) => {
+    let formData = new FormData();
+
+    formData.append('avatar', image);
+
+    fetch('http://localhost:4000/uploadFile', {
+      method: 'post',
+      body: formData,
+    })
+      .then((res) => res.text())
+      .then((resBody) => {
+        console.log(resBody);
+      });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -226,6 +256,24 @@ export default function AddProduto() {
                 </Select>
               </FormControl>
             </Grid>
+            <Grid item xs={12}>
+              <FilePond
+                files={fotos}
+                allowReorder={true}
+                allowMultiple={true}
+                onupdatefiles={setFotos}
+                server="http://localhost:3001/produto"
+                labelIdle='Arraste para aqui a sua foto ou <span class="filepond--label-action">Procure</span>'
+              />
+            </Grid>
+            {/* <Grid item xs={12} sm={6}>
+              <Input type="file" onChange={fileOnChange} />
+            </Grid>
+            <Grid>
+              <Button onClick={sendImage} sx={12} sm={6}>
+                {'Submeter imagem'}
+              </Button>
+            </Grid> */}
           </Grid>
           <Grid>
             <Button
