@@ -79,6 +79,42 @@ export default function Endereco() {
     );
   };
 
+  const handleZip = (value) => {
+    setZip(
+      value
+        .match(/[0-9]{1,4}/g)
+        ?.join("-")
+        .substr(0, 8) || ""
+    );
+  };
+
+  const handleCard = (value) => {
+    setCard(
+      value
+        .match(/[0-9]{1,4}/g)
+        ?.join(" ")
+        .substr(0, 19) || ""
+    );
+  };
+
+  const handleExpire = (value) => {
+    setExpire(
+      value
+        .match(/[0-9]{1,2}/g)
+        ?.join("/")
+        .substr(0, 5) || ""
+    );
+  };
+
+  const handleCVV = (value) => {
+    setCVV(
+      value
+        .match(/[0-9]{1}/g)
+        ?.join("")
+        .substr(0, 3) || ""
+        );
+  };
+
   return (
     <Container component="main" className="checkout">
       <Box
@@ -132,7 +168,7 @@ export default function Endereco() {
                 label="Código Postal"
                 autoComplete="shipping postal-code"
                 variant="standard"
-                onChange={(e) => setZip(e.target.value)}
+                onChange={(e) => handleZip(e.target.value)}
                 value={zip}
               />
             </Grid>
@@ -209,7 +245,7 @@ export default function Endereco() {
                 label="Número do cartão"
                 autoComplete="cc-number"
                 variant="standard"
-                onChange={(e) => setCard(e.target.value)}
+                onChange={(e) => handleCard(e.target.value)}
                 value={card}
               />
             </Grid>
@@ -221,7 +257,7 @@ export default function Endereco() {
                 label="Validade"
                 autoComplete="cc-exp"
                 variant="standard"
-                onChange={(e) => setExpire(e.target.value)}
+                onChange={(e) => handleExpire(e.target.value)}
                 value={expire}
               />
             </Grid>
@@ -233,7 +269,7 @@ export default function Endereco() {
                 label="CVV"
                 autoComplete="cc-csc"
                 variant="standard"
-                onChange={(e) => setCVV(e.target.value)}
+                onChange={(e) => handleCVV(e.target.value)}
                 value={cvv}
               />
             </Grid>

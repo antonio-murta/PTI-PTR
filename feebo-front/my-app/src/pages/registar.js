@@ -141,7 +141,6 @@ export default function Registar() {
                 inputProps={{ maxLength: 9 }}
                 value={tlm}
                 onChange={(e) => setTlm(e.target.value)}
-                // type="number"
                 // onChange={(e) => handleNIF(e.target.value)}
               />
             </Grid>
@@ -154,7 +153,7 @@ export default function Registar() {
                 label="NIF"
                 name="nif"
                 value={nif}
-                type="number"
+                type="text"
                 onChange={(e) => handleNIF(e.target.value)}
               />
             </Grid>
