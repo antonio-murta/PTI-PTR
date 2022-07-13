@@ -1,6 +1,6 @@
-import React from "react";
-import Wrapper from "../../components/wrapper/Wrapper";
-import MainProdutos from "./main/MainProdutos";
+import React from 'react';
+import Wrapper from '../../components/wrapper/Wrapper';
+import MainProdutos from './main/MainProdutos';
 
 const Categorias = ({
   addToCart,
@@ -8,6 +8,10 @@ const Categorias = ({
   artigo,
   categoriaArtigo,
   filterArtigo,
+  filtrarPol,
+  poluicaoFiltrada,
+  filtrarPreco,
+  precoFiltrado,
   setArtigo,
   produtos,
   setProdutos,
@@ -21,6 +25,10 @@ const Categorias = ({
         artigo={artigo}
         categoriaArtigo={categoriaArtigo}
         filterArtigo={filterArtigo}
+        filtrarPol={filtrarPol}
+        poluicaoFiltrada={poluicaoFiltrada}
+        filtrarPreco={filtrarPreco}
+        precoFiltrado={precoFiltrado}
         setArtigo={setArtigo}
         produtos={produtos}
         setProdutos={setProdutos}

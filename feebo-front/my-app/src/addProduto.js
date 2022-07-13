@@ -42,7 +42,6 @@ export default function AddProduto() {
     // preferencialmente, usar sempre axios em vez de fetch!! :)
 
     Axios.post('http://localhost:3001/produto', {
-
       nome: name,
       poluicao: polution,
       preco: price,
@@ -139,7 +138,7 @@ export default function AddProduto() {
                 fullWidth
                 variant="standard"
                 id="chain"
-                label="Cadeia Logística"
+                label="Pizza"
                 name="chain"
                 onChange={(e) => setChain(e.target.value)}
                 value={chain}

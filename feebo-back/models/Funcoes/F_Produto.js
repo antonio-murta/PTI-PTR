@@ -34,12 +34,7 @@ const getById = (req, res) => {
         res.status(400).send(err);
     });
 }
-// async function getById (id)
-// {
-//     await conexao;
-//     const produto = await ProdutoModel.findOne({_id: id});
-//     console.log(produto);
-// }
+
 
 
 
@@ -59,14 +54,6 @@ const getByNome = (req, res) => {
         res.status(400).send(err);
     });
 }
-// async function getByNome (nome)
-// {
-//     await conexao;
-//     const produto = await ProdutoModel.findOne({nome: nome});
-//     console.log(produto)
-//     // return produto
-// }
-
 
 
 const getByPreco = (req, res) => {
@@ -84,13 +71,7 @@ const getByPreco = (req, res) => {
         res.status(400).send(err);
     });
 }
-// async function getByPreco (preco)
-// {
-//     await conexao;
-//     const produto = await ProdutoModel.findOne({preco: preco});
-//     console.log(produto)
-//     // return produto
-// }
+
 
 
 
@@ -111,13 +92,7 @@ const getByCadeiaLogistica = (req, res) => {
         res.status(400).send(err);
     });
 }
-// async function getByCadeiaLogistica (cadeiaLogistica)
-// {
-//     await conexao;
-//     const produto = await ProdutoModel.findOne({cadeiaLogistica: cadeiaLogistica});
-//     console.log(produto)
-//     // return produto
-// }
+
 
 
 
@@ -136,13 +111,7 @@ const getByRecursos = (req, res) => {
         res.status(400).send(err);
     });
 }
-// async function getByRecursos (recursos)
-// {
-//     await conexao;
-//     const produto = await ProdutoModel.findOne({recursos: recursos});
-//     // return 
-//     console.log(produto)
-// }
+
 
 
 

@@ -48,9 +48,7 @@ const updateVeiculo = (req, res) => {
   const veiculo = req.body.matricula;
   TransportadorModel.updateOne(
     { _id: email },
-    {
-      veiculo: veiculo,
-    }
+    {$push: { veiculo: veiculo }}
   )
     .then((result) => {
       res.status(200).send(result);
