@@ -136,7 +136,6 @@ export default function Registar() {
                 inputProps={{ maxLength: 9 }}
                 value={tlm}
                 onChange={(e) => setTlm(e.target.value)}
-                // type="number"
                 // onChange={(e) => handleNIF(e.target.value)}
               />
             </Grid>
