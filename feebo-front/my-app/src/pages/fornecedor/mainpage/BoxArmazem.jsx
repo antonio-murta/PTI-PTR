@@ -4,9 +4,13 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import DeleteArmazemModal from "../../../DeleteArmazemModal";
+import { AiOutlinePlus } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 const BoxArmazem = () => {
   let location = useLocation();
+  let navigate = useNavigate();
+
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
 
@@ -28,6 +32,16 @@ const BoxArmazem = () => {
                 <p>Localização: {location.state.local}</p>
                 <p>Poluição: {location.state.poluicao}gCO2/km</p>
                 <p>Contacto: {location.state.telemovel}</p>
+                <p>Produtos: </p>
+
+                <div className="new-product">
+                  <button onClick={() => navigate("/addProduto")}>
+                    <div className="plus-icon">
+                      <AiOutlinePlus />
+                    </div>
+                    Novo Produto
+                  </button>
+                </div>
                 <DeleteArmazemModal />
               </div>
             </div>
