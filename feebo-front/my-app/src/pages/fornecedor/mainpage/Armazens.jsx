@@ -1,15 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style-armazens.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const client = axios.create({
+  baseURL: "http://localhost:3001/armazens/fornecedor/",
+});
 
 const Armazens = ({ armazens }) => {
   let navigate = useNavigate();
 
+  const [armazensFornecedor, setArmazensFornecedor] = useState(0);
   const [count, setCount] = useState(0);
   const increment = () => {
     setCount(count + 1);
   };
 
+  useEffect(() => {
+    const getArmazensFornecedor = async (id) => {
+      try {
+        await axios
+          .get("http://localhost:3001/armazens/fornecedor/" + id)
+          .then((res) => {
+            console.log(res.data);
+            setArmazensFornecedor(res.data);
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(";");
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    let cliente = getCookie("UserName");
+
+    console.log(getArmazensFornecedor(cliente));
+  }, []);
   return (
     <>
       {armazens.map((val, index) => {
