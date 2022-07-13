@@ -15,11 +15,7 @@ const criarProduto = (req, res) => {
 
     // const poluicao = 0;
     const recursos = req.body.recursos;
-    // let poluicao = 0;
-    // recursos.forEach(recurso => {
-    //     poluicao += recurso["poluicao"];
-    // });
-    // req.body.poluicao = poluicao;
+
 
     const produto = new ProdutoModel(req.body);
     produto.save()
@@ -51,27 +47,13 @@ const removerProduto = (req, res) => {
 
     ProdutoModel.deleteOne({_id: idProduto})
     .then(() => {
-        // FornecedorModel.updateOne(
-        //     {_id: emailFornecedor},
-        //     {
-        //         $set: {produtos: idProduto}
-        //     }
-        // )
+        
         res.status(201).send("Produto apagado com sucesso");
     })
     .catch(err => {
         res.status(400).send(err);
     });
 }
-// async function removerProduto (id, email)
-// {
-//     await conexao;
-//     await ProdutoModel.deleteOne({_id: id})
-//     await FornecedorModel.updateOne(
-//         {_id: email},
-//         {$set: {produtos: id}}
-//     )
 
-// }
 
 module.exports = {criarProduto, removerProduto, removerProdutos};
