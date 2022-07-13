@@ -10,7 +10,7 @@ const BoxEncomenda = () => {
   let location = useLocation();
 
   const data_inicio = new Date(location.state.data);
-  const data_final = addHours(data_inicio, 5);
+  const data_final = addHours(data_inicio, 24);
   const cancelar = new Date();
 
   console.log(data_inicio, data_final);

@@ -28,9 +28,11 @@ app.post("/produto", FornecedorController.criarProduto);
 app.delete("/produto", FornecedorController.removerProdutos);
 app.delete("/produto/:id", FornecedorController.removerProduto);
 
-app.put('/updateArmazem', ArmazemController.updateArmazem);
-app.get('/armazens/fornecedor', ArmazemController.get_all_armazens_Fornecedor);
-
+app.put("/updateArmazem/:id", ArmazemController.updateArmazem);
+app.get(
+  "/armazens/fornecedor/:id",
+  ArmazemController.get_all_armazens_Fornecedor
+);
 
 // Produto
 app.get("/produto", ProdutoController.get_all);
@@ -51,8 +53,6 @@ app.put("/utilizador/:id/veiculo", TransportadorControler.updateVeiculo);
 app.get("/veiculos", TransportadorControler.get_all_veiculos);
 app.delete("/veiculo/:id", TransportadorControler.deleteVeiculoById);
 // app.put("/utilizador/:id/caminhos", TransportadorControler.updateCaminhos)
-
-
 
 // Armazem
 app.post("/armazem", ArmazemController.criarArmazem);

@@ -7,64 +7,29 @@ const bcrypt = require("bcryptjs");
 const criarArmazem = (req, res) => {
   const armazem = new ArmazemModel(req.body);
   console.log(res);
-  armazem.save()
+  armazem
+    .save()
     .then(() => {
-      res.status(200).send("Armazem criado com sucesso");
+      res.status(200).send("Armazem criado com sucesso, " + armazem._id);
     })
     .catch((err) => {
       res.status(400).send(err + "Erro ao criar armazem");
     });
 };
 
-
-
-
 const updateArmazem = (req, res) => {
   const email = req.params.id;
   // const email = "catarina@gmail.com"
 
   const idArmazem = req.body._id;
-  FornecedorModel.updateOne(
-    { _id: email },
-    {$push: { armazens: idArmazem }}
-  )
+  FornecedorModel.updateOne({ _id: email }, { $push: { armazens: idArmazem } })
     .then((result) => {
       res.status(200).send(result);
     })
     .catch((err) => {
       res.status(400).send(err);
     });
-
-}
-
-
-
-
-const get_all_armazens_Fornecedor = (req, res) => {
-  const email = req.params.id;
-  // const email = "catarina@gmail.com"
-
-  FornecedorModel.findOne({ _id: email })
-  .then(result => {
-      if (result.length == 0) {
-          res.status(404).send("Nao existem armazens registados");
-      } else {
-          res.status(200).send(result["armazens"]);
-      }
-  })
-  .catch(err => {
-      res.status(400).send(err);
-  })
-}
-
-
-
-
-
-
-
-
-
+};
 
 const get_all = (req, res) => {
   ArmazemModel.find({})
@@ -178,8 +143,8 @@ const deleteByNome = (req, res) => {
 
 module.exports = {
   criarArmazem,
-  updateArmazem,
-  get_all_armazens_Fornecedor,
+  // updateArmazem,
+  // get_all_armazens_Fornecedor,
   getByMorada,
   getByNome,
   getByTelemovel,

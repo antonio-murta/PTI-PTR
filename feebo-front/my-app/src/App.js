@@ -56,14 +56,14 @@ function App() {
   const [produtos, setProdutos] = useState([]);
   const [todosprodutos, setTodosProdutos] = useState([]);
   useEffect(() => {
-    Axios.get('http://localhost:3001/produto/')
+    Axios.get("http://localhost:3001/produto/")
       .then((res) => {
         setProdutos(res.data);
         setTodosProdutos(res.data);
       })
       .then(function (data) {
-        if (!localStorage.getItem('carrinho')) {
-          localStorage.setItem('carrinho', '[]');
+        if (!localStorage.getItem("carrinho")) {
+          localStorage.setItem("carrinho", "[]");
         }
       });
   }, []);
@@ -71,11 +71,11 @@ function App() {
   /*****************************************/
   /*           novo carrinho               */
   /*****************************************/
-  localStorage.setItem('produtos', JSON.stringify(produtos));
+  localStorage.setItem("produtos", JSON.stringify(produtos));
 
   //criar variáveis //
-  let produtosLS = JSON.parse(localStorage.getItem('produtos')); //products
-  let carrinho = JSON.parse(localStorage.getItem('carrinho'));
+  let produtosLS = JSON.parse(localStorage.getItem("produtos")); //products
+  let carrinho = JSON.parse(localStorage.getItem("carrinho"));
 
   // filtrar por tipo //
   const categoriaArtigo = [...new Set(todosprodutos.map((Val) => Val.tipo))];
@@ -214,7 +214,7 @@ function App() {
                 />
               }
             />
-            <Route element={<ProtectedRoutes allowedRoles={'Transportador'} />}>
+            <Route element={<ProtectedRoutes allowedRoles={"Transportador"} />}>
               <Route
                 path="/transportador"
                 element={
@@ -226,12 +226,64 @@ function App() {
                 }
               />
               <Route
+                path="/addTransportes"
+                element={
+                  <AddVeiculo
+                    productItems={productItems}
+                    addToCart={addToCart}
+                    shopItems={shopItems}
+                  />
+                }
+              />
+              <Route
+                path="/utilizador/veiculo"
+                element={
+                  <BoxVeiculo
+                    productItems={productItems}
+                    addToCart={addToCart}
+                    shopItems={shopItems}
+                  />
+                }
+              />
+            </Route>
+            <Route element={<ProtectedRoutes allowedRoles={"Fornecedor"} />}>
+              <Route
                 path="/fornecedor"
                 element={
                   <Fornecedor
                     productItems={productItems}
                     addToCart={addToCart}
                     infoArmazens={infoArmazens}
+                  />
+                }
+              />
+              <Route
+                path="/addProduto"
+                element={
+                  <AddProduto
+                    productItems={productItems}
+                    addToCart={addToCart}
+                    shopItems={shopItems}
+                  />
+                }
+              />
+              <Route
+                path="/armazem"
+                element={
+                  <BoxArmazem
+                    productItems={productItems}
+                    addToCart={addToCart}
+                    infoProdutos={infoProdutos}
+                  />
+                }
+              />
+              <Route
+                path="/addArmazem"
+                element={
+                  <AddArmazem
+                    productItems={productItems}
+                    addToCart={addToCart}
+                    shopItems={shopItems}
                   />
                 }
               />
@@ -257,62 +309,12 @@ function App() {
               }
             />
             <Route
-              path="/addTransportes"
-              element={
-                <AddVeiculo
-                  productItems={productItems}
-                  addToCart={addToCart}
-                  shopItems={shopItems}
-                />
-              }
-            />
-            <Route
-              path="/utilizador/veiculo"
-              element={
-                <BoxVeiculo
-                  productItems={productItems}
-                  addToCart={addToCart}
-                  shopItems={shopItems}
-                />
-              }
-            />
-            <Route
-              path="/addProduto"
-              element={
-                <AddProduto
-                  productItems={productItems}
-                  addToCart={addToCart}
-                  shopItems={shopItems}
-                />
-              }
-            />
-            <Route
               path="/produto"
               element={
                 <BoxProdutos
                   productItems={productItems}
                   addToCart={addToCart}
                   infoProdutos={infoProdutos}
-                />
-              }
-            />
-            <Route
-              path="/armazem"
-              element={
-                <BoxArmazem
-                  productItems={productItems}
-                  addToCart={addToCart}
-                  infoProdutos={infoProdutos}
-                />
-              }
-            />
-            <Route
-              path="/addArmazem"
-              element={
-                <AddArmazem
-                  productItems={productItems}
-                  addToCart={addToCart}
-                  shopItems={shopItems}
                 />
               }
             />
