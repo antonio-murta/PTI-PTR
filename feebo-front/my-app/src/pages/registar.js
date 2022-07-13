@@ -75,7 +75,7 @@ export default function Registar() {
           alignItems: 'center',
         }}
       >
-        <h1 className="h1"> RegistarSSSSSS </h1>
+        <h1 className="h1"> Registar </h1>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 3 }}>
           <Grid container spacing={{ xs: 4, md: 2 }}>
             {' '}
@@ -158,8 +158,9 @@ export default function Registar() {
                 label="NIF"
                 name="nif"
                 value={nif}
-                type="number"
-                onChange={(e) => handleNIF(e.target.value)}
+                onChange={(e) => setNif(e.target.value)}
+                // type="number"
+                // onChange={(e) => handleNIF(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
