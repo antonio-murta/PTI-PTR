@@ -154,8 +154,9 @@ export default function Registar() {
                 label="NIF"
                 name="nif"
                 value={nif}
-                type="number"
-                onChange={(e) => handleNIF(e.target.value)}
+                onChange={(e) => setNif(e.target.value)}
+                // type="number"
+                // onChange={(e) => handleNIF(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
