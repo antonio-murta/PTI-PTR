@@ -31,23 +31,6 @@ const updateArmazem = (req, res) => {
     });
 };
 
-const get_all_armazens_Fornecedor = (req, res) => {
-  const email = req.params.id;
-  // const email = "catarina@gmail.com"
-
-  FornecedorModel.findOne({ _id: email })
-    .then((result) => {
-      if (result.length == 0) {
-        res.status(404).send("Nao existem armazens registados");
-      } else {
-        res.status(200).send(result["armazens"]);
-      }
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
-};
-
 const get_all = (req, res) => {
   ArmazemModel.find({})
     .then((result) => {
@@ -160,8 +143,8 @@ const deleteByNome = (req, res) => {
 
 module.exports = {
   criarArmazem,
-  updateArmazem,
-  get_all_armazens_Fornecedor,
+  // updateArmazem,
+  // get_all_armazens_Fornecedor,
   getByMorada,
   getByNome,
   getByTelemovel,
