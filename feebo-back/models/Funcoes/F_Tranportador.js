@@ -45,10 +45,11 @@ const criarVeiculo = (req, res) => {
 
 const updateVeiculo = (req, res) => {
   const email = req.params.id;
-  const veiculo = req.body.matricula;
+  // const email = "imortal@gmail.com"
+  const veiculo = req.body._id;
   TransportadorModel.updateOne(
     { _id: email },
-    {$push: { veiculo: veiculo }}
+    {$push: { veiculos: veiculo }}
   )
     .then((result) => {
       res.status(200).send(result);
@@ -58,6 +59,38 @@ const updateVeiculo = (req, res) => {
     });
 
 }
+
+
+
+
+const get_all_veiculos_Transportador = (req, res) => {
+  const email = req.params.id;
+  // const email = "imortal@gmail.com"
+
+  TransportadorModel.findOne({ _id: email })
+  .then(result => {
+      if (result.length == 0) {
+          res.status(404).send("Nao existem veiculos registados");
+      } else {
+          res.status(200).send(result["veiculos"]);
+      }
+  })
+  .catch(err => {
+      res.status(400).send(err);
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 const get_all_veiculos = (req, res) => {
@@ -73,6 +106,28 @@ const get_all_veiculos = (req, res) => {
         res.status(400).send(err);
     })
 }
+
+
+
+const getById_veiculos = (req, res) => {
+  const id = req.params.id;
+
+  VeiculoModel.findOne({ _id: id })
+    .then((result) => {
+      if (result.length == 0) {
+        res.status(404).send("veiculo nao encontrado");
+      } else {
+        res.status(200).send(result);
+      }
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+};
+
+
+
+
 
 const deleteByEmail = (req, res) => {
   TransportadorModel.findByIdAndDelete(req.body.email)
@@ -113,5 +168,12 @@ const deleteVeiculoById = (req, res) => {
 };
 
 
-module.exports = {/*getByNome, updateCaminhos,*/criarVeiculo, updateVeiculo, get_all_veiculos, deleteByEmail, deleteVeiculoById};
+module.exports = {/*getByNome, updateCaminhos,*/
+  criarVeiculo,
+  updateVeiculo,
+  get_all_veiculos,
+  deleteByEmail,
+  deleteVeiculoById,
+  get_all_veiculos_Transportador,
+  getById_veiculos };
 

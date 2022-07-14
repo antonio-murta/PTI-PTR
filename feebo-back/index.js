@@ -34,6 +34,7 @@ app.get(
   ArmazemController.get_all_armazens_Fornecedor
 );
 
+
 // Produto
 app.get("/produto", ProdutoController.get_all);
 app.get("/produto/nome", ProdutoController.getByNome);
@@ -48,23 +49,24 @@ app.delete("/produto", FornecedorController.removerProdutos);
 app.delete("/produto/:id", FornecedorController.removerProduto);
 
 // Transportador
-app.post("/utilizador/veiculo", TransportadorControler.criarVeiculo);
-app.put("/utilizador/:id/veiculo", TransportadorControler.updateVeiculo);
-app.get("/veiculos", TransportadorControler.get_all_veiculos);
-app.delete("/veiculo/:id", TransportadorControler.deleteVeiculoById);
-// app.put("/utilizador/:id/caminhos", TransportadorControler.updateCaminhos)
+app.post('/utilizador/veiculo', TransportadorControler.criarVeiculo);
+app.get('/veiculos', TransportadorControler.get_all_veiculos);
+app.delete('/veiculo/:id', TransportadorControler.deleteVeiculoById);
+app.put('/utilizador/:id/veiculo', TransportadorControler.updateVeiculo);
+app.get('/veiculos/transportador/:id', TransportadorControler.get_all_veiculos_Transportador);
+app.get('/veiculo/:id', TransportadorControler.getById_veiculos);
+
 
 // Armazem
-app.post("/armazem", ArmazemController.criarArmazem);
-app.get("/armazem/nome", ArmazemController.getByNome);
+app.post('/armazem', ArmazemController.criarArmazem);
+app.get('/armazem/nome', ArmazemController.getByNome);
+app.get('/armazem', ArmazemController.get_all);
+app.get('/armazem/:id', ArmazemController.getById);
+app.get('/armazem/morada', ArmazemController.getByMorada);
+app.get('/armazem/telemovel', ArmazemController.getByTelemovel);
+app.delete('/armazem', ArmazemController.deleteByNome);
+app.delete('/armazem/:id', ArmazemController.deleteById);
 
-app.get("/armazem", ArmazemController.get_all);
-app.get("/armazem/:id", ArmazemController.getById);
-app.get("/armazem/morada", ArmazemController.getByMorada);
-app.get("/armazem/telemovel", ArmazemController.getByTelemovel);
-
-app.delete("/armazem", ArmazemController.deleteByNome);
-app.delete("/armazem/:id", ArmazemController.deleteById);
 
 // Consumidor
 app.get("/consumidor", ConsumidorController.get_all);
