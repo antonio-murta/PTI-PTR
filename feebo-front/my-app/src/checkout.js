@@ -1,22 +1,13 @@
 import "./css/checkout.css";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Toolbar from "@mui/material/Toolbar";
 import Paper from "@mui/material/Paper";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
-import Button from "@mui/material/Button";
-import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Endereco from "./Endereco";
-import Pagamento from "./Pagamento";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
+import EncomendasPDF from "./encomedasPDF";
 
 const theme = createTheme();
 
@@ -28,30 +19,44 @@ function Copyright() {
   );
 }
 
-const steps = ["Endereço de Entrega e Método de Pagamento"];
-
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return <Endereco />;
-    case 1:
-      return <Pagamento />;
-    default:
-      throw new Error("Unknown step");
-  }
-  step = 0;
-}
-
 export default function Checkout() {
-  const [activeStep, setActiveStep] = React.useState(0);
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
 
-  const handleNext = () => {
-    setActiveStep(activeStep + 1);
-  };
+  let cliente = getCookie("UserName");
 
-  const handleBack = () => {
-    setActiveStep(activeStep - 1);
-  };
+  /*****************************************/
+  /*           fetching encomendas         */
+  /*****************************************/
+  const [encomendas, setEncomendas] = useState([]);
+  const [todasEncomendas, setTodasEncomendas] = useState([]);
+  const [encomendaID, setEncomendaID] = useState(0);
+
+  useEffect(() => {
+    Axios.get("http://localhost:3001/encomendas").then((res) => {
+      setEncomendas(res.data);
+      setTodasEncomendas(res.data);
+
+      let encomendas_filtradas = res.data.filter(
+        (encomenda) => encomenda.cliente === cliente
+      );
+
+      setEncomendaID(encomendas_filtradas.pop()._id);
+    });
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -64,49 +69,24 @@ export default function Checkout() {
           <Typography component="h1" variant="h4" className="h1" align="center">
             Checkout
           </Typography>
-          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
-            {steps.map((label) => (
-              <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-              </Step>
-            ))}
-          </Stepper>
-          <React.Fragment>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  Obrigada pela sua encomenda.
-                </Typography>
-                <Typography variant="subtitle1">
-                  O seu número de encomenda é #2001539.
-                  {/* We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped. */}
-                </Typography>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                {getStepContent(activeStep)}
-                <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                      Voltar
-                    </Button>
-                  )}
 
-                  <Button
-                    variant="contained"
-                    onClick={handleNext}
-                    sx={{ mt: 3, ml: 1 }}
-                  >
-                    {activeStep === steps.length - 1
-                      ? "Concluir encomenda"
-                      : "Seguinte"}
-                  </Button>
-                </Box>
-              </React.Fragment>
-            )}
-          </React.Fragment>
+          <Typography variant="h5" gutterBottom>
+            Obrigado pela sua encomenda!
+          </Typography>
+          <Typography variant="subtitle1">
+            O seu número de encomenda é {encomendaID}.
+          </Typography>
+          <Button
+            onClick={(e) => EncomendasPDF(encomendaID)} //não sei se é encomendaID
+            style={{
+              backgroundColor: "#1c5fb0",
+            }}
+            className="buttonNewArmazem"
+            type="submit"
+            variant="contained"
+          >
+            {"Download Encomenda"}
+          </Button>
         </Paper>
         <Copyright />
       </Container>

@@ -7,16 +7,33 @@ const bcrypt = require("bcryptjs");
 const criarArmazem = (req, res) => {
   const armazem = new ArmazemModel(req.body);
   console.log(res);
-  armazem.save()
+  armazem
+    .save()
     .then(() => {
-      res.status(200).send("Armazem criado com sucesso");
+      res.status(200).send("Armazem criado com sucesso," + armazem._id);
     })
     .catch((err) => {
       res.status(400).send(err + "Erro ao criar armazem");
     });
 };
 
+const updateArmazem = (req, res) => {
+  const email = req.params.id;
+  // const email = "catarina@gmail.com"
 
+  const idArmazem = req.body._id;
+  FornecedorModel.updateOne({ _id: email }, { $push: { armazens: idArmazem } })
+    .then((result) => {
+      res.status(200).send(result);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+};
+
+const get_all_armazens_Fornecedor = (req, res) => {
+  const email = req.params.id;
+  // const email = "catarina@gmail.com"
 
 
 const updateArmazem = (req, res) => {
@@ -54,6 +71,7 @@ const get_all_armazens_Fornecedor = (req, res) => {
       res.status(400).send(err);
   })
 }
+
 
 
 
