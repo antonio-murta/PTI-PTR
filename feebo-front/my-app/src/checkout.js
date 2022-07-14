@@ -77,7 +77,7 @@ export default function Checkout() {
             O seu número de encomenda é {encomendaID}.
           </Typography>
           <Button
-            onClick={(e) => EncomendasPDF(todasEncomendas)} //não sei se é encomendaID
+            onClick={(e) => EncomendasPDF(encomendaID)} //não sei se é encomendaID
             style={{
               backgroundColor: "#1c5fb0",
             }}
