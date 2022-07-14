@@ -55,5 +55,22 @@ const removerProduto = (req, res) => {
     });
 }
 
+const getById = (req, res) => {
+    const id = req.params.id;
 
-module.exports = {criarProduto, removerProduto, removerProdutos};
+    FornecedorModel.findOne({_id: id})
+    .then(result => {
+        if (result.length == 0) {
+            res.status(404).send("Fornecedor nao encontrado");
+        } else {
+            res.status(200).send(result);
+        }
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    });
+}
+
+
+
+module.exports = {criarProduto, removerProduto, removerProdutos, getById};

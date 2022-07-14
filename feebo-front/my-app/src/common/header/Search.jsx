@@ -1,19 +1,48 @@
-import React, { useState, useEffect, useRef } from 'react';
-import logo from '../../components/assets/images/logo.png';
-import { Link } from 'react-router-dom';
-import { BsFillCartFill } from 'react-icons/bs';
-import './../../App.css';
+import React, { useState, useEffect, useRef } from "react";
+import logo from "../../components/assets/images/logo.png";
+import { Link, useNavigate } from "react-router-dom";
+import { BsFillCartFill } from "react-icons/bs";
+import { FaBox } from "react-icons/fa";
+import "./../../App.css";
 
 const Search = ({ CartItem }) => {
-  window.addEventListener('scroll', function () {
-    const search = document.querySelector('.search');
-    search.classList.toggle('active', window.scrollY > 100);
+  window.addEventListener("scroll", function () {
+    const search = document.querySelector(".search");
+    search.classList.toggle("active", window.scrollY > 100);
   });
 
   const [numero, setNumero] = useState([]);
+  const navigate = useNavigate();
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  let utipo = getCookie("UTipo");
+
+  const homeTipo = () => {
+    if (utipo === "Consumidor") {
+      navigate("/");
+    } else if (utipo === "Fornecedor") {
+      navigate("/fornecedor");
+    } else if (utipo === "Transportador") {
+      navigate("/transportador");
+    }
+  };
 
   useEffect(() => {
-    const numero = JSON.parse(localStorage.getItem('carrinho'));
+    const numero = JSON.parse(localStorage.getItem("carrinho"));
     if (numero) {
       setNumero(numero);
     }
@@ -24,7 +53,7 @@ const Search = ({ CartItem }) => {
       <section className="search">
         <div className="container c_flex">
           <div className="logo width ">
-            <a href="/">
+            <a onClick={() => homeTipo()}>
               <img src={logo} alt="" />
             </a>
           </div>
@@ -39,6 +68,15 @@ const Search = ({ CartItem }) => {
             <Link to="/perfilclient">
               <i className="fa fa-user icon-circle"></i>
             </Link>
+            {(utipo === "Fornecedor" || utipo === "Consumidor") && (
+              <div className="cart">
+                <Link to="/encomendas">
+                  <i className="fa icon-circle carrinho">
+                    <FaBox size={17} />
+                  </i>
+                </Link>
+              </div>
+            )}
             <div className="cart">
               <Link to="/cart">
                 <i className="fa icon-circle carrinho">
