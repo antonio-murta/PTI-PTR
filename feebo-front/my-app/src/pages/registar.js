@@ -34,8 +34,7 @@ export default function Registar() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-
-    Axios.post('http://localhost:3001/utilizador', {
+    Axios.post("http://localhost:3001/utilizador", {
       _id: email,
       nome: name,
       password: pwd,
@@ -53,10 +52,6 @@ export default function Registar() {
       }
     );
     navigate("/");
-  };
-
-  const handleNIF = (value) => {
-    setNif(value.match(/[0-9]{9}/));
   };
 
   return (
@@ -141,7 +136,6 @@ export default function Registar() {
                 inputProps={{ maxLength: 9 }}
                 value={tlm}
                 onChange={(e) => setTlm(e.target.value)}
-                // type="number"
                 // onChange={(e) => handleNIF(e.target.value)}
               />
             </Grid>
@@ -153,9 +147,10 @@ export default function Registar() {
                 id="nif"
                 label="NIF"
                 name="nif"
+                inputProps={{ maxLength: 9 }}
                 value={nif}
-                type="number"
-                onChange={(e) => handleNIF(e.target.value)}
+                type="text"
+                onChange={(e) => setNif(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
