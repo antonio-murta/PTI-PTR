@@ -1,17 +1,18 @@
-import './css/perfil.css';
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
-import ChangePwdModal from './ChangePwdModal';
-import DeleteAccountModal from './DeleteAccountModal';
+import "./css/perfil.css";
+import * as React from "react";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { red } from "@mui/material/colors";
+import ChangePwdModal from "./ChangePwdModal";
+import DeleteAccountModal from "./DeleteAccountModal";
+import { useNavigate } from "react-router";
 
 const theme = createTheme({ palette: { primary: red } });
 
@@ -27,33 +28,64 @@ function Copyright(props) {
     </Typography>
   );
 }
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
 
-// const theme = createTheme();
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+function logOut() {
+  let Token = getCookie("Token");
+  setCookie("UTipo", "", 1);
+  setCookie("UserName", "", 1);
+  if (Token != "") {
+    document.cookie = "Token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    alert("Logged out, see you soon ;)");
+  } else {
+    alert("Please login first.");
+  }
+}
 
 export default function SignUp() {
+  let navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    let username = getCookie('UserName');
-    // let username = "j@j";
+    let username = getCookie("UserName");
 
     const data = new FormData(event.currentTarget);
 
     fetch(
-
-      'http://localhost:3001/utilizador/' + username,
-
+      "http://localhost:3001/utilizador/" + username,
 
       {
-        method: 'PUT',
+        method: "PUT",
         body: JSON.stringify({
-          nome: data.get('name'),
-          morada: data.get('morada'),
-          telemovel: data.get('telefone'),
-          passwordEscrita: data.get('password'),
+          nome: data.get("name"),
+          morada: data.get("morada"),
+          telemovel: data.get("telefone"),
+          passwordEscrita: data.get("password"),
         }),
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
       }
     )
@@ -65,35 +97,32 @@ export default function SignUp() {
         console.log(myJson);
       });
 
-    document.getElementById('password').value = '';
+    document.getElementById("password").value = "";
   };
 
   function getCookie(cname) {
-    let name = cname + '=';
+    let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
+    let ca = decodedCookie.split(";");
     for (let i = 0; i < ca.length; i++) {
       let c = ca[i];
-      while (c.charAt(0) == ' ') {
+      while (c.charAt(0) == " ") {
         c = c.substring(1);
       }
       if (c.indexOf(name) == 0) {
         return c.substring(name.length, c.length);
       }
     }
-    return '';
+    return "";
   }
 
   function obterDados(parent, el) {
-    let username = getCookie('UserName');
-    // let username = "j@j";
+    let username = getCookie("UserName");
     fetch(
-
-      'http://localhost:3001/utilizador/' + username,
-      // fetch("http://localhost:3001/utilizador/" +  username, {
+      "http://localhost:3001/utilizador/" + username,
 
       // localStorage.getItem("LoggedIn"),
-      { method: 'GET' }
+      { method: "GET" }
     )
       .then((response) => response.text())
       .then((texto) => {
@@ -104,34 +133,32 @@ export default function SignUp() {
         const nif = texto.nif;
         const morada = texto.morada;
         const dataNascAux = texto.dataNasc;
-        const dataNasc = dataNascAux.split('T');
+        const dataNasc = dataNascAux.split("T");
 
-        document.getElementById('name').value = nome;
-        document.getElementById('email').value = email;
-        document.getElementById('email').disabled = true;
-        document.getElementById('telefone').value = telemovel;
-        document.getElementById('NIF').value = nif;
-        document.getElementById('NIF').disabled = true;
-        document.getElementById('morada').value = morada;
-        document.getElementById('date').value = dataNasc[0];
-        document.getElementById('date').disabled = true;
+        document.getElementById("name").value = nome;
+        document.getElementById("email").value = email;
+        document.getElementById("email").disabled = true;
+        document.getElementById("telefone").value = telemovel;
+        document.getElementById("NIF").value = nif;
+        document.getElementById("NIF").disabled = true;
+        document.getElementById("morada").value = morada;
+        document.getElementById("date").value = dataNasc[0];
+        document.getElementById("date").disabled = true;
       })
       .catch((err) => console.log(err.message));
   }
   window.onload = obterDados();
 
   return (
-    // <ThemeProvider theme={theme}>
-
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
         className="box-perfil"
         sx={{
           marginTop: 8,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
         }}
       >
         <h1 className="h1"> Editar Perfil</h1>
@@ -228,19 +255,27 @@ export default function SignUp() {
             <Grid item xs={12} sm={6} ml={4} className="confirmarAlteracoes">
               <Button
                 style={{
-                  backgroundColor: '#1c5fb0',
+                  backgroundColor: "#1c5fb0",
                 }}
                 className="button2"
                 type="submit"
                 variant="contained"
               >
-                {'Confirmar alterações'}
+                {"Confirmar alterações"}
               </Button>
             </Grid>
           </Grid>
         </Box>
         <ChangePwdModal />
         <DeleteAccountModal />
+        <button
+          onClick={() => {
+            logOut();
+            navigate("/login");
+          }}
+        >
+          LogOut
+        </button>
       </Box>
       <Copyright sx={{ mt: 5 }} />
     </Container>

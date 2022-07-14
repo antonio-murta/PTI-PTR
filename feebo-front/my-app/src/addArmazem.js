@@ -130,15 +130,15 @@ export default function AddArmazem() {
                 required
                 fullWidth
                 variant="standard"
-                id="poluicao"
-                label="Poluição"
-                name="poluicao"
-                onChange={(e) => handlePolution(e)}
-                value={polution}
-                autoComplete="given-name"
+                id="tel"
+                label="Telemóvel"
+                name="tel"
+                onChange={(e) => handlePhone(e)}
+                value={phone}
+                inputProps={{ maxLength: 9 }}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 required
                 fullWidth
@@ -156,18 +156,18 @@ export default function AddArmazem() {
                 required
                 fullWidth
                 variant="standard"
-                id="tel"
-                label="Telemóvel"
-                name="tel"
-                onChange={(e) => handlePhone(e)}
-                value={phone}
-                inputProps={{ maxLength: 9 }}
+                id="poluicao"
+                label="Poluição"
+                name="poluicao"
+                onChange={(e) => handlePolution(e)}
+                value={polution}
+                autoComplete="given-name"
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">
-                  Tipo de Produto
+                  Tipo de Armazém
                 </InputLabel>
                 <Select
                   required
@@ -181,24 +181,6 @@ export default function AddArmazem() {
                   <MenuItem value={"CasaJardim"}>Casa e Jardim</MenuItem>
                   <MenuItem value={"Eletronicos"}>Eletrónicos</MenuItem>
                   <MenuItem value={"Roupa"}>Roupa</MenuItem>
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Produto</InputLabel>
-                <Select
-                  required
-                  variant="standard"
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  value={product}
-                  onChange={(e) => setProduct(e.target.value)}
-                  label="Tipo"
-                >
-                  <MenuItem value={"Camisa"}>Camisa</MenuItem>
-                  <MenuItem value={"Casaco"}>Casaco</MenuItem>
-                  <MenuItem value={"Vestido"}>Vestido</MenuItem>
                 </Select>
               </FormControl>
             </Grid>

@@ -30,6 +30,7 @@ import BoxVeiculo from './pages/transportador/main/BoxVeiculo';
 import Endereco from './Endereco';
 import Checkout from './checkout';
 
+
 function App() {
   const THEME = createTheme({
     typography: {
