@@ -45,7 +45,6 @@ const criarVeiculo = (req, res) => {
 
 const updateVeiculo = (req, res) => {
   const email = req.params.id;
-  // const email = "imortal@gmail.com"
   const veiculo = req.body._id;
   TransportadorModel.updateOne(
     { _id: email },
@@ -61,12 +60,8 @@ const updateVeiculo = (req, res) => {
 }
 
 
-
-
 const get_all_veiculos_Transportador = (req, res) => {
   const email = req.params.id;
-  // const email = "imortal@gmail.com"
-
   TransportadorModel.findOne({ _id: email })
   .then(result => {
       if (result.length == 0) {

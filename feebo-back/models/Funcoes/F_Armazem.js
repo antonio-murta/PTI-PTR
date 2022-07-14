@@ -19,8 +19,6 @@ const criarArmazem = (req, res) => {
 
 const updateArmazem = (req, res) => {
   const email = req.params.id;
-  // const email = "catarina@gmail.com"
-
   const idArmazem = req.body._id;
   FornecedorModel.updateOne({ _id: email }, { $push: { armazens: idArmazem } })
     .then((result) => {
@@ -33,8 +31,6 @@ const updateArmazem = (req, res) => {
 
 const get_all_armazens_Fornecedor = (req, res) => {
   const email = req.params.id;
-  // const email = "catarina@gmail.com"
-
   FornecedorModel.findOne({ _id: email })
     .then((result) => {
       if (result.length == 0) {
