@@ -1,15 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Component } from 'react';
 import logo from '../../components/assets/images/logo.png';
 import { Link } from 'react-router-dom';
 import { BsFillCartFill } from 'react-icons/bs';
 import './../../App.css';
+import axios from 'axios';
 
-const Search = ({ CartItem }) => {
-  window.addEventListener('scroll', function () {
-    const search = document.querySelector('.search');
-    search.classList.toggle('active', window.scrollY > 100);
-  });
-
+const Search = ({ CartItem, searchInput, setSearchInput }) => {
   const [numero, setNumero] = useState([]);
 
   useEffect(() => {
@@ -18,6 +14,10 @@ const Search = ({ CartItem }) => {
       setNumero(numero);
     }
   }, [numero]);
+
+  // const handleTextSearch = (e) => {
+  //   console.log(e.currentTarget.value);
+  // };
 
   return (
     <>
@@ -31,7 +31,13 @@ const Search = ({ CartItem }) => {
 
           <div className="search-box f_flex">
             <i className="fa fa-search"></i>
-            <input type="text" placeholder="Procure aqui" />
+            <input
+              className="form-control"
+              name="searchTerm"
+              type="search"
+              placeholder="Procure aqui"
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
             <span>Categorias</span>
           </div>
 

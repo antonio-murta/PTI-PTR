@@ -262,7 +262,7 @@ export default function AddProduto() {
                 allowReorder={true}
                 allowMultiple={true}
                 onupdatefiles={setFotos}
-                server="http://localhost:3001/produto"
+                // server="http://localhost:3001/produto"
                 labelIdle='Arraste para aqui a sua foto ou <span class="filepond--label-action">Procure</span>'
               />
             </Grid>

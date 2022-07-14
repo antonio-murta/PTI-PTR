@@ -13,6 +13,8 @@ const Produtos = ({
   addToCompare,
   removeFromCompare,
   selected,
+  searchInput,
+  setSearchInput,
 }) => {
   let navigate = useNavigate();
   const [count, setCount] = useState(0);
@@ -20,9 +22,19 @@ const Produtos = ({
     setCount(count + 1);
   };
 
+  const filtrarProdutos =
+    searchInput === ''
+      ? produtos
+      : produtos.filter((produto) =>
+          produto.nome
+            .toLowerCase()
+            .replace(/\s+/g, '')
+            .includes(searchInput.toLowerCase().replace(/\s+/g, ''))
+        );
+
   return (
     <>
-      {produtos.map((val, index) => {
+      {filtrarProdutos.map((val, index) => {
         return (
           <div
             onClick={() => {
@@ -39,25 +51,25 @@ const Produtos = ({
               });
             }}
             key={index}
-            className="box"
+            className="box1"
           >
             <div className="caixa2">
               <div className="item mtop">
-                <div className="fotos">
+                {/* <div className="fotos">
                   <img src={val.foto} alt="" />
-                </div>
+                </div> */}
                 <div className="product-details">
                   <h2>{val.nome}</h2>
                   <h4>{val.preco}€</h4>
                   <h3>{val.tipo}</h3>
                   <h3>{val.subtipo}</h3>
                   <h3>Poluição média: {val.poluicao}gCO2/km</h3>
-                  <ProductCard
+                  {/* <ProductCard
                     produto={produto}
                     addToCompare={addToCompare}
                     removeFromCompare={removeFromCompare}
                     selected={selected}
-                  />
+                  /> */}
                   {/* <Item.Extra>
                     {selected && selected.includes(produto) ? (
                       <Button

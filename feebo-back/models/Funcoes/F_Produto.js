@@ -31,7 +31,6 @@ const getById = (req, res) => {
     .catch((err) => {
       res.status(400).send(err);
     });
-
 };
 // async function getById (id)
 // {
@@ -39,9 +38,6 @@ const getById = (req, res) => {
 //     const produto = await ProdutoModel.findOne({_id: id});
 //     console.log(produto);
 // }
-
-}
-
 
 const getByNome = (req, res) => {
   const nome = req.body.nome;
@@ -57,7 +53,6 @@ const getByNome = (req, res) => {
     .catch((err) => {
       res.status(400).send(err);
     });
-
 };
 // async function getByNome (nome)
 // {
@@ -66,10 +61,6 @@ const getByNome = (req, res) => {
 //     console.log(produto)
 //     // return produto
 // }
-
-}
-
-
 
 const getByPreco = (req, res) => {
   const preco = req.body.preco;
@@ -85,7 +76,6 @@ const getByPreco = (req, res) => {
     .catch((err) => {
       res.status(400).send(err);
     });
-
 };
 // async function getByPreco (preco)
 // {
@@ -94,10 +84,6 @@ const getByPreco = (req, res) => {
 //     console.log(produto)
 //     // return produto
 // }
-
-}
-
-
 
 const getByCadeiaLogistica = (req, res) => {
   const cadeiaLogistica = req.body.cadeiaLogistica;
@@ -113,7 +99,6 @@ const getByCadeiaLogistica = (req, res) => {
     .catch((err) => {
       res.status(400).send(err);
     });
-
 };
 // async function getByCadeiaLogistica (cadeiaLogistica)
 // {
@@ -122,10 +107,6 @@ const getByCadeiaLogistica = (req, res) => {
 //     console.log(produto)
 //     // return produto
 // }
-
-}
-
-
 
 const getByRecursos = (req, res) => {
   const recursos = req.body.recursos;
@@ -141,7 +122,6 @@ const getByRecursos = (req, res) => {
     .catch((err) => {
       res.status(400).send(err);
     });
-
 };
 // async function getByRecursos (recursos)
 // {
@@ -150,10 +130,6 @@ const getByRecursos = (req, res) => {
 //     // return
 //     console.log(produto)
 // }
-
-}
-
-
 
 const getByPoluicao = (req, res) => {
   const poluicao = req.body.poluicao;
