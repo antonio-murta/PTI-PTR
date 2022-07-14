@@ -10,7 +10,7 @@ const client = axios.create({
 const Armazens = ({ armazens }) => {
   let navigate = useNavigate();
 
-  const [armazensFornecedor, setArmazensFornecedor] = useState(0);
+  const [armazensFornecedor, setArmazensFornecedor] = useState([]);
   const [count, setCount] = useState(0);
   const increment = () => {
     setCount(count + 1);
@@ -23,7 +23,19 @@ const Armazens = ({ armazens }) => {
           .get("http://localhost:3001/armazens/fornecedor/" + id)
           .then((res) => {
             console.log(res.data);
-            setArmazensFornecedor(res.data);
+
+            res.data.map((armazem_id) => {
+              console.log(armazem_id);
+              axios
+                .get("http://localhost:3001/armazem/" + armazem_id)
+                .then((response) => {
+                  console.log(response.data);
+                  setArmazensFornecedor((armazensFornecedor) => [
+                    ...armazensFornecedor,
+                    response.data,
+                  ]);
+                });
+            });
           });
       } catch (error) {
         console.log(error);
@@ -45,14 +57,12 @@ const Armazens = ({ armazens }) => {
       }
       return "";
     }
-
     let cliente = getCookie("UserName");
-
-    console.log(getArmazensFornecedor(cliente));
+    getArmazensFornecedor(cliente);
   }, []);
   return (
     <>
-      {armazens.map((val, index) => {
+      {armazensFornecedor.map((val, index) => {
         return (
           <div
             onClick={() => {
