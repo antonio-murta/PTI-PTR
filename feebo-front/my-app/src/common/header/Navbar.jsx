@@ -23,45 +23,7 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="header">
-        <div className="container d_flex">
-          <div className="navlink">
-            <ul
-              className={
-                MobileMenu ? "nav-links-MobileMenu" : "link f_flex capitalize"
-              }
-              onClick={() => setMobileMenu(false)}
-            >
-              {utipo === "Transportador" && (
-                <li>
-                  <Link to="/transportador">Transportador</Link>
-                </li>
-              )}
-
-              {utipo === "Fornecedor" && (
-                <li>
-                  <Link to="/fornecedor">Fornecedor</Link>
-                </li>
-              )}
-
-              <li>
-                <Link to="/encomendas">Encomendas</Link>
-              </li>
-            </ul>
-
-            {/* <button
-              className="toggle"
-              onClick={() => setMobileMenu(!MobileMenu)}
-            >
-              {MobileMenu ? (
-                <i className="fas fa-times close home-btn"></i>
-              ) : (
-                <i className="fas fa-bars open"></i>
-              )}
-            </button> */}
-          </div>
-        </div>
-      </header>
+      <header className="header"></header>
     </>
   );
 };

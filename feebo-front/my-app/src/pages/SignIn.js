@@ -151,8 +151,7 @@ export default function SignIn() {
         }}
       >
         <h1 className="h1">
-          Login <button onClick={checkCookie}>Check If Logged In</button>{" "}
-          <button onClick={logOut}>LogOut</button>
+          Login <button onClick={checkCookie}>Check If Logged In</button>
         </h1>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
