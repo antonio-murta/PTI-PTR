@@ -147,8 +147,9 @@ export default function Registar() {
                 id="nif"
                 label="NIF"
                 name="nif"
+                inputProps={{ maxLength: 9 }}
                 value={nif}
-                type="number"
+                type="text"
                 onChange={(e) => setNif(e.target.value)}
               />
             </Grid>
