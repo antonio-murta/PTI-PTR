@@ -10,7 +10,7 @@ const criarArmazem = (req, res) => {
   armazem
     .save()
     .then(() => {
-      res.status(200).send("Armazem criado com sucesso, " + armazem._id);
+      res.status(200).send("Armazem criado com sucesso," + armazem._id);
     })
     .catch((err) => {
       res.status(400).send(err + "Erro ao criar armazem");
