@@ -28,6 +28,10 @@ app.post("/produto", FornecedorController.criarProduto);
 app.delete("/produto", FornecedorController.removerProdutos);
 app.delete("/produto/:id", FornecedorController.removerProduto);
 
+app.get("/fornecedores/:id", FornecedorController.getById);
+
+
+
 app.put("/updateArmazem/:id", ArmazemController.updateArmazem);
 app.get(
   "/armazens/fornecedor/:id",
