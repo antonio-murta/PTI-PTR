@@ -32,12 +32,6 @@ const Navbar = () => {
               }
               onClick={() => setMobileMenu(false)}
             >
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/registar">Registar</Link>
-              </li>
               {utipo === "Transportador" && (
                 <li>
                   <Link to="/transportador">Transportador</Link>
