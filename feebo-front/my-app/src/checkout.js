@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import EncomendasPDF from "./pages/pdf";
+import EncomendasPDF from "./encomedasPDF";
 
 const theme = createTheme();
 
