@@ -1,34 +1,36 @@
-import "./App.css";
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./common/header/Header";
-import Pages from "./pages/Pages";
-import Data from "./components/Data";
-import Cart from "./common/Cart/Cart";
-import Footer from "./common/footer/Footer";
-import Sdata from "./components/shops/Sdata";
-import InfoArmazens from "./pages/fornecedor/mainpage/InfoArmazens";
-import InfoTransportes from "./pages/transportador/main/InfoTransportes";
-import InfoProdutos from "./pages/categorias/main/InfoProdutos";
-import SignIn from "./pages/SignIn";
-import Registar from "./pages/registar";
-import Transportador from "./pages/transportador/transportador";
-import Categorias from "./pages/categorias/categorias";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Fornecedor from "./pages/fornecedor/fornecedor";
-import PerfilClient from "./perfilclient";
-import AddVeiculo from "./addVeiculo";
-import AddArmazem from "./addArmazem";
-import AddProduto from "./addProduto";
-import BoxProdutos from "./pages/categorias/main/BoxProdutos";
-import BoxArmazem from "./pages/fornecedor/mainpage/BoxArmazem";
-import Encomenda from "./pages/encomendas/Encomenda";
-import BoxEncomenda from "./pages/encomendas/main/BoxEncomenda";
-import ProtectedRoutes from "./ProtectedRoutes";
-import BoxVeiculo from "./pages/transportador/main/BoxVeiculo";
-import Endereco from "./Endereco";
-import Checkout from "./checkout";
+import './App.css';
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './common/header/Header';
+import Pages from './pages/Pages';
+import Data from './components/Data';
+import Cart from './common/Cart/Cart';
+import Footer from './common/footer/Footer';
+import Sdata from './components/shops/Sdata';
+import InfoArmazens from './pages/fornecedor/mainpage/InfoArmazens';
+import InfoTransportes from './pages/transportador/main/InfoTransportes';
+import InfoProdutos from './pages/categorias/main/InfoProdutos';
+import SignIn from './pages/SignIn';
+import Registar from './pages/registar';
+import Transportador from './pages/transportador/transportador';
+import Categorias from './pages/categorias/categorias';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Fornecedor from './pages/fornecedor/fornecedor';
+import PerfilClient from './perfilclient';
+// import PerfilClientHACKEADO from './pages/admin/PerfilClientHACKEADO';
+import AddVeiculo from './addVeiculo';
+import AddArmazem from './addArmazem';
+import AddProduto from './addProduto';
+import BoxProdutos from './pages/categorias/main/BoxProdutos';
+import BoxArmazem from './pages/fornecedor/mainpage/BoxArmazem';
+import Encomenda from './pages/encomendas/Encomenda';
+import BoxEncomenda from './pages/encomendas/main/BoxEncomenda';
+import ProtectedRoutes from './ProtectedRoutes';
+import BoxVeiculo from './pages/transportador/main/BoxVeiculo';
+import Endereco from './Endereco';
+import Checkout from './checkout';
+import Adminando from './pages/admin/Admin';
 
 function App() {
   const THEME = createTheme({
@@ -56,26 +58,31 @@ function App() {
   const [produtos, setProdutos] = useState([]);
   const [todosprodutos, setTodosProdutos] = useState([]);
   useEffect(() => {
-    Axios.get("http://localhost:3001/produto/")
+    Axios.get('http://localhost:3001/produto/')
       .then((res) => {
         setProdutos(res.data);
         setTodosProdutos(res.data);
       })
       .then(function (data) {
-        if (!localStorage.getItem("carrinho")) {
-          localStorage.setItem("carrinho", "[]");
+        if (!localStorage.getItem('carrinho')) {
+          localStorage.setItem('carrinho', '[]');
         }
       });
   }, []);
 
+  const [searchInput, setSearchInput] = useState('');
+
+  // console.log(todosprodutos[0].nome);
+  // console.log(todosprodutos.nome);
+  // console.log(todosprodutos.length);
   /*****************************************/
   /*           novo carrinho               */
   /*****************************************/
-  localStorage.setItem("produtos", JSON.stringify(produtos));
+  localStorage.setItem('produtos', JSON.stringify(produtos));
 
   //criar variáveis //
-  let produtosLS = JSON.parse(localStorage.getItem("produtos")); //products
-  let carrinho = JSON.parse(localStorage.getItem("carrinho"));
+  let produtosLS = JSON.parse(localStorage.getItem('produtos')); //products
+  let carrinho = JSON.parse(localStorage.getItem('carrinho'));
 
   // filtrar por tipo //
   const categoriaArtigo = [...new Set(todosprodutos.map((Val) => Val.tipo))];
@@ -148,7 +155,12 @@ function App() {
     <>
       <ThemeProvider theme={THEME}>
         <Router>
-          <Header CartItem={CartItem} />
+          <Header
+            CartItem={CartItem}
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+          />
+
           <Routes>
             <Route
               path="/"
@@ -157,6 +169,16 @@ function App() {
                   productItems={productItems}
                   addToCart={addToCart}
                   shopItems={shopItems}
+                />
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <Adminando
+                  // produtos
+                  produtos={produtos}
+                  setProdutos={setProdutos}
                 />
               }
             />
@@ -211,10 +233,13 @@ function App() {
                   produtos={produtos}
                   setProdutos={setProdutos}
                   todosprodutos={todosprodutos}
+                  //search
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
                 />
               }
             />
-            <Route element={<ProtectedRoutes allowedRoles={"Transportador"} />}>
+            <Route element={<ProtectedRoutes allowedRoles={'Transportador'} />}>
               <Route
                 path="/transportador"
                 element={
@@ -246,7 +271,7 @@ function App() {
                 }
               />
             </Route>
-            <Route element={<ProtectedRoutes allowedRoles={"Fornecedor"} />}>
+            <Route element={<ProtectedRoutes allowedRoles={'Fornecedor'} />}>
               <Route
                 path="/fornecedor"
                 element={
@@ -349,6 +374,16 @@ function App() {
                 />
               }
             />
+            {/* <Route
+              path="/perfilclientHACKEADO"
+              element={
+                <PerfilClientHACKEADO
+                  productItems={productItems}
+                  addToCart={addToCart}
+                  shopItems={shopItems}
+                />
+              }
+            /> */}
           </Routes>
           <Footer />
         </Router>

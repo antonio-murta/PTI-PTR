@@ -10,27 +10,27 @@
   border-radius: 5px;
 }
 
-.box {
-  text-align: left;
-}
-
 .caixa2 {
   text-align: center;
-  height: 430px;
-  width: 400px;
+  height: 200px;
+  width: 350px;
 }
 
+.box1 {
+  height: 200px;
+  width: 350px;
+}
 .caixa2 .fotos {
-  width: 200px;
-  height: 250px;
+  width: 20px;
+  height: 20px;
   object-fit: contain;
   margin: auto;
   display: block;
 }
 
 .fotos {
-  width: 200px;
-  height: 250px;
+  width: 20px;
+  height: 20px;
 }
 
 .fotos img {
@@ -40,12 +40,12 @@
 
 .item {
   background: #fff;
-  padding: 20px;
+  padding: 10px;
   position: relative;
   border-radius: 8px;
   box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
   margin: 10px;
-  height: 400px;
+  height: 175px;
 }
 
 .item:hover {
@@ -190,8 +190,8 @@
 
 .grid1 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
 }
 
 .product {

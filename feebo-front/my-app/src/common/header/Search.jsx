@@ -1,43 +1,40 @@
-import React, { useState, useEffect, useRef } from "react";
-import logo from "../../components/assets/images/logo.png";
-import { Link, useNavigate } from "react-router-dom";
-import { BsFillCartFill } from "react-icons/bs";
-import { FaBox } from "react-icons/fa";
-import "./../../App.css";
+import React, { useState, useEffect, useRef, Component } from 'react';
+import logo from '../../components/assets/images/logo.png';
+import { Link, useNavigate } from 'react-router-dom';
+import { BsFillCartFill } from 'react-icons/bs';
+import { FaBox } from 'react-icons/fa';
 
-const Search = ({ CartItem }) => {
-  window.addEventListener("scroll", function () {
-    const search = document.querySelector(".search");
-    search.classList.toggle("active", window.scrollY > 100);
-  });
+import './../../App.css';
+import axios from 'axios';
 
+const Search = ({ CartItem, searchInput, setSearchInput }) => {
   const [numero, setNumero] = useState([]);
   const navigate = useNavigate();
 
   function getCookie(cname) {
-    let name = cname + "=";
+    let name = cname + '=';
     let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(";");
+    let ca = decodedCookie.split(';');
     for (let i = 0; i < ca.length; i++) {
       let c = ca[i];
-      while (c.charAt(0) == " ") {
+      while (c.charAt(0) == ' ') {
         c = c.substring(1);
       }
       if (c.indexOf(name) == 0) {
         return c.substring(name.length, c.length);
       }
     }
-    return "";
+    return '';
   }
-  let utipo = getCookie("UTipo");
+  let utipo = getCookie('UTipo');
 
   const homeTipo = () => {
-    if (utipo === "Consumidor") {
-      navigate("/");
-    } else if (utipo === "Fornecedor") {
-      navigate("/fornecedor");
-    } else if (utipo === "Transportador") {
-      navigate("/transportador");
+    if (utipo === 'Consumidor') {
+      navigate('/');
+    } else if (utipo === 'Fornecedor') {
+      navigate('/fornecedor');
+    } else if (utipo === 'Transportador') {
+      navigate('/transportador');
     }
   };
 
@@ -47,6 +44,10 @@ const Search = ({ CartItem }) => {
     let count = carrinho.filter((item) => item.cliente === loggedUser);
     setNumero(count);
   }, [numero]);
+
+  // const handleTextSearch = (e) => {
+  //   console.log(e.currentTarget.value);
+  // };
 
   return (
     <>
@@ -60,7 +61,13 @@ const Search = ({ CartItem }) => {
 
           <div className="search-box f_flex">
             <i className="fa fa-search"></i>
-            <input type="text" placeholder="Procure aqui" />
+            <input
+              className="form-control"
+              name="searchTerm"
+              type="search"
+              placeholder="Procure aqui"
+              onChange={(e) => setSearchInput(e.target.value)}
+            />
             <span>Categorias</span>
           </div>
 
@@ -68,7 +75,7 @@ const Search = ({ CartItem }) => {
             <Link to="/perfilclient">
               <i className="fa fa-user icon-circle"></i>
             </Link>
-            {(utipo === "Fornecedor" || utipo === "Consumidor") && (
+            {(utipo === 'Fornecedor' || utipo === 'Consumidor') && (
               <div className="cart">
                 <Link to="/encomendas">
                   <i className="fa icon-circle carrinho">
@@ -77,7 +84,7 @@ const Search = ({ CartItem }) => {
                 </Link>
               </div>
             )}
-            {utipo === "Consumidor" && (
+            {utipo === 'Consumidor' && (
               <div className="cart">
                 <Link to="/cart">
                   <i className="fa icon-circle carrinho">
