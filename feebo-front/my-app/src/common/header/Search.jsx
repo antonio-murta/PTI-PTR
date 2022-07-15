@@ -39,10 +39,10 @@ const Search = ({ CartItem, searchInput, setSearchInput }) => {
   };
 
   useEffect(() => {
-    const numero = JSON.parse(localStorage.getItem('carrinho'));
-    if (numero) {
-      setNumero(numero);
-    }
+    let loggedUser = getCookie("UserName");
+    const carrinho = JSON.parse(localStorage.getItem("carrinho"));
+    let count = carrinho.filter((item) => item.cliente === loggedUser);
+    setNumero(count);
   }, [numero]);
 
   // const handleTextSearch = (e) => {
