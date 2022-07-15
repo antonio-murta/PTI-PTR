@@ -17,23 +17,6 @@ const criarArmazem = (req, res) => {
     });
 };
 
-const updateArmazem = (req, res) => {
-  const email = req.params.id;
-  // const email = "catarina@gmail.com"
-
-  const idArmazem = req.body._id;
-  FornecedorModel.updateOne({ _id: email }, { $push: { armazens: idArmazem } })
-    .then((result) => {
-      res.status(200).send(result);
-    })
-    .catch((err) => {
-      res.status(400).send(err);
-    });
-};
-
-const get_all_armazens_Fornecedor = (req, res) => {
-  const email = req.params.id;
-  // const email = "catarina@gmail.com"
 
 
 const updateArmazem = (req, res) => {
