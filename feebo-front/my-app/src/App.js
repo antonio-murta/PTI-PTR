@@ -11,13 +11,14 @@ import Sdata from './components/shops/Sdata';
 import InfoArmazens from './pages/fornecedor/mainpage/InfoArmazens';
 import InfoTransportes from './pages/transportador/main/InfoTransportes';
 import InfoProdutos from './pages/categorias/main/InfoProdutos';
-import SignIn from './pages/login';
+import SignIn from './pages/SignIn';
 import Registar from './pages/registar';
 import Transportador from './pages/transportador/transportador';
 import Categorias from './pages/categorias/categorias';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Fornecedor from './pages/fornecedor/fornecedor';
 import PerfilClient from './perfilclient';
+// import PerfilClientHACKEADO from './pages/admin/PerfilClientHACKEADO';
 import AddVeiculo from './addVeiculo';
 import AddArmazem from './addArmazem';
 import AddProduto from './addProduto';
@@ -29,7 +30,7 @@ import ProtectedRoutes from './ProtectedRoutes';
 import BoxVeiculo from './pages/transportador/main/BoxVeiculo';
 import Endereco from './Endereco';
 import Checkout from './checkout';
-
+import Adminando from './pages/admin/Admin';
 
 function App() {
   const THEME = createTheme({
@@ -159,6 +160,7 @@ function App() {
             searchInput={searchInput}
             setSearchInput={setSearchInput}
           />
+
           <Routes>
             <Route
               path="/"
@@ -167,6 +169,16 @@ function App() {
                   productItems={productItems}
                   addToCart={addToCart}
                   shopItems={shopItems}
+                />
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <Adminando
+                  // produtos
+                  produtos={produtos}
+                  setProdutos={setProdutos}
                 />
               }
             />
@@ -361,6 +373,16 @@ function App() {
                 />
               }
             />
+            {/* <Route
+              path="/perfilclientHACKEADO"
+              element={
+                <PerfilClientHACKEADO
+                  productItems={productItems}
+                  addToCart={addToCart}
+                  shopItems={shopItems}
+                />
+              }
+            /> */}
           </Routes>
           <Footer />
         </Router>
