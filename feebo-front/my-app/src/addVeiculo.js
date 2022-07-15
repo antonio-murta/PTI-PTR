@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Axios from "axios";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 export default function AddVeiculo() {
@@ -36,21 +36,60 @@ export default function AddVeiculo() {
     event.preventDefault();
 
     // preferencialmente, usar axios em vez de fetch!! :)
-    Axios.post("http://localhost:3001/utilizador/veiculo", {
-      matricula: matricula,
-      poluicao: polution,
-      marca: brand,
-      modelo: model,
-      utilizacao: "no",
-    }).then(
-      (response) => {
-        console.log(response);
-        navigate("/transportador");
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
+    axios
+      .post("http://localhost:3001/utilizador/veiculo", {
+        matricula: matricula,
+        poluicao: polution,
+        marca: brand,
+        modelo: model,
+        utilizacao: "no",
+      })
+      .then(
+        (response) => {
+          console.log(response.data.split(",")[1]);
+
+          function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(";");
+            for (let i = 0; i < ca.length; i++) {
+              let c = ca[i];
+              while (c.charAt(0) == " ") {
+                c = c.substring(1);
+              }
+              if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+              }
+            }
+            return "";
+          }
+
+          let loggedUser = getCookie("UserName");
+
+          const updateVeiculo = async (id) => {
+            try {
+              await axios
+                .put(
+                  "http://localhost:3001/utilizador/" + loggedUser + "/veiculo",
+                  {
+                    _id: id,
+                  }
+                )
+                .then((response) => {
+                  console.log(response);
+                });
+            } catch (error) {
+              console.log(error);
+            }
+          };
+
+          updateVeiculo(response.data.split(",")[1]);
+          navigate("/transportador");
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   };
 
   return (

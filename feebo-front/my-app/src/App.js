@@ -271,6 +271,7 @@ function App() {
                 path="/armazem"
                 element={
                   <BoxArmazem
+                    produtos={produtos}
                     productItems={productItems}
                     addToCart={addToCart}
                     infoProdutos={infoProdutos}

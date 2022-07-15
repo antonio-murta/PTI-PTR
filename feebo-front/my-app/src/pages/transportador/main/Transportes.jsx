@@ -1,18 +1,61 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import "./style-transporte.css";
+import axios from "axios";
 
 const Transportes = ({ veiculos }) => {
   let navigate = useNavigate();
 
-  const [count, setCount] = useState(0);
-  const increment = () => {
-    setCount(count + 1);
-  };
-  console.log(veiculos);
+  const [veiculosTransportador, setVeiculosTransportador] = useState([]);
+
+  useEffect(() => {
+    const getVeiculosTransportador = async (id) => {
+      try {
+        await axios
+          .get("http://localhost:3001/veiculos/transportador/" + id)
+          .then((res) => {
+            console.log(res.data);
+
+            res.data.map((veiculo_id) => {
+              console.log(veiculo_id);
+              axios
+                .get("http://localhost:3001/veiculo/" + veiculo_id)
+                .then((response) => {
+                  console.log(response.data);
+                  setVeiculosTransportador((veiculosTransportador) => [
+                    ...veiculosTransportador,
+                    response.data,
+                  ]);
+                });
+            });
+          });
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(";");
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == " ") {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+    let cliente = getCookie("UserName");
+    getVeiculosTransportador(cliente);
+  }, []);
+
   return (
     <>
-      {veiculos.map((val, index) => {
+      {veiculosTransportador.map((val, index) => {
         return (
           <div
             onClick={() => {

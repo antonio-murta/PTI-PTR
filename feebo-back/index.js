@@ -78,9 +78,6 @@ app.get("/encomendas", ConsumidorController.get_all_Encomendas); //new
 app.get("/encomenda/:id", ConsumidorController.getById_Encomendas); //new
 app.delete("/encomenda/:id", ConsumidorController.deleteEncomendaById); //new
 
-app.get("/encomendas", ConsumidorController.get_all_Encomendas);
-app.get("/encomenda/:id", ConsumidorController.getById_Encomendas);
-
 // Utilizador
 app.post("/utilizador", UtilizadorControler.registar);
 app.delete("/utilizadores", UtilizadorControler.apagarUtilizadores);

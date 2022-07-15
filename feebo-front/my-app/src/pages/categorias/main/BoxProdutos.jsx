@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import './ProdutoIndividual.css';
-import { useLocation } from 'react-router-dom';
-import { HiOutlineHeart } from 'react-icons/hi';
-import { HiHeart } from 'react-icons/hi';
-import { BsCartPlus } from 'react-icons/bs';
-import { BsCartXFill } from 'react-icons/bs';
-import { Link } from 'react-router-dom';
-import { BsFillArrowLeftCircleFill } from 'react-icons/bs';
+import React, { useState, useEffect } from "react";
+import "./ProdutoIndividual.css";
+import { useLocation } from "react-router-dom";
+import { HiOutlineHeart } from "react-icons/hi";
+import { HiHeart } from "react-icons/hi";
+import { BsCartPlus } from "react-icons/bs";
+import { BsCartXFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 
 const BoxProdutos = ({ addToCart, addCarrinho }) => {
   let location = useLocation();
@@ -23,17 +23,38 @@ const BoxProdutos = ({ addToCart, addCarrinho }) => {
   const [clickCart, setClickCart] = useState(false);
   const handleClickFav = () => setClickFav(!clickFav);
 
-  let carrinho = JSON.parse(localStorage.getItem('carrinho'));
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  let loggedUser = getCookie("UserName");
+
+  let carrinho = JSON.parse(localStorage.getItem("carrinho"));
 
   function addCarrinho(produtoId) {
     carrinho.push(produtoId);
 
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
   }
 
   const handleClickCart = () => {
     setClickCart(!clickCart);
-    addCarrinho(location.state);
+    let itemCarrinho = location.state;
+    let pair = { cliente: loggedUser };
+    itemCarrinho = { ...itemCarrinho, ...pair };
+    addCarrinho(itemCarrinho);
+    console.log(itemCarrinho);
   };
 
   console.log(location.state.id);
@@ -48,13 +69,13 @@ const BoxProdutos = ({ addToCart, addCarrinho }) => {
           <div className="contentWidth">
             <div className="caixa">
               <Link to="/categoria">
-                <BsFillArrowLeftCircleFill className="arrow" size={25} />{' '}
+                <BsFillArrowLeftCircleFill className="arrow" size={25} />{" "}
               </Link>
               <div className="title">
                 <h2>{location.state.nome}</h2>
               </div>
               <div className="type">
-                {location.state.tipo} {'>'} {location.state.subtipo}
+                {location.state.tipo} {">"} {location.state.subtipo}
               </div>
               <div>
                 <img src={location.state.foto} className="foto" />
@@ -67,7 +88,7 @@ const BoxProdutos = ({ addToCart, addCarrinho }) => {
                     <HiOutlineHeart size={25} onClick={handleClickFav} />
                   )}
                 </div>
-                <div className="textofav">{'Wishlist'}</div>
+                <div className="textofav">{"Wishlist"}</div>
                 <div className="carro">
                   {clickCart ? (
                     <BsCartXFill size={24} onClick={handleClickCart} />
@@ -75,7 +96,7 @@ const BoxProdutos = ({ addToCart, addCarrinho }) => {
                     <BsCartPlus size={24} onClick={handleClickCart} />
                   )}
                 </div>
-                <div className="textofav">{'Adicionar ao carrinho'}</div>
+                <div className="textofav">{"Adicionar ao carrinho"}</div>
               </div>
 
               <p className="price">{location.state.preco}€</p>

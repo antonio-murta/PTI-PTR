@@ -9,15 +9,6 @@ const ProdutoSchema = new monggose.Schema({
     type: Number,
     required: true,
   },
-  cadeia: {
-    type: String,
-    required: true,
-  },
-  recursos: {
-    // [id dos recursos utilizados, qnd de recursos]
-    type: [],
-    required: true,
-  },
   poluicao: {
     type: Number,
     required: true,
