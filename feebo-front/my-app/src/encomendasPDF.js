@@ -62,8 +62,8 @@ function EncomendasPDF(encomendas){
     content: [details],
     footer: rodape
   }
-    
-  pdfMake.createPdf(docDefinitions).download();
+  
+  pdfMake.createPdf(docDefinitions).download('Encomenda');
 
 }
 
