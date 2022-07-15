@@ -84,7 +84,7 @@ const Search = ({ CartItem, searchInput, setSearchInput }) => {
                 </Link>
               </div>
             )}
-            {utipo === "Consumidor" && (
+            {utipo === 'Consumidor' && (
               <div className="cart">
                 <Link to="/cart">
                   <i className="fa icon-circle carrinho">
