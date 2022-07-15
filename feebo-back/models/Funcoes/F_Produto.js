@@ -19,6 +19,8 @@ const get_all = (req, res) => {
     })
 }
 
+
+
 const getById = (req, res) => {
     const id = req.params.id;
 
