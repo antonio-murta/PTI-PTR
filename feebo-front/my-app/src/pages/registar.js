@@ -176,7 +176,7 @@ export default function Registar() {
                   onChange={(e) => setType(e.target.value)}
                   label="Tipo"
                 >
-                  <MenuItem value={"Cliente"}>Cliente</MenuItem>
+                  <MenuItem value={"Consumidor"}>Cliente</MenuItem>
                   <MenuItem value={"Fornecedor"}>Fornecedor</MenuItem>
                   <MenuItem value={"Transportador"}>Transportador</MenuItem>
                 </Select>

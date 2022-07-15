@@ -3,18 +3,10 @@ import "./style-armazens.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const client = axios.create({
-  baseURL: "http://localhost:3001/armazens/fornecedor/",
-});
-
 const Armazens = ({ armazens }) => {
   let navigate = useNavigate();
 
   const [armazensFornecedor, setArmazensFornecedor] = useState([]);
-  const [count, setCount] = useState(0);
-  const increment = () => {
-    setCount(count + 1);
-  };
 
   useEffect(() => {
     const getArmazensFornecedor = async (id) => {

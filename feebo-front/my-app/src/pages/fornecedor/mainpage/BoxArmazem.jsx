@@ -7,12 +7,29 @@ import DeleteArmazemModal from "../../../DeleteArmazemModal";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
-const BoxArmazem = () => {
+const BoxArmazem = ({ produtos }) => {
   let location = useLocation();
   let navigate = useNavigate();
 
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  let loggedUser = getCookie("UserName");
 
   return (
     <>
@@ -32,10 +49,31 @@ const BoxArmazem = () => {
                 <p>Localização: {location.state.local}</p>
                 <p>Poluição: {location.state.poluicao}gCO2/km</p>
                 <p>Contacto: {location.state.telemovel}</p>
-                <p>Produtos: </p>
-
+                <p>Fornecedor: {loggedUser} </p>
+                <div>
+                  Produtos:
+                  {produtos
+                    .filter(
+                      (produto) => produto.armazem === location.state.name
+                    )
+                    .map((filteredProduto, itemIndex) => (
+                      <div key={itemIndex}>
+                        {filteredProduto.nome}, {filteredProduto.preco}€ (
+                        {filteredProduto.quantidade})
+                      </div>
+                    ))}
+                </div>
                 <div className="new-product">
-                  <button onClick={() => navigate("/addProduto")}>
+                  <button
+                    onClick={() =>
+                      navigate("/addProduto", {
+                        state: {
+                          armazem: location.state.name,
+                          fornecedor: loggedUser,
+                        },
+                      })
+                    }
+                  >
                     <div className="plus-icon">
                       <AiOutlinePlus />
                     </div>

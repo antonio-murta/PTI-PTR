@@ -59,8 +59,6 @@ const obterIDsProdutosEncomenda = (req, res) => {
 }
 
 const verificarMorada = (req, res) => {
-    // const list_pEncomenda = req.body.p_encomenda;
-    // const list_pArmazem = req.body.p_armazem;
     const lista  = [];
     const list_pEncomenda = [
         "628587155140e5414b62b3e6",

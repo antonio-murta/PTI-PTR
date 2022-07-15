@@ -45,69 +45,94 @@ const Cart = ({ CartItem, addToCart, decreaseQty }) => {
       setCartItems(carrinho);
       // Adicionar Total
       let totalCart = 0;
-      carrinho.map((item) => {
-        totalCart = totalCart + parseFloat(item.preco);
-      });
+      carrinho
+        .filter((itemCarrinho) => itemCarrinho.cliente === loggedUser)
+        .map((item) => {
+          totalCart = totalCart + parseFloat(item.preco);
+        });
       setTotal(totalCart);
 
       let polCart = 0;
-      carrinho.map((item) => {
-        polCart = polCart + parseFloat(item.poluicao);
-      });
+      carrinho
+        .filter((itemCarrinho) => itemCarrinho.cliente === loggedUser)
+        .map((item) => {
+          polCart = polCart + parseFloat(item.poluicao);
+        });
       setTotalPol(polCart);
     }
   }, [carrinho]);
+
+  function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == " ") {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+  let loggedUser = getCookie("UserName");
 
   return (
     <>
       <section className="cart-items">
         <div className="container d_flex">
           <div className="cart-details">
-            {cartItems.length === 0 && (
+            {cartItems.filter(
+              (itemCarrinho) => itemCarrinho.cliente === loggedUser
+            ).length === 0 && (
               <h1 className="no-items product">
                 Não tem produtos no seu carrinho
               </h1>
             )}
 
-            {cartItems.map((item) => {
-              // const productQty = item.price * item.qty;
-              return (
-                <div className="cart-list product d_flex" key={item.id}>
-                  <div className="img">
-                    <img src={item.foto} alt="" />
-                  </div>
-                  <div className="cart-details">
-                    <h3>{item.name}</h3>
-                    <h4>
-                      {item.preco}€ * {item.qty}
-                    </h4>
-                  </div>
-                  <div className="cart-items-function">
-                    <div className="removeCart">
-                      <button className="removeCart">
-                        <i className="fa-solid fa-xmark"></i>
-                      </button>
+            {cartItems
+              .filter((itemCarrinho) => itemCarrinho.cliente === loggedUser)
+              .map((item) => {
+                // const productQty = item.price * item.qty;
+                return (
+                  <div className="cart-list product d_flex" key={item.id}>
+                    <div className="img">
+                      <img src={item.foto} alt="" />
                     </div>
-                    <div className="cartControl d_flex">
-                      <button
-                        className="incCart"
-                        onClick={() => addCarrinho(item)}
-                      >
-                        <i className="fa-solid fa-plus"></i>
-                      </button>
-                      <button
-                        className="desCart"
-                        onClick={() => removerCarrinho(item.id)}
-                      >
-                        <i className="fa-solid fa-minus"></i>
-                      </button>
+                    <div className="cart-details">
+                      <h3>{item.name}</h3>
+                      <h4>
+                        {item.preco}€ * {item.qty}
+                      </h4>
                     </div>
-                  </div>
+                    <div className="cart-items-function">
+                      <div className="removeCart">
+                        <button className="removeCart">
+                          <i className="fa-solid fa-xmark"></i>
+                        </button>
+                      </div>
+                      <div className="cartControl d_flex">
+                        <button
+                          className="incCart"
+                          onClick={() => addCarrinho(item)}
+                        >
+                          <i className="fa-solid fa-plus"></i>
+                        </button>
+                        <button
+                          className="desCart"
+                          onClick={() => removerCarrinho(item.id)}
+                        >
+                          <i className="fa-solid fa-minus"></i>
+                        </button>
+                      </div>
+                    </div>
 
-                  <div className="cart-item-price"></div>
-                </div>
-              );
-            })}
+                    <div className="cart-item-price"></div>
+                  </div>
+                );
+              })}
           </div>
 
           <div className="cart-total product">

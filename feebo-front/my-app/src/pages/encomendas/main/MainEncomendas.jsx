@@ -20,7 +20,7 @@ const MainEncomendas = ({ addToCart }) => {
       setTodasEncomendas(res.data);
     });
   }, []);
-  console.log(encomendas);
+  //console.log(encomendas);
   return (
     <>
       <section className="shop background">

@@ -73,4 +73,44 @@ const getById = (req, res) => {
 
 
 
-module.exports = {criarProduto, removerProduto, removerProdutos, getById};
+
+const get_all_fornecedores = (req, res) => {
+    FornecedorModel.find({})
+    .then(result => {
+        if (result.length == 0) {
+            res.status(400).send("Nao existem fornecedores registados");
+        } else {
+            res.status(200).send(result);
+        }
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    })
+}
+
+
+const getById = (req, res) => {
+    const email = req.params.id;
+    // const email = "doce@gmail.com" ;
+
+    FornecedorModel.findOne({_id: email})
+    .then(result => {
+        if (result.length == 0) {
+            res.status(404).send("Fornecedor nao encontrado");
+        } else {
+            res.status(200).send(result);
+        }
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    });
+}
+
+
+
+
+
+
+
+module.exports = {criarProduto, removerProduto, removerProdutos, getById, get_all_fornecedores};
+
