@@ -28,7 +28,11 @@ app.post("/produto", FornecedorController.criarProduto);
 app.delete("/produto", FornecedorController.removerProdutos);
 app.delete("/produto/:id", FornecedorController.removerProduto);
 
-app.get("/fornecedores/:id", FornecedorController.getById);
+
+app.get("/fornecedor/:id", FornecedorController.getById);
+app.get("/fornecedores", FornecedorController.get_all_fornecedores);
+
+
 
 app.put("/updateArmazem/:id", ArmazemController.updateArmazem);
 app.get(
@@ -38,6 +42,7 @@ app.get(
 
 // Produto
 app.get("/produto", ProdutoController.get_all);
+app.get("/produto/:id", ProdutoController.getById);
 app.get("/produto/nome", ProdutoController.getByNome);
 app.get("/produto/preco", ProdutoController.getByPreco);
 app.get("/produto/cadeialogistica", ProdutoController.getByCadeiaLogistica);
