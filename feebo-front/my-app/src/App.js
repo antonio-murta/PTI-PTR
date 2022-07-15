@@ -11,7 +11,7 @@ import Sdata from "./components/shops/Sdata";
 import InfoArmazens from "./pages/fornecedor/mainpage/InfoArmazens";
 import InfoTransportes from "./pages/transportador/main/InfoTransportes";
 import InfoProdutos from "./pages/categorias/main/InfoProdutos";
-import SignIn from "./pages/login";
+import SignIn from "./pages/SignIn";
 import Registar from "./pages/registar";
 import Transportador from "./pages/transportador/transportador";
 import Categorias from "./pages/categorias/categorias";

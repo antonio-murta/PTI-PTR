@@ -55,6 +55,22 @@ const removerProduto = (req, res) => {
     });
 }
 
+const getById = (req, res) => {
+    const id = req.params.id;
+
+    FornecedorModel.findOne({_id: id})
+    .then(result => {
+        if (result.length == 0) {
+            res.status(404).send("Fornecedor nao encontrado");
+        } else {
+            res.status(200).send(result);
+        }
+    })
+    .catch(err => {
+        res.status(400).send(err);
+    });
+}
+
 
 
 
@@ -97,3 +113,4 @@ const getById = (req, res) => {
 
 
 module.exports = {criarProduto, removerProduto, removerProdutos, getById, get_all_fornecedores};
+

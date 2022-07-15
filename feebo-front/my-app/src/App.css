@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 html {
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
@@ -12,6 +13,9 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   background-color: #ffffff;
+}
+.logo {
+  cursor: pointer;
 }
 .background {
   background: #f6f9fc;
