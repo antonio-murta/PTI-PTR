@@ -93,7 +93,6 @@ const Encomendas = ({ encomendas }) => {
                 <h2>ID: {val.id}</h2>
                 <h3>Cliente: {val.cliente}</h3>
                 <h3>Armazém de origem: {val.cidade}</h3>
-                <h3>Fornecedor: {val.pais}</h3>
               </div>
             </div>
           </div>

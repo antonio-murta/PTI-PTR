@@ -336,6 +336,7 @@ function App() {
                   productItems={productItems}
                   addToCart={addToCart}
                   infoProdutos={infoProdutos}
+                  produtos={produtos}
                 />
               }
             />

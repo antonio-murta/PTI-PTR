@@ -45,7 +45,6 @@ const BoxArmazem = ({ produtos }) => {
               </div>
               <div className="informacao">
                 <p>Tipo: {location.state.tipo}</p>
-                <p>Produtos: {location.state.produtos}</p>
                 <p>Localização: {location.state.local}</p>
                 <p>Poluição: {location.state.poluicao}gCO2/km</p>
                 <p>Contacto: {location.state.telemovel}</p>

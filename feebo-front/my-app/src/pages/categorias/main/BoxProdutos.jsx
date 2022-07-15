@@ -100,7 +100,10 @@ const BoxProdutos = ({ addToCart, addCarrinho }) => {
               </div>
 
               <p className="price">{location.state.preco}€</p>
+              <p className="price">{location.state.name}</p>
+
               <p>Poluição: {location.state.poluicao}gCO2/km</p>
+              <p>Tipo: {location.state.tipo}</p>
             </div>
           </div>
         </div>
