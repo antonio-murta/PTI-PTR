@@ -1,4 +1,4 @@
-const monggose = require("mongoose");
+const monggose = require('mongoose');
 
 const ProdutoSchema = new monggose.Schema({
   nome: {
@@ -33,7 +33,15 @@ const ProdutoSchema = new monggose.Schema({
     type: String,
     required: true,
   },
+  coverImage: {
+    type: Buffer,
+    required: true,
+  },
+  coverImageType: {
+    type: String,
+    required: true,
+  },
 });
 
-const produto = monggose.model("produto", ProdutoSchema);
+const produto = monggose.model('produto', ProdutoSchema);
 module.exports = produto;

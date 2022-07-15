@@ -16,6 +16,8 @@ const Categorias = ({
   produtos,
   setProdutos,
   todosprodutos,
+  searchInput,
+  setSearchInput,
 }) => {
   return (
     <>
@@ -33,6 +35,9 @@ const Categorias = ({
         produtos={produtos}
         setProdutos={setProdutos}
         todosprodutos={todosprodutos}
+        //search
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
       />
       <Wrapper />
     </>

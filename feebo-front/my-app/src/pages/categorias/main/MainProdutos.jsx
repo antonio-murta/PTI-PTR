@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Axios from "axios";
-import Filtro from "./Filtrar";
-import Produtos from "./Produtos";
-import ProductComparison from "./CompararProdutos";
-import "./pizza.css";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
+import Filtro from './Filtrar';
+import Produtos from './Produtos';
+import ProductComparison from './CompararProdutos';
+import './pizza.css';
+import { useNavigate } from 'react-router-dom';
 
 const MainProdutos = ({
   artigo,
@@ -19,6 +19,8 @@ const MainProdutos = ({
   setProdutos,
   todosprodutos,
   addToCompare,
+  searchInput,
+  setSearchInput,
 }) => {
   let navigate = useNavigate();
 
@@ -40,13 +42,18 @@ const MainProdutos = ({
           />
           <div className="contentWidth">
             <div className="heading">
-              <h2>Moda</h2>
+              <h2>Produtos</h2>
             </div>
             {/* <div className="tabelaComparar">
               <ProductComparison produtos={produtos}></ProductComparison>
             </div> */}
             <div className="product-content  grid1">
-              <Produtos artigo={artigo} produtos={produtos} />
+              <Produtos
+                artigo={artigo}
+                produtos={produtos}
+                searchInput={searchInput}
+                setSearchInput={setSearchInput}
+              />
             </div>
           </div>
         </div>
