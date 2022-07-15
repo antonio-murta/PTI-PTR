@@ -9,7 +9,8 @@ function EncomendasPDF(encomendas){
   const reportTitle = [
     {
       text: 'Encomenda',
-      fontSize: 15,
+      fontSize: 17,
+      color: '#ff014f',
       bold: true,
       margin: [15, 20, 0, 45] //esquerda, top, direita, bottom
     }
@@ -30,9 +31,9 @@ function EncomendasPDF(encomendas){
         widhts:['*', '*', '*'],
         body: [
           [
-            {text: 'Produto', style: 'tableHeader', fontSize: 10},
-            {text: 'Quantidade', style: 'tableHeader', fontSize: 10},
-            {text: 'Valor', style: 'tableHeader', fontSize: 10}
+            {text: 'Produto', style: 'tableHeader', fontSize: 12, color: '#e94560'},
+            {text: 'Quantidade', style: 'tableHeader', fontSize: 12, color: '#e94560'},
+            {text: 'Valor', style: 'tableHeader', fontSize: 12, color: '#e94560'}
           ],
           // ...dados //VAI BUSCAR OS DADOS DA FUNCAO ENCOMENDA.MAP()
         ],
@@ -46,7 +47,7 @@ function EncomendasPDF(encomendas){
       {
         text: currentPage + ' / ' +  pageCount,
         alignment: 'right',
-        fontSize: 15,
+        fontSize: 10,
         bold: true,
         margin: [0, 10, 20, 0] //esquerda, top, direita, bottom
       }
