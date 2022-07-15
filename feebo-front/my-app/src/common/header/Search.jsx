@@ -77,14 +77,16 @@ const Search = ({ CartItem }) => {
                 </Link>
               </div>
             )}
-            <div className="cart">
-              <Link to="/cart">
-                <i className="fa icon-circle carrinho">
-                  <BsFillCartFill size={18} />
-                </i>
-                <span>{numero.length}</span>
-              </Link>
-            </div>
+            {utipo === "Consumidor" && (
+              <div className="cart">
+                <Link to="/cart">
+                  <i className="fa icon-circle carrinho">
+                    <BsFillCartFill size={18} />
+                  </i>
+                  <span>{numero.length}</span>
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </section>
