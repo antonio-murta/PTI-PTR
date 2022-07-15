@@ -57,13 +57,14 @@ function EncomendasPDF(encomendas){
   const docDefinitions = {
     pageSize: 'A4',
     pageMargins: [15, 50, 15, 40],
+    // defaultFileName: 'Encomenda',
 
     header: [reportTitle],
     content: [details],
     footer: rodape
   }
-    
-  pdfMake.createPdf(docDefinitions).download();
+  
+  pdfMake.createPdf(docDefinitions).download('Encomenda');
 
 }
 
